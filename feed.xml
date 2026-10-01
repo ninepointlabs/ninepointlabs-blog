@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <channel>
-<title>ninepointlabs-blog</title>
-<link>https://ninepointlabs.github.io/ninepointlabs-blog/</link>
-<description>ninepointlabs-blog</description>
+<title>The Word from Ninepoint Labs</title>
+<link>https://blog.ninepointlabs.com/</link>
+<description>The Word from Ninepoint Labs</description>
 <language>en</language>
-<atom:link href="https://ninepointlabs.github.io/ninepointlabs-blog/feed.xml" rel="self" type="application/rss+xml"/>
+<atom:link href="https://blog.ninepointlabs.com/feed.xml" rel="self" type="application/rss+xml"/>
 <generator>folderblog 0.2.0</generator>
 </channel>
 </rss>
