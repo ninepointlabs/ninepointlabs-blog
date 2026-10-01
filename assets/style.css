@@ -66,7 +66,7 @@ h1 { font-size: 2rem; margin: 0 0 .5rem; }
 h2 { font-size: 1.4rem; margin: 2.2rem 0 .6rem; }
 h3 { font-size: 1.15rem; margin: 1.8rem 0 .5rem; }
 p, ul, ol, blockquote, pre, table, figure { margin: 0 0 1.2rem; }
-.content { overflow-wrap: break-word; }
+.content { overflow-wrap: anywhere; }
 .content img, .content video { max-width: 100%; height: auto; vertical-align: middle; border-radius: .5rem; }
 .content p > img:only-child, .content figure img, .content video { display: block; margin: 1.5rem auto; }
 blockquote { margin-left: 0; padding: .1rem 0 .1rem 1.1rem; border-left: 3px solid var(--teal); color: var(--ink-soft); }
@@ -87,10 +87,10 @@ th { font-weight: 700; }
 
 /* Home: each post is a card */
 .intro { font-size: 1.05rem; color: var(--ink-soft); margin: 0 0 2rem; }
-.summaries { display: grid; gap: .75rem; }
+.summaries { display: grid; grid-template-columns: minmax(0, 1fr); gap: .75rem; }
 .summary {
   padding: 1.1rem 1.25rem; border: 1px solid var(--line); border-radius: .75rem;
-  background: var(--surface); transition: border-color .15s;
+  background: var(--surface); transition: border-color .15s; overflow-wrap: anywhere;
 }
 .summary:hover { border-color: var(--teal); }
 .summary h2 { margin: 0 0 .15rem; font-size: 1.3rem; }
@@ -106,7 +106,7 @@ th { font-weight: 700; }
 .post > footer { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
 
 /* Lists */
-.post-list { display: grid; gap: .5rem; list-style: none; padding: 0; }
+.post-list { display: grid; grid-template-columns: minmax(0, 1fr); gap: .5rem; list-style: none; padding: 0; }
 .post-list a {
   display: grid; gap: .1rem; padding: .75rem 1rem;
   border: 1px solid var(--line); border-radius: .75rem; background: var(--surface);
