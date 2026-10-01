@@ -7,5 +7,21 @@
 <language>en</language>
 <atom:link href="https://blog.ninepointlabs.com/feed.xml" rel="self" type="application/rss+xml"/>
 <generator>folderblog 0.2.0</generator>
+<lastBuildDate>Thu, 1 Oct 2026 11:04:45 -0500</lastBuildDate>
+<item>
+<title>A new spot</title>
+<link>https://blog.ninepointlabs.com/2026/10/a-new-spot/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/a-new-spot/</guid>
+<pubDate>Thu, 1 Oct 2026 11:04:45 -0500</pubDate>
+<dc:creator>Tim</dc:creator>
+<description><![CDATA[<p>I’ve blogged all over the place. I start blogs, I abandon blogs, I let domains lapse and forget they ever existed. Somewhere out there is a whole graveyard of “Hello World” posts.</p>
+]]></description>
+<content:encoded><![CDATA[<p>I’ve blogged all over the place. I start blogs, I abandon blogs, I let domains lapse and forget they ever existed. Somewhere out there is a whole graveyard of “Hello World” posts.</p>
+<p>So I wanted a fresh start. Now that we have <a href="https://persistwise.com">Persistwise</a>, I don’t worry much about losing stuff anymore. And now that we’ve built <a href="https://folderblog.ninepointlabs.com">Folderblog</a>, spinning up a blog takes about two minutes. That’s how I ended up running three of them. It turns out that when blogs are easy to make, you make more blogs. Who knew.</p>
+<p>This one is my tech and projects blog, where all my tech shenanigans will end up. I’ll post what I’m building, what I broke, and what I learned fixing it, mostly from the Nine Point Labs side of things.</p>
+<p>If you build it, they will come. Or at least a few of you will, and that’s plenty. Pull up a chair and stick around.</p>
+<p>Cheers!</p>
+]]></content:encoded>
+</item>
 </channel>
 </rss>
