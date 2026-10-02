@@ -19,6 +19,7 @@
 ]]></description>
 <content:encoded><![CDATA[<p>You know the drill. You fire up Claude Code to fix a login bug. Then you need Codex to write some tests. Then Claude again for a quick refactor. Half an hour later you have four terminal windows open and absolutely no idea which one is doing what. Terminal 3 was the login fix, right? Or was that terminal 1? And what is terminal 4 even doing anymore?</p>
 <p>Speakeasy solves this with one simple idea: name your tasks and hide the terminals.</p>
+<p><strong><a href="https://github.com/ninepointlabs/speakeasy">Speakeasy on GitHub</a></strong></p>
 <p><img src="https://raw.githubusercontent.com/ninepointlabs/speakeasy/master/preview.png" alt="The Speakeasy task list"></p>
 <h2 id="how-it-works">How it works</h2>
 <p>Each agent gets its own hidden tmux session. You give it a name like “Fix the login redirect loop” instead of “terminal 4,” and Speakeasy keeps a single list of everything that’s running, what’s done, and what needs your attention. The terminals stay out of sight until you actually need to look at one.</p>
