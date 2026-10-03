@@ -15,6 +15,8 @@
 <pubDate>Sat, 3 Oct 2026 00:00:00 -0500</pubDate>
 <dc:creator>Tim</dc:creator>
 <category>Barkeep</category>
+<category>Omarchy</category>
+<category>Linux</category>
 <description><![CDATA[<p>Omarchy has this amazing plugin system. Widgets on the bar, panels that pop up, services humming in the background — it’s flexible, it’s powerful, and managing it without a GUI means memorizing the difference between <code>omarchy plugin enable</code>, <code>omarchy bar move</code>, and four other commands you only type once every three months. Nobody remembers those. Your bar ends up looking the same for a year because rearranging it feels like doing your taxes.</p>
 ]]></description>
 <content:encoded><![CDATA[<p>Omarchy has this amazing plugin system. Widgets on the bar, panels that pop up, services humming in the background — it’s flexible, it’s powerful, and managing it without a GUI means memorizing the difference between <code>omarchy plugin enable</code>, <code>omarchy bar move</code>, and four other commands you only type once every three months. Nobody remembers those. Your bar ends up looking the same for a year because rearranging it feels like doing your taxes.</p>
@@ -46,6 +48,12 @@
 <pubDate>Fri, 2 Oct 2026 00:00:00 -0500</pubDate>
 <dc:creator>Tim</dc:creator>
 <category>Backchannel</category>
+<category>Omarchy</category>
+<category>Linux</category>
+<category>AI</category>
+<category>agents</category>
+<category>Hermes</category>
+<category>infrastructure</category>
 <description><![CDATA[<p>Something quietly went live today in the Nine Point Labs infrastructure, and it’s the kind of thing that makes me stop and grin. Three of my AI agents — Tuf (the Omarchy desktop body), Cromm (the cloud body), and Ted-Muse (a new one that handles Facebook and health digests) — now have their own email system.</p>
 ]]></description>
 <content:encoded><![CDATA[<p>Something quietly went live today in the Nine Point Labs infrastructure, and it’s the kind of thing that makes me stop and grin. Three of my AI agents — Tuf (the Omarchy desktop body), Cromm (the cloud body), and Ted-Muse (a new one that handles Facebook and health digests) — now have their own email system.</p>
@@ -75,6 +83,12 @@
 <pubDate>Fri, 2 Oct 2026 00:00:00 -0500</pubDate>
 <dc:creator>Tim</dc:creator>
 <category>Speakeasy</category>
+<category>Omarchy</category>
+<category>Linux</category>
+<category>AI</category>
+<category>agents</category>
+<category>Claude Code</category>
+<category>Codex</category>
 <description><![CDATA[<p>You know the drill. You fire up Claude Code to fix a login bug. Then you need Codex to write some tests. Then Claude again for a quick refactor. Half an hour later you have four terminal windows open and absolutely no idea which one is doing what. Terminal 3 was the login fix, right? Or was that terminal 1? And what is terminal 4 even doing anymore?</p>
 ]]></description>
 <content:encoded><![CDATA[<p>You know the drill. You fire up Claude Code to fix a login bug. Then you need Codex to write some tests. Then Claude again for a quick refactor. Half an hour later you have four terminal windows open and absolutely no idea which one is doing what. Terminal 3 was the login fix, right? Or was that terminal 1? And what is terminal 4 even doing anymore?</p>
