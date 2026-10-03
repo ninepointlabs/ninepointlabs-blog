@@ -7,7 +7,38 @@
 <language>en</language>
 <atom:link href="https://blog.ninepointlabs.com/feed.xml" rel="self" type="application/rss+xml"/>
 <generator>folderblog 0.2.0</generator>
-<lastBuildDate>Fri, 2 Oct 2026 00:00:00 -0500</lastBuildDate>
+<lastBuildDate>Sat, 3 Oct 2026 00:00:00 -0500</lastBuildDate>
+<item>
+<title>Barkeep: your Omarchy bar’s best friend</title>
+<link>https://blog.ninepointlabs.com/2026/10/barkeep/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/barkeep/</guid>
+<pubDate>Sat, 3 Oct 2026 00:00:00 -0500</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>Barkeep</category>
+<description><![CDATA[<p>Omarchy has this amazing plugin system. Widgets on the bar, panels that pop up, services humming in the background — it’s flexible, it’s powerful, and managing it without a GUI means memorizing the difference between <code>omarchy plugin enable</code>, <code>omarchy bar move</code>, and four other commands you only type once every three months. Nobody remembers those. Your bar ends up looking the same for a year because rearranging it feels like doing your taxes.</p>
+]]></description>
+<content:encoded><![CDATA[<p>Omarchy has this amazing plugin system. Widgets on the bar, panels that pop up, services humming in the background — it’s flexible, it’s powerful, and managing it without a GUI means memorizing the difference between <code>omarchy plugin enable</code>, <code>omarchy bar move</code>, and four other commands you only type once every three months. Nobody remembers those. Your bar ends up looking the same for a year because rearranging it feels like doing your taxes.</p>
+<p><strong><a href="https://github.com/ninepointlabs/barkeep">Barkeep on GitHub</a></strong> fixes all of that with one overlay. Press a key, and suddenly every plugin the shell knows about is right there, in a clean, searchable list with the bar strip sitting across the top so you can see what goes where <em>while</em> you’re moving things around.</p>
+<p><img src="https://raw.githubusercontent.com/ninepointlabs/barkeep/master/preview.png" alt="Barkeep with the Weather widget selected: the bar strip on top, the plugin list on the left, details and actions on the right"></p>
+<h2 id="what-makes-it-good">What makes it good</h2>
+<p>The bar strip at the top shows your actual bar — Left, Center, Right sections, every widget in order. Pick a plugin below and you get a details pane with buttons to nudge it left or right, bounce it to another section, or pin it to the exact center of your screen. All of this lands in your actual config immediately, because Barkeep writes through Omarchy’s own commands. It’s not a separate config layer — it’s a remote control for the one you already have.</p>
+<p>Start typing and the list filters instantly, just like the Omarchy menu you already know. Want to find that one weather widget you installed six months ago? Type “weather.” It’s there.</p>
+<p><img src="https://raw.githubusercontent.com/ninepointlabs/barkeep/master/preview2.png" alt="Filtering by typing “hey”: the list narrows to matching plugins"></p>
+<h2 id="updates-without-the-archaeology">Updates without the archaeology</h2>
+<p>If you install plugins from git (and you should — that’s where the fun ones live), Barkeep checks every repo for new commits and shows you which ones have updates waiting. Hit <code>Ctrl+U</code> to update one, or <code>Ctrl+Shift+U</code> to update everything. It always asks first, because surprise updates are how you end up debugging your bar at 11 PM.</p>
+<p><img src="https://raw.githubusercontent.com/ninepointlabs/barkeep/master/preview3.png" alt="The confirmation shown before an update is pulled"></p>
+<h2 id="bar-profiles-because-one-layout-is-never-enough">Bar profiles: because one layout is never enough</h2>
+<p>Here’s where it gets clever. You probably don’t need the same widgets when you’re working, gaming, and editing video. Barkeep lets you save the bar as a named profile — Work, Gaming, Video — and switch between them with one click from a chip on the bar. Each profile remembers which widgets are where. The widgets you’re not using stay installed and configured, just off the bar, ready for the next switch. Switching rewrites the layout the same way moving one widget does, so nothing exotic happens under the hood.</p>
+<p><img src="https://raw.githubusercontent.com/ninepointlabs/barkeep/master/preview5.png" alt="The profile switcher open from the bar"></p>
+<h2 id="one-command-to-install">One command to install</h2>
+<pre class="highlight"><code class="language-bash"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">git</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> clone https://github.com/ninepointlabs/barkeep <span class="hl-meta hl-group hl-expansion hl-tilde"><span class="hl-variable hl-language hl-tilde hl-shell">~</span></span>/Projects/barkeep</span>
+<span class="hl-meta hl-function-call hl-shell"><span class="hl-support hl-function hl-cd hl-shell">cd</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> <span class="hl-meta hl-group hl-expansion hl-tilde"><span class="hl-variable hl-language hl-tilde hl-shell">~</span></span>/Projects/barkeep</span>
+<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">./install.sh</span></span>
+</span></code></pre>
+<p>That’s it. Bind <code>SUPER + B</code> and you’re done. Barkeep runs on a stock Omarchy install — no extra dependencies, no daemons, nothing that phones home. Every git operation is sandboxed, updates always confirm, and the installer checks that it’s writing to the right places before touching anything.</p>
+<p>If you’ve been managing your Omarchy bar from the terminal because you had to rather than because you wanted to, <a href="https://github.com/ninepointlabs/barkeep">give Barkeep a try</a>. Your bar has been waiting for a GUI that doesn’t make it worse.</p>
+]]></content:encoded>
+</item>
 <item>
 <title>The backchannel: three agents walk into a bar</title>
 <link>https://blog.ninepointlabs.com/2026/10/agent-backchannel/</link>
