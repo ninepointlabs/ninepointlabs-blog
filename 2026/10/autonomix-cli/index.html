@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Omaforge · The Word from Ninepoint Labs</title>
+<title>Autonomix CLI: Your GitHub Releases, One Terminal Away · The Word from Ninepoint Labs</title>
 
 <meta name="theme-color" content="#0f6b6e">
 <link rel="icon" href="/assets/npl-mark.svg" type="image/svg+xml">
@@ -34,36 +34,33 @@
 
 <article class="post">
   <header>
-    <h1>Omaforge</h1>
+    <h1>Autonomix CLI: Your GitHub Releases, One Terminal Away</h1>
     <p class="meta">
-      <time datetime="2026-10-04T00:00:00-05:00">October 4, 2026</time>
+      <time datetime="2026-10-05T00:00:00-05:00">October 5, 2026</time>
       · 2 min read
     </p>
   </header>
   <div class="content">
-    <p>If you play World of Warcraft on Linux, you already know the drill: Wine prefixes, multiple clients, and addons spread across CurseForge, WoWInterface, and GitHub like loot from a messy raid. Keeping them all updated is the kind of busywork that makes you wonder why you left Windows in the first place.</p>
-<p>Enter <strong>omaforge</strong> — the addon manager that actually understands your Linux WoW setup.</p>
-<p><strong><a href="https://github.com/ninepointlabs/omaforge">Omaforge on GitHub</a></strong></p>
-<p>omaforge scans every Wine prefix you’ve got — Lutris, Steam/Proton, Bottles, Heroic, plain old <code>~/.wine</code> — and finds every World of Warcraft client hiding in there. Retail, Classic Era, Classic progression, the anniversary realms, PTRs, betas, and yes, <strong>World of Warcraft: Forever</strong>. Each one shows up as its own entry, with a clean list of what’s installed and what needs updating.</p>
-<p><img src="https://raw.githubusercontent.com/ninepointlabs/omaforge/main/docs/screenshots/installed.png" alt="Installed addons for Retail, with two updates waiting"></p>
-<p>The clever bit is how it handles addons you installed before omaforge ever showed up. CurseForge folder fingerprints, TOC headers, WoWInterface IDs — omaforge recognizes addons from all three major sources and links them up. Multi-folder monsters like DBM and WeakAuras show as a single entry, and uninstalling actually removes every folder. No more ghost directories cluttering up your <code>AddOns</code> folder.</p>
-<p>The Explore tab is where the fun is. Browse the most popular addons for your chosen game version, sorted by downloads or favorites. Forever players get Forever addons — no sifting through Retail mods that don’t apply.</p>
-<p><img src="https://raw.githubusercontent.com/ninepointlabs/omaforge/main/docs/screenshots/explore.png" alt="Explore: the most popular Retail addons on CurseForge"></p>
-<p>And because omaforge is built for Omarchy, it follows your theme in real time. Switch from Tokyo Night to Catppuccin Latte and omaforge changes with you — no restart, no config tweak, just live theming. Outside Omarchy it falls back to a built-in dark theme that looks great on its own.</p>
-<p>Updates are atomic (old version kept until the new one is fully unpacked), WTF backups are automatic before bulk updates, and every action the GUI can do is also available on the command line. It’s the kind of tool that makes you forget you’re managing addons at all.</p>
-<pre class="highlight"><code class="language-sh"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">sudo</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> pacman<span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> -</span>U</span> omaforge-<span class="hl-keyword hl-operator hl-regexp hl-quantifier hl-shell">*</span>-any.pkg.tar.zst</span>
-<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">omaforge</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> setup omarchy<span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> --</span>keybind</span> <span class="hl-string hl-quoted hl-double hl-shell"><span class="hl-punctuation hl-definition hl-string hl-begin hl-shell">&quot;</span>SUPER + SHIFT + Z<span class="hl-punctuation hl-definition hl-string hl-end hl-shell">&quot;</span></span></span>
-</span></code></pre>
-<p>Grab the latest release from the <a href="https://github.com/ninepointlabs/omaforge">repo</a> — your addons will thank you.</p>
+    <p>Here’s a scenario you probably know: you find a cool tool on GitHub, but it’s not in your package manager. You download the <code>.deb</code> or <code>.rpm</code>, install it, and then… forget about it. Three months later you’re running v0.2 while v0.7 is out with the one feature you actually needed.</p>
+<p>Autonomix CLI is the answer. It’s a terminal app — built in Go, powered by the gorgeous <a href="https://github.com/charmbracelet/bubbletea">Bubble Tea</a> TUI framework — that tracks any app published through GitHub Releases and tells you when an update drops.</p>
+<h2 id="how-it-works">How it works</h2>
+<p>You fire it up, paste a GitHub repo URL, and Autonomix figures out the rest. It auto-detects package formats: <code>.deb</code>, <code>.rpm</code>, <code>.flatpak</code>, <code>.snap</code>, <code>.appimage</code>, even Arch packages. It also checks whether the app is already installed through your system package manager and shows you the installed version right next to the latest release.</p>
+<p>Hit <code>u</code> to check for updates on any tracked app. Hit <code>d</code> to stop tracking. That’s it. No daemon, no background service, no YAML config file to debug — just <code>~/.autonomix/config.json</code> and a dead-simple TUI.</p>
+<h2 id="why-its-clever">Why it’s clever</h2>
+<p>The magic is in the auto-detection. Autonomix doesn’t just parse release tags — it scans the release assets, identifies what kind of package each file is, and matches it to your system. On Debian? It flags the <code>.deb</code>. On Arch? It knows you want the <code>.pkg.tar.zst</code>. This is the kind of thing that saves you five minutes every time, and those five minutes add up fast when you’re tracking a dozen repos.</p>
+<h2 id="who-its-for">Who it’s for</h2>
+<p>If you run Linux and regularly install software from GitHub Releases — CLI tools, early-access apps, indie projects that haven’t made it into apt or the AUR yet — Autonomix earns its spot in your terminal. It’s lightweight, it compiles with a single <code>go build</code>, and at v0.3.1 it’s already doing the job cleanly.</p>
+<p><strong><a href="https://github.com/ninepointlabs/autonomix-cli">Autonomix CLI on GitHub →</a></strong></p>
+<p>Grab the latest <code>.deb</code>, <code>.rpm</code>, or Arch package from the <a href="https://github.com/ninepointlabs/autonomix-cli/releases">Releases page</a> and give it a spin. Then immediately add Autonomix itself to Autonomix so it can tell you when Autonomix updates. Yes, that works. No, it’s not a typo.</p>
 
   </div>
   <footer>
     
-<p class="tags"><a href="/tags/omaforge/">#Omaforge</a> <a href="/tags/omarchy/">#Omarchy</a> <a href="/tags/linux/">#Linux</a> <a href="/tags/world-of-warcraft/">#World of Warcraft</a> <a href="/tags/gaming/">#Gaming</a></p>
+<p class="tags"><a href="/tags/autonomixcli/">#AutonomixCLI</a> <a href="/tags/linux/">#Linux</a> <a href="/tags/cli/">#CLI</a> <a href="/tags/go/">#Go</a> <a href="/tags/tui/">#TUI</a> <a href="/tags/package-management/">#package-management</a></p>
 
     <nav class="neighbours">
-      <a rel="next" href="/2026/10/autonomix-cli/">← Autonomix CLI: Your GitHub Releases, One Terminal Away</a>
-      <a rel="prev" href="/2026/10/barkeep/">Barkeep: your Omarchy bar’s best friend →</a>
+      <span></span>
+      <a rel="prev" href="/2026/10/omaforge/">Omaforge →</a>
     </nav>
   </footer>
 </article>

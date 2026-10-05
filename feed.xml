@@ -7,7 +7,34 @@
 <language>en</language>
 <atom:link href="https://blog.ninepointlabs.com/feed.xml" rel="self" type="application/rss+xml"/>
 <generator>folderblog 0.2.0</generator>
-<lastBuildDate>Sun, 4 Oct 2026 00:00:00 -0500</lastBuildDate>
+<lastBuildDate>Mon, 5 Oct 2026 00:00:00 -0500</lastBuildDate>
+<item>
+<title>Autonomix CLI: Your GitHub Releases, One Terminal Away</title>
+<link>https://blog.ninepointlabs.com/2026/10/autonomix-cli/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/autonomix-cli/</guid>
+<pubDate>Mon, 5 Oct 2026 00:00:00 -0500</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>AutonomixCLI</category>
+<category>Linux</category>
+<category>CLI</category>
+<category>Go</category>
+<category>TUI</category>
+<category>package-management</category>
+<description><![CDATA[<p>Here’s a scenario you probably know: you find a cool tool on GitHub, but it’s not in your package manager. You download the <code>.deb</code> or <code>.rpm</code>, install it, and then… forget about it. Three months later you’re running v0.2 while v0.7 is out with the one feature you actually needed.</p>
+]]></description>
+<content:encoded><![CDATA[<p>Here’s a scenario you probably know: you find a cool tool on GitHub, but it’s not in your package manager. You download the <code>.deb</code> or <code>.rpm</code>, install it, and then… forget about it. Three months later you’re running v0.2 while v0.7 is out with the one feature you actually needed.</p>
+<p>Autonomix CLI is the answer. It’s a terminal app — built in Go, powered by the gorgeous <a href="https://github.com/charmbracelet/bubbletea">Bubble Tea</a> TUI framework — that tracks any app published through GitHub Releases and tells you when an update drops.</p>
+<h2 id="how-it-works">How it works</h2>
+<p>You fire it up, paste a GitHub repo URL, and Autonomix figures out the rest. It auto-detects package formats: <code>.deb</code>, <code>.rpm</code>, <code>.flatpak</code>, <code>.snap</code>, <code>.appimage</code>, even Arch packages. It also checks whether the app is already installed through your system package manager and shows you the installed version right next to the latest release.</p>
+<p>Hit <code>u</code> to check for updates on any tracked app. Hit <code>d</code> to stop tracking. That’s it. No daemon, no background service, no YAML config file to debug — just <code>~/.autonomix/config.json</code> and a dead-simple TUI.</p>
+<h2 id="why-its-clever">Why it’s clever</h2>
+<p>The magic is in the auto-detection. Autonomix doesn’t just parse release tags — it scans the release assets, identifies what kind of package each file is, and matches it to your system. On Debian? It flags the <code>.deb</code>. On Arch? It knows you want the <code>.pkg.tar.zst</code>. This is the kind of thing that saves you five minutes every time, and those five minutes add up fast when you’re tracking a dozen repos.</p>
+<h2 id="who-its-for">Who it’s for</h2>
+<p>If you run Linux and regularly install software from GitHub Releases — CLI tools, early-access apps, indie projects that haven’t made it into apt or the AUR yet — Autonomix earns its spot in your terminal. It’s lightweight, it compiles with a single <code>go build</code>, and at v0.3.1 it’s already doing the job cleanly.</p>
+<p><strong><a href="https://github.com/ninepointlabs/autonomix-cli">Autonomix CLI on GitHub →</a></strong></p>
+<p>Grab the latest <code>.deb</code>, <code>.rpm</code>, or Arch package from the <a href="https://github.com/ninepointlabs/autonomix-cli/releases">Releases page</a> and give it a spin. Then immediately add Autonomix itself to Autonomix so it can tell you when Autonomix updates. Yes, that works. No, it’s not a typo.</p>
+]]></content:encoded>
+</item>
 <item>
 <title>Omaforge</title>
 <link>https://blog.ninepointlabs.com/2026/10/omaforge/</link>
