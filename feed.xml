@@ -7,7 +7,45 @@
 <language>en</language>
 <atom:link href="https://blog.ninepointlabs.com/feed.xml" rel="self" type="application/rss+xml"/>
 <generator>folderblog 0.2.0</generator>
-<lastBuildDate>Tue, 6 Oct 2026 00:00:00 -0500</lastBuildDate>
+<lastBuildDate>Wed, 7 Oct 2026 00:00:00 -0500</lastBuildDate>
+<item>
+<title>fm-cli: Fastmail, Minus the Browser Tab</title>
+<link>https://blog.ninepointlabs.com/2026/10/fm-cli/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/fm-cli/</guid>
+<pubDate>Wed, 7 Oct 2026 00:00:00 -0500</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>fm-cli</category>
+<category>CLI</category>
+<category>Linux</category>
+<category>macOS</category>
+<category>Go</category>
+<category>TUI</category>
+<category>email</category>
+<category>Fastmail</category>
+<description><![CDATA[<p>You know the feeling: you’re deep in the terminal, in the zone, and then you need to check your email. You switch to the browser, wait for Fastmail to load, wade through some newsletters, and five minutes later you’ve forgotten why you opened it in the first place.</p>
+]]></description>
+<content:encoded><![CDATA[<p>You know the feeling: you’re deep in the terminal, in the zone, and then you need to check your email. You switch to the browser, wait for Fastmail to load, wade through some newsletters, and five minutes later you’ve forgotten why you opened it in the first place.</p>
+<p>fm-cli fixes that. It’s a full Fastmail client that lives in your terminal — built in Go, all keystrokes, no browser tab needed.</p>
+<p><strong><a href="https://github.com/ninepointlabs/fm-cli">fm-cli on GitHub →</a></strong></p>
+<p><img src="https://raw.githubusercontent.com/ninepointlabs/fm-cli/main/docs/tui.png" alt="The fm-cli terminal app reading a thread"></p>
+<h2 id="mail-calendar-contacts-all-from-the-keyboard">Mail, calendar, contacts — all from the keyboard</h2>
+<p>fm-cli talks directly to Fastmail’s JMAP API. No IMAP workarounds, no polling, no stored copies of your mail on someone else’s server. It’s the real thing, and it’s also the engine behind the <a href="https://github.com/ninepointlabs/omarchy-fastmail">Fastmail plugin for Omarchy</a>, so it’s battle-tested every day.</p>
+<p>The TUI gives you everything you’d expect: folders, threaded conversations, clickable links, reply-all, forward, flag, archive, move, delete. Compose in <code>$EDITOR</code> with contact autocomplete that actually works. A two-week calendar agenda and a contacts browser. Inline images, if your terminal supports it. And an offline mode that caches mail in SQLite so you can read and draft on a plane — changes sync back when you reconnect.</p>
+<h2 id="scripting-that-doesnt-fight-you">Scripting that doesn’t fight you</h2>
+<p>Here’s where fm-cli really shines. Every command accepts <code>--json</code> and prints exactly one JSON object — <code>{"ok": true, "data": …}</code> on success, <code>{"ok": false, "error": "…", "code": "auth|usage|network|remote|busy"}</code> on failure. That means you can pipe it into <code>jq</code>, drive it from shell scripts, or build automation around your mailbox without parsing human-readable output or worrying about edge cases:</p>
+<pre class="highlight"><code class="language-bash"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">fm-cli</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> box view inbox<span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> --</span>limit</span> 20<span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> --</span>json</span></span> <span class="hl-keyword hl-operator hl-logical hl-pipe hl-shell">|</span> <span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">jq</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> <span class="hl-string hl-quoted hl-single hl-shell"><span class="hl-punctuation hl-definition hl-string hl-begin hl-shell">&#39;</span>.data[].subject<span class="hl-punctuation hl-definition hl-string hl-end hl-shell">&#39;</span></span></span>
+</span></code></pre>
+<p>The <code>watch</code> command holds a live push connection open and prints a JSON line for every change — new mail, read status, folder moves. One connection per account, no polling, no rate limits.</p>
+<h2 id="auth-you-dont-have-to-think-about">Auth you don’t have to think about</h2>
+<p>Sign in with <code>fm-cli auth login</code> and it opens Fastmail’s consent page in your browser. Approve it there, and the tokens go straight into your system keyring. They refresh themselves. You never copy a token. If you’re on a headless machine, <code>FM_API_TOKEN</code>, <code>FM_EMAIL</code>, and <code>FM_APP_PASSWORD</code> in the environment stand in for the keyring.</p>
+<p>Calendar and contacts use CalDAV and CardDAV with a Fastmail app password — <code>fm-cli auth dav</code> stores it, and you’re done.</p>
+<h2 id="install-it">Install it</h2>
+<p>On Omarchy: <code>omarchy-mise-install github:ninepointlabs/fm-cli fm-cli</code></p>
+<p>Everywhere else: <code>mise use -g github:ninepointlabs/fm-cli@latest</code></p>
+<p>Releases also ship <code>.pkg.tar.zst</code>, <code>.deb</code>, <code>.rpm</code>, and plain tarballs for Linux and macOS. Go 1.26 or newer, no C toolchain needed. Clone it, <code>go build</code>, and you’re off.</p>
+<p>If your email lives on Fastmail and you spend a lot of time in the terminal, fm-cli is one of those tools that makes you wonder how you managed without it. Grab it from the <a href="https://github.com/ninepointlabs/fm-cli">repo</a> and reclaim that browser tab.</p>
+]]></content:encoded>
+</item>
 <item>
 <title>Bahá’í Reader: A Quiet GTK 4 Reader That Follows Your Desktop Theme</title>
 <link>https://blog.ninepointlabs.com/2026/10/bahai-reader/</link>
