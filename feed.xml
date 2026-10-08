@@ -7,7 +7,40 @@
 <language>en</language>
 <atom:link href="https://blog.ninepointlabs.com/feed.xml" rel="self" type="application/rss+xml"/>
 <generator>folderblog 0.2.0</generator>
-<lastBuildDate>Wed, 7 Oct 2026 00:00:00 -0500</lastBuildDate>
+<lastBuildDate>Thu, 8 Oct 2026 00:00:00 -0500</lastBuildDate>
+<item>
+<title>folderblog: Save a File, Publish a Blog</title>
+<link>https://blog.ninepointlabs.com/2026/10/folderblog/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/folderblog/</guid>
+<pubDate>Thu, 8 Oct 2026 00:00:00 -0500</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>folderblog</category>
+<category>Linux</category>
+<category>Rust</category>
+<category>GitHub Pages</category>
+<category>static-site</category>
+<category>blogging</category>
+<description><![CDATA[<p>Here’s a radical idea: what if publishing a blog post was exactly as hard as hitting Ctrl+S? No build step. No <code>git push</code>. No front matter to remember. No deploy command. Just a Markdown file in a folder, and a few seconds later, it’s live.</p>
+]]></description>
+<content:encoded><![CDATA[<p>Here’s a radical idea: what if publishing a blog post was exactly as hard as hitting Ctrl+S? No build step. No <code>git push</code>. No front matter to remember. No deploy command. Just a Markdown file in a folder, and a few seconds later, it’s live.</p>
+<p>That’s folderblog. And it actually delivers.</p>
+<p><strong><a href="https://github.com/ninepointlabs/folderblog">folderblog on GitHub →</a></strong>  |  <strong><a href="https://folderblog.ninepointlabs.com">Website &amp; video tour →</a></strong></p>
+<p><img src="https://raw.githubusercontent.com/ninepointlabs/folderblog/main/site/static/img/demo-home.jpg" alt="The same blog rendered by folderblog’s Default theme"></p>
+<h2 id="a-folder-is-a-blog">A folder is a blog</h2>
+<p>folderblog is a single Rust binary that runs quietly in the background, watching <code>~/Blogs</code>. Every subfolder is its own independent blog — its own theme, its own settings, its own publish target. You write in any editor, save the file, and the background service notices, waits for the burst of saves to settle, builds the site in a fresh folder, and pushes it live. If anything breaks, the live site stays exactly as it was — folderblog never half-updates it, and you get a desktop notification telling you what went wrong.</p>
+<p>GitHub Pages works with zero ongoing clicks. Log in once, and <code>folderblog new myblog</code> creates the repository, turns on Pages, and publishes your first post. Custom domains too — it even prints the DNS records you need. Not a GitHub person? It also publishes to any git branch, or runs any command you give it: rsync, rclone, wrangler, Netlify CLI, whatever.</p>
+<p><img src="https://raw.githubusercontent.com/ninepointlabs/folderblog/main/site/static/img/mag-home.jpg" alt="The same blog rendered by the Magazine theme"></p>
+<h2 id="themes-with-no-ceiling">Themes with no ceiling</h2>
+<p>folderblog’s engine handles content, feeds, and sitemaps. Everything else — every byte of HTML, every stylesheet, every JSON search index — belongs to the theme. Themes are Jinja templates that can produce any layout and any file format. One template can render tag pages, year archives, paginated series. A theme can even generate its own search index.</p>
+<p>To prove the engine doesn’t interfere, we gave three coding agents the same blog, its <code>AGENTS.md</code> contract, and a one-line design brief. None of them needed a change to the engine. The screenshots in this post? Same blog, four different themes, all agent-built.</p>
+<p><img src="https://raw.githubusercontent.com/ninepointlabs/folderblog/main/site/static/img/min-post.jpg" alt="The same blog rendered by the Text-only theme"></p>
+<h2 id="the-little-things-that-make-it-good">The little things that make it good</h2>
+<p>Posts don’t need front matter. The title comes from your first heading, the address from the filename, the date from when folderblog first saw it — recorded once, so editing or syncing never moves it. Delete a file, and the post is unpublished. There’s a built-in photo gallery: <code>folderblog gallery on</code>, drop pictures into a folder, and only resized copies ever reach the site (your originals with GPS metadata stay local). Drafts only appear in preview. <code>folderblog check</code> catches template errors, broken links, and feed problems before anything goes live.</p>
+<p>It runs on Linux — packages for Arch, Debian/Ubuntu, and Fedora, plus a static binary. Written in Rust, MIT licensed, <code>git</code> is the only dependency.</p>
+<p><img src="https://raw.githubusercontent.com/ninepointlabs/folderblog/main/site/static/img/scr-post.jpg" alt="The same blog rendered by the Film Strip theme"></p>
+<p>folderblog is the kind of tool that makes you wonder why blogs were ever harder than this. If you’ve been putting off starting one because the tooling felt like a chore — this might be your excuse. Grab it from the <a href="https://github.com/ninepointlabs/folderblog">repo</a>, follow the <a href="https://folderblog.ninepointlabs.com/guide/">step-by-step guide</a>, and save a file.</p>
+]]></content:encoded>
+</item>
 <item>
 <title>fm-cli: Fastmail, Minus the Browser Tab</title>
 <link>https://blog.ninepointlabs.com/2026/10/fm-cli/</link>
