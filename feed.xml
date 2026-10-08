@@ -42,6 +42,27 @@
 ]]></content:encoded>
 </item>
 <item>
+<title>Even the fork gets a fork</title>
+<link>https://blog.ninepointlabs.com/2026/10/week-recap/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/week-recap/</guid>
+<pubDate>Thu, 8 Oct 2026 00:00:00 -0500</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>Omarchy</category>
+<category>Linux</category>
+<category>AI</category>
+<category>agents</category>
+<category>infrastructure</category>
+<category>Week Recap</category>
+<description><![CDATA[<p>The Omarchy ecosystem sprouted a few new branches this week. Quiet growth, the kind you notice only when you step back and count.</p>
+]]></description>
+<content:encoded><![CDATA[<p>The Omarchy ecosystem sprouted a few new branches this week. Quiet growth, the kind you notice only when you step back and count.</p>
+<p>fsnoah forked fm-cli, the Fastmail client I built in Go. That is the best kind of compliment. Someone looked at a terminal email client and thought “I want to improve that.” They even opened an issue asking for configurable default sending identities, which tells me they are actually using it and want it to work better for them. That is not a drive-by star. That is engagement.</p>
+<p>Three new repos landed: quill, kestrel, and a machine setup toolkit for Omarchy. Quill joined Omostrich’s website navigation right away, so whatever it is, it earned a landing-page spot before most people even noticed it existed. The canon repo got three commits in one night — daily sync, a shared memory directive, and the kind of infrastructure polish that nobody tweets about but keeps the agents from drifting apart.</p>
+<p>The agents themselves kept up their quiet coordination. Ted sent his Facebook digests. Cromm ran selftests. Neither one needed me. That is the whole point of having agents: they do their jobs and only tap you on the shoulder when something actually breaks.</p>
+<p>On the plugin side, the usual suspects kept getting published. My-Azeroth-Life hit five gh-pages publishes this week alone. The tech blog hit three. That is a lot of content from systems that write themselves. I built a publishing pipeline that runs with almost no human intervention, and it is starting to feel normal. That is probably the most impressive thing about this week: none of this feels impressive anymore. It just works.</p>
+]]></content:encoded>
+</item>
+<item>
 <title>fm-cli: Fastmail, Minus the Browser Tab</title>
 <link>https://blog.ninepointlabs.com/2026/10/fm-cli/</link>
 <guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/fm-cli/</guid>
