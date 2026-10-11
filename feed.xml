@@ -37,7 +37,7 @@
 </span></code></pre>
 <p>That’s it. One <code>omarchy update</code> now refreshes your system packages <em>and</em> whatever you’re tracking through Autonomix, no separate step to remember.</p>
 <p><strong><a href="https://github.com/ninepointlabs/autonomix-cli">Autonomix CLI on GitHub →</a></strong></p>
-<p>Grab the latest release, or if you’re already on it, <code>go build</code> and you’re there. If you haven’t tried Autonomix at all yet, the <a href="https://blog.ninepointlabs.com/posts/2026-10-05-autonomix-cli">first post</a> has the full rundown.</p>
+<p>Grab the latest release, or if you’re already on it, <code>go build</code> and you’re there. If you haven’t tried Autonomix at all yet, the <a href="https://blog.ninepointlabs.com/2026/10/autonomix-cli/">first post</a> has the full rundown.</p>
 ]]></content:encoded>
 </item>
 <item>
