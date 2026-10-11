@@ -9,6 +9,38 @@
 <generator>folderblog 0.2.0</generator>
 <lastBuildDate>Sun, 11 Oct 2026 00:00:00 -0500</lastBuildDate>
 <item>
+<title>Autonomix Now Plugs Straight Into the Omarchy Updater</title>
+<link>https://blog.ninepointlabs.com/2026/10/autonomix-omarchy-updater/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/autonomix-omarchy-updater/</guid>
+<pubDate>Sun, 11 Oct 2026 00:00:00 -0500</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>AutonomixCLI</category>
+<category>Omarchy</category>
+<category>Linux</category>
+<category>CLI</category>
+<category>Go</category>
+<description><![CDATA[<p>Remember <a href="https://github.com/ninepointlabs/autonomix-cli">Autonomix CLI</a>, the terminal tool that tracks your GitHub Releases apps? It had one nagging flaw: it wouldn’t update anything unless you remembered to open it and ask. Which, if you’re like most people, is never.</p>
+]]></description>
+<content:encoded><![CDATA[<p>Remember <a href="https://github.com/ninepointlabs/autonomix-cli">Autonomix CLI</a>, the terminal tool that tracks your GitHub Releases apps? It had one nagging flaw: it wouldn’t update anything unless you remembered to open it and ask. Which, if you’re like most people, is never.</p>
+<p>That’s fixed now. Autonomix just picked up a real <code>check</code> and <code>update</code> command, and on Omarchy it hooks straight into the system updater, so your GitHub-sourced apps get refreshed in the same breath as everything else.</p>
+<h2 id="whats-new">What’s new</h2>
+<ul>
+<li><strong><code>autonomix-cli check</code></strong> lists every tracked app with an update available, no TUI required.</li>
+<li><strong><code>autonomix-cli update [-y]</code></strong> installs those updates non-interactively, the <code>-y</code> flag skips the confirmation prompt entirely.</li>
+<li>It only touches apps installed through your actual package manager (dpkg, rpm, pacman). Anything living as a loose binary on <code>PATH</code>, or managed through Flatpak/Snap, gets reported and left alone, because blindly overwriting those is how you break things.</li>
+<li><code>--version</code> and <code>--help</code> now behave like every other CLI instead of falling through to the TUI.</li>
+<li>Set <code>GITHUB_TOKEN</code> (or <code>GH_TOKEN</code>) if you’re tracking enough repos to hit GitHub’s 60-requests-an-hour API limit; it bumps you to 5,000.</li>
+</ul>
+<h2 id="the-omarchy-part">The Omarchy part</h2>
+<p>This is the fun bit. Drop the included hook into Omarchy’s update pipeline and Autonomix updates ride along for free every time you run <code>omarchy update</code>:</p>
+<pre class="highlight"><code class="language-bash"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">install</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"><span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> -</span>m755</span> contrib/omarchy/autonomix.hook <span class="hl-meta hl-group hl-expansion hl-tilde"><span class="hl-variable hl-language hl-tilde hl-shell">~</span></span>/.config/omarchy/hooks/post-update.d/autonomix.hook</span>
+</span></code></pre>
+<p>That’s it. One <code>omarchy update</code> now refreshes your system packages <em>and</em> whatever you’re tracking through Autonomix, no separate step to remember.</p>
+<p><strong><a href="https://github.com/ninepointlabs/autonomix-cli">Autonomix CLI on GitHub →</a></strong></p>
+<p>Grab the latest release, or if you’re already on it, <code>go build</code> and you’re there. If you haven’t tried Autonomix at all yet, the <a href="https://blog.ninepointlabs.com/posts/2026-10-05-autonomix-cli">first post</a> has the full rundown.</p>
+]]></content:encoded>
+</item>
+<item>
 <title>Jubako: Microsoft Access, Without the Hard Parts</title>
 <link>https://blog.ninepointlabs.com/2026/10/jubako/</link>
 <guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/jubako/</guid>
