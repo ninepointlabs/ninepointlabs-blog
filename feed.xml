@@ -48,6 +48,28 @@
 ]]></content:encoded>
 </item>
 <item>
+<title>Why Rune Treats DOCX as a Guest, Not a Host</title>
+<link>https://blog.ninepointlabs.com/2026/10/rune-odf-first/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/rune-odf-first/</guid>
+<pubDate>Mon, 12 Oct 2026 00:00:00 -0500</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>Rune</category>
+<category>ODF</category>
+<category>DOCX</category>
+<category>LibreOffice</category>
+<category>Word Processing</category>
+<description><![CDATA[<p>I’ve been building <a href="https://rune.ninepointlabs.com">Rune</a>, our word processor, and I just made a decision that I expect a few people to push back on: DOCX is not a first-class citizen. ODF is the native format. DOCX is import and export only.</p>
+]]></description>
+<content:encoded><![CDATA[<p>I’ve been building <a href="https://rune.ninepointlabs.com">Rune</a>, our word processor, and I just made a decision that I expect a few people to push back on: DOCX is not a first-class citizen. ODF is the native format. DOCX is import and export only.</p>
+<p>Here’s the thing I had to talk myself out of first.</p>
+<p>My first instinct was to make DOCX a first-class format alongside ODF, because it’s convenient. DOCX is what the business world runs on, it’s what shows up in every email attachment, and treating it as a second-tier citizen felt like making life harder for anyone who has to interoperate with the rest of the planet. That instinct was really just me optimizing for my own convenience, not for what Rune should actually be.</p>
+<p>Then I looked honestly at how often I actually create documents that need to be DOCX. Rarely. Almost never, really. Most of what I write doesn’t care what the underlying format is, it cares about being readable, editable, and not locked to one vendor’s whims. The cases where DOCX truly matters are the cases where I’m handing something to someone else’s pipeline, and for that, export now and again is plenty.</p>
+<p>So that settled it for me: if ODF is ever going to get real traction, and if we actually want to see the world move away from a single-vendor format as the default assumption, somebody has to stop treating DOCX as equal. Every tool that makes DOCX the comfortable default, even a little, is one more vote for the status quo. Rune is my vote the other way. ODF is home. DOCX is a well-supported guest, not a roommate.</p>
+<p>The “well-supported” part matters, because I’m not interested in making DOCX support bad out of principle. Nobody wins if opening a .docx in Rune mangles someone’s formatting. So on the backend, DOCX import and export runs through the LibreOffice engine. LibreOffice has put in literally decades of work getting that conversion right, through every quirky OOXML edge case Microsoft has shipped over the years. There’s no reason for me to reinvent that wheel badly when I can lean on work that’s already excellent. Rune gets to stay focused on being a genuinely good ODF-native editor, and the DOCX bridge gets to be solid because someone else already paid the tuition for that problem.</p>
+<p>That’s the shape of it: ODF by default, DOCX by door, LibreOffice doing the heavy lifting at the threshold. If you want to see where Rune is headed, <a href="https://rune.ninepointlabs.com">rune.ninepointlabs.com</a> has more.</p>
+]]></content:encoded>
+</item>
+<item>
 <title>Autonomix Now Plugs Straight Into the Omarchy Updater</title>
 <link>https://blog.ninepointlabs.com/2026/10/autonomix-omarchy-updater/</link>
 <guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/autonomix-omarchy-updater/</guid>
