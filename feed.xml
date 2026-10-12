@@ -7,7 +7,46 @@
 <language>en</language>
 <atom:link href="https://blog.ninepointlabs.com/feed.xml" rel="self" type="application/rss+xml"/>
 <generator>folderblog 0.2.0</generator>
-<lastBuildDate>Sun, 11 Oct 2026 00:00:00 -0500</lastBuildDate>
+<lastBuildDate>Mon, 12 Oct 2026 00:00:00 -0500</lastBuildDate>
+<item>
+<title>Kestrel: Post to X from Your Terminal (or Let Your AI Do It)</title>
+<link>https://blog.ninepointlabs.com/2026/10/kestrel/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/kestrel/</guid>
+<pubDate>Mon, 12 Oct 2026 00:00:00 -0500</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>Kestrel</category>
+<category>X</category>
+<category>Twitter</category>
+<category>CLI</category>
+<category>MCP</category>
+<category>Rust</category>
+<category>AI</category>
+<description><![CDATA[<p>If you have ever wanted to fire off a tweet without leaving your terminal, or better yet, hand the keys to an AI agent and trust it not to burn through your X API budget, <a href="https://github.com/ninepointlabs/kestrel">Kestrel</a> has you covered.</p>
+]]></description>
+<content:encoded><![CDATA[<p>If you have ever wanted to fire off a tweet without leaving your terminal, or better yet, hand the keys to an AI agent and trust it not to burn through your X API budget, <a href="https://github.com/ninepointlabs/kestrel">Kestrel</a> has you covered.</p>
+<p>Kestrel is a Rust CLI that posts to X (Twitter) and doubles as an MCP server so AI agents can post through it. The killer feature: a hard daily post limit, shared between the CLI and the MCP server. Your agent might be chatty, but Kestrel knows when to say “that’s enough for today.”</p>
+<h2 id="two-modes-one-binary">Two modes, one binary</h2>
+<p>From the terminal, it is dead simple:</p>
+<pre class="highlight"><code class="language-sh"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">kestrel</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> post <span class="hl-string hl-quoted hl-double hl-shell"><span class="hl-punctuation hl-definition hl-string hl-begin hl-shell">&quot;</span>Hello world<span class="hl-punctuation hl-definition hl-string hl-end hl-shell">&quot;</span></span></span>
+<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">kestrel</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> post <span class="hl-string hl-quoted hl-double hl-shell"><span class="hl-punctuation hl-definition hl-string hl-begin hl-shell">&quot;</span>check this out<span class="hl-punctuation hl-definition hl-string hl-end hl-shell">&quot;</span></span><span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> --</span>image</span> ./photo.png</span>
+<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">kestrel</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> status         <span class="hl-comment hl-line hl-number-sign hl-shell"><span class="hl-punctuation hl-definition hl-comment hl-begin hl-shell">#</span></span><span class="hl-comment hl-line hl-number-sign hl-shell"> Posts today: 3/50 (6%)</span><span class="hl-comment hl-line hl-number-sign hl-shell">
+</span></span></span></code></pre>
+<p>Fire up the MCP server with <code>kestrel serve</code> and suddenly Claude Code, Claude Desktop, or Hermes can post on your behalf with exactly the same guardrails. No separate config, no backdoor. If the daily limit is hit, the MCP tool returns an error result instead of posting. Your credit card stays safe.</p>
+<h2 id="the-economics-of-x-posting-in-2026">The economics of X posting in 2026</h2>
+<p>Here is the part that makes Kestrel genuinely useful instead of just fun. Since February 2026, X’s API is pay-per-use with no free tier. Every post costs real money:</p>
+<ul>
+<li>Plain text tweet: $0.015</li>
+<li>Tweet with a URL: <strong>$0.200</strong> (yes, 13x more)</li>
+<li>Summoned reply: $0.010</li>
+</ul>
+<p>A link surcharge that steep means one careless agent posting URLs could run up a bill fast. Kestrel’s daily limit is your safety net. At 50 posts per day, plain text costs $22.50/month. With links mixed in at 30%, that jumps to $90/month. Kestrel makes sure you know exactly where you stand.</p>
+<h2 id="built-to-be-boring-in-the-best-way">Built to be boring (in the best way)</h2>
+<p>The config lives in <code>~/.config/kestrel/config.toml</code> with <code>0600</code> permissions. State is tracked in a tiny JSON file that resets at midnight local time. One binary, one config file, one state file. No daemon, no database, no cloud service. It works the same whether you type <code>kestrel post</code> or your AI agent does.</p>
+<p>The MCP server exposes exactly two tools: <code>kestrel_post</code> and <code>kestrel_status</code>. That is it. No read access, no timeline scraping, no DMs. Kestrel is built for one job and it does not overreach.</p>
+<h2 id="worth-a-look-if">Worth a look if</h2>
+<p>You post from the terminal, you run AI agents that need controlled X access, or you just appreciate a well-scoped Rust tool that respects your wallet. The <a href="https://github.com/ninepointlabs/kestrel">repo</a> has a clear README with pricing tables, troubleshooting guides for every HTTP error code, and a one-command install via <code>cargo install --path .</code>.</p>
+]]></content:encoded>
+</item>
 <item>
 <title>Autonomix Now Plugs Straight Into the Omarchy Updater</title>
 <link>https://blog.ninepointlabs.com/2026/10/autonomix-omarchy-updater/</link>
