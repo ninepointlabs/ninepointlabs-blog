@@ -9,6 +9,47 @@
 <generator>folderblog 0.2.0</generator>
 <lastBuildDate>Wed, 14 Oct 2026 00:00:00 -0500</lastBuildDate>
 <item>
+<title>Autonomix 0.4: JSON for frontends, and a bar widget that uses it</title>
+<link>https://blog.ninepointlabs.com/2026/10/autonomix-0-4/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/autonomix-0-4/</guid>
+<pubDate>Wed, 14 Oct 2026 00:00:00 -0500</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>autonomix-cli</category>
+<category>omarchy-autonomix</category>
+<category>Omarchy</category>
+<category>CLI</category>
+<category>Go</category>
+<category>Linux</category>
+<description><![CDATA[<p><a href="https://github.com/ninepointlabs/autonomix-cli">Autonomix CLI</a> already tracked your GitHub Releases apps from the terminal, and on Omarchy it could ride along with <code>omarchy update</code>. What it could not do was talk cleanly to another program. Today that changes: 0.4 ships a JSON surface for every command, and <a href="https://github.com/ninepointlabs/omarchy-autonomix">omarchy-autonomix</a> is the first bar widget built on top of it.</p>
+]]></description>
+<content:encoded><![CDATA[<p><a href="https://github.com/ninepointlabs/autonomix-cli">Autonomix CLI</a> already tracked your GitHub Releases apps from the terminal, and on Omarchy it could ride along with <code>omarchy update</code>. What it could not do was talk cleanly to another program. Today that changes: 0.4 ships a JSON surface for every command, and <a href="https://github.com/ninepointlabs/omarchy-autonomix">omarchy-autonomix</a> is the first bar widget built on top of it.</p>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>GitHub-release apps live outside the Arch repos. You want a count on the bar, a panel to install or update, and a password dialog — not a second terminal ritual. The CLI stays the source of truth in <code>~/.autonomix/config.json</code>; the widget is just a frontend that speaks <code>--json</code>.</p>
+<h2 id="whats-new-in-autonomix-cli-0-4">What’s new in autonomix-cli 0.4</h2>
+<ul>
+<li><strong><code>--json</code> on every command.</strong> <code>add</code>, <code>list</code>, <code>check</code>, <code>update</code>, <code>install</code>, and <code>remove</code> print structured objects on stdout and keep progress on stderr. Errors come back as <code>{"error": "..."}</code> with exit code 1.</li>
+<li><strong><code>list</code></strong>, <strong><code>install &lt;app&gt;</code></strong>, and <strong><code>remove &lt;app&gt;</code></strong> for frontends that need to drive one app at a time. <code>remove</code> stops tracking; it does not uninstall.</li>
+<li><strong><code>check</code> and <code>update</code> take app names</strong> — by name, repo, <code>owner/repo</code>, or URL — so you are not forced to refresh everything.</li>
+<li><strong><code>add owner/repo</code></strong> works without pasting a full URL.</li>
+<li><strong>pkexec when there is no terminal</strong>, so a graphical frontend gets Omarchy’s polkit dialog instead of a silent sudo failure.</li>
+<li><strong>No surprise downgrades.</strong> Update detection now compares versions the way pacman does; only a newer release counts. The Omarchy post-update hook will not yank you backward.</li>
+</ul>
+<p>Grab <strong>0.4.1</strong>, not 0.4.0: the first 0.4 release mistook <code>/dev/null</code> for a terminal and reached for sudo from the bar. 0.4.1 asks the terminal driver properly, so installs from the widget get a password prompt.</p>
+<h2 id="the-new-omarchy-bar-widget">The new Omarchy bar widget</h2>
+<p><a href="https://github.com/ninepointlabs/omarchy-autonomix">omarchy-autonomix</a> is a Quickshell plugin: a package icon with an update count, and a panel that lists tracked apps, installs or updates them, and lets you track <code>owner/repo</code> or a GitHub URL without opening a terminal. Middle-click the icon to check GitHub now. It needs autonomix-cli 0.4+ at <code>/usr/bin</code> or <code>/usr/local/bin</code>.</p>
+<pre class="highlight"><code class="language-bash"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">git</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> clone https://github.com/ninepointlabs/omarchy-autonomix <span class="hl-meta hl-group hl-expansion hl-tilde"><span class="hl-variable hl-language hl-tilde hl-shell">~</span></span>/Projects/omarchy-autonomix</span>
+<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell"><span class="hl-meta hl-group hl-expansion hl-tilde"><span class="hl-variable hl-language hl-tilde hl-shell">~</span></span>/Projects/omarchy-autonomix/install.sh</span></span>
+<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">omarchy</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> plugin enable ninepointlabs.autonomix</span>
+</span></code></pre>
+<h2 id="grab-the-cli">Grab the CLI</h2>
+<pre class="highlight"><code class="language-bash"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">autonomix-cli</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> add https://github.com/ninepointlabs/autonomix-cli</span>
+<span class="hl-comment hl-line hl-number-sign hl-shell"><span class="hl-punctuation hl-definition hl-comment hl-begin hl-shell">#</span></span><span class="hl-comment hl-line hl-number-sign hl-shell"> or update if you already track it:</span><span class="hl-comment hl-line hl-number-sign hl-shell">
+</span><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">autonomix-cli</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> update</span>
+</span></code></pre>
+<p>Packages for Arch, Debian/Ubuntu, and Fedora are on the <a href="https://github.com/ninepointlabs/autonomix-cli/releases/tag/v0.4.1">v0.4.1 release</a>. If you are still on the October 11 updater post, this is the next chapter: same list of apps, now reachable from the bar.</p>
+]]></content:encoded>
+</item>
+<item>
 <title>fm-cli 0.3.5: Pick your From, and calendar that finds you</title>
 <link>https://blog.ninepointlabs.com/2026/10/fm-cli-0-3-5/</link>
 <guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/fm-cli-0-3-5/</guid>
