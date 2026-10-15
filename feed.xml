@@ -7,7 +7,36 @@
 <language>en</language>
 <atom:link href="https://blog.ninepointlabs.com/feed.xml" rel="self" type="application/rss+xml"/>
 <generator>folderblog 0.2.0</generator>
-<lastBuildDate>Wed, 14 Oct 2026 00:00:00 -0500</lastBuildDate>
+<lastBuildDate>Thu, 15 Oct 2026 00:00:00 -0500</lastBuildDate>
+<item>
+<title>Bahá’í Reader 0.1.2: Fedora starts clean, passages cite their source</title>
+<link>https://blog.ninepointlabs.com/2026/10/bahai-reader-0-1-2/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/bahai-reader-0-1-2/</guid>
+<pubDate>Thu, 15 Oct 2026 00:00:00 -0500</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>bahai-reader</category>
+<category>Bahá’í</category>
+<category>Linux</category>
+<category>GTK</category>
+<category>Fedora</category>
+<category>Omarchy</category>
+<description><![CDATA[<p><a href="https://github.com/ninepointlabs/bahai-reader">Bahá’í Reader</a> already gave you offline English collections, downloadable prayer languages, and a GTK 4 window that follows your Omarchy theme. <strong>0.1.2</strong> is a small release with one hard fix and one reading improvement: the Fedora RPM starts again on a fresh install, and every passage ends with a citation.</p>
+]]></description>
+<content:encoded><![CDATA[<p><a href="https://github.com/ninepointlabs/bahai-reader">Bahá’í Reader</a> already gave you offline English collections, downloadable prayer languages, and a GTK 4 window that follows your Omarchy theme. <strong>0.1.2</strong> is a small release with one hard fix and one reading improvement: the Fedora RPM starts again on a fresh install, and every passage ends with a citation.</p>
+<h2 id="fedoras-cairo-typelib">Fedora’s cairo typelib</h2>
+<p>On an up-to-date Fedora 43, the v0.1.1 RPM failed at startup with <code>Typelib file for namespace 'cairo' not found</code>. Fedora’s <code>python3-gobject-base</code> update dropped its dependency on <code>gobject-introspection</code>, and that package is the one that ships <code>cairo-1.0.typelib</code>. Without it, <code>from gi.repository import Gtk</code> never gets off the ground.</p>
+<p>The RPM now depends on <code>gobject-introspection</code> directly. If you hit that error on Fedora, upgrade to 0.1.2 and reinstall; Arch and Debian packages were already fine.</p>
+<h2 id="passage-citations">Passage citations</h2>
+<p>Each passage now closes with an italic citation line. Prayers show the author (from the feed’s AuthorId). The Writings show author, book, and section or number — Hidden Words, the Aqdas, Some Answered Questions, Days of Remembrance, Riḍván messages, and the rest. The API does not publish page numbers, so those stay out.</p>
+<p>You can quote or save a passage without flipping back to the contents to remember which book you were in.</p>
+<h2 id="grab-it">Grab it</h2>
+<pre class="highlight"><code class="language-bash"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">autonomix-cli</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> add https://github.com/ninepointlabs/bahai-reader</span>
+<span class="hl-comment hl-line hl-number-sign hl-shell"><span class="hl-punctuation hl-definition hl-comment hl-begin hl-shell">#</span></span><span class="hl-comment hl-line hl-number-sign hl-shell"> or if you already track it:</span><span class="hl-comment hl-line hl-number-sign hl-shell">
+</span><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">autonomix-cli</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> update</span>
+</span></code></pre>
+<p>Packages (<code>.deb</code>, <code>.rpm</code>, <code>.pkg.tar.zst</code>, AppImage) are on the <a href="https://github.com/ninepointlabs/bahai-reader/releases/tag/v0.1.2">v0.1.2 release</a>. This is still an independent community app; the texts keep their own attribution in <code>DATA-NOTICE.md</code>.</p>
+]]></content:encoded>
+</item>
 <item>
 <title>Autonomix 0.4: JSON for frontends, and a bar widget that uses it</title>
 <link>https://blog.ninepointlabs.com/2026/10/autonomix-0-4/</link>
