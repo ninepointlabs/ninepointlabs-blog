@@ -7,7 +7,42 @@
 <language>en</language>
 <atom:link href="https://blog.ninepointlabs.com/feed.xml" rel="self" type="application/rss+xml"/>
 <generator>folderblog 0.2.1</generator>
-<lastBuildDate>Thu, 15 Oct 2026 00:00:00 -0500</lastBuildDate>
+<lastBuildDate>Fri, 16 Oct 2026 00:00:00 -0500</lastBuildDate>
+<item>
+<title>Hyprfall: a jungle platformer native to Omarchy</title>
+<link>https://blog.ninepointlabs.com/2026/10/hyprfall/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/hyprfall/</guid>
+<pubDate>Fri, 16 Oct 2026 00:00:00 -0500</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>Hyprfall</category>
+<category>Omarchy</category>
+<category>gaming</category>
+<category>Quickshell</category>
+<category>Hyprland</category>
+<description><![CDATA[<p>Remember the summer of ’82? One stiff red button, a thousand screens of jungle, and a crocodile that still owes you an apology. <strong><a href="https://github.com/ninepointlabs/hyprfall">Hyprfall</a></strong> is that spirit as a native Omarchy app: swing on ethernet cables, hop the anti-AI garden gnomes, and find 32 treasures before the clock runs out.</p>
+]]></description>
+<content:encoded><![CDATA[<p>Remember the summer of ’82? One stiff red button, a thousand screens of jungle, and a crocodile that still owes you an apology. <strong><a href="https://github.com/ninepointlabs/hyprfall">Hyprfall</a></strong> is that spirit as a native Omarchy app: swing on ethernet cables, hop the anti-AI garden gnomes, and find 32 treasures before the clock runs out.</p>
+<p><strong><a href="https://hyprfall.ninepointlabs.com/">hyprfall.ninepointlabs.com</a></strong> · <strong><a href="https://github.com/ninepointlabs/hyprfall/releases/tag/v0.1.0">v0.1.0 on GitHub</a></strong></p>
+<p><img src="https://raw.githubusercontent.com/ninepointlabs/hyprfall/main/assets/screens/title.png" alt="Title screen: HYPRFALL over a pixel-art jungle"></p>
+<h2 id="what-you-are-playing">What you are playing</h2>
+<p>You get twenty minutes, three lives, and 255 screens of jungle arranged in a ring. Each screen comes from one byte walked with a reversible 8-bit LFSR, so walking left brings back exactly the screens you passed. Same jungle every game; learn it like it is 1983.</p>
+<p>Between you and the loot: tarballs, a purple pool of <code>node_modules</code>, rolling logs that knock points off, a python that will kill you (should have used Ruby), dumpster fires, and a pit of garden gnomes waving signs like <em>RTFM</em>, <em>STOP VIBING</em>, and <em>NO AI</em>. When they are quiet, their hats are stepping stones. When they yell, get off.</p>
+<p>The signature move is the ethernet cable. Jump for the plug, ride it across, and let go with ↓ or Space. Hold the direction you want and the swing flings you that way. Fumble it and enjoy the tar. Underneath, a tunnel lets you skip three screens up top — watch for firewalls and the bug that works on its machine.</p>
+<p>Treasure is worth chasing: Golden Keycaps, Rubies, Arch Idols, and Hypr Crystals. Find all 32 before 0:00.</p>
+<p><img src="https://raw.githubusercontent.com/ninepointlabs/hyprfall/main/assets/screens/cable.png" alt="Swinging the ethernet cable over the swamp"></p>
+<h2 id="native-to-omarchy-not-bolted-on">Native to Omarchy, not bolted on</h2>
+<p>Hyprfall runs on Quickshell — the same engine as the Omarchy shell. No Electron, no browser, no emulator. On Omarchy there is nothing extra to install.</p>
+<p>The whole jungle wears your theme: canopy green, swamp blue, tee logo accent, gnome hats and coats. Run <code>omarchy theme set</code> mid-game and it repaints while you play. Skin, hair, and wood stay fixed so the hero (long wavy hair, beard, black tee) stays recognisable on every theme.</p>
+<p>It opens as a centered floating 16:10 window on Hyprland; launch again and it focuses the one already open. F11 goes fullscreen. Vim keys work: h/l to run, k/j to climb.</p>
+<p>There is an original adventure-rock soundtrack and a dozen sound effects, all generated from scratch by a little synth in the repo. High scores live in <code>~/.local/state/hyprfall/save.json</code>.</p>
+<h2 id="grab-v0-1-0">Grab v0.1.0</h2>
+<p>Packages for Arch/Omarchy, Debian, and Fedora ship on the <a href="https://github.com/ninepointlabs/hyprfall/releases/tag/v0.1.0">v0.1.0 release</a>. Each package was installed on its distro and the game run headless (<code>hyprfall --selftest</code>) before the release went out.</p>
+<pre class="highlight"><code class="language-bash"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">autonomix-cli</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> add https://github.com/ninepointlabs/hyprfall</span>
+</span></code></pre>
+<p>Or install the <code>.pkg.tar.zst</code>, <code>.deb</code>, or <code>.rpm</code> from the release page, then launch <strong>Hyprfall</strong> from the app launcher or run <code>hyprfall</code>. Away from Omarchy you need a Wayland desktop with Quickshell; without an Omarchy theme it falls back to a built-in Tokyo Night palette.</p>
+<p>MIT licensed. An affectionate parody — nothing from any 1982 cartridge, and the protesting gnomes are a joke at a debate, not at anyone in it. Some of them make good points, and they all have excellent signs.</p>
+]]></content:encoded>
+</item>
 <item>
 <title>Bahá’í Reader 0.1.2: Fedora starts clean, passages cite their source</title>
 <link>https://blog.ninepointlabs.com/2026/10/bahai-reader-0-1-2/</link>
@@ -692,24 +727,6 @@ thoughts to the void.</p>
 </span></code></pre>
 <p>Or clone it and run <code>./install.sh</code>. Speakeasy makes no network requests of its own, stores your prompts in permission-locked files (mode 0600), and never puts them in process arguments where <code>ps</code> could see them.</p>
 <p>Your terminals can finally stop multiplying like gremlins. Check out the <a href="https://github.com/ninepointlabs/speakeasy">repo</a> for the full rundown.</p>
-]]></content:encoded>
-</item>
-<item>
-<title>A new spot</title>
-<link>https://blog.ninepointlabs.com/2026/10/a-new-spot/</link>
-<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/a-new-spot/</guid>
-<pubDate>Thu, 1 Oct 2026 11:04:45 -0500</pubDate>
-<dc:creator>Tim</dc:creator>
-<category>meta</category>
-<category>folderblog</category>
-<category>Nine Point Labs</category>
-<description><![CDATA[<p>I’ve blogged all over the place. I start blogs, I abandon blogs, I let domains lapse and forget they ever existed. Somewhere out there is a whole graveyard of “Hello World” posts.</p>
-]]></description>
-<content:encoded><![CDATA[<p>I’ve blogged all over the place. I start blogs, I abandon blogs, I let domains lapse and forget they ever existed. Somewhere out there is a whole graveyard of “Hello World” posts.</p>
-<p>So I wanted a fresh start. Now that we have <a href="https://persistwise.com">Persistwise</a>, I don’t worry much about losing stuff anymore. And now that we’ve built <a href="https://folderblog.ninepointlabs.com">Folderblog</a>, spinning up a blog takes about two minutes. That’s how I ended up running three of them. It turns out that when blogs are easy to make, you make more blogs. Who knew.</p>
-<p>This one is my tech and projects blog, where all my tech shenanigans will end up. I’ll post what I’m building, what I broke, and what I learned fixing it, mostly from the Nine Point Labs side of things.</p>
-<p>If you build it, they will come. Or at least a few of you will, and that’s plenty. Pull up a chair and stick around.</p>
-<p>Cheers!</p>
 ]]></content:encoded>
 </item>
 </channel>
