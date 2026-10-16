@@ -6,7 +6,7 @@
 <description>Release notes and build logs from Nine Point Labs: small, useful software for Linux, and for people who like to write.</description>
 <language>en</language>
 <atom:link href="https://blog.ninepointlabs.com/feed.xml" rel="self" type="application/rss+xml"/>
-<generator>folderblog 0.2.2</generator>
+<generator>folderblog 0.2.1</generator>
 <lastBuildDate>Fri, 16 Oct 2026 00:00:00 -0500</lastBuildDate>
 <item>
 <title>Hyprfall: a jungle platformer native to Omarchy</title>
@@ -16,7 +16,7 @@
 <dc:creator>Tim</dc:creator>
 <category>Hyprfall</category>
 <category>Omarchy</category>
-<category>gaming</category>
+<category>Gaming</category>
 <category>Quickshell</category>
 <category>Hyprland</category>
 <description><![CDATA[<p>Remember the summer of ’82? One stiff red button, a thousand screens of jungle, and a crocodile that still owes you an apology. <strong><a href="https://github.com/ninepointlabs/hyprfall">Hyprfall</a></strong> is that spirit as a native Omarchy app: swing on ethernet cables, hop the anti-AI garden gnomes, and find 32 treasures before the clock runs out.</p>
@@ -590,7 +590,7 @@ thoughts to the void.</p>
 <category>Open Source</category>
 <description><![CDATA[<p>Here’s a thing you don’t see every day: a Linux desktop app built for quiet, focused reading of Bahá’í sacred texts, and it tracks your Omarchy desktop theme live, every single second.</p>
 ]]></description>
-<content:encoded><![CDATA[<img src="https://blog.ninepointlabs.com/bahai-reader.png" alt="Bahá'í Reader social card" style="max-width: 480px; display: block; margin: 1.5rem auto; border-radius: .5rem;">
+<content:encoded><![CDATA[<img src="https://blog.ninepointlabs.com/bahai-reader.png" alt="Bahá'í Reader social card" width="800" height="420" style="max-width: 480px; width: 100%; height: auto; display: block; margin: 1.5rem auto; border-radius: .5rem;">
 <p>Here’s a thing you don’t see every day: a Linux desktop app built for quiet, focused reading of Bahá’í sacred texts, and it tracks your Omarchy desktop theme live, every single second.</p>
 <p><a href="https://github.com/ninepointlabs/bahai-reader">Bahá’í Reader</a> is a standalone GTK 4 app. No shell plugin required. No Omarchy dependency — it just reads your desktop’s <code>colors.toml</code> and follows along. Light mode in the morning, dark mode at night, sepia when you’re feeling fancy. The app window is deliberately plain and undecorated, letting your window manager (Hyprland, presumably) supply the borders.</p>
 <h2 id="whats-inside">What’s inside</h2>
