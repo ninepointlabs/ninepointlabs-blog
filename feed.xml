@@ -44,6 +44,60 @@
 ]]></content:encoded>
 </item>
 <item>
+<title>Linkguard: catch dead links and swap in archived copies</title>
+<link>https://blog.ninepointlabs.com/2026/10/linkguard/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/linkguard/</guid>
+<pubDate>Fri, 16 Oct 2026 00:00:00 -0500</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>Linkguard</category>
+<category>GitHub Actions</category>
+<category>folderblog</category>
+<category>Jekyll</category>
+<category>Hugo</category>
+<category>Internet Archive</category>
+<description><![CDATA[<p>Every blog rots a little. The post you wrote two years ago still reads fine, but a third of its outbound links now land on a 404, a parked domain, or a redesign that ate the page. <strong><a href="https://github.com/ninepointlabs/linkguard">Linkguard</a></strong> is a free GitHub Action that finds those links in a Jekyll, Hugo, or folderblog site and points readers to an archived copy instead.</p>
+]]></description>
+<content:encoded><![CDATA[<p>Every blog rots a little. The post you wrote two years ago still reads fine, but a third of its outbound links now land on a 404, a parked domain, or a redesign that ate the page. <strong><a href="https://github.com/ninepointlabs/linkguard">Linkguard</a></strong> is a free GitHub Action that finds those links in a Jekyll, Hugo, or folderblog site and points readers to an archived copy instead.</p>
+<p><strong><a href="https://linkguard.persistwise.com/">linkguard.persistwise.com</a></strong> · <strong><a href="https://github.com/ninepointlabs/linkguard/releases/tag/v0.1.0">v0.1.0 on GitHub</a></strong></p>
+<h2 id="what-it-does">What it does</h2>
+<p>Drop it into a weekly workflow and Linkguard walks your content, pulls every outbound link out of the markdown and HTML (skipping code blocks, comments, relative links, and private addresses), and checks each one. Every link comes back as one of four results:</p>
+<ul>
+<li><code>ok</code> works, or only moved from http to https</li>
+<li><code>moved</code> still works but redirects somewhere else, so you may want to update it</li>
+<li><code>dead</code> is a 404 or 410, or an outage that survived retries</li>
+<li><code>blocked</code> is bot protection (401, 403, 999), and Linkguard never calls those dead</li>
+</ul>
+<p>For each link it also asks the Internet Archive’s Wayback Machine for a snapshot. When a dead link has a good one, the report hands you the archived URL. Results land in the run’s job summary as a table, as warning annotations on the exact source lines, and as JSON and markdown report files.</p>
+<p>It checks politely: one request per host at a time, at most four in flight, retries with backoff, and <code>Retry-After</code> honoured.</p>
+<h2 id="two-modes-no-account-required">Two modes, no account required</h2>
+<p><strong>Lookup-only</strong> is the default. No secrets, nothing captured, just checks and existing snapshots.</p>
+<p><strong>Snapshot mode</strong> turns on when you add your own free Internet Archive keys as repo secrets. Linkguard then asks Save Page Now to capture working links that have no recent snapshot, so a copy exists before the page dies. Captures count against your own Internet Archive account and are paced to six a minute, so a first run over 100 links can take a while.</p>
+<h2 id="fix-it-with-a-pull-request">Fix it with a pull request</h2>
+<p>Set <code>open-pr: true</code> and Linkguard opens a pull request that replaces each dead link with its <code>web.archive.org</code> copy, exactly where it appears and nowhere else. The PR lists every swap and says plainly that each one is an archived copy, not the original. It never pushes to your default branch, so you review before anything changes.</p>
+<h2 id="get-started">Get started</h2>
+<pre class="highlight"><code class="language-yaml"><span class="hl-source hl-yaml"><span class="hl-comment hl-line hl-number-sign hl-yaml"><span class="hl-punctuation hl-definition hl-comment hl-line hl-number-sign hl-yaml">#</span> .github/workflows/linkguard.yml
+</span><span class="hl-string hl-unquoted hl-plain hl-out hl-yaml"><span class="hl-entity hl-name hl-tag hl-yaml">name</span></span><span class="hl-punctuation hl-separator hl-key-value hl-mapping hl-yaml">:</span> <span class="hl-string hl-unquoted hl-plain hl-out hl-yaml">Linkguard</span>
+<span class="hl-constant hl-language hl-boolean hl-yaml">on</span><span class="hl-punctuation hl-separator hl-key-value hl-mapping hl-yaml">:</span>
+  <span class="hl-string hl-unquoted hl-plain hl-out hl-yaml"><span class="hl-entity hl-name hl-tag hl-yaml">schedule</span></span><span class="hl-punctuation hl-separator hl-key-value hl-mapping hl-yaml">:</span>
+    <span class="hl-punctuation hl-definition hl-block hl-sequence hl-item hl-yaml">-</span> <span class="hl-string hl-unquoted hl-plain hl-out hl-yaml"><span class="hl-entity hl-name hl-tag hl-yaml">cron</span></span><span class="hl-punctuation hl-separator hl-key-value hl-mapping hl-yaml">:</span> <span class="hl-string hl-quoted hl-single hl-yaml"><span class="hl-punctuation hl-definition hl-string hl-begin hl-yaml">&#39;</span>17 6 * * 1<span class="hl-punctuation hl-definition hl-string hl-end hl-yaml">&#39;</span></span> <span class="hl-comment hl-line hl-number-sign hl-yaml"><span class="hl-punctuation hl-definition hl-comment hl-line hl-number-sign hl-yaml">#</span> weekly
+</span>  <span class="hl-string hl-unquoted hl-plain hl-out hl-yaml"><span class="hl-entity hl-name hl-tag hl-yaml">workflow_dispatch</span></span><span class="hl-punctuation hl-separator hl-key-value hl-mapping hl-yaml">:</span>
+<span class="hl-string hl-unquoted hl-plain hl-out hl-yaml"><span class="hl-entity hl-name hl-tag hl-yaml">permissions</span></span><span class="hl-punctuation hl-separator hl-key-value hl-mapping hl-yaml">:</span>
+  <span class="hl-string hl-unquoted hl-plain hl-out hl-yaml"><span class="hl-entity hl-name hl-tag hl-yaml">contents</span></span><span class="hl-punctuation hl-separator hl-key-value hl-mapping hl-yaml">:</span> <span class="hl-string hl-unquoted hl-plain hl-out hl-yaml">read</span>
+<span class="hl-string hl-unquoted hl-plain hl-out hl-yaml"><span class="hl-entity hl-name hl-tag hl-yaml">jobs</span></span><span class="hl-punctuation hl-separator hl-key-value hl-mapping hl-yaml">:</span>
+  <span class="hl-string hl-unquoted hl-plain hl-out hl-yaml"><span class="hl-entity hl-name hl-tag hl-yaml">links</span></span><span class="hl-punctuation hl-separator hl-key-value hl-mapping hl-yaml">:</span>
+    <span class="hl-string hl-unquoted hl-plain hl-out hl-yaml"><span class="hl-entity hl-name hl-tag hl-yaml">runs-on</span></span><span class="hl-punctuation hl-separator hl-key-value hl-mapping hl-yaml">:</span> <span class="hl-string hl-unquoted hl-plain hl-out hl-yaml">ubuntu-latest</span>
+    <span class="hl-string hl-unquoted hl-plain hl-out hl-yaml"><span class="hl-entity hl-name hl-tag hl-yaml">steps</span></span><span class="hl-punctuation hl-separator hl-key-value hl-mapping hl-yaml">:</span>
+      <span class="hl-punctuation hl-definition hl-block hl-sequence hl-item hl-yaml">-</span> <span class="hl-string hl-unquoted hl-plain hl-out hl-yaml"><span class="hl-entity hl-name hl-tag hl-yaml">uses</span></span><span class="hl-punctuation hl-separator hl-key-value hl-mapping hl-yaml">:</span> <span class="hl-string hl-unquoted hl-plain hl-out hl-yaml">actions/checkout@v7</span>
+      <span class="hl-punctuation hl-definition hl-block hl-sequence hl-item hl-yaml">-</span> <span class="hl-string hl-unquoted hl-plain hl-out hl-yaml"><span class="hl-entity hl-name hl-tag hl-yaml">uses</span></span><span class="hl-punctuation hl-separator hl-key-value hl-mapping hl-yaml">:</span> <span class="hl-string hl-unquoted hl-plain hl-out hl-yaml">ninepointlabs/linkguard@v0.1.0</span>
+</span></code></pre>
+<p>It detects your site type from the repo layout, or you can pass <code>site-type</code> and your own <code>paths</code>. Ready-made workflows for Jekyll, Hugo, and folderblog are in the repo’s <code>examples/</code> folder, and the README documents every input and output.</p>
+<p>The free tier checks 100 unique links per run; anything past that is skipped, and the log says how many.</p>
+<h2 id="honest-limits-and-privacy">Honest limits and privacy</h2>
+<p>This is a first release. Snapshot capture and <code>open-pr</code> are covered by mocked tests so far, the Internet Archive doesn’t publish its rate limits, and its availability API sometimes misses a snapshot that exists. A link that’s down for a GitHub runner can still be up for people, so read the report before you merge.</p>
+<p>There’s no telemetry and no Linkguard server. Only link URLs go to archive.org; your file contents never leave the runner. MIT licensed. Problems go in <a href="https://github.com/ninepointlabs/linkguard/issues">the issue tracker</a>.</p>
+]]></content:encoded>
+</item>
+<item>
 <title>Bahá’í Reader 0.1.2: Fedora starts clean, passages cite their source</title>
 <link>https://blog.ninepointlabs.com/2026/10/bahai-reader-0-1-2/</link>
 <guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/bahai-reader-0-1-2/</guid>
@@ -682,51 +736,6 @@ thoughts to the void.</p>
 <p>I didn’t send any of those messages. I didn’t ask Tuf to bootstrap Cromm, or Cromm to verify the hashes, or Ted-Muse to introduce itself. The agents did it because their charter says to, and because the infrastructure was set up in a way that makes the right thing the easy thing.</p>
 <p>Three agents, coordinating over email, keeping me informed without requiring me. That’s the whole idea.</p>
 <p>I’ll check the backchannel again in a couple of days. If the chatter is interesting, you’ll hear about it.</p>
-]]></content:encoded>
-</item>
-<item>
-<title>Speakeasy: Send your AI agents to the back room</title>
-<link>https://blog.ninepointlabs.com/2026/10/speakeasy/</link>
-<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/speakeasy/</guid>
-<pubDate>Fri, 2 Oct 2026 00:00:00 -0500</pubDate>
-<dc:creator>Tim</dc:creator>
-<category>Speakeasy</category>
-<category>Omarchy</category>
-<category>Linux</category>
-<category>AI</category>
-<category>agents</category>
-<category>Claude Code</category>
-<category>Codex</category>
-<description><![CDATA[<p>You know the drill. You fire up Claude Code to fix a login bug. Then you need Codex to write some tests. Then Claude again for a quick refactor. Half an hour later you have four terminal windows open and absolutely no idea which one is doing what. Terminal 3 was the login fix, right? Or was that terminal 1? And what is terminal 4 even doing anymore?</p>
-]]></description>
-<content:encoded><![CDATA[<p>You know the drill. You fire up Claude Code to fix a login bug. Then you need Codex to write some tests. Then Claude again for a quick refactor. Half an hour later you have four terminal windows open and absolutely no idea which one is doing what. Terminal 3 was the login fix, right? Or was that terminal 1? And what is terminal 4 even doing anymore?</p>
-<p>Speakeasy solves this with one simple idea: name your tasks and hide the terminals.</p>
-<p><strong><a href="https://github.com/ninepointlabs/speakeasy">Speakeasy on GitHub</a></strong></p>
-<p><img src="https://raw.githubusercontent.com/ninepointlabs/speakeasy/master/preview.png" alt="The Speakeasy task list"></p>
-<h2 id="how-it-works">How it works</h2>
-<p>Each agent gets its own hidden tmux session. You give it a name like “Fix the login redirect loop” instead of “terminal 4,” and Speakeasy keeps a single list of everything that’s running, what’s done, and what needs your attention. The terminals stay out of sight until you actually need to look at one.</p>
-<p>It lives in your Omarchy bar as a cocktail glass (because honestly, if you’re running four agents at once, you could probably use one). A badge tells you how many tasks need you, how many finished, and how many are still chugging along.</p>
-<p><img src="https://raw.githubusercontent.com/ninepointlabs/speakeasy/master/preview1.png" alt="New task form"></p>
-<h2 id="the-smart-bits">The smart bits</h2>
-<p>Speakeasy actually <em>knows</em> when a task needs you. Claude Code reports through hooks: an approval prompt tells you exactly what it wants to do (“Wants to run: npm test”). Codex reports finished turns. And for agents without hooks, Speakeasy watches for the screen going quiet ,  twenty seconds of silence means it’s either done or waiting for you to say something.</p>
-<p>First-run questions are the real killer. You know how Claude asks “trust this folder?” the first time you run it in a new directory? Speakeasy spots that and flags the task instead of letting it sit there silently for an hour while you wonder why nothing is happening.</p>
-<p><img src="https://raw.githubusercontent.com/ninepointlabs/speakeasy/master/preview2.png" alt="Model dropdown"></p>
-<h2 id="every-model-in-one-picker">Every model in one picker</h2>
-<p>Claude, Codex, Gemini, Muse, Grok, Copilot, Hermes, Cursor Agent, opencode, Crush ,  Speakeasy knows them all. The model picker is searchable, so typing “opus” or “4.6” or “flash” narrows it instantly. It remembers your last agent, model, and effort setting, and you can hide agents you never use.</p>
-<p><img src="https://raw.githubusercontent.com/ninepointlabs/speakeasy/master/preview3.png" alt="Peeking at a task that needs approval"></p>
-<h2 id="the-engine-is-just-one-command">The engine is just one command</h2>
-<p>The bar panel is the Omarchy part, but the engine ,  <code>speakeasy</code> ,  runs on any Linux with Python 3 and tmux. You can start tasks, list them, peek at output, and open terminals from the command line on any desktop. Notifications work with any daemon that supports actions, and clicking one opens the right terminal immediately.</p>
-<pre class="highlight"><code class="language-bash"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">speakeasy</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> new<span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> -</span>a</span> claude<span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> -</span>m</span> opus<span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> -</span>e</span> high<span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> -</span>t</span> <span class="hl-string hl-quoted hl-double hl-shell"><span class="hl-punctuation hl-definition hl-string hl-begin hl-shell">&quot;</span>Fix login<span class="hl-punctuation hl-definition hl-string hl-end hl-shell">&quot;</span></span><span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> -</span>p</span> <span class="hl-string hl-quoted hl-double hl-shell"><span class="hl-punctuation hl-definition hl-string hl-begin hl-shell">&quot;</span>The redirect after login loops…<span class="hl-punctuation hl-definition hl-string hl-end hl-shell">&quot;</span></span></span>
-<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">speakeasy</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> list</span>
-<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">speakeasy</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> open login</span>
-<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">speakeasy</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> peek login<span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> -</span>n</span> 20</span>
-</span></code></pre>
-<h2 id="get-it">Get it</h2>
-<pre class="highlight"><code class="language-bash"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">omarchy</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> plugin add https://github.com/ninepointlabs/speakeasy</span>
-<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">omarchy</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> plugin enable ninepointlabs.speakeasy<span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> --</span>section</span> right</span>
-</span></code></pre>
-<p>Or clone it and run <code>./install.sh</code>. Speakeasy makes no network requests of its own, stores your prompts in permission-locked files (mode 0600), and never puts them in process arguments where <code>ps</code> could see them.</p>
-<p>Your terminals can finally stop multiplying like gremlins. Check out the <a href="https://github.com/ninepointlabs/speakeasy">repo</a> for the full rundown.</p>
 ]]></content:encoded>
 </item>
 </channel>
