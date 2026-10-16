@@ -3,13 +3,31 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Speakeasy: Send your AI agents to the back room · The Word from Ninepoint Labs</title>
+<title>Speakeasy: Send your AI agents to the back room · The Word from Nine Point Labs</title>
 
+
+
+<meta name="description" content="You know the drill. You fire up Claude Code to fix a login bug. Then you need Codex to write some tests. Then Claude again for a quick refactor. Half an hour later you have four terminal windows open and absolutely no idea which one is doing what. Terminal 3 was the login fix, right? Or was that…">
+<link rel="canonical" href="https://blog.ninepointlabs.com/2026/10/speakeasy/">
+<meta property="og:site_name" content="The Word from Nine Point Labs">
+<meta property="og:title" content="Speakeasy: Send your AI agents to the back room">
+<meta property="og:description" content="You know the drill. You fire up Claude Code to fix a login bug. Then you need Codex to write some tests. Then Claude again for a quick refactor. Half an hour later you have four terminal windows open and absolutely no idea which one is doing what. Terminal 3 was the login fix, right? Or was that…">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.ninepointlabs.com/2026/10/speakeasy/">
+<meta property="og:image" content="https://blog.ninepointlabs.com/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Nine Point Labs star beside the words The Word from Nine Point Labs">
+<meta property="article:published_time" content="2026-10-02T00:00:00-05:00">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@ninepointlabs">
 <meta name="theme-color" content="#0f6b6e">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="/assets/npl-mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="stylesheet" href="/assets/style.css">
 <link rel="stylesheet" href="/assets/highlight.css">
-<link rel="alternate" type="application/rss+xml" title="The Word from Ninepoint Labs" href="/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="The Word from Nine Point Labs" href="/feed.xml">
 
 </head>
 
@@ -20,7 +38,7 @@
     <span>Nine Point Labs</span>
   </a>
   <div class="masthead">
-    <a class="site-title" href="/">The Word from Ninepoint Labs</a>
+    <a class="site-title" href="/">The Word from Nine Point Labs</a>
     <nav>
       
       
@@ -44,20 +62,20 @@
     <p>You know the drill. You fire up Claude Code to fix a login bug. Then you need Codex to write some tests. Then Claude again for a quick refactor. Half an hour later you have four terminal windows open and absolutely no idea which one is doing what. Terminal 3 was the login fix, right? Or was that terminal 1? And what is terminal 4 even doing anymore?</p>
 <p>Speakeasy solves this with one simple idea: name your tasks and hide the terminals.</p>
 <p><strong><a href="https://github.com/ninepointlabs/speakeasy">Speakeasy on GitHub</a></strong></p>
-<p><img src="https://raw.githubusercontent.com/ninepointlabs/speakeasy/master/preview.png" alt="The Speakeasy task list"></p>
+<p><img src="https://raw.githubusercontent.com/ninepointlabs/speakeasy/master/preview.png" alt="The Speakeasy task list" width="850" height="530" decoding="async"></p>
 <h2 id="how-it-works">How it works</h2>
 <p>Each agent gets its own hidden tmux session. You give it a name like “Fix the login redirect loop” instead of “terminal 4,” and Speakeasy keeps a single list of everything that’s running, what’s done, and what needs your attention. The terminals stay out of sight until you actually need to look at one.</p>
 <p>It lives in your Omarchy bar as a cocktail glass (because honestly, if you’re running four agents at once, you could probably use one). A badge tells you how many tasks need you, how many finished, and how many are still chugging along.</p>
-<p><img src="https://raw.githubusercontent.com/ninepointlabs/speakeasy/master/preview1.png" alt="New task form"></p>
+<p><img src="https://raw.githubusercontent.com/ninepointlabs/speakeasy/master/preview1.png" alt="New task form" width="850" height="703" loading="lazy" decoding="async"></p>
 <h2 id="the-smart-bits">The smart bits</h2>
-<p>Speakeasy actually <em>knows</em> when a task needs you. Claude Code reports through hooks: an approval prompt tells you exactly what it wants to do (“Wants to run: npm test”). Codex reports finished turns. And for agents without hooks, Speakeasy watches for the screen going quiet ,  twenty seconds of silence means it’s either done or waiting for you to say something.</p>
+<p>Speakeasy actually <em>knows</em> when a task needs you. Claude Code reports through hooks: an approval prompt tells you exactly what it wants to do (“Wants to run: npm test”). Codex reports finished turns. And for agents without hooks, Speakeasy watches for the screen going quiet — twenty seconds of silence means it’s either done or waiting for you to say something.</p>
 <p>First-run questions are the real killer. You know how Claude asks “trust this folder?” the first time you run it in a new directory? Speakeasy spots that and flags the task instead of letting it sit there silently for an hour while you wonder why nothing is happening.</p>
-<p><img src="https://raw.githubusercontent.com/ninepointlabs/speakeasy/master/preview2.png" alt="Model dropdown"></p>
+<p><img src="https://raw.githubusercontent.com/ninepointlabs/speakeasy/master/preview2.png" alt="Model dropdown" width="850" height="658" loading="lazy" decoding="async"></p>
 <h2 id="every-model-in-one-picker">Every model in one picker</h2>
-<p>Claude, Codex, Gemini, Muse, Grok, Copilot, Hermes, Cursor Agent, opencode, Crush ,  Speakeasy knows them all. The model picker is searchable, so typing “opus” or “4.6” or “flash” narrows it instantly. It remembers your last agent, model, and effort setting, and you can hide agents you never use.</p>
-<p><img src="https://raw.githubusercontent.com/ninepointlabs/speakeasy/master/preview3.png" alt="Peeking at a task that needs approval"></p>
+<p>Claude, Codex, Gemini, Muse, Grok, Copilot, Hermes, Cursor Agent, opencode, Crush — Speakeasy knows them all. The model picker is searchable, so typing “opus” or “4.6” or “flash” narrows it instantly. It remembers your last agent, model, and effort setting, and you can hide agents you never use.</p>
+<p><img src="https://raw.githubusercontent.com/ninepointlabs/speakeasy/master/preview3.png" alt="Peeking at a task that needs approval" width="850" height="848" loading="lazy" decoding="async"></p>
 <h2 id="the-engine-is-just-one-command">The engine is just one command</h2>
-<p>The bar panel is the Omarchy part, but the engine ,  <code>speakeasy</code> ,  runs on any Linux with Python 3 and tmux. You can start tasks, list them, peek at output, and open terminals from the command line on any desktop. Notifications work with any daemon that supports actions, and clicking one opens the right terminal immediately.</p>
+<p>The bar panel is the Omarchy part, but the engine — <code>speakeasy</code> — runs on any Linux with Python 3 and tmux. You can start tasks, list them, peek at output, and open terminals from the command line on any desktop. Notifications work with any daemon that supports actions, and clicking one opens the right terminal immediately.</p>
 <pre class="highlight"><code class="language-bash"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">speakeasy</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> new<span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> -</span>a</span> claude<span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> -</span>m</span> opus<span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> -</span>e</span> high<span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> -</span>t</span> <span class="hl-string hl-quoted hl-double hl-shell"><span class="hl-punctuation hl-definition hl-string hl-begin hl-shell">&quot;</span>Fix login<span class="hl-punctuation hl-definition hl-string hl-end hl-shell">&quot;</span></span><span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> -</span>p</span> <span class="hl-string hl-quoted hl-double hl-shell"><span class="hl-punctuation hl-definition hl-string hl-begin hl-shell">&quot;</span>The redirect after login loops…<span class="hl-punctuation hl-definition hl-string hl-end hl-shell">&quot;</span></span></span>
 <span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">speakeasy</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> list</span>
 <span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">speakeasy</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> open login</span>

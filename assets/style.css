@@ -1,4 +1,4 @@
-/* The Word from Ninepoint Labs. Matches ninepointlabs.com:
+/* The Word from Nine Point Labs. Matches ninepointlabs.com:
    warm paper, one deep teal, white cards. Dark mode follows the OS. */
 :root {
   --font: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -68,6 +68,10 @@ h3 { font-size: 1.15rem; margin: 1.8rem 0 .5rem; }
 p, ul, ol, blockquote, pre, table, figure { margin: 0 0 1.2rem; }
 .content { overflow-wrap: anywhere; }
 .content img, .content video { max-width: 100%; height: auto; vertical-align: middle; border-radius: .5rem; }
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0;
+}
 .content p > img:only-child, .content figure img, .content video { display: block; margin: 1.5rem auto; }
 blockquote { margin-left: 0; padding: .1rem 0 .1rem 1.1rem; border-left: 3px solid var(--teal); color: var(--ink-soft); }
 hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
