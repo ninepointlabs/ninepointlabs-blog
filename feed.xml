@@ -46,6 +46,56 @@
 ]]></content:encoded>
 </item>
 <item>
+<title>folderblog 0.2.3: Better link previews, optional visitor counts, and safer deploys</title>
+<link>https://blog.ninepointlabs.com/2026/10/folderblog-0-2-3/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/folderblog-0-2-3/</guid>
+<pubDate>Sun, 18 Oct 2026 00:00:00 -0500</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>folderblog</category>
+<category>Linux</category>
+<category>Rust</category>
+<category>GitHub Pages</category>
+<category>static-site</category>
+<category>blogging</category>
+<category>SEO</category>
+<description><![CDATA[<p><a href="https://github.com/ninepointlabs/folderblog">folderblog</a> turns a folder of Markdown into a live blog the moment you save. Two releases since the last word here, 0.2.2 and 0.2.3, make what it publishes look better when it’s shared and searched, add an opt-in visitor counter, and stop a blog kept in git from deploying half-finished work.</p>
+]]></description>
+<content:encoded><![CDATA[<p><a href="https://github.com/ninepointlabs/folderblog">folderblog</a> turns a folder of Markdown into a live blog the moment you save. Two releases since the last word here, 0.2.2 and 0.2.3, make what it publishes look better when it’s shared and searched, add an opt-in visitor counter, and stop a blog kept in git from deploying half-finished work.</p>
+<h2 id="share-images-for-every-post">Share images for every post</h2>
+<p>Add <code>image:</code> to a post’s front matter, either a path inside the blog or a full URL, and it becomes that post’s <code>og:image</code> and <code>twitter:image</code>. folderblog writes it as an absolute URL and adds the width and height when the file lives in the blog. Posts without one fall back to <code>static/og-default.png</code>, or to a new optional <code>image</code> key in <code>blog.toml</code>.</p>
+<pre class="highlight"><code class="language-yaml"><span class="hl-source hl-yaml"><span class="hl-entity hl-other hl-document hl-begin hl-yaml">---</span>
+<span class="hl-string hl-unquoted hl-plain hl-out hl-yaml"><span class="hl-entity hl-name hl-tag hl-yaml">title</span></span><span class="hl-punctuation hl-separator hl-key-value hl-mapping hl-yaml">:</span> <span class="hl-string hl-quoted hl-double hl-yaml"><span class="hl-punctuation hl-definition hl-string hl-begin hl-yaml">&quot;</span>My post<span class="hl-punctuation hl-definition hl-string hl-end hl-yaml">&quot;</span></span>
+<span class="hl-string hl-unquoted hl-plain hl-out hl-yaml"><span class="hl-entity hl-name hl-tag hl-yaml">image</span></span><span class="hl-punctuation hl-separator hl-key-value hl-mapping hl-yaml">:</span> <span class="hl-string hl-unquoted hl-plain hl-out hl-yaml">img/cover.jpg</span>
+<span class="hl-entity hl-other hl-document hl-begin hl-yaml">---</span>
+</span></code></pre>
+<p><code>folderblog check</code> warns when the image doesn’t exist, so a typo doesn’t quietly ship a broken preview card.</p>
+<h2 id="search-engines-get-the-whole-picture">Search engines get the whole picture</h2>
+<p>The default theme now gives every page a meta description, a canonical link, the full set of OpenGraph tags, and a <code>twitter:card</code>. Post pages carry BlogPosting structured data (JSON-LD), and the home page has a single <code>h1</code> with the site title.</p>
+<p>folderblog also writes a <code>robots.txt</code> by default that allows everything and points to the sitemap. If your blog has its own <code>static/robots.txt</code>, or your theme provides one, yours wins. And <code>check</code> now warns when <code>blog.toml</code> has no <code>description</code>.</p>
+<p>If you keep your own copy of the theme in <code>theme/</code>, your templates are left alone. Copy the new default theme’s <code>_layouts/base.html</code> and <code>post.html</code> to pick up the tags, and run <code>folderblog agents-md --write</code> in each blog folder to refresh its AGENTS.md.</p>
+<h2 id="optional-visitor-counts-with-goatcounter">Optional visitor counts with GoatCounter</h2>
+<p>Want to know whether anyone reads the thing? Add one section to <code>blog.toml</code>:</p>
+<pre class="highlight"><code class="language-toml">[analytics]
+goatcounter = &quot;https://you.goatcounter.com&quot;
+</code></pre>
+<p>Every rendered page gets GoatCounter’s cookie-free counting script, with any theme and no template edits. It’s off by default: with no <code>[analytics]</code> section the output is byte-for-byte what it was before. It’s never added by <code>preview</code> or <code>build --drafts</code>, so your own drafting doesn’t count as visits, and <code>check</code> flags an invalid URL.</p>
+<h2 id="hold-deploys-while-youre-mid-git">Hold deploys while you’re mid-git</h2>
+<p>0.2.2 added <code>deploy_branch</code> for blog folders you keep in git:</p>
+<pre class="highlight"><code class="language-toml">deploy_branch = &quot;main&quot;
+</code></pre>
+<p>With it set, folderblog only deploys while the folder is a checkout of that branch. On another branch, a detached HEAD, or in the middle of a merge, rebase or cherry-pick, the deploy is held and shows as <code>held: ...</code> in <code>folderblog status</code>. It retries on its own once you’re back on the branch. Leave it unset and nothing changes. This blog runs with it on.</p>
+<p>One note for both releases: older versions reject unknown keys in <code>blog.toml</code>, so upgrade before adding <code>image</code>, <code>[analytics]</code> or <code>deploy_branch</code>.</p>
+<h2 id="grab-it">Grab it</h2>
+<table><thead><tr><th>System</th><th>Command</th></tr></thead><tbody>
+<tr><td>Arch / Omarchy</td><td><code>sudo pacman -U folderblog-bin-0.2.3-1-x86_64.pkg.tar.zst</code></td></tr>
+<tr><td>Debian / Ubuntu</td><td><code>sudo apt install ./folderblog_0.2.3-1_amd64.deb</code></td></tr>
+<tr><td>Fedora / RHEL / openSUSE</td><td><code>sudo dnf install ./folderblog-0.2.3-1.x86_64.rpm</code></td></tr>
+<tr><td>autonomix-cli</td><td><code>autonomix-cli add https://github.com/ninepointlabs/folderblog</code></td></tr>
+</tbody></table>
+<p>The packages and a plain tarball are on the <a href="https://github.com/ninepointlabs/folderblog/releases/tag/v0.2.3">v0.2.3 release</a>. New to folderblog? Start with <a href="https://github.com/ninepointlabs/folderblog/blob/main/docs/GUIDE.md">the guide</a>, or run <code>folderblog guide</code>.</p>
+]]></content:encoded>
+</item>
+<item>
 <title>Hyprfall: a jungle platformer native to Omarchy</title>
 <link>https://blog.ninepointlabs.com/2026/10/hyprfall/</link>
 <guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/hyprfall/</guid>
@@ -705,39 +755,6 @@ thoughts to the void.</p>
 <span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">omaforge</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> setup omarchy<span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> --</span>keybind</span> <span class="hl-string hl-quoted hl-double hl-shell"><span class="hl-punctuation hl-definition hl-string hl-begin hl-shell">&quot;</span>SUPER + SHIFT + Z<span class="hl-punctuation hl-definition hl-string hl-end hl-shell">&quot;</span></span></span>
 </span></code></pre>
 <p>Grab the latest release from the <a href="https://github.com/ninepointlabs/omaforge">repo</a> — your addons will thank you.</p>
-]]></content:encoded>
-</item>
-<item>
-<title>Barkeep: your Omarchy bar’s best friend</title>
-<link>https://blog.ninepointlabs.com/2026/10/barkeep/</link>
-<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/barkeep/</guid>
-<pubDate>Sat, 3 Oct 2026 00:00:00 -0500</pubDate>
-<dc:creator>Tim</dc:creator>
-<category>Barkeep</category>
-<category>Omarchy</category>
-<category>Linux</category>
-<description><![CDATA[<p>Omarchy has this amazing plugin system. Widgets on the bar, panels that pop up, services humming in the background — it’s flexible, it’s powerful, and managing it without a GUI means memorizing the difference between <code>omarchy plugin enable</code>, <code>omarchy bar move</code>, and four other commands you only type once every three months. Nobody remembers those. Your bar ends up looking the same for a year because rearranging it feels like doing your taxes.</p>
-]]></description>
-<content:encoded><![CDATA[<p>Omarchy has this amazing plugin system. Widgets on the bar, panels that pop up, services humming in the background — it’s flexible, it’s powerful, and managing it without a GUI means memorizing the difference between <code>omarchy plugin enable</code>, <code>omarchy bar move</code>, and four other commands you only type once every three months. Nobody remembers those. Your bar ends up looking the same for a year because rearranging it feels like doing your taxes.</p>
-<p><strong><a href="https://github.com/ninepointlabs/barkeep">Barkeep on GitHub</a></strong> fixes all of that with one overlay. Press a key, and suddenly every plugin the shell knows about is right there, in a clean, searchable list with the bar strip sitting across the top so you can see what goes where <em>while</em> you’re moving things around.</p>
-<p><img src="https://raw.githubusercontent.com/ninepointlabs/barkeep/master/preview.png" alt="Barkeep with the Weather widget selected: the bar strip on top, the plugin list on the left, details and actions on the right" width="1300" height="850" decoding="async"></p>
-<h2 id="what-makes-it-good">What makes it good</h2>
-<p>The bar strip at the top shows your actual bar — Left, Center, Right sections, every widget in order. Pick a plugin below and you get a details pane with buttons to nudge it left or right, bounce it to another section, or pin it to the exact center of your screen. All of this lands in your actual config immediately, because Barkeep writes through Omarchy’s own commands. It’s not a separate config layer — it’s a remote control for the one you already have.</p>
-<p>Start typing and the list filters instantly, just like the Omarchy menu you already know. Want to find that one weather widget you installed six months ago? Type “weather.” It’s there.</p>
-<p><img src="https://raw.githubusercontent.com/ninepointlabs/barkeep/master/preview2.png" alt="Filtering by typing “hey”: the list narrows to matching plugins" width="1300" height="850" loading="lazy" decoding="async"></p>
-<h2 id="updates-without-the-archaeology">Updates without the archaeology</h2>
-<p>If you install plugins from git (and you should — that’s where the fun ones live), Barkeep checks every repo for new commits and shows you which ones have updates waiting. Hit <code>Ctrl+U</code> to update one, or <code>Ctrl+Shift+U</code> to update everything. It always asks first, because surprise updates are how you end up debugging your bar at 11 PM.</p>
-<p><img src="https://raw.githubusercontent.com/ninepointlabs/barkeep/master/preview3.png" alt="The confirmation shown before an update is pulled" width="1300" height="850" loading="lazy" decoding="async"></p>
-<h2 id="bar-profiles-because-one-layout-is-never-enough">Bar profiles: because one layout is never enough</h2>
-<p>Here’s where it gets clever. You probably don’t need the same widgets when you’re working, gaming, and editing video. Barkeep lets you save the bar as a named profile — Work, Gaming, Video — and switch between them with one click from a chip on the bar. Each profile remembers which widgets are where. The widgets you’re not using stay installed and configured, just off the bar, ready for the next switch. Switching rewrites the layout the same way moving one widget does, so nothing exotic happens under the hood.</p>
-<p><img src="https://raw.githubusercontent.com/ninepointlabs/barkeep/master/preview5.png" alt="The profile switcher open from the bar" width="360" height="342" loading="lazy" decoding="async"></p>
-<h2 id="one-command-to-install">One command to install</h2>
-<pre class="highlight"><code class="language-bash"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">git</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> clone https://github.com/ninepointlabs/barkeep <span class="hl-meta hl-group hl-expansion hl-tilde"><span class="hl-variable hl-language hl-tilde hl-shell">~</span></span>/Projects/barkeep</span>
-<span class="hl-meta hl-function-call hl-shell"><span class="hl-support hl-function hl-cd hl-shell">cd</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> <span class="hl-meta hl-group hl-expansion hl-tilde"><span class="hl-variable hl-language hl-tilde hl-shell">~</span></span>/Projects/barkeep</span>
-<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">./install.sh</span></span>
-</span></code></pre>
-<p>That’s it. Bind <code>SUPER + B</code> and you’re done. Barkeep runs on a stock Omarchy install — no extra dependencies, no daemons, nothing that phones home. Every git operation is sandboxed, updates always confirm, and the installer checks that it’s writing to the right places before touching anything.</p>
-<p>If you’ve been managing your Omarchy bar from the terminal because you had to rather than because you wanted to, <a href="https://github.com/ninepointlabs/barkeep">give Barkeep a try</a>. Your bar has been waiting for a GUI that doesn’t make it worse.</p>
 ]]></content:encoded>
 </item>
 </channel>
