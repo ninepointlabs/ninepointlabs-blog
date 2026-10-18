@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dogear: a PDF reader for studying, made for Omarchy · The Word from Nine Point Labs</title>
+
+
+
+<meta name="description" content="Class handouts, workbooks and textbooks mostly arrive as PDFs now, and most PDF readers treat them as something to look at, not something to work in. Dogear does what you’d do to a paper textbook: highlight in several colors, write notes next to what you highlighted, fold the corner of a page, and…">
+<link rel="canonical" href="https://blog.ninepointlabs.com/2026/10/dogear/">
+<meta property="og:site_name" content="The Word from Nine Point Labs">
+<meta property="og:title" content="Dogear: a PDF reader for studying, made for Omarchy">
+<meta property="og:description" content="Class handouts, workbooks and textbooks mostly arrive as PDFs now, and most PDF readers treat them as something to look at, not something to work in. Dogear does what you’d do to a paper textbook: highlight in several colors, write notes next to what you highlighted, fold the corner of a page, and…">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.ninepointlabs.com/2026/10/dogear/">
+<meta property="og:image" content="https://blog.ninepointlabs.com/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Nine Point Labs star beside the words The Word from Nine Point Labs">
+<meta property="article:published_time" content="2026-10-18T00:00:00-05:00">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@ninepointlabs">
+<meta name="theme-color" content="#0f6b6e">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/assets/npl-mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/assets/style.css">
+<link rel="stylesheet" href="/assets/highlight.css">
+<link rel="alternate" type="application/rss+xml" title="The Word from Nine Point Labs" href="/feed.xml">
+
+</head>
+
+<body>
+<header class="site-header">
+  <a class="lab" href="https://ninepointlabs.com/">
+    <img src="/assets/npl-mark.svg" alt="" width="28" height="28">
+    <span>Nine Point Labs</span>
+  </a>
+  <div class="masthead">
+    <a class="site-title" href="/">The Word from Nine Point Labs</a>
+    <nav>
+      
+      
+      <a href="/archive/">Archive</a>
+      <a href="/feed.xml">RSS</a>
+    </nav>
+  </div>
+</header>
+<div class="layout">
+<main>
+
+<article class="post">
+  <header>
+    <h1>Dogear: a PDF reader for studying, made for Omarchy</h1>
+    <p class="meta">
+      <time datetime="2026-10-18T00:00:00-05:00">October 18, 2026</time>
+      · 4 min read
+    </p>
+  </header>
+  <div class="content">
+    <p>Class handouts, workbooks and textbooks mostly arrive as PDFs now, and most PDF readers treat them as something to look at, not something to work in. <strong><a href="https://github.com/ninepointlabs/dogear">Dogear</a></strong> does what you’d do to a paper textbook: highlight in several colors, write notes next to what you highlighted, fold the corner of a page, and fill in the blanks on a worksheet. When you’re done, it exports everything to Markdown, for example straight into your Obsidian vault.</p>
+<p><strong><a href="https://dogear.ninepointlabs.com/">dogear.ninepointlabs.com</a></strong> (with a narrated demo video) · <strong><a href="https://github.com/ninepointlabs/dogear/releases/tag/v0.1.0">v0.1.0 on GitHub</a></strong></p>
+<p><img src="https://dogear.ninepointlabs.com/images/hero.webp" alt="Dogear with a biology handout open: two passages highlighted in yellow and blue, and the sidebar listing both highlights with the note on the second" decoding="async"></p>
+<h2 id="mark-it-up-like-paper">Mark it up like paper</h2>
+<p>Select text and press <code>1</code> through <code>5</code> to highlight it in yellow, green, blue, pink or purple, or press <code>a</code> to highlight and write a note in one go. Hover a highlight to read its note; notes also show in the sidebar and as markers in the margin. Press <code>b</code> to bookmark a page (it gets a folded corner, named after its table of contents entry), and keep general notes about the whole document with <code>Ctrl+N</code>.</p>
+<p>Dogear remembers the page, scroll position and zoom for every file, so opening a handout again puts you back where you stopped.</p>
+<h2 id="fill-in-the-blanks">Fill in the blanks</h2>
+<p>This is what sets Dogear apart. Worksheets leave lines for answers, and in Dogear you just click the line and type. There’s no text box to place: it finds the line in the rendered page (drawn rules, runs of underscores, dotted lines), writes on it in blue ink at the size of the page’s own text, and shrinks a long answer to fit a short blank. <code>Tab</code> jumps to the next blank, so a whole fill-in-the-blank page can be done from the keyboard. Ruled lines under a question become one answer that wraps from line to line.</p>
+<p><img src="https://dogear.ninepointlabs.com/images/answers.webp" alt="A worksheet page with its blanks filled in, including two ruled lines with a longer answer" loading="lazy" decoding="async"></p>
+<h2 id="a-library-that-remembers-your-marks">A library that remembers your marks</h2>
+<p>With no PDF open, Dogear shows a library of every PDF you’ve opened, with how many highlights, notes, answers and bookmarks each has. Search reaches inside your marks too, so a word you highlighted three weeks ago finds its handout. You can sort, file documents under categories, and give them your own names (“Book 3: Children’s Classes” instead of a 60-character file name) without renaming the file.</p>
+<p>Dogear never changes your PDFs. It keeps a copy of every PDF you mark up, so your marks always have their PDF even if the original is moved or deleted. Everything lives in one folder, <code>~/Documents/Dogear</code> by default, that you can sync between computers with Syncthing, Dropbox or Google Drive. If two computers change the same document before syncing, Dogear merges the conflict copy back in and keeps every mark from both. It also notices a re-download or new edition of a book you’ve marked up and offers to bring your marks over.</p>
+<h2 id="into-obsidian">Into Obsidian</h2>
+<p><code>Ctrl+E</code> writes a Markdown file per PDF: document notes first, then one section per page with highlights as quotes (page and color included), each note under its highlight, bookmarks, and every worksheet answer under its full question, so the export reads without the PDF. Categories come along as Obsidian tags. Point the export folder at your vault in Settings and your study notes land where the rest of your notes live.</p>
+<h2 id="native-to-omarchy">Native to Omarchy</h2>
+<p>Dogear is keyboard first, with Vim-style reading keys (<code>j</code>/<code>k</code>, <code>J</code>/<code>K</code> for pages, <code>/</code> to search) and Ctrl for commands, leaving Super to Hyprland. It follows your Omarchy theme and repaints the moment you run <code>omarchy theme set</code>, and it makes room in narrow tiling windows. No account, no network access and no telemetry.</p>
+<h2 id="install-v0-1-0">Install v0.1.0</h2>
+<p>On Arch and Omarchy, install it with <a href="https://github.com/ninepointlabs/autonomix-cli">autonomix-cli</a>, which also keeps it updated from GitHub Releases:</p>
+<pre class="highlight"><code class="language-bash"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">autonomix-cli</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> add https://github.com/ninepointlabs/dogear</span>
+</span></code></pre>
+<p>Or download <code>dogear-0.1.0-1-any.pkg.tar.zst</code> from the <a href="https://github.com/ninepointlabs/dogear/releases/tag/v0.1.0">release page</a> and run <code>sudo pacman -U dogear-0.1.0-1-any.pkg.tar.zst</code>. pacman pulls in <code>pyside6</code> and <code>qt6-webengine</code> (for the Qt PDF library). Dogear then shows up in your app launcher and can open PDFs from the file manager.</p>
+<p>MIT licensed. Questions or bugs go to <a href="mailto:help@ninepointlabs.com">help@ninepointlabs.com</a> or the <a href="https://github.com/ninepointlabs/dogear/issues">issue tracker</a>.</p>
+
+  </div>
+  <footer>
+    
+<p class="tags"><a href="/tags/dogear/">#Dogear</a> <a href="/tags/omarchy/">#Omarchy</a> <a href="/tags/pdf/">#PDF</a> <a href="/tags/obsidian/">#Obsidian</a> <a href="/tags/qt/">#Qt</a></p>
+
+    <nav class="neighbours">
+      <span></span>
+      <a rel="prev" href="/2026/10/hyprfall/">Hyprfall: a jungle platformer native to Omarchy →</a>
+    </nav>
+  </footer>
+</article>
+
+</main>
+
+</div>
+<footer class="site-footer">
+  <nav class="elsewhere" aria-label="Elsewhere">
+    <a href="https://ninepointlabs.com/" aria-label="Nine Point Labs" title="Nine Point Labs">
+      <svg viewBox="33 32 234 229" aria-hidden="true" focusable="false"><polygon points="150,32 167.79,101.14 225.85,59.61 195.03,124 266.21,129.51 201.21,159.03 252.19,209 183.42,189.83 190.36,260.88 150,202 109.64,260.88 116.58,189.83 47.81,209 98.79,159.03 33.79,129.51 104.97,124 74.15,59.61 132.21,101.14"/></svg>
+    </a>
+    <a href="/feed.xml" aria-label="RSS feed" title="RSS feed">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9zM6.18 15.64a2.18 2.18 0 1 0 0 4.36 2.18 2.18 0 0 0 0-4.36z"/></svg>
+    </a>
+    <a href="mailto:hello@ninepointlabs.com" aria-label="Email hello@ninepointlabs.com" title="Email hello@ninepointlabs.com">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 4h20a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 2.4V18h20V6.4l-10 6.6L2 6.4zM3.6 6 12 11.5 20.4 6H3.6z"/></svg>
+    </a>
+    <a href="https://github.com/ninepointlabs" aria-label="GitHub" title="GitHub">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.930 0-1.310.465-2.380 1.235-3.220-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.230.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.230 3.285-1.230.645 1.653.24 2.873.12 3.176.765.84 1.23 1.910 1.23 3.220 0 4.610-2.805 5.625-5.475 5.920.42.36.81 1.096.81 2.220 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+    </a>
+    <a href="https://www.youtube.com/@ninepointlabs" aria-label="YouTube" title="YouTube">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.930 24 12 24 12s0-3.930-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+    </a>
+    <a href="https://x.com/ninepointlabs" aria-label="X" title="X">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.330l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.560h3.182l5.965 8.532.929 1.329 7.754 11.090h-3.182z"/></svg>
+    </a>
+    <a href="https://njump.me/npub13hyx3qsqk3r7ctjqrr49uskut4yqjsxt8uvu4rekr55p08wyhf0qq90nt7" aria-label="Nostr" title="Nostr">
+      <svg viewBox="44 40 176 176" aria-hidden="true" focusable="false"><path d="M210.8 199.4c0 3.1-2.5 5.7-5.7 5.7h-68c-3.1 0-5.7-2.5-5.7-5.7v-15.5c.3-19 2.3-37.2 6.5-45.5 2.5-5 6.7-7.7 11.5-9.1 9.1-2.7 24.9-.9 31.7-1.2 0 0 20.4.8 20.4-10.7s-9.1-8.6-9.1-8.6c-10 .3-17.7-.4-22.6-2.4-8.3-3.3-8.6-9.2-8.6-11.2-.4-23.1-34.5-25.9-64.5-20.1-32.8 6.2.4 53.3.4 116.1v8.4c0 3.1-2.6 5.6-5.7 5.6H57.7c-3.1 0-5.7-2.5-5.7-5.7v-144c0-3.1 2.5-5.7 5.7-5.7h31.7c3.1 0 5.7 2.5 5.7 5.7 0 4.7 5.2 7.2 9 4.5 11.4-8.2 26-12.5 42.4-12.5 36.6 0 64.4 21.4 64.4 68.7v83.2ZM150 99.3c0-6.7-5.4-12.1-12.1-12.1s-12.1 5.4-12.1 12.1 5.4 12.1 12.1 12.1S150 106 150 99.3Z"/></svg>
+    </a>
+  </nav>
+  <p>Tim · A <a href="https://ninepointlabs.com/">Nine Point Labs</a> blog, built in Whitehouse, Texas.</p>
+</footer>
+</body>
+</html>
