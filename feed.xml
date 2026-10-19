@@ -7,7 +7,42 @@
 <language>en</language>
 <atom:link href="https://blog.ninepointlabs.com/feed.xml" rel="self" type="application/rss+xml"/>
 <generator>folderblog 0.2.4</generator>
-<lastBuildDate>Sun, 18 Oct 2026 00:00:00 -0500</lastBuildDate>
+<lastBuildDate>Mon, 19 Oct 2026 00:00:00 -0500</lastBuildDate>
+<item>
+<title>Autonomix CLI 0.4.3: one password prompt for Update All</title>
+<link>https://blog.ninepointlabs.com/2026/10/autonomix-cli-0-4-3/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/autonomix-cli-0-4-3/</guid>
+<pubDate>Mon, 19 Oct 2026 00:00:00 -0500</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>autonomix-cli</category>
+<category>omarchy-autonomix</category>
+<category>Omarchy</category>
+<category>CLI</category>
+<category>Linux</category>
+<description><![CDATA[<p>If you track several GitHub-release apps with <a href="https://github.com/ninepointlabs/autonomix-cli">Autonomix CLI</a> and hit “Update All”, you probably met the same password dialog over and over. 0.4.3 fixes that: updating several apps now asks for your admin password once.</p>
+]]></description>
+<content:encoded><![CDATA[<p>If you track several GitHub-release apps with <a href="https://github.com/ninepointlabs/autonomix-cli">Autonomix CLI</a> and hit “Update All”, you probably met the same password dialog over and over. 0.4.3 fixes that: updating several apps now asks for your admin password once.</p>
+<h2 id="what-changed">What changed</h2>
+<p>Before, <code>autonomix-cli update</code> (and “Update All” from the <a href="https://github.com/ninepointlabs/omarchy-autonomix">Omarchy bar widget</a>) installed each update on its own, so polkit asked for your password once per app. Now it downloads every update first, then installs them all in a single <code>pacman -U</code>, <code>apt-get install</code> or <code>rpm -Uvh</code> call. One install, one prompt.</p>
+<p>Failures are clearer too:</p>
+<ul>
+<li><strong>A failed download only affects that app.</strong> It’s reported as failed, and the rest still install.</li>
+<li><strong>A failed install names everything in it.</strong> If the combined install fails, every app in the batch is reported with the installer’s error.</li>
+<li><strong>Cancelling says so.</strong> Closing the polkit dialog now shows “authentication cancelled” instead of a bare exit code.</li>
+</ul>
+<p>The <code>--json</code> output is unchanged, so the bar widget keeps working as it is. No update needed on that side.</p>
+<h2 id="also-new-since-the-last-post">Also new since the last post</h2>
+<p>0.4.2 added an About screen. Press <code>i</code> in the TUI to see the version, the MIT license, a support email and a privacy statement, or run <code>autonomix-cli about</code> from the command line.</p>
+<h2 id="get-it">Get it</h2>
+<p>Autonomix CLI tracks itself, so if you already have it:</p>
+<pre class="highlight"><code class="language-bash"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">autonomix-cli</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> update</span>
+</span></code></pre>
+<p>New here? Add it once and it keeps itself current:</p>
+<pre class="highlight"><code class="language-bash"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">autonomix-cli</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> add https://github.com/ninepointlabs/autonomix-cli</span>
+</span></code></pre>
+<p>Packages for Arch, Debian/Ubuntu and Fedora (amd64 and arm64) are on the <a href="https://github.com/ninepointlabs/autonomix-cli/releases/tag/v0.4.3">v0.4.3 release</a>.</p>
+]]></content:encoded>
+</item>
 <item>
 <title>Dogear: a PDF reader for studying, made for Omarchy</title>
 <link>https://blog.ninepointlabs.com/2026/10/dogear/</link>
@@ -726,35 +761,6 @@ thoughts to the void.</p>
 <p>If you run Linux and regularly install software from GitHub Releases — CLI tools, early-access apps, indie projects that haven’t made it into apt or the AUR yet — Autonomix earns its spot in your terminal. It’s lightweight, it compiles with a single <code>go build</code>, and at v0.3.1 it’s already doing the job cleanly.</p>
 <p><strong><a href="https://github.com/ninepointlabs/autonomix-cli">Autonomix CLI on GitHub →</a></strong></p>
 <p>Grab the latest <code>.deb</code>, <code>.rpm</code>, or Arch package from the <a href="https://github.com/ninepointlabs/autonomix-cli/releases">Releases page</a> and give it a spin. Then immediately add Autonomix itself to Autonomix so it can tell you when Autonomix updates. Yes, that works. No, it’s not a typo.</p>
-]]></content:encoded>
-</item>
-<item>
-<title>Omaforge</title>
-<link>https://blog.ninepointlabs.com/2026/10/omaforge/</link>
-<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/omaforge/</guid>
-<pubDate>Sun, 4 Oct 2026 00:00:00 -0500</pubDate>
-<dc:creator>Tim</dc:creator>
-<category>Omaforge</category>
-<category>Omarchy</category>
-<category>Linux</category>
-<category>World of Warcraft</category>
-<category>Gaming</category>
-<description><![CDATA[<p>If you play World of Warcraft on Linux, you already know the drill: Wine prefixes, multiple clients, and addons spread across CurseForge, WoWInterface, and GitHub like loot from a messy raid. Keeping them all updated is the kind of busywork that makes you wonder why you left Windows in the first place.</p>
-]]></description>
-<content:encoded><![CDATA[<p>If you play World of Warcraft on Linux, you already know the drill: Wine prefixes, multiple clients, and addons spread across CurseForge, WoWInterface, and GitHub like loot from a messy raid. Keeping them all updated is the kind of busywork that makes you wonder why you left Windows in the first place.</p>
-<p>Enter <strong>omaforge</strong> — the addon manager that actually understands your Linux WoW setup.</p>
-<p><strong><a href="https://github.com/ninepointlabs/omaforge">Omaforge on GitHub</a></strong></p>
-<p>omaforge scans every Wine prefix you’ve got — Lutris, Steam/Proton, Bottles, Heroic, plain old <code>~/.wine</code> — and finds every World of Warcraft client hiding in there. Retail, Classic Era, Classic progression, the anniversary realms, PTRs, betas, and yes, <strong>World of Warcraft: Forever</strong>. Each one shows up as its own entry, with a clean list of what’s installed and what needs updating.</p>
-<p><img src="https://raw.githubusercontent.com/ninepointlabs/omaforge/main/docs/screenshots/installed.png" alt="Installed addons for Retail, with two updates waiting" width="2360" height="1520" decoding="async"></p>
-<p>The clever bit is how it handles addons you installed before omaforge ever showed up. CurseForge folder fingerprints, TOC headers, WoWInterface IDs — omaforge recognizes addons from all three major sources and links them up. Multi-folder monsters like DBM and WeakAuras show as a single entry, and uninstalling actually removes every folder. No more ghost directories cluttering up your <code>AddOns</code> folder.</p>
-<p>The Explore tab is where the fun is. Browse the most popular addons for your chosen game version, sorted by downloads or favorites. Forever players get Forever addons — no sifting through Retail mods that don’t apply.</p>
-<p><img src="https://raw.githubusercontent.com/ninepointlabs/omaforge/main/docs/screenshots/explore.png" alt="Explore: the most popular Retail addons on CurseForge" width="2360" height="1520" loading="lazy" decoding="async"></p>
-<p>And because omaforge is built for Omarchy, it follows your theme in real time. Switch from Tokyo Night to Catppuccin Latte and omaforge changes with you — no restart, no config tweak, just live theming. Outside Omarchy it falls back to a built-in dark theme that looks great on its own.</p>
-<p>Updates are atomic (old version kept until the new one is fully unpacked), WTF backups are automatic before bulk updates, and every action the GUI can do is also available on the command line. It’s the kind of tool that makes you forget you’re managing addons at all.</p>
-<pre class="highlight"><code class="language-sh"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">sudo</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> pacman<span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> -</span>U</span> omaforge-<span class="hl-keyword hl-operator hl-regexp hl-quantifier hl-shell">*</span>-any.pkg.tar.zst</span>
-<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">omaforge</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> setup omarchy<span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> --</span>keybind</span> <span class="hl-string hl-quoted hl-double hl-shell"><span class="hl-punctuation hl-definition hl-string hl-begin hl-shell">&quot;</span>SUPER + SHIFT + Z<span class="hl-punctuation hl-definition hl-string hl-end hl-shell">&quot;</span></span></span>
-</span></code></pre>
-<p>Grab the latest release from the <a href="https://github.com/ninepointlabs/omaforge">repo</a> — your addons will thank you.</p>
 ]]></content:encoded>
 </item>
 </channel>
