@@ -6,7 +6,7 @@
 <description>Release notes and build logs from Nine Point Labs: small, useful software for Linux, and for people who like to write.</description>
 <language>en</language>
 <atom:link href="https://blog.ninepointlabs.com/feed.xml" rel="self" type="application/rss+xml"/>
-<generator>folderblog 0.2.4</generator>
+<generator>folderblog 0.2.5</generator>
 <lastBuildDate>Mon, 19 Oct 2026 00:00:00 -0500</lastBuildDate>
 <item>
 <title>Autonomix CLI 0.4.3: one password prompt for Update All</title>
