@@ -9,6 +9,58 @@
 <generator>folderblog 0.2.5</generator>
 <lastBuildDate>Mon, 19 Oct 2026 00:00:00 -0500</lastBuildDate>
 <item>
+<title>Seven Nine Point Labs apps now run on any Linux, with AppImages</title>
+<link>https://blog.ninepointlabs.com/2026/10/appimages-for-every-linux/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/appimages-for-every-linux/</guid>
+<pubDate>Mon, 19 Oct 2026 00:00:00 -0500</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>repokase</category>
+<category>jubako</category>
+<category>dogear</category>
+<category>omaforge</category>
+<category>rune</category>
+<category>bahai-reader</category>
+<category>hyprfall</category>
+<category>AppImage</category>
+<category>Linux</category>
+<category>Omarchy</category>
+<description><![CDATA[<p>Nine Point Labs apps are made for Omarchy first, and that isn’t changing. But they shouldn’t stop at Omarchy. As of today, seven of them also run on Ubuntu, Fedora, openSUSE and most other Linux distributions: every release now comes with an AppImage that runs on most x86_64 Linux systems and fits properly into your desktop.</p>
+]]></description>
+<content:encoded><![CDATA[<p>Nine Point Labs apps are made for Omarchy first, and that isn’t changing. But they shouldn’t stop at Omarchy. As of today, seven of them also run on Ubuntu, Fedora, openSUSE and most other Linux distributions: every release now comes with an AppImage that runs on most x86_64 Linux systems and fits properly into your desktop.</p>
+<h2 id="whats-new">What’s new</h2>
+<p>These releases went out today, each with a <code>-x86_64.AppImage</code> attached next to the usual packages:</p>
+<ul>
+<li><a href="https://github.com/ninepointlabs/repokase/releases/tag/v0.2.5">Repokase 0.2.5</a></li>
+<li><a href="https://github.com/ninepointlabs/jubako/releases/tag/v0.4.7">Jubako 0.4.7</a></li>
+<li><a href="https://github.com/ninepointlabs/dogear/releases/tag/v0.1.1">Dogear 0.1.1</a></li>
+<li><a href="https://github.com/ninepointlabs/omaforge/releases/tag/v0.2.6">omaforge 0.2.6</a></li>
+<li><a href="https://github.com/ninepointlabs/rune/releases/tag/v0.8.6">Rune 0.8.6</a></li>
+<li><a href="https://github.com/ninepointlabs/bahai-reader/releases/tag/v0.1.4">Bahá’í Reader 0.1.4</a></li>
+<li><a href="https://github.com/ninepointlabs/hyprfall/releases/tag/v0.1.4">Hyprfall 0.1.4</a></li>
+</ul>
+<p>The Python and Qt apps carry their own Python and Qt inside the AppImage, and Hyprfall carries its own Quickshell and Qt, so there’s nothing else to install. They run on most systems from about 2021 or 2022 on (glibc 2.34 or newer, 2.35 for Hyprfall): Ubuntu 22.04 and later, Debian 12 and later, Fedora, openSUSE and others.</p>
+<h2 id="it-behaves-like-a-real-app">It behaves like a real app</h2>
+<p>Download it, make it executable and run it:</p>
+<pre class="highlight"><code class="language-bash"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">chmod</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> +x dogear-0.1.1-x86_64.AppImage</span>
+<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">./dogear-0.1.1-x86_64.AppImage</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"><span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> --</span>install-desktop-entry</span></span>
+</span></code></pre>
+<p><code>--install-desktop-entry</code> puts the app in your application menu with its proper icon, so it shows up correctly in your launcher, taskbar and dock. Dogear also offers itself for PDFs, and Jubako opens <code>.jubadb</code> files. If you’d rather let a tool manage it, Gear Lever and AppImageLauncher both pick these up. Each AppImage has a <code>.sha256</code> and a <code>.zsync</code> file next to it for checking and updating.</p>
+<h2 id="a-few-app-specific-notes">A few app-specific notes</h2>
+<ul>
+<li><strong>Repokase and Dogear</strong> now follow your desktop’s light or dark setting when they’re not on Omarchy. On Omarchy they still follow your theme.</li>
+<li><strong>Dogear 0.1.1</strong> also adds an About screen and works better in narrow windows, like half a screen in a tiling window manager.</li>
+<li><strong>Rune 0.8.6</strong> packages for Arch, Debian and Fedora now install Rune’s AppStream info and icons in every size, so software centers and menus show it properly.</li>
+<li><strong>Bahá’í Reader 0.1.4</strong> adds a Flatpak bundle as well, <code>bahai-reader-0.1.4-x86_64.flatpak</code>. It brings its own Python and GTK through the GNOME runtime, so it runs even where your system GTK is too old. It’s a download on the release page, not a Flathub listing. If your system’s Python or GTK is too old for the AppImage, the AppImage now tells you so and points you to the Flatpak.</li>
+<li><strong>Hyprfall 0.1.4</strong> now needs Quickshell 0.3 or newer. Fedora’s Quickshell is older than that, so the Fedora package is gone and Fedora players should use the AppImage, which brings Quickshell 0.3.2 with it.</li>
+</ul>
+<h2 id="get-them">Get them</h2>
+<p>On Omarchy and Arch, nothing changes: install the <code>.pkg.tar.zst</code> from the release, or let <a href="https://github.com/ninepointlabs/autonomix-cli">Autonomix CLI</a> pick the right download and keep the app updated:</p>
+<pre class="highlight"><code class="language-bash"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">autonomix-cli</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> add https://github.com/ninepointlabs/dogear</span>
+</span></code></pre>
+<p>On any other Linux, grab the AppImage from the release pages above. From here on, every new Nine Point Labs desktop app release ships an AppImage, and a Flatpak bundle will join it on the release page starting with each app’s next release.</p>
+]]></content:encoded>
+</item>
+<item>
 <title>Autonomix CLI 0.4.3: one password prompt for Update All</title>
 <link>https://blog.ninepointlabs.com/2026/10/autonomix-cli-0-4-3/</link>
 <guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/autonomix-cli-0-4-3/</guid>
@@ -734,33 +786,6 @@ thoughts to the void.</p>
 <p>If you run Omarchy and want a reader that blends into your desktop instead of fighting it, give it a look. <a href="https://github.com/ninepointlabs/bahai-reader/releases">Grab the latest release</a> and see if it fits.</p>
 <hr />
 <p><em>Bahá’í Reader is part of the <a href="https://ninepointlabs.com">Nine Point Labs</a> family of open-source projects, built for the Omarchy Linux desktop ecosystem.</em></p>
-]]></content:encoded>
-</item>
-<item>
-<title>Autonomix CLI: Your GitHub Releases, One Terminal Away</title>
-<link>https://blog.ninepointlabs.com/2026/10/autonomix-cli/</link>
-<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/autonomix-cli/</guid>
-<pubDate>Mon, 5 Oct 2026 00:00:00 -0500</pubDate>
-<dc:creator>Tim</dc:creator>
-<category>AutonomixCLI</category>
-<category>Linux</category>
-<category>CLI</category>
-<category>Go</category>
-<category>TUI</category>
-<category>package-management</category>
-<description><![CDATA[<p>Here’s a scenario you probably know: you find a cool tool on GitHub, but it’s not in your package manager. You download the <code>.deb</code> or <code>.rpm</code>, install it, and then… forget about it. Three months later you’re running v0.2 while v0.7 is out with the one feature you actually needed.</p>
-]]></description>
-<content:encoded><![CDATA[<p>Here’s a scenario you probably know: you find a cool tool on GitHub, but it’s not in your package manager. You download the <code>.deb</code> or <code>.rpm</code>, install it, and then… forget about it. Three months later you’re running v0.2 while v0.7 is out with the one feature you actually needed.</p>
-<p>Autonomix CLI is the answer. It’s a terminal app — built in Go, powered by the gorgeous <a href="https://github.com/charmbracelet/bubbletea">Bubble Tea</a> TUI framework — that tracks any app published through GitHub Releases and tells you when an update drops.</p>
-<h2 id="how-it-works">How it works</h2>
-<p>You fire it up, paste a GitHub repo URL, and Autonomix figures out the rest. It auto-detects package formats: <code>.deb</code>, <code>.rpm</code>, <code>.flatpak</code>, <code>.snap</code>, <code>.appimage</code>, even Arch packages. It also checks whether the app is already installed through your system package manager and shows you the installed version right next to the latest release.</p>
-<p>Hit <code>u</code> to check for updates on any tracked app. Hit <code>d</code> to stop tracking. That’s it. No daemon, no background service, no YAML config file to debug — just <code>~/.autonomix/config.json</code> and a dead-simple TUI.</p>
-<h2 id="why-its-clever">Why it’s clever</h2>
-<p>The magic is in the auto-detection. Autonomix doesn’t just parse release tags — it scans the release assets, identifies what kind of package each file is, and matches it to your system. On Debian? It flags the <code>.deb</code>. On Arch? It knows you want the <code>.pkg.tar.zst</code>. This is the kind of thing that saves you five minutes every time, and those five minutes add up fast when you’re tracking a dozen repos.</p>
-<h2 id="who-its-for">Who it’s for</h2>
-<p>If you run Linux and regularly install software from GitHub Releases — CLI tools, early-access apps, indie projects that haven’t made it into apt or the AUR yet — Autonomix earns its spot in your terminal. It’s lightweight, it compiles with a single <code>go build</code>, and at v0.3.1 it’s already doing the job cleanly.</p>
-<p><strong><a href="https://github.com/ninepointlabs/autonomix-cli">Autonomix CLI on GitHub →</a></strong></p>
-<p>Grab the latest <code>.deb</code>, <code>.rpm</code>, or Arch package from the <a href="https://github.com/ninepointlabs/autonomix-cli/releases">Releases page</a> and give it a spin. Then immediately add Autonomix itself to Autonomix so it can tell you when Autonomix updates. Yes, that works. No, it’s not a typo.</p>
 ]]></content:encoded>
 </item>
 </channel>
