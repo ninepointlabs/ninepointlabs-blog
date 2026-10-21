@@ -7,7 +7,49 @@
 <language>en</language>
 <atom:link href="https://blog.ninepointlabs.com/feed.xml" rel="self" type="application/rss+xml"/>
 <generator>folderblog 0.2.5</generator>
-<lastBuildDate>Tue, 20 Oct 2026 00:00:00 -0500</lastBuildDate>
+<lastBuildDate>Wed, 21 Oct 2026 00:00:00 -0500</lastBuildDate>
+<item>
+<title>Omostrich 0.3: log in to Nostr apps by QR code</title>
+<link>https://blog.ninepointlabs.com/2026/10/omostrich-0-3/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/omostrich-0-3/</guid>
+<pubDate>Wed, 21 Oct 2026 00:00:00 -0500</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>omostrich</category>
+<category>Nostr</category>
+<category>Omarchy</category>
+<category>Linux</category>
+<description><![CDATA[<p><a href="https://omostrich.com/">Omostrich</a> keeps your Nostr key on your own computer. It holds the key encrypted, unlocks from the Omarchy bar, posts notes, and signs for other Nostr apps over NIP-46 (remote signing) so those apps never see your key. Version 0.3.0 makes that last part much easier: you can now connect a phone app by scanning a QR code instead of copying long connection strings around.</p>
+]]></description>
+<content:encoded><![CDATA[<p><a href="https://omostrich.com/">Omostrich</a> keeps your Nostr key on your own computer. It holds the key encrypted, unlocks from the Omarchy bar, posts notes, and signs for other Nostr apps over NIP-46 (remote signing) so those apps never see your key. Version 0.3.0 makes that last part much easier: you can now connect a phone app by scanning a QR code instead of copying long connection strings around.</p>
+<h2 id="whats-new">What’s new</h2>
+<p><strong>Show a QR code, scan it from your phone.</strong> Under Remote signing there’s a new <strong>QR</strong> button next to Copy. It shows your <code>bunker://</code> connection string as a QR code, which a phone app such as Amethyst can scan to log in with a remote signer. The string is public (your public key and your NIP-46 relays, no secret), and the app’s connect request still shows up in Omostrich for you to approve, like any other.</p>
+<p><strong>Connect apps that show their own QR code.</strong> Some apps go the other way and display a <code>nostrconnect://</code> code. <strong>Scan QR</strong> reads it with your laptop camera, or <strong>Paste code</strong> takes a copied string. Omostrich checks the code, answers the app on the relays it names, and adds it to Authorized apps under its own name. After that it keeps listening for that app after every unlock until you revoke it.</p>
+<p>The camera is handled carefully. Frames go straight to the decoder and are never saved, and the camera turns off as soon as a code is read, when you cancel or close the preview, or after two minutes. Laptop webcams are fixed-focus and these codes are dense, so hold the code inside the guide box about 25 to 35 cm away. Even then, reading a phone’s code with a laptop camera can be unreliable, so the bunker QR is the dependable direction.</p>
+<p><strong>Approve all or deny all.</strong> Right after you log in, Amethyst signs a burst of events at once. When several requests are waiting, you can now settle every one on screen in one click, each just this once. Anything that arrives after you click still waits for its own answer.</p>
+<h2 id="smaller-fixes">Smaller fixes</h2>
+<ul>
+<li><strong>Always allow</strong> no longer overwrites an app’s saved relays or name.</li>
+<li>A request delivered twice is handled only once.</li>
+<li><code>daemon.log</code> now records each request’s method (such as <code>sign_event</code>) and whether the reply worked, never the content of the request or the reply.</li>
+<li>The About page’s privacy statement now covers camera use, the relays a scanned app names, and the new log details.</li>
+</ul>
+<h2 id="also-new-since-0-2">Also new since 0.2</h2>
+<p>Omostrich 0.2.1 added an optional listener on your Tailscale address so your own devices can reach the signer with a token, and NIP-46 requests are now heard on every bunker relay, not just your posting relays.</p>
+<h2 id="get-it">Get it</h2>
+<p>The QR features need three extra packages. Everything else works without them:</p>
+<pre class="highlight"><code class="language-bash"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">sudo</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> pacman<span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> -</span>S</span> qrencode ffmpeg zbar</span>
+</span></code></pre>
+<p>To update an existing install:</p>
+<pre class="highlight"><code class="language-bash"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-support hl-function hl-cd hl-shell">cd</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> <span class="hl-meta hl-group hl-expansion hl-tilde"><span class="hl-variable hl-language hl-tilde hl-shell">~</span></span>/Projects/omostrich</span>
+<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">git</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> pull</span>
+<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">npm</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> ci</span>
+<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">./install-daemon.sh</span></span>
+<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">./install-plugin.sh</span></span>
+<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">systemctl</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"><span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> --</span>user</span> restart omostrich</span>
+</span></code></pre>
+<p>The restart matters, because the running signer keeps the old code until it’s restarted. More about Omostrich is at <a href="https://omostrich.com/">omostrich.com</a>.</p>
+]]></content:encoded>
+</item>
 <item>
 <title>fm-cli and Autonomix CLI get their own websites</title>
 <link>https://blog.ninepointlabs.com/2026/10/fm-cli-and-autonomix-cli-websites/</link>
@@ -740,44 +782,6 @@ thoughts to the void.</p>
 <p>Three new repos landed: quill, kestrel, and a machine setup toolkit for Omarchy. Quill joined Omostrich’s website navigation right away, so whatever it is, it earned a landing-page spot before most people even noticed it existed. The canon repo got three commits in one night — daily sync, a shared memory directive, and the kind of infrastructure polish that nobody tweets about but keeps the agents from drifting apart.</p>
 <p>The agents themselves kept up their quiet coordination. Ted sent his Facebook digests. Cromm ran selftests. Neither one needed me. That is the whole point of having agents: they do their jobs and only tap you on the shoulder when something actually breaks.</p>
 <p>On the plugin side, the usual suspects kept getting published. My-Azeroth-Life hit five gh-pages publishes this week alone. The tech blog hit three. That is a lot of content from systems that write themselves. I built a publishing pipeline that runs with almost no human intervention, and it is starting to feel normal. That is probably the most impressive thing about this week: none of this feels impressive anymore. It just works.</p>
-]]></content:encoded>
-</item>
-<item>
-<title>fm-cli: Fastmail, Minus the Browser Tab</title>
-<link>https://blog.ninepointlabs.com/2026/10/fm-cli/</link>
-<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/fm-cli/</guid>
-<pubDate>Wed, 7 Oct 2026 00:00:00 -0500</pubDate>
-<dc:creator>Tim</dc:creator>
-<category>fm-cli</category>
-<category>CLI</category>
-<category>Linux</category>
-<category>macOS</category>
-<category>Go</category>
-<category>TUI</category>
-<category>email</category>
-<category>Fastmail</category>
-<description><![CDATA[<p>You know the feeling: you’re deep in the terminal, in the zone, and then you need to check your email. You switch to the browser, wait for Fastmail to load, wade through some newsletters, and five minutes later you’ve forgotten why you opened it in the first place.</p>
-]]></description>
-<content:encoded><![CDATA[<p>You know the feeling: you’re deep in the terminal, in the zone, and then you need to check your email. You switch to the browser, wait for Fastmail to load, wade through some newsletters, and five minutes later you’ve forgotten why you opened it in the first place.</p>
-<p>fm-cli fixes that. It’s a full Fastmail client that lives in your terminal, built in Go, all keystrokes, no browser tab needed.</p>
-<p><strong><a href="https://github.com/ninepointlabs/fm-cli">fm-cli on GitHub →</a></strong></p>
-<p><img src="https://raw.githubusercontent.com/ninepointlabs/fm-cli/main/docs/tui.png" alt="The fm-cli terminal app reading a thread" width="1200" height="620" decoding="async"></p>
-<h2 id="mail-calendar-contacts-all-from-the-keyboard">Mail, calendar, contacts — all from the keyboard</h2>
-<p>fm-cli talks directly to Fastmail’s JMAP API. No IMAP workarounds, no polling, no stored copies of your mail on someone else’s server. It’s the real thing, and it’s also the engine behind the <a href="https://github.com/ninepointlabs/omarchy-fastmail">Fastmail plugin for Omarchy</a>, so it’s battle-tested every day.</p>
-<p>The TUI gives you everything you’d expect: folders, threaded conversations, clickable links, reply-all, forward, flag, archive, move, delete. Compose in <code>$EDITOR</code> with contact autocomplete that actually works. A two-week calendar agenda and a contacts browser. Inline images, if your terminal supports it. And an offline mode that caches mail in SQLite so you can read and draft on a plane — changes sync back when you reconnect.</p>
-<h2 id="scripting-that-doesnt-fight-you">Scripting that doesn’t fight you</h2>
-<p>Here’s where fm-cli really shines. Every command accepts <code>--json</code> and prints exactly one JSON object — <code>{"ok": true, "data": …}</code> on success, <code>{"ok": false, "error": "…", "code": "auth|usage|network|remote|busy"}</code> on failure. That means you can pipe it into <code>jq</code>, drive it from shell scripts, or build automation around your mailbox without parsing human-readable output or worrying about edge cases:</p>
-<pre class="highlight"><code class="language-bash"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">fm-cli</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> box view inbox<span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> --</span>limit</span> 20<span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> --</span>json</span></span> <span class="hl-keyword hl-operator hl-logical hl-pipe hl-shell">|</span> <span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">jq</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> <span class="hl-string hl-quoted hl-single hl-shell"><span class="hl-punctuation hl-definition hl-string hl-begin hl-shell">&#39;</span>.data[].subject<span class="hl-punctuation hl-definition hl-string hl-end hl-shell">&#39;</span></span></span>
-</span></code></pre>
-<p>The <code>watch</code> command holds a live push connection open and prints a JSON line for every change — new mail, read status, folder moves. One connection per account, no polling, no rate limits.</p>
-<h2 id="auth-you-dont-have-to-think-about">Auth you don’t have to think about</h2>
-<p>Sign in with <code>fm-cli auth login</code> and it opens Fastmail’s consent page in your browser. Approve it there, and the tokens go straight into your system keyring. They refresh themselves. You never copy a token. If you’re on a headless machine, <code>FM_API_TOKEN</code>, <code>FM_EMAIL</code>, and <code>FM_APP_PASSWORD</code> in the environment stand in for the keyring.</p>
-<p>Calendar and contacts use CalDAV and CardDAV with a Fastmail app password — <code>fm-cli auth dav</code> stores it, and you’re done.</p>
-<h2 id="install-it">Install it</h2>
-<p>On Omarchy: <code>omarchy-mise-install github:ninepointlabs/fm-cli fm-cli</code></p>
-<p>Everywhere else: <code>mise use -g github:ninepointlabs/fm-cli@latest</code></p>
-<p>Releases also ship <code>.pkg.tar.zst</code>, <code>.deb</code>, <code>.rpm</code>, and plain tarballs for Linux and macOS. Go 1.26 or newer, no C toolchain needed. Clone it, <code>go build</code>, and you’re off.</p>
-<p>If your email lives on Fastmail and you spend a lot of time in the terminal, fm-cli is one of those tools that makes you wonder how you managed without it. Grab it from the <a href="https://github.com/ninepointlabs/fm-cli">repo</a> and reclaim that browser tab.</p>
 ]]></content:encoded>
 </item>
 </channel>
