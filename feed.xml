@@ -58,6 +58,42 @@
 ]]></content:encoded>
 </item>
 <item>
+<title>Omostrich 0.3.1: profile pictures loaded safely</title>
+<link>https://blog.ninepointlabs.com/2026/10/omostrich-0-3-1/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/omostrich-0-3-1/</guid>
+<pubDate>Thu, 22 Oct 2026 00:00:00 -0500</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>omostrich</category>
+<category>Nostr</category>
+<category>Omarchy</category>
+<category>Security</category>
+<description><![CDATA[<p><a href="https://omostrich.com/">Omostrich</a> keeps your Nostr key on your own computer and signs for your apps from the Omarchy bar. Version 0.3.1 is a small security release. It changes how the panel shows your profile picture and attachment previews, so a picture someone else controls can’t stall or overload the panel.</p>
+]]></description>
+<content:encoded><![CDATA[<p><a href="https://omostrich.com/">Omostrich</a> keeps your Nostr key on your own computer and signs for your apps from the Omarchy bar. Version 0.3.1 is a small security release. It changes how the panel shows your profile picture and attachment previews, so a picture someone else controls can’t stall or overload the panel.</p>
+<h2 id="what-changed">What changed</h2>
+<p><strong>Your profile picture is fetched with limits.</strong> Before, the panel took the picture URL from your Nostr profile and handed it straight to Qt to download and decode. Now the panel never loads that URL itself. While Omostrich is unlocked, the signer daemon downloads the picture with firm limits:</p>
+<ul>
+<li>a 10 second timeout and a 1 MB size cap, enforced even when the server doesn’t say how big the file is</li>
+<li>PNG, JPEG, GIF or WebP only, checked by both the content type and the file’s own signature, so SVG or HTML dressed up as an image is turned away</li>
+<li>at most 2048 by 2048 pixels, checked before anything is decoded, so a tiny, highly compressed file can’t blow up into a huge image in memory</li>
+</ul>
+<p>A picture that passes is kept as a local copy in <code>~/.local/share/omostrich/</code>, readable only by you, and the panel shows that copy at a small size. It isn’t fetched again on every restart. If a picture fails any check, you’ll see the placeholder instead, and the reason goes in <code>daemon.log</code>.</p>
+<p><strong>Attachment previews show your own file.</strong> When you attach an image to a note, the preview now shows the local file you just uploaded rather than loading it back from the Blossom server, and only when it’s within the same limits. The Blossom server’s reply is capped at 64 KB, and every image in the panel now has a bounded decode size.</p>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Your profile picture URL is public data that anyone can point anywhere, and the panel sits right next to your key. Keeping remote downloads out of the panel, and behind tight limits in the daemon, means a slow or hostile image server can’t hang the bar or eat your memory. The issue was raised in the Omarchy plugin marketplace review (<a href="https://github.com/omacom/omarchy-plugin-marketplace/issues/12494">#12494</a>), and nothing else in the panel loads remote content.</p>
+<h2 id="get-it">Get it</h2>
+<p>To update an existing install:</p>
+<pre class="highlight"><code class="language-bash"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-support hl-function hl-cd hl-shell">cd</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> <span class="hl-meta hl-group hl-expansion hl-tilde"><span class="hl-variable hl-language hl-tilde hl-shell">~</span></span>/Projects/omostrich</span>
+<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">git</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> pull</span>
+<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">npm</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> ci</span>
+<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">./install-daemon.sh</span></span>
+<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">./install-plugin.sh</span></span>
+<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">systemctl</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"><span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> --</span>user</span> restart omostrich</span>
+</span></code></pre>
+<p>The restart matters, because the running signer keeps the old code until it’s restarted. The full notes are on the <a href="https://github.com/ninepointlabs/omostrich/releases/tag/v0.3.1">0.3.1 release page</a>, and more about Omostrich is at <a href="https://omostrich.com/">omostrich.com</a>.</p>
+]]></content:encoded>
+</item>
+<item>
 <title>Omostrich 0.3: log in to Nostr apps by QR code</title>
 <link>https://blog.ninepointlabs.com/2026/10/omostrich-0-3/</link>
 <guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/omostrich-0-3/</guid>
@@ -777,39 +813,6 @@ of so you can get back to the thing you were doing.</p>
 <p>That’s it. <code>idea</code> lands in <code>/usr/local/bin</code> and you’re ready to stop losing
 thoughts to the void.</p>
 <p>Grab it at <strong><a href="https://github.com/ninepointlabs/ideas">github.com/ninepointlabs/ideas</a></strong> and give your stray thoughts a home.</p>
-]]></content:encoded>
-</item>
-<item>
-<title>folderblog: Save a File, Publish a Blog</title>
-<link>https://blog.ninepointlabs.com/2026/10/folderblog/</link>
-<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/folderblog/</guid>
-<pubDate>Thu, 8 Oct 2026 00:00:00 -0500</pubDate>
-<dc:creator>Tim</dc:creator>
-<category>folderblog</category>
-<category>Linux</category>
-<category>Rust</category>
-<category>GitHub Pages</category>
-<category>static-site</category>
-<category>blogging</category>
-<description><![CDATA[<p>Here’s a radical idea: what if publishing a blog post was exactly as hard as hitting Ctrl+S? No build step. No <code>git push</code>. No front matter to remember. No deploy command. Just a Markdown file in a folder, and a few seconds later, it’s live.</p>
-]]></description>
-<content:encoded><![CDATA[<p>Here’s a radical idea: what if publishing a blog post was exactly as hard as hitting Ctrl+S? No build step. No <code>git push</code>. No front matter to remember. No deploy command. Just a Markdown file in a folder, and a few seconds later, it’s live.</p>
-<p>That’s folderblog. And it actually delivers.</p>
-<p><strong><a href="https://github.com/ninepointlabs/folderblog">folderblog on GitHub →</a></strong>  |  <strong><a href="https://folderblog.ninepointlabs.com">Website &amp; video tour →</a></strong></p>
-<p><img src="https://raw.githubusercontent.com/ninepointlabs/folderblog/main/site/static/img/demo-home.jpg" alt="The same blog rendered by folderblog’s Default theme" width="1400" height="875" decoding="async"></p>
-<h2 id="a-folder-is-a-blog">A folder is a blog</h2>
-<p>folderblog is a single Rust binary that runs quietly in the background, watching <code>~/Blogs</code>. Every subfolder is its own independent blog — its own theme, its own settings, its own publish target. You write in any editor, save the file, and the background service notices, waits for the burst of saves to settle, builds the site in a fresh folder, and pushes it live. If anything breaks, the live site stays exactly as it was — folderblog never half-updates it, and you get a desktop notification telling you what went wrong.</p>
-<p>GitHub Pages works with zero ongoing clicks. Log in once, and <code>folderblog new myblog</code> creates the repository, turns on Pages, and publishes your first post. Custom domains too — it even prints the DNS records you need. Not a GitHub person? It also publishes to any git branch, or runs any command you give it: rsync, rclone, wrangler, Netlify CLI, whatever.</p>
-<p><img src="https://raw.githubusercontent.com/ninepointlabs/folderblog/main/site/static/img/mag-home.jpg" alt="The same blog rendered by the Magazine theme" width="1400" height="875" loading="lazy" decoding="async"></p>
-<h2 id="themes-with-no-ceiling">Themes with no ceiling</h2>
-<p>folderblog’s engine handles content, feeds, and sitemaps. Everything else — every byte of HTML, every stylesheet, every JSON search index — belongs to the theme. Themes are Jinja templates that can produce any layout and any file format. One template can render tag pages, year archives, paginated series. A theme can even generate its own search index.</p>
-<p>To prove the engine doesn’t interfere, we gave three coding agents the same blog, its <code>AGENTS.md</code> contract, and a one-line design brief. None of them needed a change to the engine. The screenshots in this post? Same blog, four different themes, all agent-built.</p>
-<p><img src="https://raw.githubusercontent.com/ninepointlabs/folderblog/main/site/static/img/min-post.jpg" alt="The same blog rendered by the Text-only theme" width="1400" height="875" loading="lazy" decoding="async"></p>
-<h2 id="the-little-things-that-make-it-good">The little things that make it good</h2>
-<p>Posts don’t need front matter. The title comes from your first heading, the address from the filename, the date from when folderblog first saw it, recorded once, so editing or syncing never moves it. Delete a file, and the post is unpublished. There’s a built-in photo gallery: <code>folderblog gallery on</code>, drop pictures into a folder, and only resized copies ever reach the site (your originals with GPS metadata stay local). Drafts only appear in preview. <code>folderblog check</code> catches template errors, broken links, and feed problems before anything goes live.</p>
-<p>It runs on Linux — packages for Arch, Debian/Ubuntu, and Fedora, plus a static binary. Written in Rust, MIT licensed, <code>git</code> is the only dependency.</p>
-<p><img src="https://raw.githubusercontent.com/ninepointlabs/folderblog/main/site/static/img/scr-post.jpg" alt="The same blog rendered by the Film Strip theme" width="1400" height="875" loading="lazy" decoding="async"></p>
-<p>folderblog is the kind of tool that makes you wonder why blogs were ever harder than this. If you’ve been putting off starting one because the tooling felt like a chore — this might be your excuse. Grab it from the <a href="https://github.com/ninepointlabs/folderblog">repo</a>, follow the <a href="https://folderblog.ninepointlabs.com/guide/">step-by-step guide</a>, and save a file.</p>
 ]]></content:encoded>
 </item>
 </channel>
