@@ -3,7 +3,7 @@
 <channel>
 <title>The Word from Nine Point Labs</title>
 <link>https://blog.ninepointlabs.com/</link>
-<description>Release notes and build logs from Nine Point Labs: small, useful software for Linux, and for people who like to write.</description>
+<description>Release notes and build logs from Nine Point Labs: small, clear tools for Linux.</description>
 <language>en</language>
 <atom:link href="https://blog.ninepointlabs.com/feed.xml" rel="self" type="application/rss+xml"/>
 <generator>folderblog 0.2.5</generator>
@@ -162,6 +162,58 @@
 <p><strong><a href="https://autonomix-cli.ninepointlabs.com/">Autonomix CLI</a></strong> installs and updates apps straight from GitHub Releases. The site covers the package formats it understands, how it detects what’s already installed, the JSON output for scripts, and how it fits into Omarchy: the bar widget and the post-update hook that updates your apps whenever you run <code>omarchy update</code>. Install steps for Debian and Ubuntu, Fedora and Arch are right there, along with the full command list.</p>
 <h2 id="why-it-matters">Why it matters</h2>
 <p>A website is easier to share and easier to read than a repository. If you’ve been sending someone a GitHub link to explain what fm-cli or Autonomix CLI is, you can send them the site now. Nothing changes in the tools themselves, so there’s nothing to update.</p>
+]]></content:encoded>
+</item>
+<item>
+<title>Seven Nine Point Labs apps now run on any Linux, with AppImages</title>
+<link>https://blog.ninepointlabs.com/2026/10/appimages-for-every-linux/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/appimages-for-every-linux/</guid>
+<pubDate>Mon, 19 Oct 2026 00:00:00 -0500</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>repokase</category>
+<category>jubako</category>
+<category>dogear</category>
+<category>omaforge</category>
+<category>rune</category>
+<category>bahai-reader</category>
+<category>hyprfall</category>
+<category>AppImage</category>
+<category>Linux</category>
+<category>Omarchy</category>
+<description><![CDATA[<p>Nine Point Labs apps are made for Omarchy first, and that isn’t changing. But they shouldn’t stop at Omarchy. As of today, seven of them also run on Ubuntu, Fedora, openSUSE and most other Linux distributions: every release now comes with an AppImage that runs on most x86_64 Linux systems and fits properly into your desktop.</p>
+]]></description>
+<content:encoded><![CDATA[<p>Nine Point Labs apps are made for Omarchy first, and that isn’t changing. But they shouldn’t stop at Omarchy. As of today, seven of them also run on Ubuntu, Fedora, openSUSE and most other Linux distributions: every release now comes with an AppImage that runs on most x86_64 Linux systems and fits properly into your desktop.</p>
+<h2 id="whats-new">What’s new</h2>
+<p>These releases went out today, each with a <code>-x86_64.AppImage</code> attached next to the usual packages:</p>
+<ul>
+<li><a href="https://repokase.ninepointlabs.com/">Repokase 0.2.5</a></li>
+<li><a href="https://jubako.ninepointlabs.com/">Jubako 0.4.7</a></li>
+<li><a href="https://dogear.ninepointlabs.com/">Dogear 0.1.1</a></li>
+<li><a href="https://omaforge.ninepointlabs.com/">omaforge 0.2.6</a></li>
+<li><a href="https://rune.ninepointlabs.com/">Rune 0.8.6</a></li>
+<li><a href="https://bahaireader.org/">Bahá’í Reader 0.1.4</a></li>
+<li><a href="https://hyprfall.ninepointlabs.com/">Hyprfall 0.1.4</a></li>
+</ul>
+<p>The Python and Qt apps carry their own Python and Qt inside the AppImage, and Hyprfall carries its own Quickshell and Qt, so there’s nothing else to install. They run on most systems from about 2021 or 2022 on (glibc 2.34 or newer, 2.35 for Hyprfall): Ubuntu 22.04 and later, Debian 12 and later, Fedora, openSUSE and others.</p>
+<h2 id="it-behaves-like-a-real-app">It behaves like a real app</h2>
+<p>Download it, make it executable and run it:</p>
+<pre class="highlight"><code class="language-bash"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">chmod</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> +x dogear-0.1.1-x86_64.AppImage</span>
+<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">./dogear-0.1.1-x86_64.AppImage</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"><span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> --</span>install-desktop-entry</span></span>
+</span></code></pre>
+<p><code>--install-desktop-entry</code> puts the app in your application menu with its proper icon, so it shows up correctly in your launcher, taskbar and dock. Dogear also offers itself for PDFs, and Jubako opens <code>.jubadb</code> files. If you’d rather let a tool manage it, Gear Lever and AppImageLauncher both pick these up. Each AppImage has a <code>.sha256</code> and a <code>.zsync</code> file next to it for checking and updating.</p>
+<h2 id="a-few-app-specific-notes">A few app-specific notes</h2>
+<ul>
+<li><strong>Repokase and Dogear</strong> now follow your desktop’s light or dark setting when they’re not on Omarchy. On Omarchy they still follow your theme.</li>
+<li><strong>Dogear 0.1.1</strong> also adds an About screen and works better in narrow windows, like half a screen in a tiling window manager.</li>
+<li><strong>Rune 0.8.6</strong> packages for Arch, Debian and Fedora now install Rune’s AppStream info and icons in every size, so software centers and menus show it properly.</li>
+<li><strong>Bahá’í Reader 0.1.4</strong> adds a Flatpak bundle as well, <code>bahai-reader-0.1.4-x86_64.flatpak</code>. It brings its own Python and GTK through the GNOME runtime, so it runs even where your system GTK is too old. It’s a download on the release page, not a Flathub listing. If your system’s Python or GTK is too old for the AppImage, the AppImage now tells you so and points you to the Flatpak.</li>
+<li><strong>Hyprfall 0.1.4</strong> now needs Quickshell 0.3 or newer. Fedora’s Quickshell is older than that, so the Fedora package is gone and Fedora players should use the AppImage, which brings Quickshell 0.3.2 with it.</li>
+</ul>
+<h2 id="get-them">Get them</h2>
+<p>On Omarchy and Arch, nothing changes: install the <code>.pkg.tar.zst</code> from the release, or let <a href="https://github.com/ninepointlabs/autonomix-cli">Autonomix CLI</a> pick the right download and keep the app updated:</p>
+<pre class="highlight"><code class="language-bash"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">autonomix-cli</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> add https://github.com/ninepointlabs/dogear</span>
+</span></code></pre>
+<p>On any other Linux, grab the AppImage from the release pages above. From here on, every new Nine Point Labs desktop app release ships an AppImage, and a Flatpak bundle will join it on the release page starting with each app’s next release.</p>
 ]]></content:encoded>
 </item>
 <item>
@@ -761,39 +813,6 @@ of so you can get back to the thing you were doing.</p>
 <p>That’s it. <code>idea</code> lands in <code>/usr/local/bin</code> and you’re ready to stop losing
 thoughts to the void.</p>
 <p>Grab it at <strong><a href="https://github.com/ninepointlabs/ideas">github.com/ninepointlabs/ideas</a></strong> and give your stray thoughts a home.</p>
-]]></content:encoded>
-</item>
-<item>
-<title>folderblog: Save a File, Publish a Blog</title>
-<link>https://blog.ninepointlabs.com/2026/10/folderblog/</link>
-<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/folderblog/</guid>
-<pubDate>Thu, 8 Oct 2026 00:00:00 -0500</pubDate>
-<dc:creator>Tim</dc:creator>
-<category>folderblog</category>
-<category>Linux</category>
-<category>Rust</category>
-<category>GitHub Pages</category>
-<category>static-site</category>
-<category>blogging</category>
-<description><![CDATA[<p>Here’s a radical idea: what if publishing a blog post was exactly as hard as hitting Ctrl+S? No build step. No <code>git push</code>. No front matter to remember. No deploy command. Just a Markdown file in a folder, and a few seconds later, it’s live.</p>
-]]></description>
-<content:encoded><![CDATA[<p>Here’s a radical idea: what if publishing a blog post was exactly as hard as hitting Ctrl+S? No build step. No <code>git push</code>. No front matter to remember. No deploy command. Just a Markdown file in a folder, and a few seconds later, it’s live.</p>
-<p>That’s folderblog. And it actually delivers.</p>
-<p><strong><a href="https://github.com/ninepointlabs/folderblog">folderblog on GitHub →</a></strong>  |  <strong><a href="https://folderblog.ninepointlabs.com">Website &amp; video tour →</a></strong></p>
-<p><img src="https://raw.githubusercontent.com/ninepointlabs/folderblog/main/site/static/img/demo-home.jpg" alt="The same blog rendered by folderblog’s Default theme" width="1400" height="875" decoding="async"></p>
-<h2 id="a-folder-is-a-blog">A folder is a blog</h2>
-<p>folderblog is a single Rust binary that runs quietly in the background, watching <code>~/Blogs</code>. Every subfolder is its own independent blog — its own theme, its own settings, its own publish target. You write in any editor, save the file, and the background service notices, waits for the burst of saves to settle, builds the site in a fresh folder, and pushes it live. If anything breaks, the live site stays exactly as it was — folderblog never half-updates it, and you get a desktop notification telling you what went wrong.</p>
-<p>GitHub Pages works with zero ongoing clicks. Log in once, and <code>folderblog new myblog</code> creates the repository, turns on Pages, and publishes your first post. Custom domains too — it even prints the DNS records you need. Not a GitHub person? It also publishes to any git branch, or runs any command you give it: rsync, rclone, wrangler, Netlify CLI, whatever.</p>
-<p><img src="https://raw.githubusercontent.com/ninepointlabs/folderblog/main/site/static/img/mag-home.jpg" alt="The same blog rendered by the Magazine theme" width="1400" height="875" loading="lazy" decoding="async"></p>
-<h2 id="themes-with-no-ceiling">Themes with no ceiling</h2>
-<p>folderblog’s engine handles content, feeds, and sitemaps. Everything else — every byte of HTML, every stylesheet, every JSON search index — belongs to the theme. Themes are Jinja templates that can produce any layout and any file format. One template can render tag pages, year archives, paginated series. A theme can even generate its own search index.</p>
-<p>To prove the engine doesn’t interfere, we gave three coding agents the same blog, its <code>AGENTS.md</code> contract, and a one-line design brief. None of them needed a change to the engine. The screenshots in this post? Same blog, four different themes, all agent-built.</p>
-<p><img src="https://raw.githubusercontent.com/ninepointlabs/folderblog/main/site/static/img/min-post.jpg" alt="The same blog rendered by the Text-only theme" width="1400" height="875" loading="lazy" decoding="async"></p>
-<h2 id="the-little-things-that-make-it-good">The little things that make it good</h2>
-<p>Posts don’t need front matter. The title comes from your first heading, the address from the filename, the date from when folderblog first saw it, recorded once, so editing or syncing never moves it. Delete a file, and the post is unpublished. There’s a built-in photo gallery: <code>folderblog gallery on</code>, drop pictures into a folder, and only resized copies ever reach the site (your originals with GPS metadata stay local). Drafts only appear in preview. <code>folderblog check</code> catches template errors, broken links, and feed problems before anything goes live.</p>
-<p>It runs on Linux — packages for Arch, Debian/Ubuntu, and Fedora, plus a static binary. Written in Rust, MIT licensed, <code>git</code> is the only dependency.</p>
-<p><img src="https://raw.githubusercontent.com/ninepointlabs/folderblog/main/site/static/img/scr-post.jpg" alt="The same blog rendered by the Film Strip theme" width="1400" height="875" loading="lazy" decoding="async"></p>
-<p>folderblog is the kind of tool that makes you wonder why blogs were ever harder than this. If you’ve been putting off starting one because the tooling felt like a chore — this might be your excuse. Grab it from the <a href="https://github.com/ninepointlabs/folderblog">repo</a>, follow the <a href="https://folderblog.ninepointlabs.com/guide/">step-by-step guide</a>, and save a file.</p>
 ]]></content:encoded>
 </item>
 </channel>
