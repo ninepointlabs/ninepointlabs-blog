@@ -22,9 +22,9 @@
 <category>MCP</category>
 <category>static-site</category>
 <category>blogging</category>
-<description><![CDATA[<p><a href="https://github.com/ninepointlabs/folderblog">folderblog</a> turns a folder of Markdown into a live blog the moment you save. Four releases since the last word here, 0.2.4 through 0.2.7, and the big one is 0.2.6: the same folder can now publish a podcast, with a proper feed, hosted audio, and a way for an AI agent to help without ever publishing on its own.</p>
+<description><![CDATA[<p><a href="https://folderblog.ninepointlabs.com">folderblog</a> turns a folder of Markdown into a live blog the moment you save. Four releases since the last word here, 0.2.4 through 0.2.7, and the big one is 0.2.6: the same folder can now publish a podcast, with a proper feed, hosted audio, and a way for an AI agent to help without ever publishing on its own.</p>
 ]]></description>
-<content:encoded><![CDATA[<p><a href="https://github.com/ninepointlabs/folderblog">folderblog</a> turns a folder of Markdown into a live blog the moment you save. Four releases since the last word here, 0.2.4 through 0.2.7, and the big one is 0.2.6: the same folder can now publish a podcast, with a proper feed, hosted audio, and a way for an AI agent to help without ever publishing on its own.</p>
+<content:encoded><![CDATA[<p><a href="https://folderblog.ninepointlabs.com">folderblog</a> turns a folder of Markdown into a live blog the moment you save. Four releases since the last word here, 0.2.4 through 0.2.7, and the big one is 0.2.6: the same folder can now publish a podcast, with a proper feed, hosted audio, and a way for an AI agent to help without ever publishing on its own.</p>
 <h2 id="podcasts-from-a-folder">Podcasts from a folder</h2>
 <p>Put episodes in <code>podcast/</code>, one folder per episode, each with its MP3 (or an MP4 if it’s a video show). folderblog builds the show page, a page for every episode, and <code>/podcast/feed.xml</code>. Turn it on with:</p>
 <pre class="highlight"><code class="language-sh"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">folderblog</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> podcast on</span>
@@ -53,7 +53,7 @@
 <tr><td>Fedora / RHEL / openSUSE</td><td><code>sudo dnf install ./folderblog-0.2.7-1.x86_64.rpm</code></td></tr>
 <tr><td>autonomix-cli</td><td><code>autonomix-cli add https://github.com/ninepointlabs/folderblog</code></td></tr>
 </tbody></table>
-<p>The packages and a plain tarball are on the <a href="https://github.com/ninepointlabs/folderblog/releases/tag/v0.2.7">v0.2.7 release</a>. New to folderblog? Start with <a href="https://github.com/ninepointlabs/folderblog/blob/main/docs/GUIDE.md">the guide</a>, or run <code>folderblog guide</code>.</p>
+<p>The packages and a plain tarball are on the <a href="https://github.com/ninepointlabs/folderblog/releases/tag/v0.2.7">v0.2.7 release</a>. New to folderblog? See <a href="https://folderblog.ninepointlabs.com">its home page</a>, the <a href="https://github.com/ninepointlabs/folderblog">source on GitHub</a>, or start with <a href="https://github.com/ninepointlabs/folderblog/blob/main/docs/GUIDE.md">the guide</a>, or run <code>folderblog guide</code>.</p>
 ]]></content:encoded>
 </item>
 <item>
