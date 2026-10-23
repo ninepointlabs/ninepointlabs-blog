@@ -7,7 +7,55 @@
 <language>en</language>
 <atom:link href="https://blog.ninepointlabs.com/feed.xml" rel="self" type="application/rss+xml"/>
 <generator>folderblog 0.2.7</generator>
-<lastBuildDate>Thu, 22 Oct 2026 00:00:00 -0500</lastBuildDate>
+<lastBuildDate>Fri, 23 Oct 2026 00:00:00 -0500</lastBuildDate>
+<item>
+<title>folderblog 0.2.7: Your blog can be a podcast now</title>
+<link>https://blog.ninepointlabs.com/2026/10/folderblog-0-2-7/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/folderblog-0-2-7/</guid>
+<pubDate>Fri, 23 Oct 2026 00:00:00 -0500</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>folderblog</category>
+<category>Linux</category>
+<category>Rust</category>
+<category>podcasting</category>
+<category>Cloudflare R2</category>
+<category>MCP</category>
+<category>static-site</category>
+<category>blogging</category>
+<description><![CDATA[<p><a href="https://github.com/ninepointlabs/folderblog">folderblog</a> turns a folder of Markdown into a live blog the moment you save. Four releases since the last word here, 0.2.4 through 0.2.7, and the big one is 0.2.6: the same folder can now publish a podcast, with a proper feed, hosted audio, and a way for an AI agent to help without ever publishing on its own.</p>
+]]></description>
+<content:encoded><![CDATA[<p><a href="https://github.com/ninepointlabs/folderblog">folderblog</a> turns a folder of Markdown into a live blog the moment you save. Four releases since the last word here, 0.2.4 through 0.2.7, and the big one is 0.2.6: the same folder can now publish a podcast, with a proper feed, hosted audio, and a way for an AI agent to help without ever publishing on its own.</p>
+<h2 id="podcasts-from-a-folder">Podcasts from a folder</h2>
+<p>Put episodes in <code>podcast/</code>, one folder per episode, each with its MP3 (or an MP4 if it’s a video show). folderblog builds the show page, a page for every episode, and <code>/podcast/feed.xml</code>. Turn it on with:</p>
+<pre class="highlight"><code class="language-sh"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">folderblog</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> podcast on</span>
+</span></code></pre>
+<p>The feed is ready for Apple Podcasts and Podcasting 2.0: every episode gets a permanent guid, and you can add transcripts, chapters, people, and optional Lightning tips. Episodes stay out of your main blog feed unless you set <code>in_main_feed</code>, so readers who only want posts don’t get audio in their reader.</p>
+<h2 id="audio-hosted-on-cloudflare-r2">Audio hosted on Cloudflare R2</h2>
+<p>Audio files are too big to live comfortably next to your HTML, so folderblog uploads them to Cloudflare R2 when the site deploys. The site isn’t published until the upload succeeds, which means the feed never points at a file that isn’t there yet. <code>folderblog podcast setup</code> walks you through it. It works with an r2.dev address or your own domain, and a custom domain is recommended. Your keys are kept outside the blog folder, so they never end up in git or on the site.</p>
+<h2 id="an-mcp-server-for-ai-agents">An MCP server for AI agents</h2>
+<p><code>folderblog mcp</code> starts an MCP server, so an AI agent can draft, check and publish episodes for you. It only publishes after you say yes. If you’d rather do it yourself, <code>folderblog podcast publish --episode SLUG</code> does the same thing from the terminal. The watcher and a publish take turns, so they never build or deploy at the same time.</p>
+<h2 id="templates-to-copy">Templates to copy</h2>
+<p>New blogs now come with a <code>templates/</code> folder holding a sample post and a sample podcast episode. Each one lists every front matter field with a short note on what it does, so you don’t have to dig through the guide to remember what <code>draft</code> or <code>image</code> does. To add the folder to a blog you already have, run <code>folderblog templates</code>.</p>
+<h2 id="blogs-keep-up-with-updates-by-themselves">Blogs keep up with updates by themselves</h2>
+<p>0.2.7 is the small one that makes the rest easier. After you install a new version, restart the service:</p>
+<pre class="highlight"><code class="language-sh"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">systemctl</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"><span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> --</span>user</span> restart folderblog</span>
+</span></code></pre>
+<p>The first time it starts, it adds any sample files your blogs don’t have yet, like the new <code>templates/</code> folder, and refreshes the generated part of <code>AGENTS.md</code>. It logs what it changed. It never turns a feature on, and it never touches your design, <code>blog.toml</code> or your posts. A sample file you delete stays deleted.</p>
+<h2 id="two-fixes-along-the-way">Two fixes along the way</h2>
+<ul>
+<li><strong>0.2.4:</strong> <code>draft: true</code> in front matter now really hides a post or page from the live site, as the guide always said. Before, those were still built and listed. They now behave like files in <code>drafts/</code>: visible in <code>folderblog preview</code> and <code>build --drafts</code>, never in real builds.</li>
+<li><strong>0.2.5:</strong> if you use GoatCounter, 404 pages are now counted as events named after the missing URL instead of page views, so broken links show up on their own instead of looking like visits.</li>
+</ul>
+<h2 id="grab-it">Grab it</h2>
+<table><thead><tr><th>System</th><th>Command</th></tr></thead><tbody>
+<tr><td>Arch / Omarchy</td><td><code>sudo pacman -U folderblog-bin-0.2.7-1-x86_64.pkg.tar.zst</code></td></tr>
+<tr><td>Debian / Ubuntu</td><td><code>sudo apt install ./folderblog_0.2.7-1_amd64.deb</code></td></tr>
+<tr><td>Fedora / RHEL / openSUSE</td><td><code>sudo dnf install ./folderblog-0.2.7-1.x86_64.rpm</code></td></tr>
+<tr><td>autonomix-cli</td><td><code>autonomix-cli add https://github.com/ninepointlabs/folderblog</code></td></tr>
+</tbody></table>
+<p>The packages and a plain tarball are on the <a href="https://github.com/ninepointlabs/folderblog/releases/tag/v0.2.7">v0.2.7 release</a>. New to folderblog? Start with <a href="https://github.com/ninepointlabs/folderblog/blob/main/docs/GUIDE.md">the guide</a>, or run <code>folderblog guide</code>.</p>
+]]></content:encoded>
+</item>
 <item>
 <title>A relay on your own PC: thinking out loud about FIPS and local sync</title>
 <link>https://blog.ninepointlabs.com/2026/10/local-relay-on-the-pc/</link>
@@ -749,70 +797,6 @@ goatcounter = &quot;https://you.goatcounter.com&quot;
 <p>Installation is one command on Arch/Omarchy, Debian, or Fedora – packages are on the <a href="https://github.com/ninepointlabs/jubako/releases">releases page</a>. Or clone the repo and run from source. It’s MIT-licensed and actively developed, with a growing test suite that covers type guessing, path safety, CSV and Excel import/export, reports, and the MCP server.</p>
 <p>If your spreadsheets have been quietly running your life, Jubako is a clean upgrade. Same data, less chaos, and a lunch box metaphor you didn’t know you needed.</p>
 <p><a href="https://github.com/ninepointlabs/jubako">Jubako on GitHub</a></p>
-]]></content:encoded>
-</item>
-<item>
-<title>Idea: a CLI for the “wait, I had something” moments</title>
-<link>https://blog.ninepointlabs.com/2026/10/ideas/</link>
-<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/ideas/</guid>
-<pubDate>Sat, 10 Oct 2026 00:00:00 -0500</pubDate>
-<dc:creator>Tim</dc:creator>
-<category>Ideas</category>
-<category>CLI</category>
-<category>Linux</category>
-<category>macOS</category>
-<category>Go</category>
-<description><![CDATA[<p>You know the feeling. You’re three levels deep in a terminal, wiring up some
-pipeline, and an idea pops into your head: <em>“I should really automate that
-database migration.”</em> Or maybe <em>“What if the cron job just emailed the digest
-instead?”</em> By the time you finish what you’re doing, the thought is gone,
-replaced by whatever error message you’re now staring at.</p>
-]]></description>
-<content:encoded><![CDATA[<p>You know the feeling. You’re three levels deep in a terminal, wiring up some
-pipeline, and an idea pops into your head: <em>“I should really automate that
-database migration.”</em> Or maybe <em>“What if the cron job just emailed the digest
-instead?”</em> By the time you finish what you’re doing, the thought is gone,
-replaced by whatever error message you’re now staring at.</p>
-<p><strong><a href="https://github.com/ninepointlabs/ideas">Ideas on GitHub</a></strong> is the
-smallest possible answer to that problem. It’s a single Go binary that appends
-numbered ideas to a markdown file. No database, no daemon, no web UI. Just
-<code>idea "your thought here"</code> and you’re back to work.</p>
-<h2 id="how-it-works">How it works</h2>
-<pre class="highlight"><code class="language-sh"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">idea</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> <span class="hl-string hl-quoted hl-double hl-shell"><span class="hl-punctuation hl-definition hl-string hl-begin hl-shell">&quot;</span>Add retry logic to the API client<span class="hl-punctuation hl-definition hl-string hl-end hl-shell">&quot;</span></span></span>
-<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">idea</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> <span class="hl-string hl-quoted hl-double hl-shell"><span class="hl-punctuation hl-definition hl-string hl-begin hl-shell">&quot;</span>Switch the blog to folderblog instead of Hugo<span class="hl-punctuation hl-definition hl-string hl-end hl-shell">&quot;</span></span></span>
-<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">idea</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> <span class="hl-string hl-quoted hl-double hl-shell"><span class="hl-punctuation hl-definition hl-string hl-begin hl-shell">&quot;</span>Write a cron job that posts a daily project highlight<span class="hl-punctuation hl-definition hl-string hl-end hl-shell">&quot;</span></span></span>
-</span></code></pre>
-<p>Each one gets the next number. When you want to see them:</p>
-<pre class="highlight"><code class="language-sh"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">idea</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"><span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> -</span>l</span></span>
-</span></code></pre>
-<p>And when you’ve actually done the thing, or decided it was a terrible idea
-after all:</p>
-<pre class="highlight"><code class="language-sh"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">idea</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"><span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> -</span>r</span> 2         <span class="hl-comment hl-line hl-number-sign hl-shell"><span class="hl-punctuation hl-definition hl-comment hl-begin hl-shell">#</span></span><span class="hl-comment hl-line hl-number-sign hl-shell"> remove idea 2</span><span class="hl-comment hl-line hl-number-sign hl-shell">
-</span></span><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">idea</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"><span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> -</span>r</span> 1-3       <span class="hl-comment hl-line hl-number-sign hl-shell"><span class="hl-punctuation hl-definition hl-comment hl-begin hl-shell">#</span></span><span class="hl-comment hl-line hl-number-sign hl-shell"> remove ideas 1 through 3</span><span class="hl-comment hl-line hl-number-sign hl-shell">
-</span></span><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">idea</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"><span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> -</span>r</span> 1,5,9     <span class="hl-comment hl-line hl-number-sign hl-shell"><span class="hl-punctuation hl-definition hl-comment hl-begin hl-shell">#</span></span><span class="hl-comment hl-line hl-number-sign hl-shell"> remove specific ones</span><span class="hl-comment hl-line hl-number-sign hl-shell">
-</span></span></span></code></pre>
-<p>After removal, the remaining ideas renumber themselves from 1. It’s all
-atomic, too: if any number in your range is invalid, nothing gets removed.
-No half-done cleanups.</p>
-<h2 id="why-its-great">Why it’s great</h2>
-<p>It’s written in Go with zero dependencies beyond the standard library. The
-binary is small, the build is instant, and the storage format is just a
-markdown file under a <code># Ideas</code> heading in <code>~/Documents/Ideas/ideas.md</code>. You
-can point it anywhere with <code>IDEAS_FILE</code> if you want per-project idea files.
-There’s nothing to break, nothing to upgrade, and nothing to regret installing.</p>
-<p>Sometimes the best tool is the one that does exactly one thing and then gets
-out of your way. Ideas doesn’t try to be Notion. It doesn’t try to organize,
-categorize, prioritize, or remind. It just writes down the thing you thought
-of so you can get back to the thing you were doing.</p>
-<h2 id="install">Install</h2>
-<pre class="highlight"><code class="language-sh"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">git</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> clone https://github.com/ninepointlabs/ideas.git</span>
-<span class="hl-meta hl-function-call hl-shell"><span class="hl-support hl-function hl-cd hl-shell">cd</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> ideas</span>
-<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">make</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> build</span>
-<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">sudo</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> make install</span>
-</span></code></pre>
-<p>That’s it. <code>idea</code> lands in <code>/usr/local/bin</code> and you’re ready to stop losing
-thoughts to the void.</p>
-<p>Grab it at <strong><a href="https://github.com/ninepointlabs/ideas">github.com/ninepointlabs/ideas</a></strong> and give your stray thoughts a home.</p>
 ]]></content:encoded>
 </item>
 </channel>
