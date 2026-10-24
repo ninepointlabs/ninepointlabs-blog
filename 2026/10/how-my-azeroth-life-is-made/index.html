@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How My Azeroth Life is made: from a WoW addon to a podcast · The Word from Nine Point Labs</title>
+
+
+
+<meta name="description" content="I play World of Warcraft most evenings, and for the last few weeks the game has been keeping a blog about it. Now that blog has a podcast too. My Azeroth Life tells the stories of my characters, and the My Azeroth Life podcast turns those stories into narrated episodes with music and sound effects…">
+<link rel="canonical" href="https://blog.ninepointlabs.com/2026/10/how-my-azeroth-life-is-made/">
+<meta property="og:site_name" content="The Word from Nine Point Labs">
+<meta property="og:title" content="How My Azeroth Life is made: from a WoW addon to a podcast">
+<meta property="og:description" content="I play World of Warcraft most evenings, and for the last few weeks the game has been keeping a blog about it. Now that blog has a podcast too. My Azeroth Life tells the stories of my characters, and the My Azeroth Life podcast turns those stories into narrated episodes with music and sound effects…">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.ninepointlabs.com/2026/10/how-my-azeroth-life-is-made/">
+<meta property="og:image" content="https://blog.ninepointlabs.com/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Nine Point Labs: small, clear tools for Linux. The blog.">
+<meta property="article:published_time" content="2026-10-23T00:00:00-05:00">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@ninepointlabs">
+<meta name="theme-color" content="#0f6b6e">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/assets/style.css">
+<link rel="stylesheet" href="/assets/highlight.css">
+<link rel="alternate" type="application/rss+xml" title="The Word from Nine Point Labs" href="/feed.xml">
+
+<script>window.goatcounter={path:function(p){return location.host+p}}</script>
+<script data-goatcounter="https://goatcounter-production-af4b.up.railway.app/count" async src="https://goatcounter-production-af4b.up.railway.app/count.js"></script>
+</head>
+
+<body>
+<header class="site-header">
+  <a class="lab" href="https://ninepointlabs.com/">
+    <picture>
+      <source srcset="/assets/npl-mark-on-dark.svg" media="(prefers-color-scheme: dark)">
+      <img src="/assets/npl-mark.svg" alt="" width="19" height="28">
+    </picture>
+    <span>Nine Point Labs</span>
+  </a>
+  <div class="masthead">
+    <a class="site-title" href="/">The Word from Nine Point Labs</a>
+    <nav>
+      
+      
+      <a href="/archive/">Archive</a>
+      <a href="/feed.xml">RSS</a>
+    </nav>
+  </div>
+</header>
+<div class="layout">
+<main>
+
+<article class="post">
+  <header>
+    <h1>How My Azeroth Life is made: from a WoW addon to a podcast</h1>
+    <p class="meta">
+      <time datetime="2026-10-23T00:00:00-05:00">October 23, 2026</time>
+      · 7 min read
+    </p>
+  </header>
+  <div class="content">
+    <p>I play World of Warcraft most evenings, and for the last few weeks the game has been keeping a blog about it. Now that blog has a podcast too. <a href="https://myazerothlife.com/">My Azeroth Life</a> tells the stories of my characters, and <a href="https://myazerothlife.com/podcast/">the My Azeroth Life podcast</a> turns those stories into narrated episodes with music and sound effects. Both are published by <a href="https://folderblog.ninepointlabs.com">folderblog</a>, the small blog engine I make here at Nine Point Labs.</p>
+<p>I want to be upfront about one thing: AI does the writing and the narration. What makes it mine is that every story starts from something I actually did in the game, and I read every post and listen to every episode before it goes live. Here is how the pieces fit together.</p>
+<h2 id="the-short-version">The short version</h2>
+<pre><code>World of Warcraft, with the StoryTracker addon
+    |  log out or /reload: the addon saves its notes
+    v
+Companion script: one file of new events per character
+    |  every morning
+    v
+AI writes a draft post in the Chronicler&#39;s voice  -&gt;  drafts/
+    |  I read it and move it to posts/
+    v
+folderblog publishes it to myazerothlife.com
+    |
+    v
+Claude writes a script, ElevenLabs voices it, ffmpeg mixes it
+    |  I listen, then say yes
+    v
+folderblog publishes the episode: audio on Cloudflare R2, a podcast feed
+</code></pre>
+<h2 id="step-1-an-addon-that-takes-notes-while-i-play">Step 1: An addon that takes notes while I play</h2>
+<p>It starts with StoryTracker, a WoW addon I wrote. It listens for game events and keeps a record of each session: quests accepted and turned in, zones and subzones, levels gained, deaths (where, and what did it), rare and better loot, reputation changes, dungeon bosses, profession skill-ups, gold earned and spent, notable kills, groups and guilds, and when I logged in and out.</p>
+<p>WoW only lets an addon write to disk when you log out or type <code>/reload</code>, so the notes land in the addon’s saved file at the end of a session. There is a version for each game, and both are free on GitHub: <a href="https://github.com/ninepointlabs/wow-storytracker-addon">StoryTracker for WoW Forever</a> and <a href="https://github.com/ninepointlabs/wow-storytracker-addon-retail">StoryTracker for Retail</a>.</p>
+<h2 id="step-2-from-game-data-to-a-story">Step 2: From game data to a story</h2>
+<p>A small companion script reads that saved file, compares it with what it has already seen, and writes one JSON file per character with only the new events. It also notes which game the character is in, based on which WoW folder the file came from, so Retail and Forever never get mixed up.</p>
+<p>Every morning a scheduled job looks for those files. When it finds one, an AI agent reads the events along with a voice guide and writes a post as the Chronicler: a weathered scribe who has followed adventurers across Azeroth for decades. The guide asks for a little elevation when a moment earns it, a little grit when something goes wrong, and a dry smirk the rest of the time. One of its rules is to turn game events into world events, so a level-up reads less like a number going up and more like a character getting tougher after surviving things that should have killed them.</p>
+<p>The draft is saved into the blog’s <code>drafts/</code> folder, tagged with the game version, the character and their class. Then I read it, all of it. If it is right, I move it into <code>posts/</code>, and that is the whole publishing step.</p>
+<h2 id="step-3-folderblog-puts-it-online">Step 3: folderblog puts it online</h2>
+<p>folderblog runs quietly in the background and watches <code>~/Blogs</code>, where every folder is its own blog. Moving the file into <code>posts/</code> is enough. A few seconds later the post is built and live on GitHub Pages at myazerothlife.com, with no commit and no deploy command.</p>
+<p>These are the folderblog features the blog leans on:</p>
+<ul>
+<li><strong>Plain Markdown files.</strong> The title comes from the first heading and the date from the filename, so a post only needs a line of tags at the top.</li>
+<li><strong>Drafts.</strong> Anything in <code>drafts/</code> shows up in <code>folderblog preview</code> on my own machine and never on the live site.</li>
+<li><strong>Tags</strong>, with a page for each one, so you can read only Burrly’s posts or only Laotou’s.</li>
+<li><strong>A custom theme.</strong> A folderblog theme is just templates, and every blog comes with an <code>AGENTS.md</code> that explains them to coding agents. The parchment look on My Azeroth Life was mostly built by Claude from that file.</li>
+<li><strong>Safe builds.</strong> Every build happens in a fresh folder and only replaces the live site if everything worked, so a mistake never takes the site down.</li>
+<li><strong><code>folderblog check</code></strong>, which finds template errors, broken links and feed problems before readers do.</li>
+<li><strong>Cookie-free page counts</strong> with GoatCounter, switched on with two lines in <code>blog.toml</code>.</li>
+</ul>
+<h2 id="step-4-turning-posts-into-episodes">Step 4: Turning posts into episodes</h2>
+<p>Once there are enough posts, Claude Code on my workstation turns them into an audio episode. It writes a script from the posts, split into chapters, with notes for the background ambience, the sound effects, and how each line should be performed.</p>
+<p>Each character gets their own narrator, made with ElevenLabs voice design and then kept for good. Laotou, a Pandaren monk and healer, is told by an elderly lorewalker over a pot of tea, slow and wry. Burrly, a Kul Tiran warrior, is told by an old sea captain in a Boralus tavern, faster and louder, because most of his story is him running at things. Once a character has a narrator, that voice stays theirs.</p>
+<p>The rest of the work goes like this:</p>
+<ul>
+<li><strong>Narration</strong> uses the ElevenLabs eleven_v3 model, one paragraph at a time. It acts out small direction tags like <code>[intense]</code> or <code>[dryly]</code> instead of reading them aloud. Names it gets wrong are respelled only in the text sent to the voice, so “Laotou” goes in as “Lau-toe” and the script keeps the real spelling.</li>
+<li><strong>Music</strong> comes from ElevenLabs Music: a theme for each show and background beds that change with the scene, with a battle bed for the fights.</li>
+<li><strong>Sound effects and ambience</strong> come from ElevenLabs Sound Effects: a gong between Laotou’s chapters, a ship’s bell and war drum between Burrly’s, plus sword clashes, war horns and the noise of a busy tavern.</li>
+<li><strong>Mixing</strong> is done with ffmpeg. The music and ambience dip under the voice, the effects sit in the gaps, the whole thing is brought to a normal podcast loudness, and chapter markers are embedded in the MP3.</li>
+<li><strong>Checking.</strong> Every clip is run back through speech-to-text and compared with the script, so a missing line or a made-up one gets caught. Then I listen to the finished episode myself.</li>
+</ul>
+<p>Every piece of music and every effect is saved to a shared library and reused, so each one is only paid for once.</p>
+<h2 id="step-5-folderblog-publishes-the-podcast">Step 5: folderblog publishes the podcast</h2>
+<p>The podcast is part of the same blog folder. <code>folderblog podcast on</code> added a <code>podcast/</code> folder, and each episode is a folder inside it with its show notes, the MP3 and a chapters file. From that, folderblog builds:</p>
+<ul>
+<li><strong>A show page</strong> at <a href="https://myazerothlife.com/podcast/">/podcast/</a> with a Subscribe box, and <strong>episode pages</strong> with a player and clickable chapters.</li>
+<li><strong>Its own feed</strong> at <a href="https://myazerothlife.com/podcast/feed.xml">myazerothlife.com/podcast/feed.xml</a>, separate from the blog’s feed, with the iTunes and Podcasting 2.0 tags podcast apps look for: a permanent show ID, chapters, people, and an optional Lightning address for tips.</li>
+<li><strong>Audio on Cloudflare R2.</strong> The MP3s never go into git or the website itself. <code>folderblog podcast setup</code> walked me through connecting R2 once. When an episode is published, folderblog uploads the audio first, checks that it is really online, and only then updates the site and feed, so the feed never points at a missing file.</li>
+<li><strong>Drafts.</strong> An episode starts as a draft that is never uploaded. I listen to it, and only after I say yes is it published.</li>
+</ul>
+<p>folderblog also has an MCP server, so an agent can set up a draft episode, write its notes and chapters, check it, and publish it only after you say yes.</p>
+<h2 id="whats-next">What’s next</h2>
+<p>From here on there is one show a week for each game. The Retail show comes out on Sunday nights. The Forever show comes out on Monday nights, starting after WoW Forever launches on November 4. Both go in the same feed, tagged by game, and each covers every character who had an adventure that week, with a short transition between them. If nobody played that version, there is simply no show that week.</p>
+<h2 id="have-a-listen">Have a listen</h2>
+<ul>
+<li><a href="https://myazerothlife.com/podcast/the-chronicle-of-laotou/">Episode 1: The Chronicle of Laotou</a>, 23 minutes in 5 chapters</li>
+<li><a href="https://myazerothlife.com/podcast/the-chronicle-of-burrly/">Episode 2: The Chronicle of Burrly</a>, 26 minutes in 8 chapters</li>
+<li>The feed for your podcast app: <code>https://myazerothlife.com/podcast/feed.xml</code></li>
+</ul>
+<p>If you have a folder of writing that you’d like to turn into a blog, or a blog that you’d like to turn into a podcast, <a href="https://folderblog.ninepointlabs.com">folderblog</a> is free and runs on Linux. And if you listen to an episode, I’d love to hear what you think.</p>
+
+  </div>
+  <footer>
+    
+<p class="tags"><a href="/tags/folderblog/">#folderblog</a> <a href="/tags/podcasting/">#podcasting</a> <a href="/tags/my-azeroth-life/">#My Azeroth Life</a> <a href="/tags/world-of-warcraft/">#World of Warcraft</a> <a href="/tags/elevenlabs/">#ElevenLabs</a> <a href="/tags/ai/">#AI</a> <a href="/tags/blogging/">#blogging</a></p>
+
+    <nav class="neighbours">
+      <a rel="next" href="/2026/10/folderblog-0-2-7/">← folderblog 0.2.7: Your blog can be a podcast now</a>
+      <a rel="prev" href="/2026/10/local-relay-on-the-pc/">A relay on your own PC: thinking out loud about FIPS and local sync →</a>
+    </nav>
+  </footer>
+</article>
+
+</main>
+
+</div>
+<footer class="site-footer">
+  <nav class="elsewhere" aria-label="Elsewhere">
+    <a href="https://ninepointlabs.com/" aria-label="Nine Point Labs" title="Nine Point Labs">
+      <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3" y="0" width="10" height="2"/><rect x="3" y="3" width="3" height="3"/><rect x="10" y="3" width="3" height="3"/><rect x="3" y="7" width="10" height="2"/><rect x="10" y="10" width="3" height="3"/><rect x="3" y="14" width="10" height="2"/></svg>
+    </a>
+    <a href="/feed.xml" aria-label="RSS feed" title="RSS feed">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9zM6.18 15.64a2.18 2.18 0 1 0 0 4.36 2.18 2.18 0 0 0 0-4.36z"/></svg>
+    </a>
+    <a href="mailto:hello@ninepointlabs.com" aria-label="Email hello@ninepointlabs.com" title="Email hello@ninepointlabs.com">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 4h20a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 2.4V18h20V6.4l-10 6.6L2 6.4zM3.6 6 12 11.5 20.4 6H3.6z"/></svg>
+    </a>
+    <a href="https://github.com/ninepointlabs" aria-label="GitHub" title="GitHub">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.930 0-1.310.465-2.380 1.235-3.220-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.230.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.230 3.285-1.230.645 1.653.24 2.873.12 3.176.765.84 1.23 1.910 1.23 3.220 0 4.610-2.805 5.625-5.475 5.920.42.36.81 1.096.81 2.220 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+    </a>
+    <a href="https://www.youtube.com/@ninepointlabs" aria-label="YouTube" title="YouTube">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.930 24 12 24 12s0-3.930-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+    </a>
+    <a href="https://x.com/ninepointlabs" aria-label="X" title="X">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.330l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.560h3.182l5.965 8.532.929 1.329 7.754 11.090h-3.182z"/></svg>
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=61595697743409" aria-label="Facebook" title="Facebook">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg>
+    </a>
+    <a href="https://njump.me/npub13hyx3qsqk3r7ctjqrr49uskut4yqjsxt8uvu4rekr55p08wyhf0qq90nt7" aria-label="Nostr" title="Nostr">
+      <svg viewBox="44 40 176 176" aria-hidden="true" focusable="false"><path d="M210.8 199.4c0 3.1-2.5 5.7-5.7 5.7h-68c-3.1 0-5.7-2.5-5.7-5.7v-15.5c.3-19 2.3-37.2 6.5-45.5 2.5-5 6.7-7.7 11.5-9.1 9.1-2.7 24.9-.9 31.7-1.2 0 0 20.4.8 20.4-10.7s-9.1-8.6-9.1-8.6c-10 .3-17.7-.4-22.6-2.4-8.3-3.3-8.6-9.2-8.6-11.2-.4-23.1-34.5-25.9-64.5-20.1-32.8 6.2.4 53.3.4 116.1v8.4c0 3.1-2.6 5.6-5.7 5.6H57.7c-3.1 0-5.7-2.5-5.7-5.7v-144c0-3.1 2.5-5.7 5.7-5.7h31.7c3.1 0 5.7 2.5 5.7 5.7 0 4.7 5.2 7.2 9 4.5 11.4-8.2 26-12.5 42.4-12.5 36.6 0 64.4 21.4 64.4 68.7v83.2ZM150 99.3c0-6.7-5.4-12.1-12.1-12.1s-12.1 5.4-12.1 12.1 5.4 12.1 12.1 12.1S150 106 150 99.3Z"/></svg>
+    </a>
+  </nav>
+  <p>Tim · A <a href="https://ninepointlabs.com/">Nine Point Labs</a> blog, built in Whitehouse, Texas.</p>
+</footer>
+</body>
+</html>

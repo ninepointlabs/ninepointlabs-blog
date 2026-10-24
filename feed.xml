@@ -57,6 +57,92 @@
 ]]></content:encoded>
 </item>
 <item>
+<title>How My Azeroth Life is made: from a WoW addon to a podcast</title>
+<link>https://blog.ninepointlabs.com/2026/10/how-my-azeroth-life-is-made/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/how-my-azeroth-life-is-made/</guid>
+<pubDate>Fri, 23 Oct 2026 00:00:00 -0500</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>folderblog</category>
+<category>podcasting</category>
+<category>My Azeroth Life</category>
+<category>World of Warcraft</category>
+<category>ElevenLabs</category>
+<category>AI</category>
+<category>blogging</category>
+<description><![CDATA[<p>I play World of Warcraft most evenings, and for the last few weeks the game has been keeping a blog about it. Now that blog has a podcast too. <a href="https://myazerothlife.com/">My Azeroth Life</a> tells the stories of my characters, and <a href="https://myazerothlife.com/podcast/">the My Azeroth Life podcast</a> turns those stories into narrated episodes with music and sound effects. Both are published by <a href="https://folderblog.ninepointlabs.com">folderblog</a>, the small blog engine I make here at Nine Point Labs.</p>
+]]></description>
+<content:encoded><![CDATA[<p>I play World of Warcraft most evenings, and for the last few weeks the game has been keeping a blog about it. Now that blog has a podcast too. <a href="https://myazerothlife.com/">My Azeroth Life</a> tells the stories of my characters, and <a href="https://myazerothlife.com/podcast/">the My Azeroth Life podcast</a> turns those stories into narrated episodes with music and sound effects. Both are published by <a href="https://folderblog.ninepointlabs.com">folderblog</a>, the small blog engine I make here at Nine Point Labs.</p>
+<p>I want to be upfront about one thing: AI does the writing and the narration. What makes it mine is that every story starts from something I actually did in the game, and I read every post and listen to every episode before it goes live. Here is how the pieces fit together.</p>
+<h2 id="the-short-version">The short version</h2>
+<pre><code>World of Warcraft, with the StoryTracker addon
+    |  log out or /reload: the addon saves its notes
+    v
+Companion script: one file of new events per character
+    |  every morning
+    v
+AI writes a draft post in the Chronicler&#39;s voice  -&gt;  drafts/
+    |  I read it and move it to posts/
+    v
+folderblog publishes it to myazerothlife.com
+    |
+    v
+Claude writes a script, ElevenLabs voices it, ffmpeg mixes it
+    |  I listen, then say yes
+    v
+folderblog publishes the episode: audio on Cloudflare R2, a podcast feed
+</code></pre>
+<h2 id="step-1-an-addon-that-takes-notes-while-i-play">Step 1: An addon that takes notes while I play</h2>
+<p>It starts with StoryTracker, a WoW addon I wrote. It listens for game events and keeps a record of each session: quests accepted and turned in, zones and subzones, levels gained, deaths (where, and what did it), rare and better loot, reputation changes, dungeon bosses, profession skill-ups, gold earned and spent, notable kills, groups and guilds, and when I logged in and out.</p>
+<p>WoW only lets an addon write to disk when you log out or type <code>/reload</code>, so the notes land in the addon’s saved file at the end of a session. There is a version for each game, and both are free on GitHub: <a href="https://github.com/ninepointlabs/wow-storytracker-addon">StoryTracker for WoW Forever</a> and <a href="https://github.com/ninepointlabs/wow-storytracker-addon-retail">StoryTracker for Retail</a>.</p>
+<h2 id="step-2-from-game-data-to-a-story">Step 2: From game data to a story</h2>
+<p>A small companion script reads that saved file, compares it with what it has already seen, and writes one JSON file per character with only the new events. It also notes which game the character is in, based on which WoW folder the file came from, so Retail and Forever never get mixed up.</p>
+<p>Every morning a scheduled job looks for those files. When it finds one, an AI agent reads the events along with a voice guide and writes a post as the Chronicler: a weathered scribe who has followed adventurers across Azeroth for decades. The guide asks for a little elevation when a moment earns it, a little grit when something goes wrong, and a dry smirk the rest of the time. One of its rules is to turn game events into world events, so a level-up reads less like a number going up and more like a character getting tougher after surviving things that should have killed them.</p>
+<p>The draft is saved into the blog’s <code>drafts/</code> folder, tagged with the game version, the character and their class. Then I read it, all of it. If it is right, I move it into <code>posts/</code>, and that is the whole publishing step.</p>
+<h2 id="step-3-folderblog-puts-it-online">Step 3: folderblog puts it online</h2>
+<p>folderblog runs quietly in the background and watches <code>~/Blogs</code>, where every folder is its own blog. Moving the file into <code>posts/</code> is enough. A few seconds later the post is built and live on GitHub Pages at myazerothlife.com, with no commit and no deploy command.</p>
+<p>These are the folderblog features the blog leans on:</p>
+<ul>
+<li><strong>Plain Markdown files.</strong> The title comes from the first heading and the date from the filename, so a post only needs a line of tags at the top.</li>
+<li><strong>Drafts.</strong> Anything in <code>drafts/</code> shows up in <code>folderblog preview</code> on my own machine and never on the live site.</li>
+<li><strong>Tags</strong>, with a page for each one, so you can read only Burrly’s posts or only Laotou’s.</li>
+<li><strong>A custom theme.</strong> A folderblog theme is just templates, and every blog comes with an <code>AGENTS.md</code> that explains them to coding agents. The parchment look on My Azeroth Life was mostly built by Claude from that file.</li>
+<li><strong>Safe builds.</strong> Every build happens in a fresh folder and only replaces the live site if everything worked, so a mistake never takes the site down.</li>
+<li><strong><code>folderblog check</code></strong>, which finds template errors, broken links and feed problems before readers do.</li>
+<li><strong>Cookie-free page counts</strong> with GoatCounter, switched on with two lines in <code>blog.toml</code>.</li>
+</ul>
+<h2 id="step-4-turning-posts-into-episodes">Step 4: Turning posts into episodes</h2>
+<p>Once there are enough posts, Claude Code on my workstation turns them into an audio episode. It writes a script from the posts, split into chapters, with notes for the background ambience, the sound effects, and how each line should be performed.</p>
+<p>Each character gets their own narrator, made with ElevenLabs voice design and then kept for good. Laotou, a Pandaren monk and healer, is told by an elderly lorewalker over a pot of tea, slow and wry. Burrly, a Kul Tiran warrior, is told by an old sea captain in a Boralus tavern, faster and louder, because most of his story is him running at things. Once a character has a narrator, that voice stays theirs.</p>
+<p>The rest of the work goes like this:</p>
+<ul>
+<li><strong>Narration</strong> uses the ElevenLabs eleven_v3 model, one paragraph at a time. It acts out small direction tags like <code>[intense]</code> or <code>[dryly]</code> instead of reading them aloud. Names it gets wrong are respelled only in the text sent to the voice, so “Laotou” goes in as “Lau-toe” and the script keeps the real spelling.</li>
+<li><strong>Music</strong> comes from ElevenLabs Music: a theme for each show and background beds that change with the scene, with a battle bed for the fights.</li>
+<li><strong>Sound effects and ambience</strong> come from ElevenLabs Sound Effects: a gong between Laotou’s chapters, a ship’s bell and war drum between Burrly’s, plus sword clashes, war horns and the noise of a busy tavern.</li>
+<li><strong>Mixing</strong> is done with ffmpeg. The music and ambience dip under the voice, the effects sit in the gaps, the whole thing is brought to a normal podcast loudness, and chapter markers are embedded in the MP3.</li>
+<li><strong>Checking.</strong> Every clip is run back through speech-to-text and compared with the script, so a missing line or a made-up one gets caught. Then I listen to the finished episode myself.</li>
+</ul>
+<p>Every piece of music and every effect is saved to a shared library and reused, so each one is only paid for once.</p>
+<h2 id="step-5-folderblog-publishes-the-podcast">Step 5: folderblog publishes the podcast</h2>
+<p>The podcast is part of the same blog folder. <code>folderblog podcast on</code> added a <code>podcast/</code> folder, and each episode is a folder inside it with its show notes, the MP3 and a chapters file. From that, folderblog builds:</p>
+<ul>
+<li><strong>A show page</strong> at <a href="https://myazerothlife.com/podcast/">/podcast/</a> with a Subscribe box, and <strong>episode pages</strong> with a player and clickable chapters.</li>
+<li><strong>Its own feed</strong> at <a href="https://myazerothlife.com/podcast/feed.xml">myazerothlife.com/podcast/feed.xml</a>, separate from the blog’s feed, with the iTunes and Podcasting 2.0 tags podcast apps look for: a permanent show ID, chapters, people, and an optional Lightning address for tips.</li>
+<li><strong>Audio on Cloudflare R2.</strong> The MP3s never go into git or the website itself. <code>folderblog podcast setup</code> walked me through connecting R2 once. When an episode is published, folderblog uploads the audio first, checks that it is really online, and only then updates the site and feed, so the feed never points at a missing file.</li>
+<li><strong>Drafts.</strong> An episode starts as a draft that is never uploaded. I listen to it, and only after I say yes is it published.</li>
+</ul>
+<p>folderblog also has an MCP server, so an agent can set up a draft episode, write its notes and chapters, check it, and publish it only after you say yes.</p>
+<h2 id="whats-next">What’s next</h2>
+<p>From here on there is one show a week for each game. The Retail show comes out on Sunday nights. The Forever show comes out on Monday nights, starting after WoW Forever launches on November 4. Both go in the same feed, tagged by game, and each covers every character who had an adventure that week, with a short transition between them. If nobody played that version, there is simply no show that week.</p>
+<h2 id="have-a-listen">Have a listen</h2>
+<ul>
+<li><a href="https://myazerothlife.com/podcast/the-chronicle-of-laotou/">Episode 1: The Chronicle of Laotou</a>, 23 minutes in 5 chapters</li>
+<li><a href="https://myazerothlife.com/podcast/the-chronicle-of-burrly/">Episode 2: The Chronicle of Burrly</a>, 26 minutes in 8 chapters</li>
+<li>The feed for your podcast app: <code>https://myazerothlife.com/podcast/feed.xml</code></li>
+</ul>
+<p>If you have a folder of writing that you’d like to turn into a blog, or a blog that you’d like to turn into a podcast, <a href="https://folderblog.ninepointlabs.com">folderblog</a> is free and runs on Linux. And if you listen to an episode, I’d love to hear what you think.</p>
+]]></content:encoded>
+</item>
+<item>
 <title>A relay on your own PC: thinking out loud about FIPS and local sync</title>
 <link>https://blog.ninepointlabs.com/2026/10/local-relay-on-the-pc/</link>
 <guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/local-relay-on-the-pc/</guid>
@@ -762,41 +848,6 @@ goatcounter = &quot;https://you.goatcounter.com&quot;
 <p>That’s it. One <code>omarchy update</code> now refreshes your system packages <em>and</em> whatever you’re tracking through Autonomix, no separate step to remember.</p>
 <p><strong><a href="https://github.com/ninepointlabs/autonomix-cli">Autonomix CLI on GitHub →</a></strong></p>
 <p>Grab the latest release, or if you’re already on it, <code>go build</code> and you’re there. If you haven’t tried Autonomix at all yet, the <a href="https://blog.ninepointlabs.com/2026/10/autonomix-cli/">first post</a> has the full rundown.</p>
-]]></content:encoded>
-</item>
-<item>
-<title>Jubako: Microsoft Access, Without the Hard Parts</title>
-<link>https://blog.ninepointlabs.com/2026/10/jubako/</link>
-<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/jubako/</guid>
-<pubDate>Sun, 11 Oct 2026 00:00:00 -0500</pubDate>
-<dc:creator>Tim</dc:creator>
-<category>Jubako</category>
-<category>Omarchy</category>
-<category>Linux</category>
-<category>Database</category>
-<category>CLI</category>
-<category>MCP</category>
-<category>agents</category>
-<description><![CDATA[<p>You know that moment when you open a folder and find <code>budget_FINAL_v3.xlsx</code>, <code>budget_FINAL_v3 (1).csv</code>, and <code>budget REAL FINAL.xlsx</code> all staring back at you? Spreadsheets are great until they aren’t – until you need to ask “which customers haven’t paid yet” and you’re doing mental gymnastics with filters and color-coded cells.</p>
-]]></description>
-<content:encoded><![CDATA[<p>You know that moment when you open a folder and find <code>budget_FINAL_v3.xlsx</code>, <code>budget_FINAL_v3 (1).csv</code>, and <code>budget REAL FINAL.xlsx</code> all staring back at you? Spreadsheets are great until they aren’t – until you need to ask “which customers haven’t paid yet” and you’re doing mental gymnastics with filters and color-coded cells.</p>
-<p><strong><a href="https://github.com/ninepointlabs/jubako">Jubako on GitHub</a></strong> | <strong><a href="https://jubako.ninepointlabs.com">jubako.ninepointlabs.com</a></strong></p>
-<p>Jubako (pronounced <em>joo-bah-koh</em>, named after the stacked Japanese lunch boxes) is a simple desktop database for Omarchy Linux. One file, several tables, no SQL required. Think of it as the spirit of old-school Microsoft Access, reimagined for people who would rather get things done than learn a query language.</p>
-<p><img src="https://raw.githubusercontent.com/ninepointlabs/jubako/main/docs/screenshots/grid.webp" alt="The orders table of a demo bike-shop database in the Jubako grid" width="1600" height="960" decoding="async"></p>
-<h2 id="drop-a-spreadsheet-get-a-database">Drop a Spreadsheet, Get a Database</h2>
-<p>The killer feature is the import. Drag a CSV or Excel file onto the window and Jubako figures out what each column is – words, whole numbers, decimals, dates, yes/no values. It shows you its best guesses before writing anything, so you can correct a column that got tagged as “words” when it’s really a date column. A multi-sheet workbook becomes one table per sheet. No ceremony, no setup.</p>
-<p>Once your data is in, you can browse it as a grid, type row-by-row in a form, filter with rules like “Status is not Delivered AND Total over 100,” and save those filters as named views. Need to print? The report designer gives you a live preview, groups rows with subtotals, and exports to PDF. Your spreadsheet just grew up.</p>
-<p><img src="https://raw.githubusercontent.com/ninepointlabs/jubako/main/docs/screenshots/form.webp" alt="One order in an arranged form" width="1600" height="960" loading="lazy" decoding="async"></p>
-<h2 id="your-ai-agent-can-drive-it-too">Your AI Agent Can Drive It Too</h2>
-<p>Jubako ships with an MCP server, which means Claude Code (or any MCP-capable agent) can do everything the app can do. “Take this spreadsheet and make me a database” works as a natural-language command. The tools cover the full surface: create databases, import spreadsheets, list and filter rows, add and update records, design reports, export to CSV or Excel or PDF. Twenty-seven tools in total, all over stdio.</p>
-<p>Safety is taken seriously: file paths are checked against approved folders, spreadsheet formulas are never executed, server passwords are never saved, and destructive operations ask first.</p>
-<p><img src="https://raw.githubusercontent.com/ninepointlabs/jubako/main/docs/screenshots/report.webp" alt="The report designer: bike sales grouped by rep, with a total per rep" width="1600" height="960" loading="lazy" decoding="async"></p>
-<h2 id="under-the-hood">Under the Hood</h2>
-<p>Jubako is a Qt Quick desktop app with a Python core. By default your database is a single SQLite file (<code>.jubadb</code>) in your Documents folder – copy it, back it up, email it. If you already run PostgreSQL or MySQL, you can point Jubako at that instead. The app follows your Omarchy theme, light or dark, and changes with it when you switch.</p>
-<p><img src="https://raw.githubusercontent.com/ninepointlabs/jubako/main/docs/screenshots/light.webp" alt="The grid in a light Omarchy theme" width="1600" height="960" loading="lazy" decoding="async"></p>
-<p>Installation is one command on Arch/Omarchy, Debian, or Fedora – packages are on the <a href="https://github.com/ninepointlabs/jubako/releases">releases page</a>. Or clone the repo and run from source. It’s MIT-licensed and actively developed, with a growing test suite that covers type guessing, path safety, CSV and Excel import/export, reports, and the MCP server.</p>
-<p>If your spreadsheets have been quietly running your life, Jubako is a clean upgrade. Same data, less chaos, and a lunch box metaphor you didn’t know you needed.</p>
-<p><a href="https://github.com/ninepointlabs/jubako">Jubako on GitHub</a></p>
 ]]></content:encoded>
 </item>
 </channel>
