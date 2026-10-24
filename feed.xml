@@ -7,7 +7,42 @@
 <language>en</language>
 <atom:link href="https://blog.ninepointlabs.com/feed.xml" rel="self" type="application/rss+xml"/>
 <generator>folderblog 0.2.7</generator>
-<lastBuildDate>Fri, 23 Oct 2026 00:00:00 -0500</lastBuildDate>
+<lastBuildDate>Sat, 24 Oct 2026 00:00:00 -0500</lastBuildDate>
+<item>
+<title>folderblog 0.2.8: Podcast setup that works on real R2, and a Subscribe box</title>
+<link>https://blog.ninepointlabs.com/2026/10/folderblog-0-2-8/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/folderblog-0-2-8/</guid>
+<pubDate>Sat, 24 Oct 2026 00:00:00 -0500</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>folderblog</category>
+<category>Linux</category>
+<category>Rust</category>
+<category>podcasting</category>
+<category>Cloudflare R2</category>
+<category>static-site</category>
+<category>blogging</category>
+<description><![CDATA[<p><a href="https://folderblog.ninepointlabs.com">folderblog</a> 0.2.8 is a small fix release on top of <a href="https://blog.ninepointlabs.com/2026/10/folderblog-0-2-7/">yesterday’s 0.2.7</a>, the one that turned a blog folder into a podcast. If you tried <code>folderblog podcast setup</code> and it stopped at the “find it again” step, this is the release you want.</p>
+]]></description>
+<content:encoded><![CDATA[<p><a href="https://folderblog.ninepointlabs.com">folderblog</a> 0.2.8 is a small fix release on top of <a href="https://blog.ninepointlabs.com/2026/10/folderblog-0-2-7/">yesterday’s 0.2.7</a>, the one that turned a blog folder into a podcast. If you tried <code>folderblog podcast setup</code> and it stopped at the “find it again” step, this is the release you want.</p>
+<h2 id="podcast-setup-works-with-real-cloudflare-r2">Podcast setup works with real Cloudflare R2</h2>
+<p>After setup uploads a small test file, it checks that the file can be found again. On real Cloudflare R2 that check failed even though the upload had worked. R2 compresses some files on the way out, and when it does, its reply leaves out the file size, so folderblog read the missing size as a missing file.</p>
+<p>folderblog now asks R2 for uncompressed replies, so the size comes back. If a reply still has no size, any successful answer counts as “the file is there”, and the size is only compared when R2 sends one. The same fix applies when a deploy checks whether an episode’s audio is already uploaded, so a working upload isn’t treated as missing. The tests now use a fake R2 that compresses the way the real one does, which is how this slipped through before.</p>
+<p>This is the fix that got the first real show on folderblog running. <a href="https://myazerothlife.com/podcast/">My Azeroth Life</a> was set up with it, and <a href="https://blog.ninepointlabs.com/2026/10/how-my-azeroth-life-is-made/">the story of how that show is made</a> is here on the blog.</p>
+<h2 id="easier-to-subscribe">Easier to subscribe</h2>
+<ul>
+<li><strong>The podcast feed has its own title.</strong> When the show and the blog share a name, the podcast feed is now called “<em>Your Blog</em> (Podcast)”, so feed readers and browsers can tell it apart from the blog feed.</li>
+<li><strong>A Subscribe box on the show page.</strong> The podcast page that <code>folderblog podcast on</code> sets up now has a Subscribe section near the top, with the full feed address ready to select and paste into a podcast app. It’s plain CSS that uses your theme’s colors, with no JavaScript.</li>
+</ul>
+<h2 id="grab-it">Grab it</h2>
+<table><thead><tr><th>System</th><th>Command</th></tr></thead><tbody>
+<tr><td>Arch / Omarchy</td><td><code>sudo pacman -U folderblog-bin-0.2.8-1-x86_64.pkg.tar.zst</code></td></tr>
+<tr><td>Debian / Ubuntu</td><td><code>sudo apt install ./folderblog_0.2.8-1_amd64.deb</code></td></tr>
+<tr><td>Fedora / RHEL / openSUSE</td><td><code>sudo dnf install ./folderblog-0.2.8-1.x86_64.rpm</code></td></tr>
+<tr><td>autonomix-cli</td><td><code>autonomix-cli add https://github.com/ninepointlabs/folderblog</code></td></tr>
+</tbody></table>
+<p>Already installed? Install the new package, then run <code>systemctl --user restart folderblog</code>. The packages and a plain tarball are on the <a href="https://github.com/ninepointlabs/folderblog/releases/tag/v0.2.8">v0.2.8 release</a>, and the source is <a href="https://github.com/ninepointlabs/folderblog">on GitHub</a>.</p>
+]]></content:encoded>
+</item>
 <item>
 <title>folderblog 0.2.7: Your blog can be a podcast now</title>
 <link>https://blog.ninepointlabs.com/2026/10/folderblog-0-2-7/</link>
@@ -816,38 +851,6 @@ goatcounter = &quot;https://you.goatcounter.com&quot;
 <p>So that settled it for me: if ODF is ever going to get real traction, and if we actually want to see the world move away from a single-vendor format as the default assumption, somebody has to stop treating DOCX as equal. Every tool that makes DOCX the comfortable default, even a little, is one more vote for the status quo. Rune is my vote the other way. ODF is home. DOCX is a well-supported guest, not a roommate.</p>
 <p>The “well-supported” part matters, because I’m not interested in making DOCX support bad out of principle. Nobody wins if opening a .docx in Rune mangles someone’s formatting. So on the backend, DOCX import and export runs through the LibreOffice engine. LibreOffice has put in literally decades of work getting that conversion right, through every quirky OOXML edge case Microsoft has shipped over the years. There’s no reason for me to reinvent that wheel badly when I can lean on work that’s already excellent. Rune gets to stay focused on being a genuinely good ODF-native editor, and the DOCX bridge gets to be solid because someone else already paid the tuition for that problem.</p>
 <p>That’s the shape of it: ODF by default, DOCX by door, LibreOffice doing the heavy lifting at the threshold. If you want to see where Rune is headed, <a href="https://rune.ninepointlabs.com">rune.ninepointlabs.com</a> has more.</p>
-]]></content:encoded>
-</item>
-<item>
-<title>Autonomix Now Plugs Straight Into the Omarchy Updater</title>
-<link>https://blog.ninepointlabs.com/2026/10/autonomix-omarchy-updater/</link>
-<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/autonomix-omarchy-updater/</guid>
-<pubDate>Sun, 11 Oct 2026 00:00:00 -0500</pubDate>
-<dc:creator>Tim</dc:creator>
-<category>AutonomixCLI</category>
-<category>Omarchy</category>
-<category>Linux</category>
-<category>CLI</category>
-<category>Go</category>
-<description><![CDATA[<p>Remember <a href="https://github.com/ninepointlabs/autonomix-cli">Autonomix CLI</a>, the terminal tool that tracks your GitHub Releases apps? It had one nagging flaw: it wouldn’t update anything unless you remembered to open it and ask. Which, if you’re like most people, is never.</p>
-]]></description>
-<content:encoded><![CDATA[<p>Remember <a href="https://github.com/ninepointlabs/autonomix-cli">Autonomix CLI</a>, the terminal tool that tracks your GitHub Releases apps? It had one nagging flaw: it wouldn’t update anything unless you remembered to open it and ask. Which, if you’re like most people, is never.</p>
-<p>That’s fixed now. Autonomix just picked up a real <code>check</code> and <code>update</code> command, and on Omarchy it hooks straight into the system updater, so your GitHub-sourced apps get refreshed in the same breath as everything else.</p>
-<h2 id="whats-new">What’s new</h2>
-<ul>
-<li><strong><code>autonomix-cli check</code></strong> lists every tracked app with an update available, no TUI required.</li>
-<li><strong><code>autonomix-cli update [-y]</code></strong> installs those updates non-interactively, the <code>-y</code> flag skips the confirmation prompt entirely.</li>
-<li>It only touches apps installed through your actual package manager (dpkg, rpm, pacman). Anything living as a loose binary on <code>PATH</code>, or managed through Flatpak/Snap, gets reported and left alone, because blindly overwriting those is how you break things.</li>
-<li><code>--version</code> and <code>--help</code> now behave like every other CLI instead of falling through to the TUI.</li>
-<li>Set <code>GITHUB_TOKEN</code> (or <code>GH_TOKEN</code>) if you’re tracking enough repos to hit GitHub’s 60-requests-an-hour API limit; it bumps you to 5,000.</li>
-</ul>
-<h2 id="the-omarchy-part">The Omarchy part</h2>
-<p>This is the fun bit. Drop the included hook into Omarchy’s update pipeline and Autonomix updates ride along for free every time you run <code>omarchy update</code>:</p>
-<pre class="highlight"><code class="language-bash"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">install</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"><span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> -</span>m755</span> contrib/omarchy/autonomix.hook <span class="hl-meta hl-group hl-expansion hl-tilde"><span class="hl-variable hl-language hl-tilde hl-shell">~</span></span>/.config/omarchy/hooks/post-update.d/autonomix.hook</span>
-</span></code></pre>
-<p>That’s it. One <code>omarchy update</code> now refreshes your system packages <em>and</em> whatever you’re tracking through Autonomix, no separate step to remember.</p>
-<p><strong><a href="https://github.com/ninepointlabs/autonomix-cli">Autonomix CLI on GitHub →</a></strong></p>
-<p>Grab the latest release, or if you’re already on it, <code>go build</code> and you’re there. If you haven’t tried Autonomix at all yet, the <a href="https://blog.ninepointlabs.com/2026/10/autonomix-cli/">first post</a> has the full rundown.</p>
 ]]></content:encoded>
 </item>
 </channel>
