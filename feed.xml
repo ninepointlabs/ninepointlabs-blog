@@ -6,7 +6,7 @@
 <description>Release notes and build logs from Nine Point Labs: small, clear tools for Linux.</description>
 <language>en</language>
 <atom:link href="https://blog.ninepointlabs.com/feed.xml" rel="self" type="application/rss+xml"/>
-<generator>folderblog 0.2.7</generator>
+<generator>folderblog 0.2.9</generator>
 <lastBuildDate>Sat, 24 Oct 2026 00:00:00 -0500</lastBuildDate>
 <item>
 <title>folderblog 0.2.8: Podcast setup that works on real R2, and a Subscribe box</title>
