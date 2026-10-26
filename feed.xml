@@ -9,6 +9,80 @@
 <generator>folderblog 0.2.10</generator>
 <lastBuildDate>Mon, 26 Oct 2026 00:00:00 -0500</lastBuildDate>
 <item>
+<title>folderblog 0.2.10: podcast download stats with OP3</title>
+<link>https://blog.ninepointlabs.com/2026/10/folderblog-0-2-10/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/folderblog-0-2-10/</guid>
+<pubDate>Mon, 26 Oct 2026 00:00:00 -0500</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>folderblog</category>
+<category>podcasting</category>
+<category>Linux</category>
+<category>Rust</category>
+<category>static-site</category>
+<category>blogging</category>
+<description><![CDATA[<p><a href="https://folderblog.ninepointlabs.com">folderblog</a> 0.2.10 adds one thing podcasters have been asking about: download numbers. If you publish a show with folderblog, you can now count how often your episodes are downloaded with <a href="https://op3.dev">OP3</a>, the free, open-source podcast stats service.</p>
+]]></description>
+<content:encoded><![CDATA[<p><a href="https://folderblog.ninepointlabs.com">folderblog</a> 0.2.10 adds one thing podcasters have been asking about: download numbers. If you publish a show with folderblog, you can now count how often your episodes are downloaded with <a href="https://op3.dev">OP3</a>, the free, open-source podcast stats service.</p>
+<h2 id="how-it-works">How it works</h2>
+<p>Add one line under <code>[podcast]</code> in <code>blog.toml</code>:</p>
+<pre class="highlight"><code class="language-toml">analytics_prefix = &quot;https://op3.dev/e/&quot;
+</code></pre>
+<p>Every episode in your feeds then goes through OP3 in the form OP3 documents, including your show’s guid so OP3 can attribute downloads sooner. There’s no account to create. After a few days, your public stats page is at <code>https://op3.dev/show/&lt;your podcast guid&gt;</code>.</p>
+<p>A few details:</p>
+<ul>
+<li><strong>It’s off by default.</strong> Existing feeds don’t change unless you add the line.</li>
+<li><strong>Only the feed changes.</strong> Uploads, the deploy’s size check and the player on your episode pages keep using your own address. That also means plays on your episode pages aren’t counted, only downloads from podcast apps.</li>
+<li><strong><code>folderblog podcast</code> tells you whether stats are on.</strong></li>
+<li><strong>Other prefix services work too,</strong> as long as the prefix starts with <code>https://</code> and ends in <code>/</code>.</li>
+</ul>
+<p>The <a href="https://myazerothlife.com/podcast/">My Azeroth Life podcast</a> is already running on it.</p>
+<h2 id="read-this-before-you-update">Read this before you update</h2>
+<ul>
+<li><strong><code>analytics_prefix</code> needs 0.2.10 or newer.</strong> Older versions refuse a <code>blog.toml</code> that has it, so update every machine that builds the blog first.</li>
+<li><strong>If you used the old, undocumented <code>op3 = true</code>:</strong> it now means the same thing, and your episode addresses gain <code>,pg=&lt;guid&gt;</code>. Podcast apps keep track of episodes by guid, so nothing gets downloaded twice.</li>
+</ul>
+<h2 id="grab-it">Grab it</h2>
+<table><thead><tr><th>System</th><th>Command</th></tr></thead><tbody>
+<tr><td>Arch / Omarchy</td><td><code>sudo pacman -U folderblog-bin-0.2.10-1-x86_64.pkg.tar.zst</code></td></tr>
+<tr><td>Debian / Ubuntu</td><td><code>sudo apt install ./folderblog_0.2.10-1_amd64.deb</code></td></tr>
+<tr><td>Fedora / RHEL / openSUSE</td><td><code>sudo dnf install ./folderblog-0.2.10-1.x86_64.rpm</code></td></tr>
+<tr><td>autonomix-cli</td><td><code>autonomix-cli add https://github.com/ninepointlabs/folderblog</code></td></tr>
+</tbody></table>
+<p>Already installed? Install the new package, then run <code>systemctl --user restart folderblog</code>. The packages and a plain tarball are on the <a href="https://github.com/ninepointlabs/folderblog/releases/tag/v0.2.10">v0.2.10 release</a>, and the source is <a href="https://github.com/ninepointlabs/folderblog">on GitHub</a>.</p>
+]]></content:encoded>
+</item>
+<item>
+<title>omaforge 0.2.7: ready for World of Warcraft: Forever</title>
+<link>https://blog.ninepointlabs.com/2026/10/omaforge-0-2-7/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/omaforge-0-2-7/</guid>
+<pubDate>Mon, 26 Oct 2026 00:00:00 -0500</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>Omaforge</category>
+<category>World of Warcraft</category>
+<category>Gaming</category>
+<category>Omarchy</category>
+<category>Linux</category>
+<description><![CDATA[<p><a href="https://omaforge.ninepointlabs.com/">omaforge</a> is the World of Warcraft addon manager for Linux and Omarchy. Version 0.2.7 gets it ready for World of Warcraft: Forever, which launches on November 4.</p>
+]]></description>
+<content:encoded><![CDATA[<p><a href="https://omaforge.ninepointlabs.com/">omaforge</a> is the World of Warcraft addon manager for Linux and Omarchy. Version 0.2.7 gets it ready for World of Warcraft: Forever, which launches on November 4.</p>
+<h2 id="whats-new">What’s new</h2>
+<p><strong>omaforge knows the Forever release client.</strong> Battle.net installs Forever in its own <code>_forever_</code> folder (product <code>wowf</code>). omaforge now lists that install as <strong>Forever</strong>, even before you’ve started the game for the first time and there’s no <code>Interface/AddOns</code> folder yet. If Battle.net hasn’t filled in a version, omaforge shows <code>not installed yet</code> instead of guessing. The first addon you install creates <code>Interface/AddOns</code> for you.</p>
+<p><strong>Pick it from the command line with <code>-c forever</code>.</strong> The beta client is still <code>-c classic_beta</code>.</p>
+<p><strong>Leftover beta folders get a proper name.</strong> If you played the beta, you may still have a <code>_classic_beta_</code> folder that Battle.net no longer lists. It now shows up as <strong>Forever Beta</strong> rather than an unknown game.</p>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>You can have your addons in place before launch day instead of waiting for the game to create its folders. Install Forever through Battle.net, open omaforge, and set it up the same way you already do for Retail.</p>
+<h2 id="get-it">Get it</h2>
+<ul>
+<li><strong>Arch / Omarchy:</strong> <code>sudo pacman -U omaforge-0.2.7-1-any.pkg.tar.zst</code>, then <code>omaforge setup omarchy</code></li>
+<li><strong>Debian 13+ / Ubuntu 26.04+:</strong> <code>sudo apt install ./omaforge_0.2.7-1_all.deb</code></li>
+<li><strong>Fedora:</strong> <code>sudo dnf install ./omaforge-0.2.7-1.noarch.rpm</code></li>
+<li><strong>Any other Linux:</strong> the AppImage, <code>chmod +x omaforge-0.2.7-x86_64.AppImage &amp;&amp; ./omaforge-0.2.7-x86_64.AppImage</code>. Add <code>--install-desktop-entry</code> to put it in your app menu.</li>
+<li><strong>With autonomix-cli:</strong> <code>autonomix-cli add https://github.com/ninepointlabs/omaforge</code></li>
+</ul>
+<p>The packages are on the <a href="https://github.com/ninepointlabs/omaforge/releases/tag/v0.2.7">v0.2.7 release</a>, and the source is <a href="https://github.com/ninepointlabs/omaforge">on GitHub</a>.</p>
+]]></content:encoded>
+</item>
+<item>
 <title>Persistwise: writing that outlasts the platform</title>
 <link>https://blog.ninepointlabs.com/2026/10/persistwise-launch/</link>
 <guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/persistwise-launch/</guid>
@@ -794,89 +868,6 @@ goatcounter = &quot;https://you.goatcounter.com&quot;
 </span><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">autonomix-cli</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> add https://github.com/ninepointlabs/fm-cli</span>
 </span></code></pre>
 <p>Or take a <code>.pkg.tar.zst</code>, <code>.deb</code>, <code>.rpm</code>, or tarball from the <a href="https://github.com/ninepointlabs/fm-cli/releases/tag/v0.3.5">v0.3.5 release</a>.</p>
-]]></content:encoded>
-</item>
-<item>
-<title>Rune 0.8: From ODF experiment to a word processor you can install</title>
-<link>https://blog.ninepointlabs.com/2026/10/rune-0-8/</link>
-<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/rune-0-8/</guid>
-<pubDate>Tue, 13 Oct 2026 00:00:00 -0500</pubDate>
-<dc:creator>Tim</dc:creator>
-<category>Rune</category>
-<category>ODF</category>
-<category>Word Processing</category>
-<category>Qt</category>
-<category>AI</category>
-<category>Writing</category>
-<description><![CDATA[<p>Yesterday’s <a href="https://github.com/ninepointlabs/rune">Rune</a> post was about a principle: ODF is home, DOCX is a guest. Since then Rune has gone from 0.2 to 0.8.4 in about two days, and it has stopped being an idea about formats and started being an app you can install and write a book in.</p>
-]]></description>
-<content:encoded><![CDATA[<p>Yesterday’s <a href="https://github.com/ninepointlabs/rune">Rune</a> post was about a principle: ODF is home, DOCX is a guest. Since then Rune has gone from 0.2 to 0.8.4 in about two days, and it has stopped being an idea about formats and started being an app you can install and write a book in.</p>
-<h2 id="install-it-like-a-real-app">Install it like a real app</h2>
-<p>Every <a href="https://github.com/ninepointlabs/rune/releases/latest">GitHub release</a> now ships packages for Arch/Omarchy, Debian 13 and Fedora 42, with a desktop entry. The easiest path keeps it updated for you:</p>
-<pre class="highlight"><code class="language-sh"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">autonomix-cli</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> add https://github.com/ninepointlabs/rune</span>
-</span></code></pre>
-<h2 id="the-everyday-editor-filled-in">The everyday editor filled in</h2>
-<ul>
-<li>A <strong>File menu</strong> with save-button states and autosave.</li>
-<li><strong>Font and text-color pickers</strong>, and a toolbar that fits any window: Table and alignment menus, with a <code>⋯</code> overflow for the rest.</li>
-<li>A <strong>Table menu</strong>: insert rows and columns, delete a table.</li>
-<li>A <strong>command palette</strong> on <code>Ctrl+K</code>.</li>
-<li><strong>Pages and margins</strong>: a real page view, Page setup, and paper size picked from your locale.</li>
-<li><strong>Headers and footers</strong> edited in place, with page number and page count fields that round-trip through both ODF and .docx.</li>
-</ul>
-<h2 id="rune-writes-its-own-odf-now">Rune writes its own ODF now</h2>
-<p>Rune used to lean on Qt’s document writer, and it kept losing things: headings saved as bold text, nested tables lost content, a table after a list could vanish. Rune now writes the whole <code>.odt</code> itself: real Heading 1–6 styles, links, lists that keep their numbering across interruptions, and tables with widths, borders, merged cells and nesting. If ODF is the home format, Rune has to be a good citizen of it, and now it is one.</p>
-<h2 id="tools-for-people-writing-long-things">Tools for people writing long things</h2>
-<p>0.8.3 added author tooling:</p>
-<ul>
-<li>Headings from the toolbar (<code>Ctrl+Alt+0</code>–<code>3</code>) and an <strong>outline sidebar</strong> with chapters, scenes and word counts. Drag a section to move it in one undo step.</li>
-<li><strong>Story notes</strong> saved inside the file.</li>
-<li><strong>Sources</strong> from a form, CSL-JSON or BibTeX, with <strong>citations</strong> (<code>Ctrl+Shift+C</code>) in APA 7, MLA 9, Chicago author-date or IEEE, and a bibliography that keeps up with every edit.</li>
-</ul>
-<p>Citations survive a trip through .docx. Word and LibreOffice see the text, and Rune finds the citations again when the file comes back.</p>
-<h2 id="ai-edits-that-dont-wreck-your-paragraphs">AI edits that don’t wreck your paragraphs</h2>
-<p>The AI can read your notes and sources, cite with <code>[@key]</code>, and add sources, which are marked unreviewed until you check them. 0.8.4 fixed a nasty one: models copied 80-column line wraps into their edits, and every wrap became a paragraph break. The context now goes out one paragraph per line, and slightly garbled quotes still match. The same edit came out clean in 15 of 15 live ChatGPT runs, where every run checked before had broken paragraphs.</p>
-<h2 id="see-it-first">See it first</h2>
-<p>The <a href="https://rune.ninepointlabs.com">site</a> now has screenshots, a narrated 1:47 demo recorded from the real app, and a seven-page how-to guide covering formatting, pages, the AI, writing a book, and citations. Under all of it are 487 automated checks.</p>
-<p>ODF by default still holds. The difference now is that Rune gives you a real reason to choose it.</p>
-]]></content:encoded>
-</item>
-<item>
-<title>Speakeasy 0.3: Your bots can start the tasks now</title>
-<link>https://blog.ninepointlabs.com/2026/10/speakeasy-mcp/</link>
-<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/speakeasy-mcp/</guid>
-<pubDate>Tue, 13 Oct 2026 00:00:00 -0500</pubDate>
-<dc:creator>Tim</dc:creator>
-<category>Speakeasy</category>
-<category>MCP</category>
-<category>Omarchy</category>
-<category>AI</category>
-<category>agents</category>
-<category>Claude Code</category>
-<category>Grok Bot</category>
-<description><![CDATA[<p><a href="https://github.com/ninepointlabs/speakeasy">Speakeasy</a> already kept coding agents in named, hidden terminals so you could see what was running without drowning in windows. As of 0.3, other programs can hand it work the same way you do from the bar.</p>
-]]></description>
-<content:encoded><![CDATA[<p><a href="https://github.com/ninepointlabs/speakeasy">Speakeasy</a> already kept coding agents in named, hidden terminals so you could see what was running without drowning in windows. As of 0.3, other programs can hand it work the same way you do from the bar.</p>
-<h2 id="an-mcp-server-on-stdio">An MCP server on stdio</h2>
-<p><code>speakeasy mcp</code> speaks the Model Context Protocol over standard input and output. No network port, no daemon to babysit. Point Claude Code, Grok Bot, Hermes, or any other MCP client at the binary and it gets four tools:</p>
-<ul>
-<li><code>list_agents</code> — which agents are installed and visible, with models and effort levels</li>
-<li><code>find_repo</code> — where a GitHub repo is checked out on this machine</li>
-<li><code>create_task</code> — start a task with title, description, agent, and optional model, effort, and repo or folder</li>
-<li><code>list_tasks</code> — what is already running, so a bot does not start a duplicate</li>
-</ul>
-<p>A bot watching your repos can pick Claude or Codex, write the brief, and park the job in the right local checkout. It shows up in your Speakeasy list like anything you started yourself. The client’s name is stored as the task’s <code>origin</code>, and Speakeasy leaves your new-task picker defaults alone.</p>
-<h2 id="approvals-stay-yours">Approvals stay yours</h2>
-<p>The MCP path deliberately cannot pass extra agent arguments, so a bot cannot flip permission prompts off. It also cannot peek at a task’s screen, type into it, or stop it. The agent still asks you before risky actions; you still answer.</p>
-<p><code>find_repo</code> strips credentials out of remote URLs before it reports them. Add the MCP server only to clients you trust, same as you would any tool that can start processes in your project folders.</p>
-<h2 id="titles-and-prompts-off-the-process-list">Titles and prompts off the process list</h2>
-<p>0.3.1 closes a quieter hole. The Omarchy panel used to put the task title and description on the <code>speakeasy new</code> command line, where any other user on the machine could read them with <code>ps</code>. They now go over stdin as one line of JSON (<code>--stdin-json</code>). The CLI already avoided stuffing prompts into argv for normal use; the panel catches up.</p>
-<h2 id="try-it">Try it</h2>
-<pre class="highlight"><code class="language-bash"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">speakeasy</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> mcp</span>
-<span class="hl-comment hl-line hl-number-sign hl-shell"><span class="hl-punctuation hl-definition hl-comment hl-begin hl-shell">#</span></span><span class="hl-comment hl-line hl-number-sign hl-shell"> or wire it into Claude Code:</span><span class="hl-comment hl-line hl-number-sign hl-shell">
-</span><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">claude</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> mcp add speakeasy<span class="hl-keyword hl-operator hl-end-of-options hl-shell"> --</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> <span class="hl-meta hl-group hl-expansion hl-tilde"><span class="hl-variable hl-language hl-tilde hl-shell">~</span></span>/.local/bin/speakeasy mcp</span>
-</span></code></pre>
-<p>Upgrade with your usual Omarchy plugin path, or pull <a href="https://github.com/ninepointlabs/speakeasy">ninepointlabs/speakeasy</a> and run <code>./install.sh</code>. If your workflow is “bot finds the problem, I approve the fix,” Speakeasy is now the handoff.</p>
 ]]></content:encoded>
 </item>
 </channel>
