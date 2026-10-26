@@ -83,6 +83,36 @@
 ]]></content:encoded>
 </item>
 <item>
+<title>omaforge 0.2.8: fixes from a full QA pass</title>
+<link>https://blog.ninepointlabs.com/2026/10/omaforge-0-2-8/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/omaforge-0-2-8/</guid>
+<pubDate>Mon, 26 Oct 2026 00:00:00 -0500</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>Omaforge</category>
+<category>World of Warcraft</category>
+<category>Gaming</category>
+<category>Omarchy</category>
+<category>Linux</category>
+<description><![CDATA[<p><a href="https://omaforge.ninepointlabs.com/">omaforge</a> is the World of Warcraft addon manager for Linux and Omarchy. Version 0.2.8 is a fixes release from a full QA pass, coming the same day as 0.2.7.</p>
+]]></description>
+<content:encoded><![CDATA[<p><a href="https://omaforge.ninepointlabs.com/">omaforge</a> is the World of Warcraft addon manager for Linux and Omarchy. Version 0.2.8 is a fixes release from a full QA pass, coming the same day as 0.2.7.</p>
+<h2 id="whats-fixed">What’s fixed</h2>
+<p><strong>Safer uninstall.</strong> <code>omaforge uninstall</code> now asks before removing an addon it can’t trace to a source, such as one you wrote yourself. Without a terminal it refuses unless you pass <code>--yes</code>.</p>
+<p><strong>Damaged files no longer crash omaforge or lose data.</strong> A broken <code>config.toml</code> or <code>flavors.toml</code> gives a one-line message naming the file and the problem, and omaforge never writes over it. In the app, a red banner names the file and offers Open file, Rescan, or setting it aside (it’s kept as <code>&lt;name&gt;.broken-&lt;time&gt;</code>). A damaged <code>state.json</code> is moved to <code>state.json.damaged-&lt;time&gt;</code> and a fresh one is started, with a warning in both the CLI and the app.</p>
+<p><strong>Fits half a screen.</strong> The window now goes down to 640 px wide. Below 1000 px the sidebar narrows, the tabs move under the title, and less-used actions (Import/Export, and each addon’s channel, Pin, Ignore and Remove) move into a <code>⋯</code> menu. Alt+↑ and Alt+↓ switch between game versions.</p>
+<p><strong>Clearer messages.</strong> An unknown addon id, an AddOns folder omaforge can’t write to, an unknown root or provider, and an empty GitHub search now say what went wrong in plain words. CurseForge versions no longer show up as <code>1.0.1.zip</code> or offer an update that isn’t there, <code>check</code> lists each addon it couldn’t check and why, and Wago says plainly that it isn’t supported yet.</p>
+<h2 id="get-it">Get it</h2>
+<ul>
+<li><strong>Arch / Omarchy:</strong> <code>sudo pacman -U omaforge-0.2.8-1-any.pkg.tar.zst</code>, then <code>omaforge setup omarchy</code></li>
+<li><strong>Debian 13+ / Ubuntu 26.04+:</strong> <code>sudo apt install ./omaforge_0.2.8-1_all.deb</code></li>
+<li><strong>Fedora:</strong> <code>sudo dnf install ./omaforge-0.2.8-1.noarch.rpm</code></li>
+<li><strong>Any other Linux:</strong> the AppImage, <code>chmod +x omaforge-0.2.8-x86_64.AppImage &amp;&amp; ./omaforge-0.2.8-x86_64.AppImage</code>. Add <code>--install-desktop-entry</code> to put it in your app menu.</li>
+<li><strong>With autonomix-cli:</strong> <code>autonomix-cli add https://github.com/ninepointlabs/omaforge</code></li>
+</ul>
+<p>The packages are on the <a href="https://github.com/ninepointlabs/omaforge/releases/tag/v0.2.8">v0.2.8 release</a>, and the source is <a href="https://github.com/ninepointlabs/omaforge">on GitHub</a>.</p>
+]]></content:encoded>
+</item>
+<item>
 <title>Persistwise: writing that outlasts the platform</title>
 <link>https://blog.ninepointlabs.com/2026/10/persistwise-launch/</link>
 <guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/persistwise-launch/</guid>
@@ -825,49 +855,6 @@ goatcounter = &quot;https://you.goatcounter.com&quot;
 </span><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">autonomix-cli</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> update</span>
 </span></code></pre>
 <p>Packages for Arch, Debian/Ubuntu, and Fedora are on the <a href="https://github.com/ninepointlabs/autonomix-cli/releases/tag/v0.4.1">v0.4.1 release</a>. If you are still on the October 11 updater post, this is the next chapter: same list of apps, now reachable from the bar.</p>
-]]></content:encoded>
-</item>
-<item>
-<title>fm-cli 0.3.5: Pick your From, and calendar that finds you</title>
-<link>https://blog.ninepointlabs.com/2026/10/fm-cli-0-3-5/</link>
-<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/fm-cli-0-3-5/</guid>
-<pubDate>Wed, 14 Oct 2026 00:00:00 -0500</pubDate>
-<dc:creator>Tim</dc:creator>
-<category>fm-cli</category>
-<category>CLI</category>
-<category>Fastmail</category>
-<category>Go</category>
-<category>TUI</category>
-<category>email</category>
-<category>CalDAV</category>
-<description><![CDATA[<p><a href="https://github.com/ninepointlabs/fm-cli">fm-cli</a> already lived in the terminal. Two small releases today, 0.3.4 and 0.3.5, fix the kind of sharp edges you only notice once you use a tool every day — and both came in with help from outside the house.</p>
-]]></description>
-<content:encoded><![CDATA[<p><a href="https://github.com/ninepointlabs/fm-cli">fm-cli</a> already lived in the terminal. Two small releases today, 0.3.4 and 0.3.5, fix the kind of sharp edges you only notice once you use a tool every day — and both came in with help from outside the house.</p>
-<h2 id="send-as-the-address-you-mean">Send as the address you mean</h2>
-<p>Fastmail’s web UI has a default identity, but <code>Identity/get</code> does not reorder itself around that choice. fm-cli always composed from <code>identities[0]</code>. That is fine if you have one address. It is wrong the moment you have a few.</p>
-<p>You can now set the default yourself:</p>
-<pre class="highlight"><code class="language-bash"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">fm-cli</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> settings from me@example.com</span>
-<span class="hl-comment hl-line hl-number-sign hl-shell"><span class="hl-punctuation hl-definition hl-comment hl-begin hl-shell">#</span></span><span class="hl-comment hl-line hl-number-sign hl-shell"> or for a one-off / script:</span><span class="hl-comment hl-line hl-number-sign hl-shell">
-</span><span class="hl-meta hl-function-call hl-shell"><span class="hl-storage hl-modifier hl-shell">export</span> <span class="hl-variable hl-other hl-readwrite hl-assignment hl-shell">FM_DEFAULT_FROM</span><span class="hl-keyword hl-operator hl-assignment hl-shell">=</span><span class="hl-string hl-unquoted hl-shell">me@example.com</span></span>
-</span></code></pre>
-<p>The address is matched case-insensitively against your identities. The environment wins over the stored setting; unset or unmatched falls back to the first identity. New composes in the TUI, drafts and sends with an empty From, and offline sends replayed by <code>fm-cli sync</code> all respect it. <code>Tab</code> still cycles the list in the order Fastmail returned.</p>
-<h2 id="ask-the-server-who-you-are-on-caldav">Ask the server who you are on CalDAV</h2>
-<p>Calendar and contacts setup guessed the principal path as <code>/dav/principals/user/&lt;login email&gt;/</code>. Cyrus folds dots in the local part to underscores (<code>noah.hopping</code> → <code>noah_hopping</code>), so those accounts got 404 “Mailbox does not exist” and never discovered a calendar home.</p>
-<p>0.3.5 roots both CalDAV and CardDAV clients at the DAV context URL and reads <code>current-user-principal</code> with a PROPFIND (RFC 6764 bootstrapping). The href the server returns drives home-set discovery. The PROPFIND is issued directly so the trailing slash on <code>/dav/</code> survives — go-webdav’s helper collapses it and Cyrus answers 405.</p>
-<p>If your login has a dot and calendar never came up, upgrade and try <code>fm-cli auth dav</code> again.</p>
-<h2 id="thanks">Thanks</h2>
-<p>Both fixes started with reports and patches from <a href="https://github.com/fsnoah">Noah Hopping</a> (@fsnoah). The From-identity work landed in <a href="https://github.com/ninepointlabs/fm-cli/pull/3">#3</a>; the principal discovery in <a href="https://github.com/ninepointlabs/fm-cli/pull/4">#4</a>. That is the kind of contribution that turns a personal tool into something other people can trust.</p>
-<h2 id="grab-it">Grab it</h2>
-<pre class="highlight"><code class="language-bash"><span class="hl-source hl-shell hl-bash"><span class="hl-comment hl-line hl-number-sign hl-shell"><span class="hl-punctuation hl-definition hl-comment hl-begin hl-shell">#</span></span><span class="hl-comment hl-line hl-number-sign hl-shell"> Omarchy</span><span class="hl-comment hl-line hl-number-sign hl-shell">
-</span><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">omarchy-mise-install</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> github:ninepointlabs/fm-cli fm-cli</span>
-
-<span class="hl-comment hl-line hl-number-sign hl-shell"><span class="hl-punctuation hl-definition hl-comment hl-begin hl-shell">#</span></span><span class="hl-comment hl-line hl-number-sign hl-shell"> mise</span><span class="hl-comment hl-line hl-number-sign hl-shell">
-</span><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">mise</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> use<span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> -</span>g</span> github:ninepointlabs/fm-cli@latest</span>
-
-<span class="hl-comment hl-line hl-number-sign hl-shell"><span class="hl-punctuation hl-definition hl-comment hl-begin hl-shell">#</span></span><span class="hl-comment hl-line hl-number-sign hl-shell"> autonomix-cli</span><span class="hl-comment hl-line hl-number-sign hl-shell">
-</span><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">autonomix-cli</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> add https://github.com/ninepointlabs/fm-cli</span>
-</span></code></pre>
-<p>Or take a <code>.pkg.tar.zst</code>, <code>.deb</code>, <code>.rpm</code>, or tarball from the <a href="https://github.com/ninepointlabs/fm-cli/releases/tag/v0.3.5">v0.3.5 release</a>.</p>
 ]]></content:encoded>
 </item>
 </channel>
