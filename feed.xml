@@ -7,7 +7,48 @@
 <language>en</language>
 <atom:link href="https://blog.ninepointlabs.com/feed.xml" rel="self" type="application/rss+xml"/>
 <generator>folderblog 0.2.10</generator>
-<lastBuildDate>Sat, 24 Oct 2026 00:00:00 -0500</lastBuildDate>
+<lastBuildDate>Mon, 26 Oct 2026 00:00:00 -0500</lastBuildDate>
+<item>
+<title>Persistwise: writing that outlasts the platform</title>
+<link>https://blog.ninepointlabs.com/2026/10/persistwise-launch/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/persistwise-launch/</guid>
+<pubDate>Mon, 26 Oct 2026 00:00:00 -0500</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>Persistwise</category>
+<category>Internet Archive</category>
+<category>IPFS</category>
+<category>RSS</category>
+<category>blogging</category>
+<description><![CDATA[<p>Keep writing wherever you already do. Persistwise watches your RSS feed and keeps three copies of every new post. 30 days free, no card needed.</p>
+]]></description>
+<content:encoded><![CDATA[<p>I have a bad habit with blogs. I start one somewhere that feels right, write for a while, then the platform changes, the export is a mess, and the old posts sit there like a burned CD nobody can play. Geocities. LiveJournal. A host that quietly folded. Same movie, different sequel.</p>
+<p>So I built <strong><a href="https://persistwise.com">Persistwise</a></strong>, and today I’d like to invite you to try it.</p>
+<p><strong><a href="https://persistwise.com">persistwise.com</a></strong> · <strong><a href="https://persistwise.com/registration/new">Start a free trial</a></strong></p>
+<!--more-->
+<h2 id="what-it-does">What it does</h2>
+<p>Persistwise is not another place to write. You keep blogging wherever you already do: HEY World, Substack, your own site, a newsletter, even a social feed. You give Persistwise the feed, and it does the quiet filing in the background.</p>
+<p>It checks your feeds every 15 minutes. When it finds a new post, it keeps three copies:</p>
+<ul>
+<li><strong>A Wayback Machine snapshot.</strong> Persistwise asks the Internet Archive to capture the post. That snapshot lives on archive.org, it’s public, and anyone can open it without Persistwise.</li>
+<li><strong>An IPFS pin.</strong> The saved copy is pinned through Pinata onto the public IPFS network, with a content ID that points at that exact copy of your post.</li>
+<li><strong>A saved copy we keep.</strong> The post’s HTML is stored on our own storage, so there is something to fall back on when an outside service is slow or down. Only you can open it.</li>
+</ul>
+<p>Your Archive page shows one line per post, with a link to each copy and a plain status for each one. If the Wayback Machine is busy, Persistwise waits and tries again later, so you don’t have to babysit anything.</p>
+<p>RSS, Atom and JSON Feed all work. The first check takes in every post your feed lists at that moment, then new posts get picked up as they appear.</p>
+<h2 id="why-i-wanted-it">Why I wanted it</h2>
+<p>Most of us don’t lose writing because we’re careless. We lose it because the web is a rental. The landlord changes the locks, the feed dies, the pretty URL turns into a 404. The Wayback Machine is wonderful, but it only saves what someone asks it to save. I wanted a boring, stubborn librarian whose only job is to ask every time.</p>
+<p>I also didn’t want to build another editor. I already have places I like to write, and so do you. The whole point is that you don’t have to move.</p>
+<h2 id="keep-30-days-free-then-40-a-year">Keep: 30 days free, then $40 a year</h2>
+<p>There is one plan, called Keep. It’s <strong>30 days free, then $40 a year</strong>, and you don’t need a card to start. Create an account, press “Start free trial,” and add your feed.</p>
+<p>About three days before the trial ends, we’ll email you if you haven’t added a card. If you decide not to keep going, Keep pauses and nothing is deleted. Your Archive page stays readable, and your Wayback snapshots and IPFS pins stay where they are. The Wayback snapshots are kept by the Internet Archive, not by us, so they don’t depend on Persistwise at all. We don’t delete people for leaving.</p>
+<p>A yearly price felt right for something meant to last. Longevity and a monthly habit you cancel in February don’t get along very well.</p>
+<h2 id="honest-notes">Honest notes</h2>
+<p>It’s early, and I’d rather tell you the edges up front. Each post is captured once, when Persistwise first sees it, so later edits aren’t saved. The copies are the page’s HTML only, without images or stylesheets, so they may look plainer than the original. There’s no export button yet. And Wayback and IPFS copies are public, so please only add feeds for writing you’re happy to keep public.</p>
+<h2 id="give-it-a-try">Give it a try</h2>
+<p>If you have a feed you care about, I’d be grateful if you’d let Persistwise keep it. Go to <strong><a href="https://persistwise.com">persistwise.com</a></strong>, read <a href="https://persistwise.com/how-it-works">how it works</a> if you’re curious, and <a href="https://persistwise.com/registration/new">start your free trial</a>. If anything doesn’t work the way you expect, please write to <a href="mailto:help@ninepointlabs.com">help@ninepointlabs.com</a>. I’d really like to hear from you.</p>
+<p>Thanks for reading. Now go write the next one, and let the librarian do the filing.</p>
+]]></content:encoded>
+</item>
 <item>
 <title>folderblog 0.2.8: Podcast setup that works on real R2, and a Subscribe box</title>
 <link>https://blog.ninepointlabs.com/2026/10/folderblog-0-2-8/</link>
@@ -836,45 +877,6 @@ goatcounter = &quot;https://you.goatcounter.com&quot;
 </span><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">claude</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> mcp add speakeasy<span class="hl-keyword hl-operator hl-end-of-options hl-shell"> --</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> <span class="hl-meta hl-group hl-expansion hl-tilde"><span class="hl-variable hl-language hl-tilde hl-shell">~</span></span>/.local/bin/speakeasy mcp</span>
 </span></code></pre>
 <p>Upgrade with your usual Omarchy plugin path, or pull <a href="https://github.com/ninepointlabs/speakeasy">ninepointlabs/speakeasy</a> and run <code>./install.sh</code>. If your workflow is “bot finds the problem, I approve the fix,” Speakeasy is now the handoff.</p>
-]]></content:encoded>
-</item>
-<item>
-<title>Kestrel: Post to X from Your Terminal (or Let Your AI Do It)</title>
-<link>https://blog.ninepointlabs.com/2026/10/kestrel/</link>
-<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/kestrel/</guid>
-<pubDate>Mon, 12 Oct 2026 00:00:00 -0500</pubDate>
-<dc:creator>Tim</dc:creator>
-<category>Kestrel</category>
-<category>X</category>
-<category>Twitter</category>
-<category>CLI</category>
-<category>MCP</category>
-<category>Rust</category>
-<category>AI</category>
-<description><![CDATA[<p>If you have ever wanted to fire off a tweet without leaving your terminal, or better yet, hand the keys to an AI agent and trust it not to burn through your X API budget, <a href="https://github.com/ninepointlabs/kestrel">Kestrel</a> has you covered.</p>
-]]></description>
-<content:encoded><![CDATA[<p>If you have ever wanted to fire off a tweet without leaving your terminal, or better yet, hand the keys to an AI agent and trust it not to burn through your X API budget, <a href="https://github.com/ninepointlabs/kestrel">Kestrel</a> has you covered.</p>
-<p>Kestrel is a Rust CLI that posts to X (Twitter) and doubles as an MCP server so AI agents can post through it. The killer feature: a hard daily post limit, shared between the CLI and the MCP server. Your agent might be chatty, but Kestrel knows when to say “that’s enough for today.”</p>
-<h2 id="two-modes-one-binary">Two modes, one binary</h2>
-<p>From the terminal, it is dead simple:</p>
-<pre class="highlight"><code class="language-sh"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">kestrel</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> post <span class="hl-string hl-quoted hl-double hl-shell"><span class="hl-punctuation hl-definition hl-string hl-begin hl-shell">&quot;</span>Hello world<span class="hl-punctuation hl-definition hl-string hl-end hl-shell">&quot;</span></span></span>
-<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">kestrel</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> post <span class="hl-string hl-quoted hl-double hl-shell"><span class="hl-punctuation hl-definition hl-string hl-begin hl-shell">&quot;</span>check this out<span class="hl-punctuation hl-definition hl-string hl-end hl-shell">&quot;</span></span><span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> --</span>image</span> ./photo.png</span>
-<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">kestrel</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> status         <span class="hl-comment hl-line hl-number-sign hl-shell"><span class="hl-punctuation hl-definition hl-comment hl-begin hl-shell">#</span></span><span class="hl-comment hl-line hl-number-sign hl-shell"> Posts today: 3/50 (6%)</span><span class="hl-comment hl-line hl-number-sign hl-shell">
-</span></span></span></code></pre>
-<p>Fire up the MCP server with <code>kestrel serve</code> and suddenly Claude Code, Claude Desktop, or Hermes can post on your behalf with exactly the same guardrails. No separate config, no backdoor. If the daily limit is hit, the MCP tool returns an error result instead of posting. Your credit card stays safe.</p>
-<h2 id="the-economics-of-x-posting-in-2026">The economics of X posting in 2026</h2>
-<p>Here is the part that makes Kestrel genuinely useful instead of just fun. Since February 2026, X’s API is pay-per-use with no free tier. Every post costs real money:</p>
-<ul>
-<li>Plain text tweet: $0.015</li>
-<li>Tweet with a URL: <strong>$0.200</strong> (yes, 13x more)</li>
-<li>Summoned reply: $0.010</li>
-</ul>
-<p>A link surcharge that steep means one careless agent posting URLs could run up a bill fast. Kestrel’s daily limit is your safety net. At 50 posts per day, plain text costs $22.50/month. With links mixed in at 30%, that jumps to $90/month. Kestrel makes sure you know exactly where you stand.</p>
-<h2 id="built-to-be-boring-in-the-best-way">Built to be boring (in the best way)</h2>
-<p>The config lives in <code>~/.config/kestrel/config.toml</code> with <code>0600</code> permissions. State is tracked in a tiny JSON file that resets at midnight local time. One binary, one config file, one state file. No daemon, no database, no cloud service. It works the same whether you type <code>kestrel post</code> or your AI agent does.</p>
-<p>The MCP server exposes exactly two tools: <code>kestrel_post</code> and <code>kestrel_status</code>. That is it. No read access, no timeline scraping, no DMs. Kestrel is built for one job and it does not overreach.</p>
-<h2 id="worth-a-look-if">Worth a look if</h2>
-<p>You post from the terminal, you run AI agents that need controlled X access, or you just appreciate a well-scoped Rust tool that respects your wallet. The <a href="https://github.com/ninepointlabs/kestrel">repo</a> has a clear README with pricing tables, troubleshooting guides for every HTTP error code, and a one-command install via <code>cargo install --path .</code>.</p>
 ]]></content:encoded>
 </item>
 </channel>
