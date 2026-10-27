@@ -7,7 +7,54 @@
 <language>en</language>
 <atom:link href="https://blog.ninepointlabs.com/feed.xml" rel="self" type="application/rss+xml"/>
 <generator>folderblog 0.2.10</generator>
-<lastBuildDate>Mon, 26 Oct 2026 00:00:00 -0500</lastBuildDate>
+<lastBuildDate>Tue, 27 Oct 2026 00:00:00 -0500</lastBuildDate>
+<item>
+<title>Omostrich 0.3.3: tighter signing grants and safer profile pictures</title>
+<link>https://blog.ninepointlabs.com/2026/10/omostrich-0-3-3/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/omostrich-0-3-3/</guid>
+<pubDate>Tue, 27 Oct 2026 00:00:00 -0500</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>omostrich</category>
+<category>Nostr</category>
+<category>Omarchy</category>
+<category>Security</category>
+<description><![CDATA[<p><a href="https://omostrich.com/">Omostrich</a> keeps your Nostr key on your own computer and signs for your apps from the Omarchy bar. Two releases landed this morning. Version 0.3.2 finishes the profile picture hardening that 0.3.1 started, and version 0.3.3 makes your signing permissions narrower and your approval prompts clearer, especially around direct messages.</p>
+]]></description>
+<content:encoded><![CDATA[<p><a href="https://omostrich.com/">Omostrich</a> keeps your Nostr key on your own computer and signs for your apps from the Omarchy bar. Two releases landed this morning. Version 0.3.2 finishes the profile picture hardening that 0.3.1 started, and version 0.3.3 makes your signing permissions narrower and your approval prompts clearer, especially around direct messages.</p>
+<h2 id="what-changed-in-0-3-3">What changed in 0.3.3</h2>
+<p><strong>“Always allow” now covers one kind of event, not everything.</strong> Before, remembering a signing request for an app meant that app could sign any kind of Nostr event without asking again. Now the button names the kind it covers, for example “Always allow sign kind 4 (DM)”, and Authorized apps lists each app’s grants kind by kind.</p>
+<p><strong>Encrypt and decrypt prompts show who’s on the other end.</strong> Each request shows the other person as a shortened npub (marked “(you)” when it’s yourself) and whether you’re encrypting to them or decrypting from them. Encrypt requests also show a short preview of the plain text. A kind 4 signing request shows its recipient, and DM ciphertext is no longer previewed. None of this goes into the log.</p>
+<p><strong>The signer keeps running when notifications can’t.</strong> If <code>notify-send</code> is missing or fails, Omostrich logs it once, with an error code only, and carries on instead of crashing.</p>
+<p><strong>Smaller fixes:</strong></p>
+<ul>
+<li>Signing requests for kind 14 and kind 1059 (private messages and gift wraps) show a warning and can only be approved once, never remembered.</li>
+<li>Your public key is handed out without a prompt only to an app that connected this session or that you’ve remembered. Anyone else gets asked.</li>
+<li>Gift-wrap notifications look back two days, and unlocking no longer sets off a burst of old ones.</li>
+</ul>
+<h2 id="what-changed-in-0-3-2">What changed in 0.3.2</h2>
+<p>0.3.1 put limits on how big your cached profile picture could be, but the file could still carry compressed metadata that expands while the image is being read. A small, hostile picture could push the panel to several gigabytes of memory. Now the daemon rewrites the downloaded picture down to just the parts needed to draw it, with no re-encoding and no new dependency:</p>
+<ul>
+<li><strong>PNG</strong> keeps only the image data and the colour chunks it needs. An unknown critical chunk is refused.</li>
+<li><strong>JPEG</strong> drops comments, EXIF, ICC, XMP and Photoshop data.</li>
+<li><strong>GIF</strong> keeps the first frame only.</li>
+<li><strong>WebP</strong> keeps the image data and drops everything else. Animated WebP is refused, so the placeholder shows.</li>
+</ul>
+<p>Anything after the end of the image is dropped too, and a picture cached by 0.3.1 is fetched again on startup, so the cache only ever holds the stripped copy. This came out of the Omarchy plugin marketplace review (<a href="https://github.com/omacom/omarchy-plugin-marketplace/issues/12494">#12494</a>).</p>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>Your signer should do exactly what you agreed to and nothing more. A blanket “always allow” was easy to click and hard to reason about later, and a DM prompt that doesn’t say who it’s for asks you to approve blind. Per-kind grants and clearer prompts mean you can see what each app is allowed to do and who your messages are going to.</p>
+<h2 id="upgrading">Upgrading</h2>
+<p>Old blanket signing grants meant “sign any kind”, and there’s no way to tell which kind you had in mind, so they’re <strong>removed the first time 0.3.3 starts</strong>. The app and its other grants stay, <code>daemon.log</code> names each affected app, and the app asks once more for each kind it needs.</p>
+<p>To update an existing install:</p>
+<pre class="highlight"><code class="language-bash"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-support hl-function hl-cd hl-shell">cd</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> <span class="hl-meta hl-group hl-expansion hl-tilde"><span class="hl-variable hl-language hl-tilde hl-shell">~</span></span>/Projects/omostrich</span>
+<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">git</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> pull</span>
+<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">npm</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> ci</span>
+<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">./install-daemon.sh</span></span>
+<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">./install-plugin.sh</span></span>
+<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">systemctl</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"><span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> --</span>user</span> restart omostrich</span>
+</span></code></pre>
+<p>The restart matters, because the running signer keeps the old code until it’s restarted. The full notes are on the <a href="https://github.com/ninepointlabs/omostrich/releases/tag/v0.3.2">0.3.2</a> and <a href="https://github.com/ninepointlabs/omostrich/releases/tag/v0.3.3">0.3.3</a> release pages, the code is on <a href="https://github.com/ninepointlabs/omostrich">GitHub</a>, and more about Omostrich is at <a href="https://omostrich.com/">omostrich.com</a>.</p>
+]]></content:encoded>
+</item>
 <item>
 <title>folderblog 0.2.10: podcast download stats with OP3</title>
 <link>https://blog.ninepointlabs.com/2026/10/folderblog-0-2-10/</link>
@@ -814,47 +861,6 @@ goatcounter = &quot;https://you.goatcounter.com&quot;
 </span><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">autonomix-cli</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> update</span>
 </span></code></pre>
 <p>Packages (<code>.deb</code>, <code>.rpm</code>, <code>.pkg.tar.zst</code>, AppImage) are on the <a href="https://github.com/ninepointlabs/bahai-reader/releases/tag/v0.1.2">v0.1.2 release</a>. This is still an independent community app; the texts keep their own attribution in <code>DATA-NOTICE.md</code>.</p>
-]]></content:encoded>
-</item>
-<item>
-<title>Autonomix 0.4: JSON for frontends, and a bar widget that uses it</title>
-<link>https://blog.ninepointlabs.com/2026/10/autonomix-0-4/</link>
-<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/autonomix-0-4/</guid>
-<pubDate>Wed, 14 Oct 2026 00:00:00 -0500</pubDate>
-<dc:creator>Tim</dc:creator>
-<category>autonomix-cli</category>
-<category>omarchy-autonomix</category>
-<category>Omarchy</category>
-<category>CLI</category>
-<category>Go</category>
-<category>Linux</category>
-<description><![CDATA[<p><a href="https://github.com/ninepointlabs/autonomix-cli">Autonomix CLI</a> already tracked your GitHub Releases apps from the terminal, and on Omarchy it could ride along with <code>omarchy update</code>. What it could not do was talk cleanly to another program. Today that changes: 0.4 ships a JSON surface for every command, and <a href="https://github.com/ninepointlabs/omarchy-autonomix">omarchy-autonomix</a> is the first bar widget built on top of it.</p>
-]]></description>
-<content:encoded><![CDATA[<p><a href="https://github.com/ninepointlabs/autonomix-cli">Autonomix CLI</a> already tracked your GitHub Releases apps from the terminal, and on Omarchy it could ride along with <code>omarchy update</code>. What it could not do was talk cleanly to another program. Today that changes: 0.4 ships a JSON surface for every command, and <a href="https://github.com/ninepointlabs/omarchy-autonomix">omarchy-autonomix</a> is the first bar widget built on top of it.</p>
-<h2 id="why-it-matters">Why it matters</h2>
-<p>GitHub-release apps live outside the Arch repos. You want a count on the bar, a panel to install or update, and a password dialog — not a second terminal ritual. The CLI stays the source of truth in <code>~/.autonomix/config.json</code>; the widget is just a frontend that speaks <code>--json</code>.</p>
-<h2 id="whats-new-in-autonomix-cli-0-4">What’s new in autonomix-cli 0.4</h2>
-<ul>
-<li><strong><code>--json</code> on every command.</strong> <code>add</code>, <code>list</code>, <code>check</code>, <code>update</code>, <code>install</code>, and <code>remove</code> print structured objects on stdout and keep progress on stderr. Errors come back as <code>{"error": "..."}</code> with exit code 1.</li>
-<li><strong><code>list</code></strong>, <strong><code>install &lt;app&gt;</code></strong>, and <strong><code>remove &lt;app&gt;</code></strong> for frontends that need to drive one app at a time. <code>remove</code> stops tracking; it does not uninstall.</li>
-<li><strong><code>check</code> and <code>update</code> take app names</strong> — by name, repo, <code>owner/repo</code>, or URL — so you are not forced to refresh everything.</li>
-<li><strong><code>add owner/repo</code></strong> works without pasting a full URL.</li>
-<li><strong>pkexec when there is no terminal</strong>, so a graphical frontend gets Omarchy’s polkit dialog instead of a silent sudo failure.</li>
-<li><strong>No surprise downgrades.</strong> Update detection now compares versions the way pacman does; only a newer release counts. The Omarchy post-update hook will not yank you backward.</li>
-</ul>
-<p>Grab <strong>0.4.1</strong>, not 0.4.0: the first 0.4 release mistook <code>/dev/null</code> for a terminal and reached for sudo from the bar. 0.4.1 asks the terminal driver properly, so installs from the widget get a password prompt.</p>
-<h2 id="the-new-omarchy-bar-widget">The new Omarchy bar widget</h2>
-<p><a href="https://github.com/ninepointlabs/omarchy-autonomix">omarchy-autonomix</a> is a Quickshell plugin: a package icon with an update count, and a panel that lists tracked apps, installs or updates them, and lets you track <code>owner/repo</code> or a GitHub URL without opening a terminal. Middle-click the icon to check GitHub now. It needs autonomix-cli 0.4+ at <code>/usr/bin</code> or <code>/usr/local/bin</code>.</p>
-<pre class="highlight"><code class="language-bash"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">git</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> clone https://github.com/ninepointlabs/omarchy-autonomix <span class="hl-meta hl-group hl-expansion hl-tilde"><span class="hl-variable hl-language hl-tilde hl-shell">~</span></span>/Projects/omarchy-autonomix</span>
-<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell"><span class="hl-meta hl-group hl-expansion hl-tilde"><span class="hl-variable hl-language hl-tilde hl-shell">~</span></span>/Projects/omarchy-autonomix/install.sh</span></span>
-<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">omarchy</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> plugin enable ninepointlabs.autonomix</span>
-</span></code></pre>
-<h2 id="grab-the-cli">Grab the CLI</h2>
-<pre class="highlight"><code class="language-bash"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">autonomix-cli</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> add https://github.com/ninepointlabs/autonomix-cli</span>
-<span class="hl-comment hl-line hl-number-sign hl-shell"><span class="hl-punctuation hl-definition hl-comment hl-begin hl-shell">#</span></span><span class="hl-comment hl-line hl-number-sign hl-shell"> or update if you already track it:</span><span class="hl-comment hl-line hl-number-sign hl-shell">
-</span><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">autonomix-cli</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> update</span>
-</span></code></pre>
-<p>Packages for Arch, Debian/Ubuntu, and Fedora are on the <a href="https://github.com/ninepointlabs/autonomix-cli/releases/tag/v0.4.1">v0.4.1 release</a>. If you are still on the October 11 updater post, this is the next chapter: same list of apps, now reachable from the bar.</p>
 ]]></content:encoded>
 </item>
 </channel>
