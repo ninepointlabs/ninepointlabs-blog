@@ -7,7 +7,51 @@
 <language>en</language>
 <atom:link href="https://blog.ninepointlabs.com/feed.xml" rel="self" type="application/rss+xml"/>
 <generator>folderblog 0.2.10</generator>
-<lastBuildDate>Tue, 27 Oct 2026 00:00:00 -0500</lastBuildDate>
+<lastBuildDate>Wed, 28 Oct 2026 00:00:00 -0500</lastBuildDate>
+<item>
+<title>StoryTracker takes its own screenshots now</title>
+<link>https://blog.ninepointlabs.com/2026/10/storytracker-auto-screenshots/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/storytracker-auto-screenshots/</guid>
+<pubDate>Wed, 28 Oct 2026 00:00:00 -0500</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>StoryTracker</category>
+<category>World of Warcraft</category>
+<category>Addons</category>
+<category>OmaForge</category>
+<description><![CDATA[<p><a href="https://ninepointlabs.com/#storytracker">StoryTracker</a> is the World of Warcraft addon that keeps a record of your character’s adventures: quests, zones, levels, deaths, bosses, loot and more. It comes in two versions, one for <a href="https://github.com/ninepointlabs/wow-storytracker-addon">WoW Forever</a> and one for <a href="https://github.com/ninepointlabs/wow-storytracker-addon-retail">Retail</a>. Yesterday’s releases (Forever 1.0.4 and 1.0.5, Retail 1.1.3 to 1.1.5) add automatic screenshots at the moments that make a good story, and make the addon easier to install with an addon manager.</p>
+]]></description>
+<content:encoded><![CDATA[<p><a href="https://ninepointlabs.com/#storytracker">StoryTracker</a> is the World of Warcraft addon that keeps a record of your character’s adventures: quests, zones, levels, deaths, bosses, loot and more. It comes in two versions, one for <a href="https://github.com/ninepointlabs/wow-storytracker-addon">WoW Forever</a> and one for <a href="https://github.com/ninepointlabs/wow-storytracker-addon-retail">Retail</a>. Yesterday’s releases (Forever 1.0.4 and 1.0.5, Retail 1.1.3 to 1.1.5) add automatic screenshots at the moments that make a good story, and make the addon easier to install with an addon manager.</p>
+<h2 id="screenshots-at-story-moments">Screenshots at story moments</h2>
+<p>StoryTracker now takes a screenshot about three quarters of a second after:</p>
+<ul>
+<li>a quest turn-in</li>
+<li>a level up</li>
+<li>an achievement (on Forever, only if the client fires the achievement event)</li>
+<li>a boss kill</li>
+<li>your first visit to a zone</li>
+<li>other story moments, such as entering a dungeon or battleground, a battleground result, rare or elite kills, a new mount, epic or better loot, duels, joining a guild, a reputation standing going up, and deaths</li>
+</ul>
+<p>There’s also an optional timed shot every 15 minutes, taken only when you’re out of combat, not on a loading screen and not AFK.</p>
+<p>It takes at most one shot every 20 seconds. When two moments land together, like a turn-in that also dings, the shot is labelled with the bigger one. If you turn on “hide UI”, the interface is hidden for the shot while you’re out of combat, and it’s never touched in combat.</p>
+<p>Each shot is logged in the addon’s saved data with its time, the file name WoW gives it, what happened, the zone and subzone, and your character’s name, realm and level. Log entries older than 30 days are dropped. Addons can’t delete files, so StoryTracker never removes screenshots itself; clean up the game’s <code>Screenshots</code> folder outside the game.</p>
+<h2 id="turning-it-on-and-off">Turning it on and off</h2>
+<p>Screenshots are on by default, and everything is under <code>/storytracker shots</code>:</p>
+<ul>
+<li><code>/storytracker shots on|off</code> turns automatic screenshots on or off.</li>
+<li><code>/storytracker shots &lt;event&gt; on|off</code> controls each kind: <code>quest</code>, <code>levelup</code>, <code>achievement</code>, <code>boss</code>, <code>newzone</code> and <code>story</code>.</li>
+<li><code>/storytracker shots timer on|off|&lt;minutes&gt;</code> sets the timed shot (1 to 120 minutes, 15 by default).</li>
+<li><code>/storytracker shots hideui on|off</code> hides the interface for out-of-combat shots (off by default).</li>
+<li><code>/storytracker shots log</code> shows the last few logged shots.</li>
+</ul>
+<h2 id="easier-installs-with-an-addon-manager">Easier installs with an addon manager</h2>
+<p>Each release is now built with the BigWigs packager and comes with a small <code>release.json</code> file that says which game it’s for. Addon managers such as <a href="https://omaforge.ninepointlabs.com/">OmaForge</a> use it to install the right StoryTracker for each client, so the Forever build goes to Forever and the Retail build goes to Retail. Installed copies also link back to their GitHub page now. Retail 1.1.5 updates the addon for the 12.1.5 client so it isn’t flagged as out of date.</p>
+<h2 id="why-it-matters">Why it matters</h2>
+<p>StoryTracker’s notes are what turn a play session into a post on <a href="https://myazerothlife.com/">My Azeroth Life</a>. Words were only half of it. Now each story moment comes with a picture taken right when it happened, and the log says exactly which shot goes with which moment, so a post can show the boss kill or the first look at a new zone instead of a stock image.</p>
+<h2 id="privacy">Privacy</h2>
+<p>Nothing changes here. StoryTracker has no network access, since WoW addons can’t use the internet. Screenshots are saved by WoW to its own <code>Screenshots</code> folder on your computer, and the log only records when and where each one was taken.</p>
+<p>Download the latest <a href="https://github.com/ninepointlabs/wow-storytracker-addon/releases">Forever release</a> or <a href="https://github.com/ninepointlabs/wow-storytracker-addon-retail/releases">Retail release</a>, or install it with OmaForge. The code is on GitHub for <a href="https://github.com/ninepointlabs/wow-storytracker-addon">Forever</a> and <a href="https://github.com/ninepointlabs/wow-storytracker-addon-retail">Retail</a>.</p>
+]]></content:encoded>
+</item>
 <item>
 <title>Omostrich 0.3.3: tighter signing grants and safer profile pictures</title>
 <link>https://blog.ninepointlabs.com/2026/10/omostrich-0-3-3/</link>
@@ -832,35 +876,6 @@ goatcounter = &quot;https://you.goatcounter.com&quot;
 <h2 id="honest-limits-and-privacy">Honest limits and privacy</h2>
 <p>This is a first release. Snapshot capture and <code>open-pr</code> are covered by mocked tests so far, the Internet Archive doesn’t publish its rate limits, and its availability API sometimes misses a snapshot that exists. A link that’s down for a GitHub runner can still be up for people, so read the report before you merge.</p>
 <p>There’s no telemetry and no Linkguard server. Only link URLs go to archive.org; your file contents never leave the runner. MIT licensed. Problems go in <a href="https://github.com/ninepointlabs/linkguard/issues">the issue tracker</a>.</p>
-]]></content:encoded>
-</item>
-<item>
-<title>Bahá’í Reader 0.1.2: Fedora starts clean, passages cite their source</title>
-<link>https://blog.ninepointlabs.com/2026/10/bahai-reader-0-1-2/</link>
-<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/bahai-reader-0-1-2/</guid>
-<pubDate>Thu, 15 Oct 2026 00:00:00 -0500</pubDate>
-<dc:creator>Tim</dc:creator>
-<category>bahai-reader</category>
-<category>Bahá’í</category>
-<category>Linux</category>
-<category>GTK</category>
-<category>Fedora</category>
-<category>Omarchy</category>
-<description><![CDATA[<p><a href="https://github.com/ninepointlabs/bahai-reader">Bahá’í Reader</a> already gave you offline English collections, downloadable prayer languages, and a GTK 4 window that follows your Omarchy theme. <strong>0.1.2</strong> is a small release with one hard fix and one reading improvement: the Fedora RPM starts again on a fresh install, and every passage ends with a citation.</p>
-]]></description>
-<content:encoded><![CDATA[<p><a href="https://github.com/ninepointlabs/bahai-reader">Bahá’í Reader</a> already gave you offline English collections, downloadable prayer languages, and a GTK 4 window that follows your Omarchy theme. <strong>0.1.2</strong> is a small release with one hard fix and one reading improvement: the Fedora RPM starts again on a fresh install, and every passage ends with a citation.</p>
-<h2 id="fedoras-cairo-typelib">Fedora’s cairo typelib</h2>
-<p>On an up-to-date Fedora 43, the v0.1.1 RPM failed at startup with <code>Typelib file for namespace 'cairo' not found</code>. Fedora’s <code>python3-gobject-base</code> update dropped its dependency on <code>gobject-introspection</code>, and that package is the one that ships <code>cairo-1.0.typelib</code>. Without it, <code>from gi.repository import Gtk</code> never gets off the ground.</p>
-<p>The RPM now depends on <code>gobject-introspection</code> directly. If you hit that error on Fedora, upgrade to 0.1.2 and reinstall; Arch and Debian packages were already fine.</p>
-<h2 id="passage-citations">Passage citations</h2>
-<p>Each passage now closes with an italic citation line. Prayers show the author (from the feed’s AuthorId). The Writings show author, book, and section or number — Hidden Words, the Aqdas, Some Answered Questions, Days of Remembrance, Riḍván messages, and the rest. The API does not publish page numbers, so those stay out.</p>
-<p>You can quote or save a passage without flipping back to the contents to remember which book you were in.</p>
-<h2 id="grab-it">Grab it</h2>
-<pre class="highlight"><code class="language-bash"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">autonomix-cli</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> add https://github.com/ninepointlabs/bahai-reader</span>
-<span class="hl-comment hl-line hl-number-sign hl-shell"><span class="hl-punctuation hl-definition hl-comment hl-begin hl-shell">#</span></span><span class="hl-comment hl-line hl-number-sign hl-shell"> or if you already track it:</span><span class="hl-comment hl-line hl-number-sign hl-shell">
-</span><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">autonomix-cli</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> update</span>
-</span></code></pre>
-<p>Packages (<code>.deb</code>, <code>.rpm</code>, <code>.pkg.tar.zst</code>, AppImage) are on the <a href="https://github.com/ninepointlabs/bahai-reader/releases/tag/v0.1.2">v0.1.2 release</a>. This is still an independent community app; the texts keep their own attribution in <code>DATA-NOTICE.md</code>.</p>
 ]]></content:encoded>
 </item>
 </channel>
