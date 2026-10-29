@@ -7,7 +7,40 @@
 <language>en</language>
 <atom:link href="https://blog.ninepointlabs.com/feed.xml" rel="self" type="application/rss+xml"/>
 <generator>folderblog 0.2.10</generator>
-<lastBuildDate>Wed, 28 Oct 2026 00:00:00 -0500</lastBuildDate>
+<lastBuildDate>Thu, 29 Oct 2026 00:00:00 -0500</lastBuildDate>
+<item>
+<title>Sunsetting Rune, and why I&#39;m writing in WordCraft now</title>
+<link>https://blog.ninepointlabs.com/2026/10/sunsetting-rune/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/sunsetting-rune/</guid>
+<pubDate>Thu, 29 Oct 2026 00:00:00 -0500</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>Rune</category>
+<category>WordCraft</category>
+<category>open source</category>
+<category>Omarchy</category>
+<category>Linux</category>
+<description><![CDATA[<p>Rune is archived. WordCraft does what Rune set out to do and more, it’s open source, and it runs on Linux, so I’d rather point you there than compete with it.</p>
+]]></description>
+<content:encoded><![CDATA[<p>Earlier this month I started building <strong><a href="https://github.com/ninepointlabs/rune">Rune</a></strong>, a word processor for Linux and Omarchy with AI built right into the writing surface. Today I’m archiving it, and I’d like to tell you why.</p>
+<!--more-->
+<h2 id="why-i-built-rune">Why I built Rune</h2>
+<p>Word processors on Linux felt like a choice between heavyweight ports and plain text editors pretending to be word processors. And every one of them treated AI as a sidebar plugin. I wanted the opposite: a fast, native app where the model is part of the page, where you can ask it to fix a paragraph and the fix lands right in your document as one undo step.</p>
+<p>Rune got further than I expected. It went from an idea to version 0.8.7 in about two weeks, with packages for Arch, Debian and Fedora, an AppImage for most other distros, headers and footers, tables, and sign-in for ChatGPT and OpenRouter.</p>
+<h2 id="what-i-learned">What I learned</h2>
+<p>Quite a lot, honestly. Rune started on LibreOfficeKit and ended up as a single Qt process that reads and writes ODF itself, because the first design had a performance ceiling I couldn’t get past. Along the way I learned to test real files instead of trusting documentation. That habit caught a bug in Qt’s own ODF writer, where a table right after a list silently disappeared when LibreOffice opened the file. By the end, Rune was checked by 504 automated tests. I’ll carry that way of working into everything I build next.</p>
+<h2 id="then-i-found-wordcraft">Then I found WordCraft</h2>
+<p>Recently I came across <strong><a href="https://getartcraft.com/apps/wordcraft">WordCraft</a></strong>, a fast, open-source word processor written in Rust by the ArtCraft team. I tried it, and it’s really good.</p>
+<p>It does what Rune set out to do, and more. It has a ribbon and styles, works with .docx natively along with .odt, Markdown and more, exports PDF, and has track changes and comments, offline spelling and grammar, footnotes, a table of contents, and citations in APA, MLA, Chicago and IEEE. It runs on Linux as a Flatpak, plus macOS, Windows, FreeBSD and the web.</p>
+<p>The part that really got me is how it treats AI. Its commands are available through a command-line tool, a JSON control channel and an MCP server, so AI assistants can work inside your documents. That’s the idea I was chasing with Rune, done in a more open way: you bring whichever assistant you like.</p>
+<p>It’s still in development, but it’s already well past where Rune is.</p>
+<h2 id="why-archive-instead-of-compete">Why archive instead of compete</h2>
+<p>I could keep going. But I’m one person, word processors are a lot of work to maintain, and the world doesn’t need two small open-source editors chasing the same idea when one of them is already further along. I’d rather spend my time on things only Nine Point Labs can build, and send you to the better tool.</p>
+<p>So Rune is archived. The code stays up under the MIT license, along with the existing releases, if you’d like to learn from it or fork it. The README now points to WordCraft.</p>
+<h2 id="give-wordcraft-a-try">Give WordCraft a try</h2>
+<p>If you write on Linux, or anywhere really, please give <strong><a href="https://getartcraft.com/apps/wordcraft">WordCraft</a></strong> a try. The source is on <strong><a href="https://github.com/storytold/wordcraft">GitHub</a></strong> if you’d like to dig in or help out.</p>
+<p>Thank you to everyone who tried Rune or sent a kind word about it. It meant a lot.</p>
+]]></content:encoded>
+</item>
 <item>
 <title>StoryTracker takes its own screenshots now</title>
 <link>https://blog.ninepointlabs.com/2026/10/storytracker-auto-screenshots/</link>
@@ -822,60 +855,6 @@ goatcounter = &quot;https://you.goatcounter.com&quot;
 </span></code></pre>
 <p>Or install the <code>.pkg.tar.zst</code>, <code>.deb</code>, or <code>.rpm</code> from the release page, then launch <strong>Hyprfall</strong> from the app launcher or run <code>hyprfall</code>. Away from Omarchy you need a Wayland desktop with Quickshell; without an Omarchy theme it falls back to a built-in Tokyo Night palette.</p>
 <p>MIT licensed. An affectionate parody — nothing from any 1982 cartridge, and the protesting gnomes are a joke at a debate, not at anyone in it. Some of them make good points, and they all have excellent signs.</p>
-]]></content:encoded>
-</item>
-<item>
-<title>Linkguard: catch dead links and swap in archived copies</title>
-<link>https://blog.ninepointlabs.com/2026/10/linkguard/</link>
-<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/linkguard/</guid>
-<pubDate>Fri, 16 Oct 2026 00:00:00 -0500</pubDate>
-<dc:creator>Tim</dc:creator>
-<category>Linkguard</category>
-<category>GitHub Actions</category>
-<category>folderblog</category>
-<category>Jekyll</category>
-<category>Hugo</category>
-<category>Internet Archive</category>
-<description><![CDATA[<p>Every blog rots a little. The post you wrote two years ago still reads fine, but a third of its outbound links now land on a 404, a parked domain, or a redesign that ate the page. <strong><a href="https://github.com/ninepointlabs/linkguard">Linkguard</a></strong> is a free GitHub Action that finds those links in a Jekyll, Hugo, or folderblog site and points readers to an archived copy instead.</p>
-]]></description>
-<content:encoded><![CDATA[<p>Every blog rots a little. The post you wrote two years ago still reads fine, but a third of its outbound links now land on a 404, a parked domain, or a redesign that ate the page. <strong><a href="https://github.com/ninepointlabs/linkguard">Linkguard</a></strong> is a free GitHub Action that finds those links in a Jekyll, Hugo, or folderblog site and points readers to an archived copy instead.</p>
-<p><strong><a href="https://linkguard.persistwise.com/">linkguard.persistwise.com</a></strong> · <strong><a href="https://github.com/ninepointlabs/linkguard/releases/tag/v0.1.0">v0.1.0 on GitHub</a></strong></p>
-<h2 id="what-it-does">What it does</h2>
-<p>Drop it into a weekly workflow and Linkguard walks your content, pulls every outbound link out of the markdown and HTML (skipping code blocks, comments, relative links, and private addresses), and checks each one. Every link comes back as one of four results:</p>
-<ul>
-<li><code>ok</code> works, or only moved from http to https</li>
-<li><code>moved</code> still works but redirects somewhere else, so you may want to update it</li>
-<li><code>dead</code> is a 404 or 410, or an outage that survived retries</li>
-<li><code>blocked</code> is bot protection (401, 403, 999), and Linkguard never calls those dead</li>
-</ul>
-<p>For each link it also asks the Internet Archive’s Wayback Machine for a snapshot. When a dead link has a good one, the report hands you the archived URL. Results land in the run’s job summary as a table, as warning annotations on the exact source lines, and as JSON and markdown report files.</p>
-<p>It checks politely: one request per host at a time, at most four in flight, retries with backoff, and <code>Retry-After</code> honoured.</p>
-<h2 id="two-modes-no-account-required">Two modes, no account required</h2>
-<p><strong>Lookup-only</strong> is the default. No secrets, nothing captured, just checks and existing snapshots.</p>
-<p><strong>Snapshot mode</strong> turns on when you add your own free Internet Archive keys as repo secrets. Linkguard then asks Save Page Now to capture working links that have no recent snapshot, so a copy exists before the page dies. Captures count against your own Internet Archive account and are paced to six a minute, so a first run over 100 links can take a while.</p>
-<h2 id="fix-it-with-a-pull-request">Fix it with a pull request</h2>
-<p>Set <code>open-pr: true</code> and Linkguard opens a pull request that replaces each dead link with its <code>web.archive.org</code> copy, exactly where it appears and nowhere else. The PR lists every swap and says plainly that each one is an archived copy, not the original. It never pushes to your default branch, so you review before anything changes.</p>
-<h2 id="get-started">Get started</h2>
-<pre class="highlight"><code class="language-yaml"><span class="hl-source hl-yaml"><span class="hl-comment hl-line hl-number-sign hl-yaml"><span class="hl-punctuation hl-definition hl-comment hl-line hl-number-sign hl-yaml">#</span> .github/workflows/linkguard.yml
-</span><span class="hl-string hl-unquoted hl-plain hl-out hl-yaml"><span class="hl-entity hl-name hl-tag hl-yaml">name</span></span><span class="hl-punctuation hl-separator hl-key-value hl-mapping hl-yaml">:</span> <span class="hl-string hl-unquoted hl-plain hl-out hl-yaml">Linkguard</span>
-<span class="hl-constant hl-language hl-boolean hl-yaml">on</span><span class="hl-punctuation hl-separator hl-key-value hl-mapping hl-yaml">:</span>
-  <span class="hl-string hl-unquoted hl-plain hl-out hl-yaml"><span class="hl-entity hl-name hl-tag hl-yaml">schedule</span></span><span class="hl-punctuation hl-separator hl-key-value hl-mapping hl-yaml">:</span>
-    <span class="hl-punctuation hl-definition hl-block hl-sequence hl-item hl-yaml">-</span> <span class="hl-string hl-unquoted hl-plain hl-out hl-yaml"><span class="hl-entity hl-name hl-tag hl-yaml">cron</span></span><span class="hl-punctuation hl-separator hl-key-value hl-mapping hl-yaml">:</span> <span class="hl-string hl-quoted hl-single hl-yaml"><span class="hl-punctuation hl-definition hl-string hl-begin hl-yaml">&#39;</span>17 6 * * 1<span class="hl-punctuation hl-definition hl-string hl-end hl-yaml">&#39;</span></span> <span class="hl-comment hl-line hl-number-sign hl-yaml"><span class="hl-punctuation hl-definition hl-comment hl-line hl-number-sign hl-yaml">#</span> weekly
-</span>  <span class="hl-string hl-unquoted hl-plain hl-out hl-yaml"><span class="hl-entity hl-name hl-tag hl-yaml">workflow_dispatch</span></span><span class="hl-punctuation hl-separator hl-key-value hl-mapping hl-yaml">:</span>
-<span class="hl-string hl-unquoted hl-plain hl-out hl-yaml"><span class="hl-entity hl-name hl-tag hl-yaml">permissions</span></span><span class="hl-punctuation hl-separator hl-key-value hl-mapping hl-yaml">:</span>
-  <span class="hl-string hl-unquoted hl-plain hl-out hl-yaml"><span class="hl-entity hl-name hl-tag hl-yaml">contents</span></span><span class="hl-punctuation hl-separator hl-key-value hl-mapping hl-yaml">:</span> <span class="hl-string hl-unquoted hl-plain hl-out hl-yaml">read</span>
-<span class="hl-string hl-unquoted hl-plain hl-out hl-yaml"><span class="hl-entity hl-name hl-tag hl-yaml">jobs</span></span><span class="hl-punctuation hl-separator hl-key-value hl-mapping hl-yaml">:</span>
-  <span class="hl-string hl-unquoted hl-plain hl-out hl-yaml"><span class="hl-entity hl-name hl-tag hl-yaml">links</span></span><span class="hl-punctuation hl-separator hl-key-value hl-mapping hl-yaml">:</span>
-    <span class="hl-string hl-unquoted hl-plain hl-out hl-yaml"><span class="hl-entity hl-name hl-tag hl-yaml">runs-on</span></span><span class="hl-punctuation hl-separator hl-key-value hl-mapping hl-yaml">:</span> <span class="hl-string hl-unquoted hl-plain hl-out hl-yaml">ubuntu-latest</span>
-    <span class="hl-string hl-unquoted hl-plain hl-out hl-yaml"><span class="hl-entity hl-name hl-tag hl-yaml">steps</span></span><span class="hl-punctuation hl-separator hl-key-value hl-mapping hl-yaml">:</span>
-      <span class="hl-punctuation hl-definition hl-block hl-sequence hl-item hl-yaml">-</span> <span class="hl-string hl-unquoted hl-plain hl-out hl-yaml"><span class="hl-entity hl-name hl-tag hl-yaml">uses</span></span><span class="hl-punctuation hl-separator hl-key-value hl-mapping hl-yaml">:</span> <span class="hl-string hl-unquoted hl-plain hl-out hl-yaml">actions/checkout@v7</span>
-      <span class="hl-punctuation hl-definition hl-block hl-sequence hl-item hl-yaml">-</span> <span class="hl-string hl-unquoted hl-plain hl-out hl-yaml"><span class="hl-entity hl-name hl-tag hl-yaml">uses</span></span><span class="hl-punctuation hl-separator hl-key-value hl-mapping hl-yaml">:</span> <span class="hl-string hl-unquoted hl-plain hl-out hl-yaml">ninepointlabs/linkguard@v0.1.0</span>
-</span></code></pre>
-<p>It detects your site type from the repo layout, or you can pass <code>site-type</code> and your own <code>paths</code>. Ready-made workflows for Jekyll, Hugo, and folderblog are in the repo’s <code>examples/</code> folder, and the README documents every input and output.</p>
-<p>The free tier checks 100 unique links per run; anything past that is skipped, and the log says how many.</p>
-<h2 id="honest-limits-and-privacy">Honest limits and privacy</h2>
-<p>This is a first release. Snapshot capture and <code>open-pr</code> are covered by mocked tests so far, the Internet Archive doesn’t publish its rate limits, and its availability API sometimes misses a snapshot that exists. A link that’s down for a GitHub runner can still be up for people, so read the report before you merge.</p>
-<p>There’s no telemetry and no Linkguard server. Only link URLs go to archive.org; your file contents never leave the runner. MIT licensed. Problems go in <a href="https://github.com/ninepointlabs/linkguard/issues">the issue tracker</a>.</p>
 ]]></content:encoded>
 </item>
 </channel>
