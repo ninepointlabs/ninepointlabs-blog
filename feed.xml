@@ -7,7 +7,47 @@
 <language>en</language>
 <atom:link href="https://blog.ninepointlabs.com/feed.xml" rel="self" type="application/rss+xml"/>
 <generator>folderblog 0.2.10</generator>
-<lastBuildDate>Thu, 29 Oct 2026 00:00:00 -0500</lastBuildDate>
+<lastBuildDate>Mon, 2 Nov 2026 00:00:00 -0600</lastBuildDate>
+<item>
+<title>Bahá’í Reader 0.1.8: a Today view for the Badí‘ day</title>
+<link>https://blog.ninepointlabs.com/2026/11/bahai-reader-0-1-8/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/11/bahai-reader-0-1-8/</guid>
+<pubDate>Mon, 2 Nov 2026 00:00:00 -0600</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>bahai-reader</category>
+<category>Bahá’í</category>
+<category>Linux</category>
+<category>GTK</category>
+<category>Omarchy</category>
+<description><![CDATA[<p><a href="https://bahaireader.org/">Bahá’í Reader</a>, the offline prayer book and Writings reader for Linux, now has a place to start the day. Version <strong>0.1.8</strong> adds a <strong>Today</strong> view that gathers the Badí‘ date, the sun, your obligatory prayer, the next Feast and Holy Day, the Fast and the passage of the day on one page. Everything is worked out on your machine; nothing is looked up online.</p>
+]]></description>
+<content:encoded><![CDATA[<p><a href="https://bahaireader.org/">Bahá’í Reader</a>, the offline prayer book and Writings reader for Linux, now has a place to start the day. Version <strong>0.1.8</strong> adds a <strong>Today</strong> view that gathers the Badí‘ date, the sun, your obligatory prayer, the next Feast and Holy Day, the Fast and the passage of the day on one page. Everything is worked out on your machine; nothing is looked up online.</p>
+<h2 id="today">Today</h2>
+<p>Today is the new first entry in the sidebar. It shows the Badí‘ date, sunrise, noon and sunset, when your obligatory prayer falls, the next Feast and Holy Day, the Fast, and the passage of the day as a card. In the sidebar it also lists the next twelve months and this year’s months.</p>
+<p>New installs open on Today. If you already use the app, it keeps your place. <strong>Ctrl+T</strong> and the Today button now open this view instead of jumping straight to the passage of the day, which lives on the page as a card.</p>
+<p>Badí‘ dates come from the Universal House of Justice’s table for 172 to 221 B.E. Past that, the app says the dates haven’t been published yet rather than guessing.</p>
+<h2 id="location-kept-on-your-machine">Location, kept on your machine</h2>
+<p>Sun times need a place. Type a city and it’s found offline in a bundled GeoNames list, or enter coordinates yourself. Your location is never detected and never sent anywhere.</p>
+<p>Where days and nights vary greatly, <strong>Clock times</strong> lets you enter the hours your National Spiritual Assembly uses, and those replace the sun. The app has no clock times of its own.</p>
+<h2 id="obligatory-prayer-the-counter-and-the-fast">Obligatory prayer, the counter and the Fast</h2>
+<ul>
+<li><strong>Prayer times and Said today:</strong> the times come from the bundled texts, and you can mark the prayer as said. For the Long Obligatory Prayer you choose which twenty-four hours count, because no text says and no ruling has been made. Sunset to sunset is the default.</li>
+<li><strong>Alláh-u-Abhá counter</strong> (Ctrl+Shift+A), shown with Kitáb-i-Aqdas ¶18.</li>
+<li><strong>The Fast:</strong> the day, the fasting hours, and an optional private Fasted today check.</li>
+</ul>
+<h2 id="reminders-off-until-you-want-them">Reminders, off until you want them</h2>
+<p>Reminders cover the obligatory prayer, Feasts, Holy Days and the Fast. They’re all off by default. If you turn them on, you can also opt in to keep them running when the window is closed.</p>
+<h2 id="a-tidier-header">A tidier header</h2>
+<p>The Aa menu now holds only reading settings. Languages &amp; offline libraries and About moved to a new <strong>⋮</strong> menu, alongside Location &amp; reminders and Keyboard shortcuts. F1 still opens About.</p>
+<h2 id="get-it">Get it</h2>
+<pre class="highlight"><code class="language-sh"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">autonomix-cli</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> add https://github.com/ninepointlabs/bahai-reader</span>
+<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">autonomix-cli</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> install bahai-reader</span>
+<span class="hl-comment hl-line hl-number-sign hl-shell"><span class="hl-punctuation hl-definition hl-comment hl-begin hl-shell">#</span></span><span class="hl-comment hl-line hl-number-sign hl-shell"> or, if you already track it:</span><span class="hl-comment hl-line hl-number-sign hl-shell">
+</span><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">autonomix-cli</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> update</span>
+</span></code></pre>
+<p>The <code>.deb</code>, <code>.rpm</code>, <code>.pkg.tar.zst</code>, AppImage and Flatpak are on the <a href="https://github.com/ninepointlabs/bahai-reader/releases/tag/v0.1.8">v0.1.8 release</a>, and the source is <a href="https://github.com/ninepointlabs/bahai-reader">on GitHub</a>. This is an independent community app; the texts keep their own attribution in <code>DATA-NOTICE.md</code>.</p>
+]]></content:encoded>
+</item>
 <item>
 <title>Sunsetting Rune, and why I&#39;m writing in WordCraft now</title>
 <link>https://blog.ninepointlabs.com/2026/10/sunsetting-rune/</link>
@@ -820,41 +860,6 @@ goatcounter = &quot;https://you.goatcounter.com&quot;
 <tr><td>autonomix-cli</td><td><code>autonomix-cli add https://github.com/ninepointlabs/folderblog</code></td></tr>
 </tbody></table>
 <p>The packages and a plain tarball are on the <a href="https://github.com/ninepointlabs/folderblog/releases/tag/v0.2.3">v0.2.3 release</a>. New to folderblog? Start with <a href="https://github.com/ninepointlabs/folderblog/blob/main/docs/GUIDE.md">the guide</a>, or run <code>folderblog guide</code>.</p>
-]]></content:encoded>
-</item>
-<item>
-<title>Hyprfall: a jungle platformer native to Omarchy</title>
-<link>https://blog.ninepointlabs.com/2026/10/hyprfall/</link>
-<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/hyprfall/</guid>
-<pubDate>Fri, 16 Oct 2026 00:00:00 -0500</pubDate>
-<dc:creator>Tim</dc:creator>
-<category>Hyprfall</category>
-<category>Omarchy</category>
-<category>Gaming</category>
-<category>Quickshell</category>
-<category>Hyprland</category>
-<description><![CDATA[<p>Remember the summer of ’82? One stiff red button, a thousand screens of jungle, and a crocodile that still owes you an apology. <strong><a href="https://github.com/ninepointlabs/hyprfall">Hyprfall</a></strong> is that spirit as a native Omarchy app: swing on ethernet cables, hop the anti-AI garden gnomes, and find 32 treasures before the clock runs out.</p>
-]]></description>
-<content:encoded><![CDATA[<p>Remember the summer of ’82? One stiff red button, a thousand screens of jungle, and a crocodile that still owes you an apology. <strong><a href="https://github.com/ninepointlabs/hyprfall">Hyprfall</a></strong> is that spirit as a native Omarchy app: swing on ethernet cables, hop the anti-AI garden gnomes, and find 32 treasures before the clock runs out.</p>
-<p><strong><a href="https://hyprfall.ninepointlabs.com/">hyprfall.ninepointlabs.com</a></strong> · <strong><a href="https://github.com/ninepointlabs/hyprfall/releases/tag/v0.1.0">v0.1.0 on GitHub</a></strong></p>
-<p><img src="https://raw.githubusercontent.com/ninepointlabs/hyprfall/main/assets/screens/title.png" alt="Title screen: HYPRFALL over a pixel-art jungle" width="1280" height="800" decoding="async"></p>
-<h2 id="what-you-are-playing">What you are playing</h2>
-<p>You get twenty minutes, three lives, and 255 screens of jungle arranged in a ring. Each screen comes from one byte walked with a reversible 8-bit LFSR, so walking left brings back exactly the screens you passed. Same jungle every game; learn it like it is 1983.</p>
-<p>Between you and the loot: tarballs, a purple pool of <code>node_modules</code>, rolling logs that knock points off, a python that will kill you (should have used Ruby), dumpster fires, and a pit of garden gnomes waving signs like <em>RTFM</em>, <em>STOP VIBING</em>, and <em>NO AI</em>. When they are quiet, their hats are stepping stones. When they yell, get off.</p>
-<p>The signature move is the ethernet cable. Jump for the plug, ride it across, and let go with ↓ or Space. Hold the direction you want and the swing flings you that way. Fumble it and enjoy the tar. Underneath, a tunnel lets you skip three screens up top — watch for firewalls and the bug that works on its machine.</p>
-<p>Treasure is worth chasing: Golden Keycaps, Rubies, Arch Idols, and Hypr Crystals. Find all 32 before 0:00.</p>
-<p><img src="https://raw.githubusercontent.com/ninepointlabs/hyprfall/main/assets/screens/cable.png" alt="Swinging the ethernet cable over the swamp" width="1280" height="800" loading="lazy" decoding="async"></p>
-<h2 id="native-to-omarchy-not-bolted-on">Native to Omarchy, not bolted on</h2>
-<p>Hyprfall runs on Quickshell — the same engine as the Omarchy shell. No Electron, no browser, no emulator. On Omarchy there is nothing extra to install.</p>
-<p>The whole jungle wears your theme: canopy green, swamp blue, tee logo accent, gnome hats and coats. Run <code>omarchy theme set</code> mid-game and it repaints while you play. Skin, hair, and wood stay fixed so the hero (long wavy hair, beard, black tee) stays recognisable on every theme.</p>
-<p>It opens as a centered floating 16:10 window on Hyprland; launch again and it focuses the one already open. F11 goes fullscreen. Vim keys work: h/l to run, k/j to climb.</p>
-<p>There is an original adventure-rock soundtrack and a dozen sound effects, all generated from scratch by a little synth in the repo. High scores live in <code>~/.local/state/hyprfall/save.json</code>.</p>
-<h2 id="grab-v0-1-0">Grab v0.1.0</h2>
-<p>Packages for Arch/Omarchy, Debian, and Fedora ship on the <a href="https://github.com/ninepointlabs/hyprfall/releases/tag/v0.1.0">v0.1.0 release</a>. Each package was installed on its distro and the game run headless (<code>hyprfall --selftest</code>) before the release went out.</p>
-<pre class="highlight"><code class="language-bash"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">autonomix-cli</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> add https://github.com/ninepointlabs/hyprfall</span>
-</span></code></pre>
-<p>Or install the <code>.pkg.tar.zst</code>, <code>.deb</code>, or <code>.rpm</code> from the release page, then launch <strong>Hyprfall</strong> from the app launcher or run <code>hyprfall</code>. Away from Omarchy you need a Wayland desktop with Quickshell; without an Omarchy theme it falls back to a built-in Tokyo Night palette.</p>
-<p>MIT licensed. An affectionate parody — nothing from any 1982 cartridge, and the protesting gnomes are a joke at a debate, not at anyone in it. Some of them make good points, and they all have excellent signs.</p>
 ]]></content:encoded>
 </item>
 </channel>
