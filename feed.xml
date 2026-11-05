@@ -7,7 +7,36 @@
 <language>en</language>
 <atom:link href="https://blog.ninepointlabs.com/feed.xml" rel="self" type="application/rss+xml"/>
 <generator>folderblog 0.2.10</generator>
-<lastBuildDate>Mon, 2 Nov 2026 00:00:00 -0600</lastBuildDate>
+<lastBuildDate>Wed, 4 Nov 2026 00:00:00 -0600</lastBuildDate>
+<item>
+<title>omaforge 0.2.9: star addons to find them later</title>
+<link>https://blog.ninepointlabs.com/2026/11/omaforge-0-2-9/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/11/omaforge-0-2-9/</guid>
+<pubDate>Wed, 4 Nov 2026 00:00:00 -0600</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>Omaforge</category>
+<category>World of Warcraft</category>
+<category>Gaming</category>
+<category>Omarchy</category>
+<category>Linux</category>
+<description><![CDATA[<p><a href="https://omaforge.ninepointlabs.com/">omaforge</a> is the World of Warcraft addon manager for Linux and Omarchy. Version 0.2.9 lets you star addons, so you can bookmark one you haven’t installed and come back to it later.</p>
+]]></description>
+<content:encoded><![CDATA[<p><a href="https://omaforge.ninepointlabs.com/">omaforge</a> is the World of Warcraft addon manager for Linux and Omarchy. Version 0.2.9 lets you star addons, so you can bookmark one you haven’t installed and come back to it later.</p>
+<h2 id="whats-new">What’s new</h2>
+<p><strong>Star any addon.</strong> Click the ☆ on an addon in Explore, Search or Installed, or in its details view. Stars are saved between sessions, are shared by all your game versions, and stay when you remove the addon. An addon with no known source can’t be starred.</p>
+<p><strong>A new Starred tab.</strong> It sits between Search and Backups and lists everything you’ve starred, with a filter, a sort (Recently starred or Name) and a Not installed toggle. Install adds the addon to the game version selected in the sidebar, and if an addon has no build for that version you get the usual “no stable release” message.</p>
+<p><strong>Shortcut change.</strong> <kbd>Ctrl</kbd>+<kbd>4</kbd> now opens Starred, and Backups moved to <kbd>Ctrl</kbd>+<kbd>5</kbd>.</p>
+<h2 id="get-it">Get it</h2>
+<ul>
+<li><strong>Arch / Omarchy:</strong> <code>sudo pacman -U omaforge-0.2.9-1-any.pkg.tar.zst</code>, then <code>omaforge setup omarchy</code></li>
+<li><strong>Debian 13+ / Ubuntu 26.04+:</strong> <code>sudo apt install ./omaforge_0.2.9-1_all.deb</code></li>
+<li><strong>Fedora:</strong> <code>sudo dnf install ./omaforge-0.2.9-1.noarch.rpm</code></li>
+<li><strong>Any other Linux:</strong> the AppImage, <code>chmod +x omaforge-0.2.9-x86_64.AppImage &amp;&amp; ./omaforge-0.2.9-x86_64.AppImage</code>. Add <code>--install-desktop-entry</code> to put it in your app menu.</li>
+<li><strong>With autonomix-cli:</strong> <code>autonomix-cli add https://github.com/ninepointlabs/omaforge</code></li>
+</ul>
+<p>The packages are on the <a href="https://github.com/ninepointlabs/omaforge/releases/tag/v0.2.9">v0.2.9 release</a>, and the source is <a href="https://github.com/ninepointlabs/omaforge">on GitHub</a>.</p>
+]]></content:encoded>
+</item>
 <item>
 <title>Bahá’í Reader 0.1.8: a Today view for the Badí‘ day</title>
 <link>https://blog.ninepointlabs.com/2026/11/bahai-reader-0-1-8/</link>
@@ -810,56 +839,6 @@ folderblog publishes the episode: audio on Cloudflare R2, a podcast feed
 </span></code></pre>
 <p>Or download <code>dogear-0.1.0-1-any.pkg.tar.zst</code> from the <a href="https://github.com/ninepointlabs/dogear/releases/tag/v0.1.0">release page</a> and run <code>sudo pacman -U dogear-0.1.0-1-any.pkg.tar.zst</code>. pacman pulls in <code>pyside6</code> and <code>qt6-webengine</code> (for the Qt PDF library). Dogear then shows up in your app launcher and can open PDFs from the file manager.</p>
 <p>MIT licensed. Questions or bugs go to <a href="mailto:help@ninepointlabs.com">help@ninepointlabs.com</a> or the <a href="https://github.com/ninepointlabs/dogear/issues">issue tracker</a>.</p>
-]]></content:encoded>
-</item>
-<item>
-<title>folderblog 0.2.3: Better link previews, optional visitor counts, and safer deploys</title>
-<link>https://blog.ninepointlabs.com/2026/10/folderblog-0-2-3/</link>
-<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/folderblog-0-2-3/</guid>
-<pubDate>Sun, 18 Oct 2026 00:00:00 -0500</pubDate>
-<dc:creator>Tim</dc:creator>
-<category>folderblog</category>
-<category>Linux</category>
-<category>Rust</category>
-<category>GitHub Pages</category>
-<category>static-site</category>
-<category>blogging</category>
-<category>SEO</category>
-<description><![CDATA[<p><a href="https://github.com/ninepointlabs/folderblog">folderblog</a> turns a folder of Markdown into a live blog the moment you save. Two releases since the last word here, 0.2.2 and 0.2.3, make what it publishes look better when it’s shared and searched, add an opt-in visitor counter, and stop a blog kept in git from deploying half-finished work.</p>
-]]></description>
-<content:encoded><![CDATA[<p><a href="https://github.com/ninepointlabs/folderblog">folderblog</a> turns a folder of Markdown into a live blog the moment you save. Two releases since the last word here, 0.2.2 and 0.2.3, make what it publishes look better when it’s shared and searched, add an opt-in visitor counter, and stop a blog kept in git from deploying half-finished work.</p>
-<h2 id="share-images-for-every-post">Share images for every post</h2>
-<p>Add <code>image:</code> to a post’s front matter, either a path inside the blog or a full URL, and it becomes that post’s <code>og:image</code> and <code>twitter:image</code>. folderblog writes it as an absolute URL and adds the width and height when the file lives in the blog. Posts without one fall back to <code>static/og-default.png</code>, or to a new optional <code>image</code> key in <code>blog.toml</code>.</p>
-<pre class="highlight"><code class="language-yaml"><span class="hl-source hl-yaml"><span class="hl-entity hl-other hl-document hl-begin hl-yaml">---</span>
-<span class="hl-string hl-unquoted hl-plain hl-out hl-yaml"><span class="hl-entity hl-name hl-tag hl-yaml">title</span></span><span class="hl-punctuation hl-separator hl-key-value hl-mapping hl-yaml">:</span> <span class="hl-string hl-quoted hl-double hl-yaml"><span class="hl-punctuation hl-definition hl-string hl-begin hl-yaml">&quot;</span>My post<span class="hl-punctuation hl-definition hl-string hl-end hl-yaml">&quot;</span></span>
-<span class="hl-string hl-unquoted hl-plain hl-out hl-yaml"><span class="hl-entity hl-name hl-tag hl-yaml">image</span></span><span class="hl-punctuation hl-separator hl-key-value hl-mapping hl-yaml">:</span> <span class="hl-string hl-unquoted hl-plain hl-out hl-yaml">img/cover.jpg</span>
-<span class="hl-entity hl-other hl-document hl-begin hl-yaml">---</span>
-</span></code></pre>
-<p><code>folderblog check</code> warns when the image doesn’t exist, so a typo doesn’t quietly ship a broken preview card.</p>
-<h2 id="search-engines-get-the-whole-picture">Search engines get the whole picture</h2>
-<p>The default theme now gives every page a meta description, a canonical link, the full set of OpenGraph tags, and a <code>twitter:card</code>. Post pages carry BlogPosting structured data (JSON-LD), and the home page has a single <code>h1</code> with the site title.</p>
-<p>folderblog also writes a <code>robots.txt</code> by default that allows everything and points to the sitemap. If your blog has its own <code>static/robots.txt</code>, or your theme provides one, yours wins. And <code>check</code> now warns when <code>blog.toml</code> has no <code>description</code>.</p>
-<p>If you keep your own copy of the theme in <code>theme/</code>, your templates are left alone. Copy the new default theme’s <code>_layouts/base.html</code> and <code>post.html</code> to pick up the tags, and run <code>folderblog agents-md --write</code> in each blog folder to refresh its AGENTS.md.</p>
-<h2 id="optional-visitor-counts-with-goatcounter">Optional visitor counts with GoatCounter</h2>
-<p>Want to know whether anyone reads the thing? Add one section to <code>blog.toml</code>:</p>
-<pre class="highlight"><code class="language-toml">[analytics]
-goatcounter = &quot;https://you.goatcounter.com&quot;
-</code></pre>
-<p>Every rendered page gets GoatCounter’s cookie-free counting script, with any theme and no template edits. It’s off by default: with no <code>[analytics]</code> section the output is byte-for-byte what it was before. It’s never added by <code>preview</code> or <code>build --drafts</code>, so your own drafting doesn’t count as visits, and <code>check</code> flags an invalid URL.</p>
-<h2 id="hold-deploys-while-youre-mid-git">Hold deploys while you’re mid-git</h2>
-<p>0.2.2 added <code>deploy_branch</code> for blog folders you keep in git:</p>
-<pre class="highlight"><code class="language-toml">deploy_branch = &quot;main&quot;
-</code></pre>
-<p>With it set, folderblog only deploys while the folder is a checkout of that branch. On another branch, a detached HEAD, or in the middle of a merge, rebase or cherry-pick, the deploy is held and shows as <code>held: ...</code> in <code>folderblog status</code>. It retries on its own once you’re back on the branch. Leave it unset and nothing changes. This blog runs with it on.</p>
-<p>One note for both releases: older versions reject unknown keys in <code>blog.toml</code>, so upgrade before adding <code>image</code>, <code>[analytics]</code> or <code>deploy_branch</code>.</p>
-<h2 id="grab-it">Grab it</h2>
-<table><thead><tr><th>System</th><th>Command</th></tr></thead><tbody>
-<tr><td>Arch / Omarchy</td><td><code>sudo pacman -U folderblog-bin-0.2.3-1-x86_64.pkg.tar.zst</code></td></tr>
-<tr><td>Debian / Ubuntu</td><td><code>sudo apt install ./folderblog_0.2.3-1_amd64.deb</code></td></tr>
-<tr><td>Fedora / RHEL / openSUSE</td><td><code>sudo dnf install ./folderblog-0.2.3-1.x86_64.rpm</code></td></tr>
-<tr><td>autonomix-cli</td><td><code>autonomix-cli add https://github.com/ninepointlabs/folderblog</code></td></tr>
-</tbody></table>
-<p>The packages and a plain tarball are on the <a href="https://github.com/ninepointlabs/folderblog/releases/tag/v0.2.3">v0.2.3 release</a>. New to folderblog? Start with <a href="https://github.com/ninepointlabs/folderblog/blob/main/docs/GUIDE.md">the guide</a>, or run <code>folderblog guide</code>.</p>
 ]]></content:encoded>
 </item>
 </channel>
