@@ -7,7 +7,42 @@
 <language>en</language>
 <atom:link href="https://blog.ninepointlabs.com/feed.xml" rel="self" type="application/rss+xml"/>
 <generator>folderblog 0.2.10</generator>
-<lastBuildDate>Wed, 4 Nov 2026 00:00:00 -0600</lastBuildDate>
+<lastBuildDate>Sun, 8 Nov 2026 00:00:00 -0600</lastBuildDate>
+<item>
+<title>Dogear 0.1.3: EPUB books, marked up like a PDF</title>
+<link>https://blog.ninepointlabs.com/2026/11/dogear-0-1-3/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/11/dogear-0-1-3/</guid>
+<pubDate>Sun, 8 Nov 2026 00:00:00 -0600</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>Dogear</category>
+<category>EPUB</category>
+<category>PDF</category>
+<category>Studying</category>
+<category>Omarchy</category>
+<category>Linux</category>
+<description><![CDATA[<p><a href="https://dogear.ninepointlabs.com/">Dogear</a> is the reader for studying, made for Omarchy. Version <strong>0.1.3</strong> opens EPUB books, so it now reads, highlights and remembers your PDFs and EPUBs.</p>
+]]></description>
+<content:encoded><![CDATA[<p><a href="https://dogear.ninepointlabs.com/">Dogear</a> is the reader for studying, made for Omarchy. Version <strong>0.1.3</strong> opens EPUB books, so it now reads, highlights and remembers your PDFs and EPUBs.</p>
+<h2 id="epub-books">EPUB books</h2>
+<p>Open an <code>.epub</code> the same way as a PDF: from the Open dialog, the command line, by dropping it on the window, or from the library. The first time, Dogear sets the book in pages (6 × 9 in, chapters starting on a new page), which takes a second or two for a long book, and keeps those pages. After that everything works as it does for a PDF: highlights in five colors, notes, bookmarks, answer lines, search, the library and the Markdown export. The Contents panel shows the book’s own table of contents.</p>
+<h2 id="your-marks-belong-to-the-book">Your marks belong to the book</h2>
+<p>The library lists the EPUB, and the EPUB is what Dogear copies into <code>Library/</code>. The laid-out pages live in your library folder, so they sync with your marks and another computer shows the same pages. They’re never laid out again, so your marks stay on the words you marked. Another copy of the same book (same identifier, such as its ISBN) is offered your marks, just as with PDFs.</p>
+<h2 id="good-to-know">Good to know</h2>
+<ul>
+<li>Books get one plain, readable style. Bold, italics, headings, lists, tables and images are kept; the publisher’s styling, links inside the book and most SVG drawings aren’t.</li>
+<li>DRM-protected EPUBs can’t be opened.</li>
+<li>There’s no choice of page size or font yet.</li>
+<li><strong>Fix:</strong> the Arch package now depends on <code>qt6-svg</code>. Without it, Dogear’s icon (and SVG images in books) couldn’t be shown. Most desktops already have it, so few noticed.</li>
+</ul>
+<h2 id="get-it">Get it</h2>
+<pre class="highlight"><code class="language-sh"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">autonomix-cli</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> add https://github.com/ninepointlabs/dogear</span>
+<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">autonomix-cli</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> install dogear</span>
+<span class="hl-comment hl-line hl-number-sign hl-shell"><span class="hl-punctuation hl-definition hl-comment hl-begin hl-shell">#</span></span><span class="hl-comment hl-line hl-number-sign hl-shell"> or, if you already track it:</span><span class="hl-comment hl-line hl-number-sign hl-shell">
+</span><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">autonomix-cli</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> update</span>
+</span></code></pre>
+<p>On Arch or Omarchy you can also grab <code>dogear-0.1.3-1-any.pkg.tar.zst</code> and run <code>sudo pacman -U</code> on it; on any other Linux, the AppImage runs as is. Both are on the <a href="https://github.com/ninepointlabs/dogear/releases/tag/v0.1.3">v0.1.3 release</a>, and the source is <a href="https://github.com/ninepointlabs/dogear">on GitHub</a>. Questions go to help@ninepointlabs.com.</p>
+]]></content:encoded>
+</item>
 <item>
 <title>omaforge 0.2.9: star addons to find them later</title>
 <link>https://blog.ninepointlabs.com/2026/11/omaforge-0-2-9/</link>
@@ -802,43 +837,6 @@ folderblog publishes the episode: audio on Cloudflare R2, a podcast feed
 <pre class="highlight"><code class="language-bash"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">autonomix-cli</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> add https://github.com/ninepointlabs/autonomix-cli</span>
 </span></code></pre>
 <p>Packages for Arch, Debian/Ubuntu and Fedora (amd64 and arm64) are on the <a href="https://github.com/ninepointlabs/autonomix-cli/releases/tag/v0.4.3">v0.4.3 release</a>.</p>
-]]></content:encoded>
-</item>
-<item>
-<title>Dogear: a PDF reader for studying, made for Omarchy</title>
-<link>https://blog.ninepointlabs.com/2026/10/dogear/</link>
-<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/dogear/</guid>
-<pubDate>Sun, 18 Oct 2026 00:00:00 -0500</pubDate>
-<dc:creator>Tim</dc:creator>
-<category>Dogear</category>
-<category>Omarchy</category>
-<category>PDF</category>
-<category>Obsidian</category>
-<category>Qt</category>
-<description><![CDATA[<p>Class handouts, workbooks and textbooks mostly arrive as PDFs now, and most PDF readers treat them as something to look at, not something to work in. <strong><a href="https://github.com/ninepointlabs/dogear">Dogear</a></strong> does what you’d do to a paper textbook: highlight in several colors, write notes next to what you highlighted, fold the corner of a page, and fill in the blanks on a worksheet. When you’re done, it exports everything to Markdown, for example straight into your Obsidian vault.</p>
-]]></description>
-<content:encoded><![CDATA[<p>Class handouts, workbooks and textbooks mostly arrive as PDFs now, and most PDF readers treat them as something to look at, not something to work in. <strong><a href="https://github.com/ninepointlabs/dogear">Dogear</a></strong> does what you’d do to a paper textbook: highlight in several colors, write notes next to what you highlighted, fold the corner of a page, and fill in the blanks on a worksheet. When you’re done, it exports everything to Markdown, for example straight into your Obsidian vault.</p>
-<p><strong><a href="https://dogear.ninepointlabs.com/">dogear.ninepointlabs.com</a></strong> (with a narrated demo video) · <strong><a href="https://github.com/ninepointlabs/dogear/releases/tag/v0.1.0">v0.1.0 on GitHub</a></strong></p>
-<p><img src="https://dogear.ninepointlabs.com/images/hero.webp" alt="Dogear with a biology handout open: two passages highlighted in yellow and blue, and the sidebar listing both highlights with the note on the second" decoding="async"></p>
-<h2 id="mark-it-up-like-paper">Mark it up like paper</h2>
-<p>Select text and press <code>1</code> through <code>5</code> to highlight it in yellow, green, blue, pink or purple, or press <code>a</code> to highlight and write a note in one go. Hover a highlight to read its note; notes also show in the sidebar and as markers in the margin. Press <code>b</code> to bookmark a page (it gets a folded corner, named after its table of contents entry), and keep general notes about the whole document with <code>Ctrl+N</code>.</p>
-<p>Dogear remembers the page, scroll position and zoom for every file, so opening a handout again puts you back where you stopped.</p>
-<h2 id="fill-in-the-blanks">Fill in the blanks</h2>
-<p>This is what sets Dogear apart. Worksheets leave lines for answers, and in Dogear you just click the line and type. There’s no text box to place: it finds the line in the rendered page (drawn rules, runs of underscores, dotted lines), writes on it in blue ink at the size of the page’s own text, and shrinks a long answer to fit a short blank. <code>Tab</code> jumps to the next blank, so a whole fill-in-the-blank page can be done from the keyboard. Ruled lines under a question become one answer that wraps from line to line.</p>
-<p><img src="https://dogear.ninepointlabs.com/images/answers.webp" alt="A worksheet page with its blanks filled in, including two ruled lines with a longer answer" loading="lazy" decoding="async"></p>
-<h2 id="a-library-that-remembers-your-marks">A library that remembers your marks</h2>
-<p>With no PDF open, Dogear shows a library of every PDF you’ve opened, with how many highlights, notes, answers and bookmarks each has. Search reaches inside your marks too, so a word you highlighted three weeks ago finds its handout. You can sort, file documents under categories, and give them your own names (“Book 3: Children’s Classes” instead of a 60-character file name) without renaming the file.</p>
-<p>Dogear never changes your PDFs. It keeps a copy of every PDF you mark up, so your marks always have their PDF even if the original is moved or deleted. Everything lives in one folder, <code>~/Documents/Dogear</code> by default, that you can sync between computers with Syncthing, Dropbox or Google Drive. If two computers change the same document before syncing, Dogear merges the conflict copy back in and keeps every mark from both. It also notices a re-download or new edition of a book you’ve marked up and offers to bring your marks over.</p>
-<h2 id="into-obsidian">Into Obsidian</h2>
-<p><code>Ctrl+E</code> writes a Markdown file per PDF: document notes first, then one section per page with highlights as quotes (page and color included), each note under its highlight, bookmarks, and every worksheet answer under its full question, so the export reads without the PDF. Categories come along as Obsidian tags. Point the export folder at your vault in Settings and your study notes land where the rest of your notes live.</p>
-<h2 id="native-to-omarchy">Native to Omarchy</h2>
-<p>Dogear is keyboard first, with Vim-style reading keys (<code>j</code>/<code>k</code>, <code>J</code>/<code>K</code> for pages, <code>/</code> to search) and Ctrl for commands, leaving Super to Hyprland. It follows your Omarchy theme and repaints the moment you run <code>omarchy theme set</code>, and it makes room in narrow tiling windows. No account, no network access and no telemetry.</p>
-<h2 id="install-v0-1-0">Install v0.1.0</h2>
-<p>On Arch and Omarchy, install it with <a href="https://github.com/ninepointlabs/autonomix-cli">autonomix-cli</a>, which also keeps it updated from GitHub Releases:</p>
-<pre class="highlight"><code class="language-bash"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">autonomix-cli</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> add https://github.com/ninepointlabs/dogear</span>
-</span></code></pre>
-<p>Or download <code>dogear-0.1.0-1-any.pkg.tar.zst</code> from the <a href="https://github.com/ninepointlabs/dogear/releases/tag/v0.1.0">release page</a> and run <code>sudo pacman -U dogear-0.1.0-1-any.pkg.tar.zst</code>. pacman pulls in <code>pyside6</code> and <code>qt6-webengine</code> (for the Qt PDF library). Dogear then shows up in your app launcher and can open PDFs from the file manager.</p>
-<p>MIT licensed. Questions or bugs go to <a href="mailto:help@ninepointlabs.com">help@ninepointlabs.com</a> or the <a href="https://github.com/ninepointlabs/dogear/issues">issue tracker</a>.</p>
 ]]></content:encoded>
 </item>
 </channel>
