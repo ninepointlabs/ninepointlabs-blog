@@ -7,7 +7,51 @@
 <language>en</language>
 <atom:link href="https://blog.ninepointlabs.com/feed.xml" rel="self" type="application/rss+xml"/>
 <generator>folderblog 0.2.11</generator>
-<lastBuildDate>Tue, 10 Nov 2026 09:30:55 -0600</lastBuildDate>
+<lastBuildDate>Tue, 10 Nov 2026 12:18:31 -0600</lastBuildDate>
+<item>
+<title>folderblog 0.2.11: posts ordered by date and time</title>
+<link>https://blog.ninepointlabs.com/2026/11/folderblog-0-2-11/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/11/folderblog-0-2-11/</guid>
+<pubDate>Tue, 10 Nov 2026 12:18:31 -0600</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>folderblog</category>
+<category>Linux</category>
+<category>Rust</category>
+<category>static-site</category>
+<category>blogging</category>
+<description><![CDATA[<p><a href="https://folderblog.ninepointlabs.com">folderblog</a> 0.2.11 puts posts in order by date and time, so several posts on the same day finally show up in the right order. The home page, archives, tag pages, feeds and the podcast list are all newest first by it.</p>
+]]></description>
+<content:encoded><![CDATA[<p><a href="https://folderblog.ninepointlabs.com">folderblog</a> 0.2.11 puts posts in order by date and time, so several posts on the same day finally show up in the right order. The home page, archives, tag pages, feeds and the podcast list are all newest first by it.</p>
+<h2 id="how-it-works">How it works</h2>
+<p>Every post date now carries a time of day. To set the time yourself, write it in <code>date</code>:</p>
+<pre class="highlight"><code class="language-markdown"><span class="hl-text hl-html hl-markdown"><span class="hl-meta hl-paragraph hl-markdown">date: 2026-11-10 09:28
+</span></span></code></pre>
+<p>A full timestamp with an offset works too, like <code>date: 2026-11-10T09:28:00-06:00</code>.</p>
+<p>A post with only a day (a <code>2026-11-10-</code> filename or <code>date: 2026-11-10</code>) gets the time it was first committed to git, or else the file’s modified time. That time is saved in <code>dates.toml</code> the first time the post is published, so editing it later never reshuffles the day. The day, and so every address, stays the same.</p>
+<p>You can also set a <code>timezone</code> in <code>blog.toml</code>:</p>
+<pre class="highlight"><code class="language-toml">timezone = &quot;America/Chicago&quot;
+</code></pre>
+<p>Dates written without an offset are read in that zone. Without it, folderblog uses the computer’s own zone, as before.</p>
+<p>A couple of other details:</p>
+<ul>
+<li><strong>Friendlier date typos.</strong> An unreadable <code>date</code> is now a warning (and the filename’s date is used) when the filename has one. <code>folderblog check</code> also warns about an unreadable <code>updated</code>.</li>
+</ul>
+<h2 id="read-this-before-you-update">Read this before you update</h2>
+<ul>
+<li><strong><code>timezone</code> needs 0.2.11 or newer.</strong> Older versions refuse a <code>blog.toml</code> that has it, so update every machine that builds the blog first.</li>
+<li><strong>Expect a one-time change to <code>dates.toml</code>.</strong> The first build adds a time for each post dated by filename or a date-only <code>date:</code>. Commit it with your blog.</li>
+<li><strong>Feeds now show real times instead of midnight,</strong> and a few same-day posts may swap places in the feed.</li>
+</ul>
+<h2 id="grab-it">Grab it</h2>
+<table><thead><tr><th>System</th><th>Command</th></tr></thead><tbody>
+<tr><td>Arch / Omarchy</td><td><code>sudo pacman -U folderblog-bin-0.2.11-1-x86_64.pkg.tar.zst</code></td></tr>
+<tr><td>Debian / Ubuntu</td><td><code>sudo apt install ./folderblog_0.2.11-1_amd64.deb</code></td></tr>
+<tr><td>Fedora / RHEL / openSUSE</td><td><code>sudo dnf install ./folderblog-0.2.11-1.x86_64.rpm</code></td></tr>
+<tr><td>autonomix-cli</td><td><code>autonomix-cli add https://github.com/ninepointlabs/folderblog</code></td></tr>
+</tbody></table>
+<p>Already installed? Install the new package, then run <code>systemctl --user restart folderblog</code>. The packages and a plain tarball are on the <a href="https://github.com/ninepointlabs/folderblog/releases/tag/v0.2.11">v0.2.11 release</a>, and the source is <a href="https://github.com/ninepointlabs/folderblog">on GitHub</a>.</p>
+]]></content:encoded>
+</item>
 <item>
 <title>Parzelle&#39;s Addon: a do-everything Mage companion for WoW Forever</title>
 <link>https://blog.ninepointlabs.com/2026/11/parzelles-addon/</link>
@@ -796,35 +840,6 @@ folderblog publishes the episode: audio on Cloudflare R2, a podcast feed
 <span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">systemctl</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"><span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> --</span>user</span> restart omostrich</span>
 </span></code></pre>
 <p>The restart matters, because the running signer keeps the old code until it’s restarted. More about Omostrich is at <a href="https://omostrich.com/">omostrich.com</a>.</p>
-]]></content:encoded>
-</item>
-<item>
-<title>fm-cli and Autonomix CLI get their own websites</title>
-<link>https://blog.ninepointlabs.com/2026/10/fm-cli-and-autonomix-cli-websites/</link>
-<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/fm-cli-and-autonomix-cli-websites/</guid>
-<pubDate>Tue, 20 Oct 2026 16:38:28 -0500</pubDate>
-<dc:creator>Tim</dc:creator>
-<category>fm-cli</category>
-<category>autonomix-cli</category>
-<category>CLI</category>
-<category>Linux</category>
-<category>Omarchy</category>
-<description><![CDATA[<p>Two of the terminal tools now have proper homes on the web: <a href="https://fm-cli.ninepointlabs.com/">fm-cli.ninepointlabs.com</a> and <a href="https://autonomix-cli.ninepointlabs.com/">autonomix-cli.ninepointlabs.com</a>. Until today, the only way to learn about either one was its GitHub README.</p>
-]]></description>
-<content:encoded><![CDATA[<p>Two of the terminal tools now have proper homes on the web: <a href="https://fm-cli.ninepointlabs.com/">fm-cli.ninepointlabs.com</a> and <a href="https://autonomix-cli.ninepointlabs.com/">autonomix-cli.ninepointlabs.com</a>. Until today, the only way to learn about either one was its GitHub README.</p>
-<h2 id="whats-on-them">What’s on them</h2>
-<p>Each site is one page that answers the questions you’d have before installing: what the tool does, how to install it on your system, and how to get started. Both link straight to the latest release, and the full command reference stays in the README for when you need it.</p>
-<p><strong><a href="https://fm-cli.ninepointlabs.com/">fm-cli</a></strong> is Fastmail from the terminal: a full-screen mail app, commands that print JSON, and a live watch that follows your mailbox over Fastmail’s push connection. The site walks through all of it, including offline mode, the two-week calendar agenda and contacts, and how sign-in keeps tokens in your system keyring. It also shows every way to install it:</p>
-<pre class="highlight"><code class="language-bash"><span class="hl-source hl-shell hl-bash"><span class="hl-comment hl-line hl-number-sign hl-shell"><span class="hl-punctuation hl-definition hl-comment hl-begin hl-shell">#</span></span><span class="hl-comment hl-line hl-number-sign hl-shell"> On Omarchy</span><span class="hl-comment hl-line hl-number-sign hl-shell">
-</span><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">omarchy-mise-install</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> github:ninepointlabs/fm-cli fm-cli</span>
-
-<span class="hl-comment hl-line hl-number-sign hl-shell"><span class="hl-punctuation hl-definition hl-comment hl-begin hl-shell">#</span></span><span class="hl-comment hl-line hl-number-sign hl-shell"> With mise anywhere else</span><span class="hl-comment hl-line hl-number-sign hl-shell">
-</span><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">mise</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> use<span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> -</span>g</span> github:ninepointlabs/fm-cli@latest</span>
-</span></code></pre>
-<p>There are <code>.pkg.tar.zst</code>, <code>.deb</code> and <code>.rpm</code> packages and plain tarballs for Linux and macOS too. The README’s screenshot was also swapped for one showing sample mail.</p>
-<p><strong><a href="https://autonomix-cli.ninepointlabs.com/">Autonomix CLI</a></strong> installs and updates apps straight from GitHub Releases. The site covers the package formats it understands, how it detects what’s already installed, the JSON output for scripts, and how it fits into Omarchy: the bar widget and the post-update hook that updates your apps whenever you run <code>omarchy update</code>. Install steps for Debian and Ubuntu, Fedora and Arch are right there, along with the full command list.</p>
-<h2 id="why-it-matters">Why it matters</h2>
-<p>A website is easier to share and easier to read than a repository. If you’ve been sending someone a GitHub link to explain what fm-cli or Autonomix CLI is, you can send them the site now. Nothing changes in the tools themselves, so there’s nothing to update.</p>
 ]]></content:encoded>
 </item>
 </channel>
