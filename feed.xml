@@ -7,7 +7,53 @@
 <language>en</language>
 <atom:link href="https://blog.ninepointlabs.com/feed.xml" rel="self" type="application/rss+xml"/>
 <generator>folderblog 0.2.11</generator>
-<lastBuildDate>Tue, 10 Nov 2026 12:18:31 -0600</lastBuildDate>
+<lastBuildDate>Wed, 11 Nov 2026 09:26:43 -0600</lastBuildDate>
+<item>
+<title>Tristan&#39;s Addon: a do-everything Paladin companion for WoW Forever, with PvP</title>
+<link>https://blog.ninepointlabs.com/2026/11/tristans-addon/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/11/tristans-addon/</guid>
+<pubDate>Wed, 11 Nov 2026 09:26:43 -0600</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>Tristan&#39;s Addon</category>
+<category>World of Warcraft</category>
+<category>WoW Forever</category>
+<category>Paladin</category>
+<category>PvP</category>
+<category>Addons</category>
+<category>Gaming</category>
+<description><![CDATA[<p><a href="https://github.com/ninepointlabs/tristans-addon">Tristan’s Addon</a> is new: a free, open source Paladin companion for World of Warcraft: Forever. It knows Holy, Protection and Retribution, has dual spec from day one, and adds something its siblings don’t have: a real <strong>Battle</strong> section for PvP. Version <strong>0.1.0</strong> is out, the first release.</p>
+]]></description>
+<content:encoded><![CDATA[<p><a href="https://github.com/ninepointlabs/tristans-addon">Tristan’s Addon</a> is new: a free, open source Paladin companion for World of Warcraft: Forever. It knows Holy, Protection and Retribution, has dual spec from day one, and adds something its siblings don’t have: a real <strong>Battle</strong> section for PvP. Version <strong>0.1.0</strong> is out, the first release.</p>
+<p>It’s the third of the family, after <a href="https://andricsaddon.myazerothlife.com/">Andric’s Addon</a> for Priests and <a href="https://parzelles-addon.myazerothlife.com/">Parzelle’s Addon</a> for Mages, so the window will feel familiar if you’ve used either one.</p>
+<h2 id="one-window-for-the-whole-paladin">One window for the whole Paladin</h2>
+<p>Type <code>/tristan</code> (or <code>/paladin</code>). <strong>Home</strong> shows what your trainer has now and next, your riding savings, your next class quest, and anything that needs attention: no Blessing on you, no Aura, no Seal in melee range, Righteous Fury on while you’re not tanking.</p>
+<ul>
+<li><strong>Rotation:</strong> Solo, Dungeon and Raid priorities for each spec, using only spells you know, with a small next-spell helper, a post-fight summary with mana tips, and a Seals &amp; auras tab.</li>
+<li><strong>Gear:</strong> upgrade lines in tooltips weighted for your spec, a glow on bag upgrades, how to get each item with a map pin, and a PvP weights toggle that puts Stamina first.</li>
+<li><strong>Leveling and talents:</strong> zones, dungeons, trainer visits and class quests, plus builds drawn on Forever’s own Paladin trees. Every level-60 build is checked to add up to exactly 51 points, PvP builds included.</li>
+<li><strong>Learn the Paladin:</strong> every spell and talent, how Seals and Judgement work in Forever, group etiquette, common mistakes and a PvP basics track.</li>
+<li><strong>Dual spec:</strong> two profiles per character. The suggested plan is to level as Retribution, then at 40 run Retribution plus Holy for battlegrounds.</li>
+</ul>
+<h2 id="the-paladin-bar">The Paladin bar</h2>
+<p>The <strong>Blessing button</strong> blesses the next friendly player missing your Blessing, one press at a time: you first, then your group nearest-first, your target, then friendly nameplates. It picks Might for Warriors, Rogues and Hunters, Wisdom for casters and healers, or Kings for everyone if you choose it, and you can override any class. Beside it, an <strong>Aura hint</strong> and a <strong>Seal hint</strong> suggest the right one for what you’re doing.</p>
+<h2 id="battle-pvp-in-the-same-window">Battle: PvP in the same window</h2>
+<p>Tristan Ludlowe lives on a PvP realm, so the addon has a Battle group with six tabs:</p>
+<ul>
+<li><strong>Honor &amp; Rank:</strong> your rank and Honor where the client lets addons read them, and the next rank reward.</li>
+<li><strong>Battlegrounds:</strong> Warsong Gulch, Arathi Basin, Darkspear Islands and Alterac Valley, with the objective, your spec’s role and where to queue. Only brackets your level allows are lit.</li>
+<li><strong>PvP bar:</strong> one-press buttons for Freedom, Cleanse, Blessing of Protection, Hammer of Justice and Repentance.</li>
+<li><strong>Cooldowns</strong> with a Forbearance timer, a <strong>Burst coach</strong> that follows your own casts and lights the next step, and <strong>World PvP</strong> status for your zone with survival tips for leveling on a PvP realm.</li>
+</ul>
+<p>Forever doesn’t give addons the combat log, and other players’ health and casts are hidden from addons in combat. So Tristan’s Addon doesn’t track enemy trinkets, diminishing returns or enemy players, and it says so plainly instead of pretending. Everything is advice: one key press is one cast, and nothing casts by itself.</p>
+<h2 id="also-new-parzelles-addon-0-1-1">Also new: Parzelle’s Addon 0.1.1</h2>
+<p>The Mage companion got two buttons beside its Conjure Button. <strong>Arcane Intellect</strong> buffs the next person who needs it, skipping Warriors and Rogues. <strong>Hand out</strong> opens a trade with your target or the next group member (lowest mana first) and fills it with the best rank of water and food they can use, with food only for Warriors and Rogues. You still click the final Trade yourself.</p>
+<h2 id="get-it">Get it</h2>
+<p>On Linux, <a href="https://omaforge.myazerothlife.com/">OmaForge</a> installs it and keeps it updated:</p>
+<pre class="highlight"><code class="language-sh"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">omaforge</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> install<span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> -</span>c</span> forever github:ninepointlabs/tristans-addon</span>
+</span></code></pre>
+<p>On any other system, download <code>TristansAddon-v0.1.0.zip</code> from the <a href="https://github.com/ninepointlabs/tristans-addon/releases/tag/v0.1.0">v0.1.0 release</a>, unzip it into <code>_forever_/Interface/AddOns/</code>, and type <code>/reload</code>. It’s for WoW Forever only. Every fact carries its source (Blizzard first, then Icy Veins and Wowhead) and the date it was checked. The source is <a href="https://github.com/ninepointlabs/tristans-addon">on GitHub</a>. It’s an unofficial fan project, not affiliated with or endorsed by Blizzard. Questions go to help@ninepointlabs.com.</p>
+]]></content:encoded>
+</item>
 <item>
 <title>folderblog 0.2.11: posts ordered by date and time</title>
 <link>https://blog.ninepointlabs.com/2026/11/folderblog-0-2-11/</link>
@@ -798,48 +844,6 @@ folderblog publishes the episode: audio on Cloudflare R2, a podcast feed
 </ol>
 <p>I would only build something new if the existing tools fall short, and I suspect they will not.</p>
 <p>Thank you to Lez for the nudge. If you are running a local relay already, or you have been testing FIPS, I would really like to hear how it is going.</p>
-]]></content:encoded>
-</item>
-<item>
-<title>Omostrich 0.3: log in to Nostr apps by QR code</title>
-<link>https://blog.ninepointlabs.com/2026/10/omostrich-0-3/</link>
-<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/omostrich-0-3/</guid>
-<pubDate>Wed, 21 Oct 2026 09:44:26 -0500</pubDate>
-<dc:creator>Tim</dc:creator>
-<category>omostrich</category>
-<category>Nostr</category>
-<category>Omarchy</category>
-<category>Linux</category>
-<description><![CDATA[<p><a href="https://omostrich.com/">Omostrich</a> keeps your Nostr key on your own computer. It holds the key encrypted, unlocks from the Omarchy bar, posts notes, and signs for other Nostr apps over NIP-46 (remote signing) so those apps never see your key. Version 0.3.0 makes that last part much easier: you can now connect a phone app by scanning a QR code instead of copying long connection strings around.</p>
-]]></description>
-<content:encoded><![CDATA[<p><a href="https://omostrich.com/">Omostrich</a> keeps your Nostr key on your own computer. It holds the key encrypted, unlocks from the Omarchy bar, posts notes, and signs for other Nostr apps over NIP-46 (remote signing) so those apps never see your key. Version 0.3.0 makes that last part much easier: you can now connect a phone app by scanning a QR code instead of copying long connection strings around.</p>
-<h2 id="whats-new">What’s new</h2>
-<p><strong>Show a QR code, scan it from your phone.</strong> Under Remote signing there’s a new <strong>QR</strong> button next to Copy. It shows your <code>bunker://</code> connection string as a QR code, which a phone app such as Amethyst can scan to log in with a remote signer. The string is public (your public key and your NIP-46 relays, no secret), and the app’s connect request still shows up in Omostrich for you to approve, like any other.</p>
-<p><strong>Connect apps that show their own QR code.</strong> Some apps go the other way and display a <code>nostrconnect://</code> code. <strong>Scan QR</strong> reads it with your laptop camera, or <strong>Paste code</strong> takes a copied string. Omostrich checks the code, answers the app on the relays it names, and adds it to Authorized apps under its own name. After that it keeps listening for that app after every unlock until you revoke it.</p>
-<p>The camera is handled carefully. Frames go straight to the decoder and are never saved, and the camera turns off as soon as a code is read, when you cancel or close the preview, or after two minutes. Laptop webcams are fixed-focus and these codes are dense, so hold the code inside the guide box about 25 to 35 cm away. Even then, reading a phone’s code with a laptop camera can be unreliable, so the bunker QR is the dependable direction.</p>
-<p><strong>Approve all or deny all.</strong> Right after you log in, Amethyst signs a burst of events at once. When several requests are waiting, you can now settle every one on screen in one click, each just this once. Anything that arrives after you click still waits for its own answer.</p>
-<h2 id="smaller-fixes">Smaller fixes</h2>
-<ul>
-<li><strong>Always allow</strong> no longer overwrites an app’s saved relays or name.</li>
-<li>A request delivered twice is handled only once.</li>
-<li><code>daemon.log</code> now records each request’s method (such as <code>sign_event</code>) and whether the reply worked, never the content of the request or the reply.</li>
-<li>The About page’s privacy statement now covers camera use, the relays a scanned app names, and the new log details.</li>
-</ul>
-<h2 id="also-new-since-0-2">Also new since 0.2</h2>
-<p>Omostrich 0.2.1 added an optional listener on your Tailscale address so your own devices can reach the signer with a token, and NIP-46 requests are now heard on every bunker relay, not just your posting relays.</p>
-<h2 id="get-it">Get it</h2>
-<p>The QR features need three extra packages. Everything else works without them:</p>
-<pre class="highlight"><code class="language-bash"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">sudo</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> pacman<span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> -</span>S</span> qrencode ffmpeg zbar</span>
-</span></code></pre>
-<p>To update an existing install:</p>
-<pre class="highlight"><code class="language-bash"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-support hl-function hl-cd hl-shell">cd</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> <span class="hl-meta hl-group hl-expansion hl-tilde"><span class="hl-variable hl-language hl-tilde hl-shell">~</span></span>/Projects/omostrich</span>
-<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">git</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> pull</span>
-<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">npm</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> ci</span>
-<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">./install-daemon.sh</span></span>
-<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">./install-plugin.sh</span></span>
-<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">systemctl</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"><span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> --</span>user</span> restart omostrich</span>
-</span></code></pre>
-<p>The restart matters, because the running signer keeps the old code until it’s restarted. More about Omostrich is at <a href="https://omostrich.com/">omostrich.com</a>.</p>
 ]]></content:encoded>
 </item>
 </channel>
