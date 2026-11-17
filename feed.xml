@@ -7,7 +7,56 @@
 <language>en</language>
 <atom:link href="https://blog.ninepointlabs.com/feed.xml" rel="self" type="application/rss+xml"/>
 <generator>folderblog 0.2.11</generator>
-<lastBuildDate>Sat, 14 Nov 2026 09:30:06 -0600</lastBuildDate>
+<lastBuildDate>Tue, 17 Nov 2026 09:52:48 -0600</lastBuildDate>
+<item>
+<title>Bahá’í Reader for everyone: rebuilt with Flutter</title>
+<link>https://blog.ninepointlabs.com/2026/11/bahai-reader-for-everyone/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/11/bahai-reader-for-everyone/</guid>
+<pubDate>Tue, 17 Nov 2026 09:52:48 -0600</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>bahai-reader</category>
+<category>Bahá’í</category>
+<category>Flutter</category>
+<category>Linux</category>
+<category>Windows</category>
+<category>Android</category>
+<category>Omarchy</category>
+<description><![CDATA[<p>Bahá’í Reader is rebuilt with Flutter, so the same offline prayer book and Writings reader now runs on Linux, Windows and Android. We’re still Omarchy users, but this app is meant for anyone who needs it.</p>
+]]></description>
+<content:encoded><![CDATA[<p><a href="https://bahaireader.org/">Bahá’í Reader</a>, the offline prayer book and Writings reader, started out as a GTK app for Linux. We’ve rebuilt it with Flutter, so the same reader now runs on <strong>Linux, Windows and Android</strong>. Version 1.0 is the first release of the new app.</p>
+<!--more-->
+<h2 id="why-flutter">Why Flutter</h2>
+<p>Let’s get one thing out of the way: we’re still Omarchy users. Most of what we make at Nine Point Labs is built for Linux and Omarchy first, and that isn’t changing.</p>
+<p>Bahá’í Reader is a little different. A prayer book is something you reach for on whatever is in front of you: the family laptop, a phone at a devotional gathering, the computer at work. The people who could use it aren’t all running Linux, and an app full of prayers and the Writings should be shared with whoever needs it. Flutter lets us keep one codebase and ship it to many platforms, so a fix or a new feature reaches everyone at once.</p>
+<h2 id="same-reader-new-home">Same reader, new home</h2>
+<p>Before switching, we listed every feature of the GTK app and worked through them one by one, so the move wouldn’t cost anyone the things they rely on. What you know is still here:</p>
+<ul>
+<li><strong>Offline, and private.</strong> English is bundled. Other languages download only when you ask, and nothing else ever uses the network. No accounts, no analytics, no telemetry.</li>
+<li><strong>The library and search.</strong> Writings grouped by book, prayers grouped by category, and a search that ignores accents and apostrophes, so “Bahaullah” finds “Bahá’u’lláh”.</li>
+<li><strong>Highlights, notes and saved passages</strong>, plus <strong>Copy with citation</strong>.</li>
+<li><strong>Today and the obligatory prayers.</strong> The Badí‘ date (changing at sunset), sun times for your city, your obligatory prayer’s window with a private “Said today”, the next Feast and Holy Day, the Fast, the passage of the day and the Alláh-u-Abhá counter.</li>
+<li><strong>Light, Dark and Sepia</strong>, and on Omarchy it still follows your live theme.</li>
+</ul>
+<p>If you used the GTK app on Linux, the first start brings over your highlights, notes, saved passages, collections, reading places and settings. The old app’s files are only read, never changed, so nothing is lost if you go back.</p>
+<h2 id="where-it-runs-today">Where it runs today</h2>
+<ul>
+<li><strong>Linux</strong>, where we use it every day: the <code>.deb</code>, <code>.rpm</code>, Arch/Omarchy package, AppImage and Flatpak bundle are all there, or install it with autonomix-cli.</li>
+<li><strong>Windows</strong> (64-bit): an installer that doesn’t need administrator rights, or a zip. Last night I tested it on Windows myself, and it works well. It isn’t code-signed yet, so SmartScreen may warn you the first time; choose <strong>More info</strong>, then <strong>Run anyway</strong>. Reminders aren’t sent on Windows yet.</li>
+<li><strong>Android</strong> (7 and up, phones and tablets): an APK you install from the download page. The phone opens on a Today tab, and reminders arrive even with the app closed.</li>
+</ul>
+<h2 id="whats-left-macos-and-ios">What’s left: macOS and iOS</h2>
+<p>The Flutter project already has the starting pieces for macOS and iOS, but neither has been built or tested. Building for Apple platforms needs a Mac, and we don’t have one yet. When we get one, macOS and iOS are next. Until then we’d rather say “not yet” than ship something we haven’t tried.</p>
+<h2 id="get-it">Get it</h2>
+<p>Downloads for every platform are on <a href="https://bahaireader.org/">bahaireader.org</a> and the <a href="https://github.com/ninepointlabs/bahai-reader/releases">GitHub releases page</a>. On Linux, autonomix-cli keeps it up to date:</p>
+<pre class="highlight"><code class="language-sh"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">autonomix-cli</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> add https://github.com/ninepointlabs/bahai-reader</span>
+<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">autonomix-cli</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> install bahai-reader</span>
+<span class="hl-comment hl-line hl-number-sign hl-shell"><span class="hl-punctuation hl-definition hl-comment hl-begin hl-shell">#</span></span><span class="hl-comment hl-line hl-number-sign hl-shell"> or, if you already track it:</span><span class="hl-comment hl-line hl-number-sign hl-shell">
+</span><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">autonomix-cli</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> update</span>
+</span></code></pre>
+<p>The source is <a href="https://github.com/ninepointlabs/bahai-reader">on GitHub</a>. The code is MIT licensed; the texts and translations are not, and <code>DATA-NOTICE.md</code> has the details. This is a free, independent community app, not an official publication of a Bahá’í institution.</p>
+<p>Thank you to everyone who has prayed, read and studied with Bahá’í Reader so far. It’s a joy to be able to share it with more people.</p>
+]]></content:encoded>
+</item>
 <item>
 <title>Tazu&#39;s Addon: a do-everything Shaman companion for WoW Forever</title>
 <link>https://blog.ninepointlabs.com/2026/11/tazus-addon/</link>
@@ -795,42 +844,6 @@ folderblog publishes the episode: audio on Cloudflare R2, a podcast feed
 <tr><td>autonomix-cli</td><td><code>autonomix-cli add https://github.com/ninepointlabs/folderblog</code></td></tr>
 </tbody></table>
 <p>The packages and a plain tarball are on the <a href="https://github.com/ninepointlabs/folderblog/releases/tag/v0.2.7">v0.2.7 release</a>. New to folderblog? See <a href="https://folderblog.ninepointlabs.com">its home page</a>, the <a href="https://github.com/ninepointlabs/folderblog">source on GitHub</a>, or start with <a href="https://github.com/ninepointlabs/folderblog/blob/main/docs/GUIDE.md">the guide</a>, or run <code>folderblog guide</code>.</p>
-]]></content:encoded>
-</item>
-<item>
-<title>Omostrich 0.3.1: profile pictures loaded safely</title>
-<link>https://blog.ninepointlabs.com/2026/10/omostrich-0-3-1/</link>
-<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/omostrich-0-3-1/</guid>
-<pubDate>Thu, 22 Oct 2026 11:01:04 -0500</pubDate>
-<dc:creator>Tim</dc:creator>
-<category>omostrich</category>
-<category>Nostr</category>
-<category>Omarchy</category>
-<category>Security</category>
-<description><![CDATA[<p><a href="https://omostrich.com/">Omostrich</a> keeps your Nostr key on your own computer and signs for your apps from the Omarchy bar. Version 0.3.1 is a small security release. It changes how the panel shows your profile picture and attachment previews, so a picture someone else controls can’t stall or overload the panel.</p>
-]]></description>
-<content:encoded><![CDATA[<p><a href="https://omostrich.com/">Omostrich</a> keeps your Nostr key on your own computer and signs for your apps from the Omarchy bar. Version 0.3.1 is a small security release. It changes how the panel shows your profile picture and attachment previews, so a picture someone else controls can’t stall or overload the panel.</p>
-<h2 id="what-changed">What changed</h2>
-<p><strong>Your profile picture is fetched with limits.</strong> Before, the panel took the picture URL from your Nostr profile and handed it straight to Qt to download and decode. Now the panel never loads that URL itself. While Omostrich is unlocked, the signer daemon downloads the picture with firm limits:</p>
-<ul>
-<li>a 10 second timeout and a 1 MB size cap, enforced even when the server doesn’t say how big the file is</li>
-<li>PNG, JPEG, GIF or WebP only, checked by both the content type and the file’s own signature, so SVG or HTML dressed up as an image is turned away</li>
-<li>at most 2048 by 2048 pixels, checked before anything is decoded, so a tiny, highly compressed file can’t blow up into a huge image in memory</li>
-</ul>
-<p>A picture that passes is kept as a local copy in <code>~/.local/share/omostrich/</code>, readable only by you, and the panel shows that copy at a small size. It isn’t fetched again on every restart. If a picture fails any check, you’ll see the placeholder instead, and the reason goes in <code>daemon.log</code>.</p>
-<p><strong>Attachment previews show your own file.</strong> When you attach an image to a note, the preview now shows the local file you just uploaded rather than loading it back from the Blossom server, and only when it’s within the same limits. The Blossom server’s reply is capped at 64 KB, and every image in the panel now has a bounded decode size.</p>
-<h2 id="why-it-matters">Why it matters</h2>
-<p>Your profile picture URL is public data that anyone can point anywhere, and the panel sits right next to your key. Keeping remote downloads out of the panel, and behind tight limits in the daemon, means a slow or hostile image server can’t hang the bar or eat your memory. The issue was raised in the Omarchy plugin marketplace review (<a href="https://github.com/omacom/omarchy-plugin-marketplace/issues/12494">#12494</a>), and nothing else in the panel loads remote content.</p>
-<h2 id="get-it">Get it</h2>
-<p>To update an existing install:</p>
-<pre class="highlight"><code class="language-bash"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-support hl-function hl-cd hl-shell">cd</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> <span class="hl-meta hl-group hl-expansion hl-tilde"><span class="hl-variable hl-language hl-tilde hl-shell">~</span></span>/Projects/omostrich</span>
-<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">git</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> pull</span>
-<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">npm</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> ci</span>
-<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">./install-daemon.sh</span></span>
-<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">./install-plugin.sh</span></span>
-<span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">systemctl</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"><span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> --</span>user</span> restart omostrich</span>
-</span></code></pre>
-<p>The restart matters, because the running signer keeps the old code until it’s restarted. The full notes are on the <a href="https://github.com/ninepointlabs/omostrich/releases/tag/v0.3.1">0.3.1 release page</a>, and more about Omostrich is at <a href="https://omostrich.com/">omostrich.com</a>.</p>
 ]]></content:encoded>
 </item>
 </channel>
