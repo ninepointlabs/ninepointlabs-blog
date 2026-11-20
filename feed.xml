@@ -7,7 +7,43 @@
 <language>en</language>
 <atom:link href="https://blog.ninepointlabs.com/feed.xml" rel="self" type="application/rss+xml"/>
 <generator>folderblog 0.2.11</generator>
-<lastBuildDate>Thu, 19 Nov 2026 16:27:19 -0600</lastBuildDate>
+<lastBuildDate>Fri, 20 Nov 2026 16:31:37 -0600</lastBuildDate>
+<item>
+<title>The Terminal List: a watch list for WoW Forever</title>
+<link>https://blog.ninepointlabs.com/2026/11/the-terminal-list/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/11/the-terminal-list/</guid>
+<pubDate>Fri, 20 Nov 2026 16:31:37 -0600</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>The Terminal List</category>
+<category>World of Warcraft</category>
+<category>WoW Forever</category>
+<category>PvP</category>
+<category>Addons</category>
+<category>Gaming</category>
+<description><![CDATA[<p><a href="https://ttl.myazerothlife.com/">The Terminal List</a> is new: a free, open source addon for World of Warcraft: Forever that keeps a personal watch list of players who crossed you, were rude, or don’t play nice. It works on both factions, and version <strong>0.1.0</strong> came out today. The code is <a href="https://github.com/ninepointlabs/the-terminal-list">on GitHub</a>.</p>
+]]></description>
+<content:encoded><![CDATA[<p><a href="https://ttl.myazerothlife.com/">The Terminal List</a> is new: a free, open source addon for World of Warcraft: Forever that keeps a personal watch list of players who crossed you, were rude, or don’t play nice. It works on both factions, and version <strong>0.1.0</strong> came out today. The code is <a href="https://github.com/ninepointlabs/the-terminal-list">on GitHub</a>.</p>
+<h2 id="whos-on-the-list">Who’s on the list</h2>
+<p>You decide. Type <code>/tlist add</code> with a name (or with a player targeted), right-click their portrait or their name in chat, or open the list window with <code>/tlist</code>. The window lets you search, filter, sort and add a note to each entry, so you remember why someone is there.</p>
+<p>The list is shared by every character on your account and stored only on your computer. Nothing is uploaded or shared with anyone.</p>
+<h2 id="open-world-pvp-and-only-that">Open-world PvP, and only that</h2>
+<p>If another player kills you in the open world, they’re added to the list, or their kill count goes up if they’re already on it. Battlegrounds, arenas, dungeons, raids, other instances and duels never count, so the PvP you sign up for doesn’t fill your list.</p>
+<p>Forever doesn’t always tell addons who landed the killing blow. When it doesn’t, The Terminal List asks you about the hostile player you were fighting instead of guessing.</p>
+<h2 id="spot-them-again">Spot them again</h2>
+<p>Listed players are easy to recognize the next time you meet:</p>
+<ul>
+<li>a red crosshair beside their nameplate and on the target frame,</li>
+<li>a line in their tooltip with your note and kill count,</li>
+<li>a crosshair on their lines in chat,</li>
+<li>and an optional once-per-session alert when one shows up (off by default).</li>
+</ul>
+<h2 id="get-it">Get it</h2>
+<p>On Linux, <a href="https://omaforge.myazerothlife.com/">OmaForge</a> installs it and keeps it updated:</p>
+<pre class="highlight"><code class="language-sh"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">omaforge</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> install<span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> -</span>c</span> forever github:ninepointlabs/the-terminal-list</span>
+</span></code></pre>
+<p>On any other system, download <code>TheTerminalList-v0.1.0.zip</code> from the <a href="https://github.com/ninepointlabs/the-terminal-list/releases/tag/v0.1.0">v0.1.0 release</a>, unzip it into <code>_forever_/Interface/AddOns/</code>, type <code>/reload</code>, then <code>/tlist</code>. It’s for WoW Forever only. It hasn’t been tested in game yet, so please report anything odd on the <a href="https://github.com/ninepointlabs/the-terminal-list/issues">issue tracker</a>. It’s an unofficial fan project, not affiliated with or endorsed by Blizzard. Questions go to help@ninepointlabs.com.</p>
+]]></content:encoded>
+</item>
 <item>
 <title>Forever Rogue: a do-everything Rogue companion for WoW Forever</title>
 <link>https://blog.ninepointlabs.com/2026/11/forever-rogue/</link>
@@ -754,92 +790,6 @@
 <tr><td>autonomix-cli</td><td><code>autonomix-cli add https://github.com/ninepointlabs/folderblog</code></td></tr>
 </tbody></table>
 <p>Already installed? Install the new package, then run <code>systemctl --user restart folderblog</code>. The packages and a plain tarball are on the <a href="https://github.com/ninepointlabs/folderblog/releases/tag/v0.2.8">v0.2.8 release</a>, and the source is <a href="https://github.com/ninepointlabs/folderblog">on GitHub</a>.</p>
-]]></content:encoded>
-</item>
-<item>
-<title>How My Azeroth Life is made: from a WoW addon to a podcast</title>
-<link>https://blog.ninepointlabs.com/2026/10/how-my-azeroth-life-is-made/</link>
-<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/how-my-azeroth-life-is-made/</guid>
-<pubDate>Fri, 23 Oct 2026 20:41:14 -0500</pubDate>
-<dc:creator>Tim</dc:creator>
-<category>folderblog</category>
-<category>podcasting</category>
-<category>My Azeroth Life</category>
-<category>World of Warcraft</category>
-<category>ElevenLabs</category>
-<category>AI</category>
-<category>blogging</category>
-<description><![CDATA[<p>I play World of Warcraft most evenings, and for the last few weeks the game has been keeping a blog about it. Now that blog has a podcast too. <a href="https://myazerothlife.com/">My Azeroth Life</a> tells the stories of my characters, and <a href="https://myazerothlife.com/podcast/">the My Azeroth Life podcast</a> turns those stories into narrated episodes with music and sound effects. Both are published by <a href="https://folderblog.ninepointlabs.com">folderblog</a>, the small blog engine I make here at Nine Point Labs.</p>
-]]></description>
-<content:encoded><![CDATA[<p>I play World of Warcraft most evenings, and for the last few weeks the game has been keeping a blog about it. Now that blog has a podcast too. <a href="https://myazerothlife.com/">My Azeroth Life</a> tells the stories of my characters, and <a href="https://myazerothlife.com/podcast/">the My Azeroth Life podcast</a> turns those stories into narrated episodes with music and sound effects. Both are published by <a href="https://folderblog.ninepointlabs.com">folderblog</a>, the small blog engine I make here at Nine Point Labs.</p>
-<p>I want to be upfront about one thing: AI does the writing and the narration. What makes it mine is that every story starts from something I actually did in the game, and I read every post and listen to every episode before it goes live. Here is how the pieces fit together.</p>
-<h2 id="the-short-version">The short version</h2>
-<pre><code>World of Warcraft, with the StoryTracker addon
-    |  log out or /reload: the addon saves its notes
-    v
-Companion script: one file of new events per character
-    |  every morning
-    v
-AI writes a draft post in the Chronicler&#39;s voice  -&gt;  drafts/
-    |  I read it and move it to posts/
-    v
-folderblog publishes it to myazerothlife.com
-    |
-    v
-Claude writes a script, ElevenLabs voices it, ffmpeg mixes it
-    |  I listen, then say yes
-    v
-folderblog publishes the episode: audio on Cloudflare R2, a podcast feed
-</code></pre>
-<h2 id="step-1-an-addon-that-takes-notes-while-i-play">Step 1: An addon that takes notes while I play</h2>
-<p>It starts with StoryTracker, a WoW addon I wrote. It listens for game events and keeps a record of each session: quests accepted and turned in, zones and subzones, levels gained, deaths (where, and what did it), rare and better loot, reputation changes, dungeon bosses, profession skill-ups, gold earned and spent, notable kills, groups and guilds, and when I logged in and out.</p>
-<p>WoW only lets an addon write to disk when you log out or type <code>/reload</code>, so the notes land in the addon’s saved file at the end of a session. There is a version for each game, and both are free on GitHub: <a href="https://github.com/ninepointlabs/wow-storytracker-addon">StoryTracker for WoW Forever</a> and <a href="https://github.com/ninepointlabs/wow-storytracker-addon-retail">StoryTracker for Retail</a>.</p>
-<h2 id="step-2-from-game-data-to-a-story">Step 2: From game data to a story</h2>
-<p>A small companion script reads that saved file, compares it with what it has already seen, and writes one JSON file per character with only the new events. It also notes which game the character is in, based on which WoW folder the file came from, so Retail and Forever never get mixed up.</p>
-<p>Every morning a scheduled job looks for those files. When it finds one, an AI agent reads the events along with a voice guide and writes a post as the Chronicler: a weathered scribe who has followed adventurers across Azeroth for decades. The guide asks for a little elevation when a moment earns it, a little grit when something goes wrong, and a dry smirk the rest of the time. One of its rules is to turn game events into world events, so a level-up reads less like a number going up and more like a character getting tougher after surviving things that should have killed them.</p>
-<p>The draft is saved into the blog’s <code>drafts/</code> folder, tagged with the game version, the character and their class. Then I read it, all of it. If it is right, I move it into <code>posts/</code>, and that is the whole publishing step.</p>
-<h2 id="step-3-folderblog-puts-it-online">Step 3: folderblog puts it online</h2>
-<p>folderblog runs quietly in the background and watches <code>~/Blogs</code>, where every folder is its own blog. Moving the file into <code>posts/</code> is enough. A few seconds later the post is built and live on GitHub Pages at myazerothlife.com, with no commit and no deploy command.</p>
-<p>These are the folderblog features the blog leans on:</p>
-<ul>
-<li><strong>Plain Markdown files.</strong> The title comes from the first heading and the date from the filename, so a post only needs a line of tags at the top.</li>
-<li><strong>Drafts.</strong> Anything in <code>drafts/</code> shows up in <code>folderblog preview</code> on my own machine and never on the live site.</li>
-<li><strong>Tags</strong>, with a page for each one, so you can read only Burrly’s posts or only Laotou’s.</li>
-<li><strong>A custom theme.</strong> A folderblog theme is just templates, and every blog comes with an <code>AGENTS.md</code> that explains them to coding agents. The parchment look on My Azeroth Life was mostly built by Claude from that file.</li>
-<li><strong>Safe builds.</strong> Every build happens in a fresh folder and only replaces the live site if everything worked, so a mistake never takes the site down.</li>
-<li><strong><code>folderblog check</code></strong>, which finds template errors, broken links and feed problems before readers do.</li>
-<li><strong>Cookie-free page counts</strong> with GoatCounter, switched on with two lines in <code>blog.toml</code>.</li>
-</ul>
-<h2 id="step-4-turning-posts-into-episodes">Step 4: Turning posts into episodes</h2>
-<p>Once there are enough posts, Claude Code on my workstation turns them into an audio episode. It writes a script from the posts, split into chapters, with notes for the background ambience, the sound effects, and how each line should be performed.</p>
-<p>Each character gets their own narrator, made with ElevenLabs voice design and then kept for good. Laotou, a Pandaren monk and healer, is told by an elderly lorewalker over a pot of tea, slow and wry. Burrly, a Kul Tiran warrior, is told by an old sea captain in a Boralus tavern, faster and louder, because most of his story is him running at things. Once a character has a narrator, that voice stays theirs.</p>
-<p>The rest of the work goes like this:</p>
-<ul>
-<li><strong>Narration</strong> uses the ElevenLabs eleven_v3 model, one paragraph at a time. It acts out small direction tags like <code>[intense]</code> or <code>[dryly]</code> instead of reading them aloud. Names it gets wrong are respelled only in the text sent to the voice, so “Laotou” goes in as “Lau-toe” and the script keeps the real spelling.</li>
-<li><strong>Music</strong> comes from ElevenLabs Music: a theme for each show and background beds that change with the scene, with a battle bed for the fights.</li>
-<li><strong>Sound effects and ambience</strong> come from ElevenLabs Sound Effects: a gong between Laotou’s chapters, a ship’s bell and war drum between Burrly’s, plus sword clashes, war horns and the noise of a busy tavern.</li>
-<li><strong>Mixing</strong> is done with ffmpeg. The music and ambience dip under the voice, the effects sit in the gaps, the whole thing is brought to a normal podcast loudness, and chapter markers are embedded in the MP3.</li>
-<li><strong>Checking.</strong> Every clip is run back through speech-to-text and compared with the script, so a missing line or a made-up one gets caught. Then I listen to the finished episode myself.</li>
-</ul>
-<p>Every piece of music and every effect is saved to a shared library and reused, so each one is only paid for once.</p>
-<h2 id="step-5-folderblog-publishes-the-podcast">Step 5: folderblog publishes the podcast</h2>
-<p>The podcast is part of the same blog folder. <code>folderblog podcast on</code> added a <code>podcast/</code> folder, and each episode is a folder inside it with its show notes, the MP3 and a chapters file. From that, folderblog builds:</p>
-<ul>
-<li><strong>A show page</strong> at <a href="https://myazerothlife.com/podcast/">/podcast/</a> with a Subscribe box, and <strong>episode pages</strong> with a player and clickable chapters.</li>
-<li><strong>Its own feed</strong> at <a href="https://myazerothlife.com/podcast/feed.xml">myazerothlife.com/podcast/feed.xml</a>, separate from the blog’s feed, with the iTunes and Podcasting 2.0 tags podcast apps look for: a permanent show ID, chapters, people, and an optional Lightning address for tips.</li>
-<li><strong>Audio on Cloudflare R2.</strong> The MP3s never go into git or the website itself. <code>folderblog podcast setup</code> walked me through connecting R2 once. When an episode is published, folderblog uploads the audio first, checks that it is really online, and only then updates the site and feed, so the feed never points at a missing file.</li>
-<li><strong>Drafts.</strong> An episode starts as a draft that is never uploaded. I listen to it, and only after I say yes is it published.</li>
-</ul>
-<p>folderblog also has an MCP server, so an agent can set up a draft episode, write its notes and chapters, check it, and publish it only after you say yes.</p>
-<h2 id="whats-next">What’s next</h2>
-<p>From here on there is one show a week for each game. The Retail show comes out on Sunday nights. The Forever show comes out on Monday nights, starting after WoW Forever launches on November 4. Both go in the same feed, tagged by game, and each covers every character who had an adventure that week, with a short transition between them. If nobody played that version, there is simply no show that week.</p>
-<h2 id="have-a-listen">Have a listen</h2>
-<ul>
-<li><a href="https://myazerothlife.com/podcast/the-chronicle-of-laotou/">Episode 1: The Chronicle of Laotou</a>, 23 minutes in 5 chapters</li>
-<li><a href="https://myazerothlife.com/podcast/the-chronicle-of-burrly/">Episode 2: The Chronicle of Burrly</a>, 26 minutes in 8 chapters</li>
-<li>The feed for your podcast app: <code>https://myazerothlife.com/podcast/feed.xml</code></li>
-</ul>
-<p>If you have a folder of writing that you’d like to turn into a blog, or a blog that you’d like to turn into a podcast, <a href="https://folderblog.ninepointlabs.com">folderblog</a> is free and runs on Linux. And if you listen to an episode, I’d love to hear what you think.</p>
 ]]></content:encoded>
 </item>
 </channel>
