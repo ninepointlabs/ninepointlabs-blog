@@ -7,7 +7,76 @@
 <language>en</language>
 <atom:link href="https://blog.ninepointlabs.com/feed.xml" rel="self" type="application/rss+xml"/>
 <generator>folderblog 0.2.11</generator>
-<lastBuildDate>Mon, 23 Nov 2026 09:31:49 -0600</lastBuildDate>
+<lastBuildDate>Tue, 24 Nov 2026 16:29:34 -0600</lastBuildDate>
+<item>
+<title>Repokase 0.2.6: sturdier, and now as .deb, .rpm and Flatpak</title>
+<link>https://blog.ninepointlabs.com/2026/11/repokase-0-2-6/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/11/repokase-0-2-6/</guid>
+<pubDate>Tue, 24 Nov 2026 16:29:34 -0600</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>Repokase</category>
+<category>Linux</category>
+<category>Omarchy</category>
+<category>GitHub</category>
+<category>Releases</category>
+<description><![CDATA[<p><a href="https://repokase.ninepointlabs.com/">Repokase</a>, the desktop app that puts all your GitHub repositories on one counter, is out in version <strong>0.2.6</strong>. It copes better when something on your machine goes wrong, and it now installs the usual way on far more Linux distributions. The code is <a href="https://github.com/ninepointlabs/repokase">on GitHub</a>.</p>
+]]></description>
+<content:encoded><![CDATA[<p><a href="https://repokase.ninepointlabs.com/">Repokase</a>, the desktop app that puts all your GitHub repositories on one counter, is out in version <strong>0.2.6</strong>. It copes better when something on your machine goes wrong, and it now installs the usual way on far more Linux distributions. The code is <a href="https://github.com/ninepointlabs/repokase">on GitHub</a>.</p>
+<h2 id="new-packages">New packages</h2>
+<p>Next to the Arch package and the AppImage, every release now ships a <strong>.deb</strong>, an <strong>.rpm</strong> and a self-hosted <strong>Flatpak</strong> bundle. Like the AppImage, they carry their own Python and Qt, so they work on Ubuntu 22.04+, Debian 12+, Fedora and openSUSE. In the Flatpak, Repokase follows your desktop’s light or dark setting rather than an Omarchy theme.</p>
+<h2 id="sturdier">Sturdier</h2>
+<ul>
+<li><strong>A damaged cache no longer stops it starting.</strong> Repokase moves a broken cache file aside (nothing is deleted), builds a fresh one and tells you where the old file went. If the cache can’t be written at all, for example because of folder permissions, a window says so instead of nothing happening.</li>
+<li><strong>Sign in without a keyring.</strong> With no GNOME Keyring or KWallet available, you can still sign in. Your token is kept in memory for that session only, never on disk, and About shows where your sign-in actually lives.</li>
+<li><strong>The sidebar fits</strong>, so counts are no longer cut off, and Ctrl+B and Ctrl+1 go back to the automatic layout when toggled back.</li>
+<li>The AppImage’s <code>--remove-desktop-entry</code> only removes what <code>--install-desktop-entry</code> added, and installing never overwrites desktop files or icons from somewhere else.</li>
+</ul>
+<h2 id="get-it">Get it</h2>
+<p>Download the package for your system from the <a href="https://github.com/ninepointlabs/repokase/releases/tag/v0.2.6">0.2.6 release</a> (every file has a <code>.sha256</code> next to it). On Arch or Omarchy:</p>
+<pre class="highlight"><code class="language-sh"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">sudo</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> pacman<span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> -</span>U</span> https://github.com/ninepointlabs/repokase/releases/download/v0.2.6/repokase-0.2.6-1-any.pkg.tar.zst</span>
+</span></code></pre>
+<p>Or with autonomix-cli: <code>autonomix-cli add https://github.com/ninepointlabs/repokase</code>. Please report anything odd on the <a href="https://github.com/ninepointlabs/repokase/issues">issue tracker</a>.</p>
+]]></content:encoded>
+</item>
+<item>
+<title>Goodbye Persistwise web, hello Persistwise Desktop</title>
+<link>https://blog.ninepointlabs.com/2026/11/persistwise-desktop/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/11/persistwise-desktop/</guid>
+<pubDate>Tue, 24 Nov 2026 16:29:33 -0600</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>Persistwise</category>
+<category>Persistwise Desktop</category>
+<category>Linux</category>
+<category>Internet Archive</category>
+<category>IPFS</category>
+<category>RSS</category>
+<description><![CDATA[<p>Persistwise is now a free, open source desktop app for Linux. It keeps a full copy of every page you save, offline, with no account and no Persistwise servers.</p>
+]]></description>
+<content:encoded><![CDATA[<p>Persistwise on the web has closed. To everyone who signed up, tried it, sent a note or told a friend: thank you. The idea hasn’t gone anywhere, though. Today it moves onto your own computer as <strong><a href="https://persistwise.com/">Persistwise Desktop</a></strong>, a personal web archive with no account and no Persistwise servers. Version <strong>0.1.0</strong> is out now, it’s free on Linux, and the code is MIT licensed <a href="https://github.com/ninepointlabs/persistwise-desktop">on GitHub</a>.</p>
+<!--more-->
+<h2 id="what-it-does">What it does</h2>
+<ul>
+<li><strong>Save any page.</strong> Paste a link and Persistwise keeps a full copy, with the text, styles, images, icons and fonts packed into one file that opens offline. Scripts are stripped out, and PDFs and other files are kept exactly as downloaded.</li>
+<li><strong>Watch your feeds.</strong> Follow a blog, newsletter or social feed (RSS, Atom or JSON Feed), and every new post is saved automatically.</li>
+<li><strong>Browse and search offline.</strong> Everything you’ve saved is searchable, even with no network.</li>
+<li><strong>Wayback Machine backup.</strong> Pages are also sent to the Internet Archive’s Save Page Now. It’s on by default and easy to turn off, and if it’s busy, your local copy is never affected.</li>
+<li><strong>IPFS, if you want it.</strong> Pin to your own IPFS node or with your own Pinata key. It’s off by default.</li>
+<li><strong>Your data stays with you.</strong> Everything lives in a folder on your computer, and there’s no telemetry.</li>
+</ul>
+<h2 id="why-the-change">Why the change</h2>
+<p>The web version needed an account, our servers and a subscription. The desktop app needs none of those: the copies live on your own computer, and the optional Wayback and IPFS backups go straight from your machine to services you choose. Wayback snapshots made by the web version are kept by the Internet Archive, so they stay right where they are.</p>
+<h2 id="bring-your-web-data-over">Bring your web data over</h2>
+<p>If you had a Persistwise web account, email help@ninepointlabs.com and we’ll send your export. Then choose <strong>Import from Persistwise web</strong> in the app, or run:</p>
+<pre class="highlight"><code class="language-sh"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">persistwise-desktop</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"><span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> --</span>import</span> persistwise-export.zip</span>
+</span></code></pre>
+<p>Your feeds, posts, Wayback and IPFS links and saved copies come over, and the app carries on checking your feeds. Importing a fresher export later updates what changed, with no duplicates.</p>
+<h2 id="get-it">Get it</h2>
+<p>Version 0.1.0 runs on any 64-bit Linux. The <a href="https://github.com/ninepointlabs/persistwise-desktop/releases/tag/v0.1.0">v0.1.0 release</a> has an AppImage, a self-hosted Flatpak bundle, a .deb (Ubuntu 22.04 or newer), an .rpm for Fedora and openSUSE, and an Arch package with its PKGBUILD, each with a SHA-256 checksum. On Omarchy, or anywhere you use autonomix-cli:</p>
+<pre class="highlight"><code class="language-sh"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">autonomix-cli</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> add https://github.com/ninepointlabs/persistwise-desktop</span>
+</span></code></pre>
+<p>A Windows version through the Microsoft Store is planned. Questions and bug reports are welcome at help@ninepointlabs.com or on the <a href="https://github.com/ninepointlabs/persistwise-desktop/issues">issue tracker</a>.</p>
+]]></content:encoded>
+</item>
 <item>
 <title>omaforge 0.2.10: big voice-over packs update again</title>
 <link>https://blog.ninepointlabs.com/2026/11/omaforge-0-2-10/</link>
@@ -720,78 +789,6 @@
 <tr><td>autonomix-cli</td><td><code>autonomix-cli add https://github.com/ninepointlabs/folderblog</code></td></tr>
 </tbody></table>
 <p>Already installed? Install the new package, then run <code>systemctl --user restart folderblog</code>. The packages and a plain tarball are on the <a href="https://github.com/ninepointlabs/folderblog/releases/tag/v0.2.10">v0.2.10 release</a>, and the source is <a href="https://github.com/ninepointlabs/folderblog">on GitHub</a>.</p>
-]]></content:encoded>
-</item>
-<item>
-<title>omaforge 0.2.7: ready for World of Warcraft: Forever</title>
-<link>https://blog.ninepointlabs.com/2026/10/omaforge-0-2-7/</link>
-<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/omaforge-0-2-7/</guid>
-<pubDate>Mon, 26 Oct 2026 09:40:06 -0500</pubDate>
-<dc:creator>Tim</dc:creator>
-<category>Omaforge</category>
-<category>World of Warcraft</category>
-<category>Gaming</category>
-<category>Omarchy</category>
-<category>Linux</category>
-<description><![CDATA[<p><a href="https://omaforge.ninepointlabs.com/">omaforge</a> is the World of Warcraft addon manager for Linux and Omarchy. Version 0.2.7 gets it ready for World of Warcraft: Forever, which launches on November 4.</p>
-]]></description>
-<content:encoded><![CDATA[<p><a href="https://omaforge.ninepointlabs.com/">omaforge</a> is the World of Warcraft addon manager for Linux and Omarchy. Version 0.2.7 gets it ready for World of Warcraft: Forever, which launches on November 4.</p>
-<h2 id="whats-new">What’s new</h2>
-<p><strong>omaforge knows the Forever release client.</strong> Battle.net installs Forever in its own <code>_forever_</code> folder (product <code>wowf</code>). omaforge now lists that install as <strong>Forever</strong>, even before you’ve started the game for the first time and there’s no <code>Interface/AddOns</code> folder yet. If Battle.net hasn’t filled in a version, omaforge shows <code>not installed yet</code> instead of guessing. The first addon you install creates <code>Interface/AddOns</code> for you.</p>
-<p><strong>Pick it from the command line with <code>-c forever</code>.</strong> The beta client is still <code>-c classic_beta</code>.</p>
-<p><strong>Leftover beta folders get a proper name.</strong> If you played the beta, you may still have a <code>_classic_beta_</code> folder that Battle.net no longer lists. It now shows up as <strong>Forever Beta</strong> rather than an unknown game.</p>
-<h2 id="why-it-matters">Why it matters</h2>
-<p>You can have your addons in place before launch day instead of waiting for the game to create its folders. Install Forever through Battle.net, open omaforge, and set it up the same way you already do for Retail.</p>
-<h2 id="get-it">Get it</h2>
-<ul>
-<li><strong>Arch / Omarchy:</strong> <code>sudo pacman -U omaforge-0.2.7-1-any.pkg.tar.zst</code>, then <code>omaforge setup omarchy</code></li>
-<li><strong>Debian 13+ / Ubuntu 26.04+:</strong> <code>sudo apt install ./omaforge_0.2.7-1_all.deb</code></li>
-<li><strong>Fedora:</strong> <code>sudo dnf install ./omaforge-0.2.7-1.noarch.rpm</code></li>
-<li><strong>Any other Linux:</strong> the AppImage, <code>chmod +x omaforge-0.2.7-x86_64.AppImage &amp;&amp; ./omaforge-0.2.7-x86_64.AppImage</code>. Add <code>--install-desktop-entry</code> to put it in your app menu.</li>
-<li><strong>With autonomix-cli:</strong> <code>autonomix-cli add https://github.com/ninepointlabs/omaforge</code></li>
-</ul>
-<p>The packages are on the <a href="https://github.com/ninepointlabs/omaforge/releases/tag/v0.2.7">v0.2.7 release</a>, and the source is <a href="https://github.com/ninepointlabs/omaforge">on GitHub</a>.</p>
-]]></content:encoded>
-</item>
-<item>
-<title>Persistwise: writing that outlasts the platform</title>
-<link>https://blog.ninepointlabs.com/2026/10/persistwise-launch/</link>
-<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/persistwise-launch/</guid>
-<pubDate>Mon, 26 Oct 2026 08:17:30 -0500</pubDate>
-<dc:creator>Tim</dc:creator>
-<category>Persistwise</category>
-<category>Internet Archive</category>
-<category>IPFS</category>
-<category>RSS</category>
-<category>blogging</category>
-<description><![CDATA[<p>Keep writing wherever you already do. Persistwise watches your RSS feed and keeps three copies of every new post. 30 days free, no card needed.</p>
-]]></description>
-<content:encoded><![CDATA[<p>I have a bad habit with blogs. I start one somewhere that feels right, write for a while, then the platform changes, the export is a mess, and the old posts sit there like a burned CD nobody can play. Geocities. LiveJournal. A host that quietly folded. Same movie, different sequel.</p>
-<p>So I built <strong><a href="https://persistwise.com">Persistwise</a></strong>, and today I’d like to invite you to try it.</p>
-<p><strong><a href="https://persistwise.com">persistwise.com</a></strong> · <strong><a href="https://persistwise.com/registration/new">Start a free trial</a></strong></p>
-<!--more-->
-<h2 id="what-it-does">What it does</h2>
-<p>Persistwise is not another place to write. You keep blogging wherever you already do: HEY World, Substack, your own site, a newsletter, even a social feed. You give Persistwise the feed, and it does the quiet filing in the background.</p>
-<p>It checks your feeds every 15 minutes. When it finds a new post, it keeps three copies:</p>
-<ul>
-<li><strong>A Wayback Machine snapshot.</strong> Persistwise asks the Internet Archive to capture the post. That snapshot lives on archive.org, it’s public, and anyone can open it without Persistwise.</li>
-<li><strong>An IPFS pin.</strong> The saved copy is pinned through Pinata onto the public IPFS network, with a content ID that points at that exact copy of your post.</li>
-<li><strong>A saved copy we keep.</strong> The post’s HTML is stored on our own storage, so there is something to fall back on when an outside service is slow or down. Only you can open it.</li>
-</ul>
-<p>Your Archive page shows one line per post, with a link to each copy and a plain status for each one. If the Wayback Machine is busy, Persistwise waits and tries again later, so you don’t have to babysit anything.</p>
-<p>RSS, Atom and JSON Feed all work. The first check takes in every post your feed lists at that moment, then new posts get picked up as they appear.</p>
-<h2 id="why-i-wanted-it">Why I wanted it</h2>
-<p>Most of us don’t lose writing because we’re careless. We lose it because the web is a rental. The landlord changes the locks, the feed dies, the pretty URL turns into a 404. The Wayback Machine is wonderful, but it only saves what someone asks it to save. I wanted a boring, stubborn librarian whose only job is to ask every time.</p>
-<p>I also didn’t want to build another editor. I already have places I like to write, and so do you. The whole point is that you don’t have to move.</p>
-<h2 id="keep-30-days-free-then-40-a-year">Keep: 30 days free, then $40 a year</h2>
-<p>There is one plan, called Keep. It’s <strong>30 days free, then $40 a year</strong>, and you don’t need a card to start. Create an account, press “Start free trial,” and add your feed.</p>
-<p>About three days before the trial ends, we’ll email you if you haven’t added a card. If you decide not to keep going, Keep pauses and nothing is deleted. Your Archive page stays readable, and your Wayback snapshots and IPFS pins stay where they are. The Wayback snapshots are kept by the Internet Archive, not by us, so they don’t depend on Persistwise at all. We don’t delete people for leaving.</p>
-<p>A yearly price felt right for something meant to last. Longevity and a monthly habit you cancel in February don’t get along very well.</p>
-<h2 id="honest-notes">Honest notes</h2>
-<p>It’s early, and I’d rather tell you the edges up front. Each post is captured once, when Persistwise first sees it, so later edits aren’t saved. The copies are the page’s HTML only, without images or stylesheets, so they may look plainer than the original. There’s no export button yet. And Wayback and IPFS copies are public, so please only add feeds for writing you’re happy to keep public.</p>
-<h2 id="give-it-a-try">Give it a try</h2>
-<p>If you have a feed you care about, I’d be grateful if you’d let Persistwise keep it. Go to <strong><a href="https://persistwise.com">persistwise.com</a></strong>, read <a href="https://persistwise.com/how-it-works">how it works</a> if you’re curious, and <a href="https://persistwise.com/registration/new">start your free trial</a>. If anything doesn’t work the way you expect, please write to <a href="mailto:help@ninepointlabs.com">help@ninepointlabs.com</a>. I’d really like to hear from you.</p>
-<p>Thanks for reading. Now go write the next one, and let the librarian do the filing.</p>
 ]]></content:encoded>
 </item>
 </channel>
