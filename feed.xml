@@ -7,7 +7,75 @@
 <language>en</language>
 <atom:link href="https://blog.ninepointlabs.com/feed.xml" rel="self" type="application/rss+xml"/>
 <generator>folderblog 0.2.11</generator>
-<lastBuildDate>Tue, 24 Nov 2026 16:29:34 -0600</lastBuildDate>
+<lastBuildDate>Wed, 25 Nov 2026 09:36:26 -0600</lastBuildDate>
+<item>
+<title>Comms: all-in-one text chat for WoW Forever</title>
+<link>https://blog.ninepointlabs.com/2026/11/comms/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/11/comms/</guid>
+<pubDate>Wed, 25 Nov 2026 09:36:26 -0600</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>Comms</category>
+<category>World of Warcraft</category>
+<category>WoW Forever</category>
+<category>Addons</category>
+<category>Gaming</category>
+<description><![CDATA[<p><a href="https://github.com/ninepointlabs/comms">Comms</a> is a new, free addon for World of Warcraft: Forever that does text chat: one addon instead of five. If you’d rather type than use voice, it’s meant to make chat quicker and easier. Version <strong>0.1.0</strong> is out, the first release.</p>
+]]></description>
+<content:encoded><![CDATA[<p><a href="https://github.com/ninepointlabs/comms">Comms</a> is a new, free addon for World of Warcraft: Forever that does text chat: one addon instead of five. If you’d rather type than use voice, it’s meant to make chat quicker and easier. Version <strong>0.1.0</strong> is out, the first release.</p>
+<h2 id="what-it-does">What it does</h2>
+<ul>
+<li><strong>Easier to read:</strong> class-coloured names, short channel names (<code>[2. Trade]</code> becomes <code>[2. T]</code>, and you can edit them) and timestamps.</li>
+<li><strong>Links:</strong> URLs become clickable (click to copy). When someone asks for an invite in whispers, party, raid or guild, an <code>[invite]</code> link appears, and Alt-click on a name invites them.</li>
+<li><strong>Alerts:</strong> your name and your keywords play a sound, flash the tab and land in an Alerts list.</li>
+<li><strong>Whispers:</strong> one window with a tab per person (Battle.net friends too), unread badges and a reply box. History is kept for every character.</li>
+<li><strong>History:</strong> chat is kept across <code>/reload</code> and logout, and <code>/comms search</code> finds old lines. Up and Down recall what you typed, no Alt needed.</li>
+<li><strong>A bigger chat box</strong> with Tab completion for names, commands and channels.</li>
+<li><strong>Channels:</strong> it can leave or hide General, Trade, Services and friends for you, account-wide.</li>
+<li><strong>Quick lines:</strong> ten editable lines like <code>inv pls</code> or <code>ty for the group!</code> on a quick-bar or key bindings, and <code>/tt</code> whispers your target.</li>
+</ul>
+<h2 id="it-steps-back-in-instances">It steps back in instances</h2>
+<p>Forever locks chat down for addons in dungeons, raids and battlegrounds. There, Comms never sends anything itself, and quick lines go into the chat box for you to press Enter.</p>
+<h2 id="get-it">Get it</h2>
+<p>On Linux, <a href="https://omaforge.myazerothlife.com/">OmaForge</a> installs it and keeps it updated:</p>
+<pre class="highlight"><code class="language-sh"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">omaforge</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> install<span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> -</span>c</span> forever github:ninepointlabs/comms</span>
+</span></code></pre>
+<p>On any other system, download <code>Comms-v0.1.0.zip</code> from the <a href="https://github.com/ninepointlabs/comms/releases/tag/v0.1.0">v0.1.0 release</a>, unzip it into <code>_forever_/Interface/AddOns/</code>, then type <code>/reload</code> and <code>/comms</code>. It’s for WoW Forever only. This Comms is by Nine Point Labs and isn’t related to Forever Comms Voice, Guild Comms, Group Comms or Quick Comms. The source is <a href="https://github.com/ninepointlabs/comms">on GitHub</a>. It’s an unofficial fan project, not affiliated with or endorsed by Blizzard. Questions go to help@ninepointlabs.com.</p>
+]]></content:encoded>
+</item>
+<item>
+<title>Tazu&#39;s Addon 0.2: Dwarf Shamans, world PvP and two smart buttons</title>
+<link>https://blog.ninepointlabs.com/2026/11/tazus-addon-0-2/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/11/tazus-addon-0-2/</guid>
+<pubDate>Wed, 25 Nov 2026 09:36:26 -0600</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>Tazu&#39;s Addon</category>
+<category>World of Warcraft</category>
+<category>WoW Forever</category>
+<category>Shaman</category>
+<category>Addons</category>
+<category>Gaming</category>
+<description><![CDATA[<p><a href="https://github.com/ninepointlabs/tazus-addon">Tazu’s Addon</a>, the free Shaman companion for World of Warcraft: Forever, just reached <strong>0.2.0</strong>. It started out for Horde Shamans. This release brings in the Alliance’s Dwarf Shamans, adds a PvP mode for world PvP, and puts two new buttons on the Shaman bar.</p>
+]]></description>
+<content:encoded><![CDATA[<p><a href="https://github.com/ninepointlabs/tazus-addon">Tazu’s Addon</a>, the free Shaman companion for World of Warcraft: Forever, just reached <strong>0.2.0</strong>. It started out for Horde Shamans. This release brings in the Alliance’s Dwarf Shamans, adds a PvP mode for world PvP, and puts two new buttons on the Shaman bar.</p>
+<h2 id="dwarf-shamans-and-the-alliance">Dwarf Shamans and the Alliance</h2>
+<p>The addon now reads your race and faction. A Dwarf Shaman gets their own leveling path (Coldridge Valley, Dun Morogh, Loch Modan, the Wetlands, then zone ranges up to 60), the Alliance Shaman trainers, the Dwarf versions of the totem quests and Dwarf lessons. Orc and Troll Shamans keep their Horde path, and neither side sees the other’s.</p>
+<p>Dwarves also get a <strong>Stoneform hint</strong>. It lights up when a Poison, Disease or Bleed is on you, but only when the game lets the addon read your debuffs. When it can’t, it stays quiet instead of guessing.</p>
+<h2 id="pvp-mode">PvP mode</h2>
+<p>Turn it on per profile with <code>/tazu pvp</code>. You get a <strong>World PvP</strong> priority list for each spec, PvP totem picks (Grounding against casters, Tremor against fear, Earthbind to kite), and a new <strong>Learn › PvP</strong> page with tips. On a PvP-ruleset realm the addon suggests PvP mode once. It never turns it on by itself.</p>
+<h2 id="two-new-buttons-and-totem-sets">Two new buttons and totem sets</h2>
+<ul>
+<li><strong>Smart Shock:</strong> Earth Shock by default, Frost Shock while you hold Shift (or Ctrl or Alt, your choice in Settings) once you know it.</li>
+<li><strong>Smart Heal:</strong> Healing Wave on your friendly target, or on you when you have none. Alt casts Lesser Healing Wave once you know it. It always uses your highest rank.</li>
+<li><strong>Totem sets:</strong> a saved PvE set and PvP set for each profile. Keep the guide’s pick or pin your own totem for each element in Settings › Shaman bar, and the Totems hint switches sets along with PvP mode.</li>
+</ul>
+<p>The new buttons work like the old ones: no keys are bound by default, one key press is one cast, and they only change out of combat.</p>
+<h2 id="get-it">Get it</h2>
+<p>On Linux, <a href="https://omaforge.myazerothlife.com/">OmaForge</a> picks up the update with <code>omaforge update -c forever</code>, or installs it fresh:</p>
+<pre class="highlight"><code class="language-sh"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">omaforge</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> install<span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> -</span>c</span> forever github:ninepointlabs/tazus-addon</span>
+</span></code></pre>
+<p>On any other system, download <code>TazusAddon-v0.2.0.zip</code> from the <a href="https://github.com/ninepointlabs/tazus-addon/releases/tag/v0.2.0">v0.2.0 release</a>, unzip it into <code>_forever_/Interface/AddOns/</code>, then type <code>/reload</code>. It’s for WoW Forever only. The source is <a href="https://github.com/ninepointlabs/tazus-addon">on GitHub</a>. It’s an unofficial fan project, not affiliated with or endorsed by Blizzard. Questions go to help@ninepointlabs.com.</p>
+]]></content:encoded>
+</item>
 <item>
 <title>Repokase 0.2.6: sturdier, and now as .deb, .rpm and Flatpak</title>
 <link>https://blog.ninepointlabs.com/2026/11/repokase-0-2-6/</link>
@@ -716,79 +784,6 @@
 <span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">systemctl</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"><span class="hl-variable hl-parameter hl-option hl-shell"><span class="hl-punctuation hl-definition hl-parameter hl-shell"> --</span>user</span> restart omostrich</span>
 </span></code></pre>
 <p>The restart matters, because the running signer keeps the old code until it’s restarted. The full notes are on the <a href="https://github.com/ninepointlabs/omostrich/releases/tag/v0.3.2">0.3.2</a> and <a href="https://github.com/ninepointlabs/omostrich/releases/tag/v0.3.3">0.3.3</a> release pages, the code is on <a href="https://github.com/ninepointlabs/omostrich">GitHub</a>, and more about Omostrich is at <a href="https://omostrich.com/">omostrich.com</a>.</p>
-]]></content:encoded>
-</item>
-<item>
-<title>omaforge 0.2.8: fixes from a full QA pass</title>
-<link>https://blog.ninepointlabs.com/2026/10/omaforge-0-2-8/</link>
-<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/omaforge-0-2-8/</guid>
-<pubDate>Mon, 26 Oct 2026 16:32:14 -0500</pubDate>
-<dc:creator>Tim</dc:creator>
-<category>Omaforge</category>
-<category>World of Warcraft</category>
-<category>Gaming</category>
-<category>Omarchy</category>
-<category>Linux</category>
-<description><![CDATA[<p><a href="https://omaforge.ninepointlabs.com/">omaforge</a> is the World of Warcraft addon manager for Linux and Omarchy. Version 0.2.8 is a fixes release from a full QA pass, coming the same day as 0.2.7.</p>
-]]></description>
-<content:encoded><![CDATA[<p><a href="https://omaforge.ninepointlabs.com/">omaforge</a> is the World of Warcraft addon manager for Linux and Omarchy. Version 0.2.8 is a fixes release from a full QA pass, coming the same day as 0.2.7.</p>
-<h2 id="whats-fixed">What’s fixed</h2>
-<p><strong>Safer uninstall.</strong> <code>omaforge uninstall</code> now asks before removing an addon it can’t trace to a source, such as one you wrote yourself. Without a terminal it refuses unless you pass <code>--yes</code>.</p>
-<p><strong>Damaged files no longer crash omaforge or lose data.</strong> A broken <code>config.toml</code> or <code>flavors.toml</code> gives a one-line message naming the file and the problem, and omaforge never writes over it. In the app, a red banner names the file and offers Open file, Rescan, or setting it aside (it’s kept as <code>&lt;name&gt;.broken-&lt;time&gt;</code>). A damaged <code>state.json</code> is moved to <code>state.json.damaged-&lt;time&gt;</code> and a fresh one is started, with a warning in both the CLI and the app.</p>
-<p><strong>Fits half a screen.</strong> The window now goes down to 640 px wide. Below 1000 px the sidebar narrows, the tabs move under the title, and less-used actions (Import/Export, and each addon’s channel, Pin, Ignore and Remove) move into a <code>⋯</code> menu. Alt+↑ and Alt+↓ switch between game versions.</p>
-<p><strong>Clearer messages.</strong> An unknown addon id, an AddOns folder omaforge can’t write to, an unknown root or provider, and an empty GitHub search now say what went wrong in plain words. CurseForge versions no longer show up as <code>1.0.1.zip</code> or offer an update that isn’t there, <code>check</code> lists each addon it couldn’t check and why, and Wago says plainly that it isn’t supported yet.</p>
-<h2 id="get-it">Get it</h2>
-<ul>
-<li><strong>Arch / Omarchy:</strong> <code>sudo pacman -U omaforge-0.2.8-1-any.pkg.tar.zst</code>, then <code>omaforge setup omarchy</code></li>
-<li><strong>Debian 13+ / Ubuntu 26.04+:</strong> <code>sudo apt install ./omaforge_0.2.8-1_all.deb</code></li>
-<li><strong>Fedora:</strong> <code>sudo dnf install ./omaforge-0.2.8-1.noarch.rpm</code></li>
-<li><strong>Any other Linux:</strong> the AppImage, <code>chmod +x omaforge-0.2.8-x86_64.AppImage &amp;&amp; ./omaforge-0.2.8-x86_64.AppImage</code>. Add <code>--install-desktop-entry</code> to put it in your app menu.</li>
-<li><strong>With autonomix-cli:</strong> <code>autonomix-cli add https://github.com/ninepointlabs/omaforge</code></li>
-</ul>
-<p>The packages are on the <a href="https://github.com/ninepointlabs/omaforge/releases/tag/v0.2.8">v0.2.8 release</a>, and the source is <a href="https://github.com/ninepointlabs/omaforge">on GitHub</a>.</p>
-]]></content:encoded>
-</item>
-<item>
-<title>folderblog 0.2.10: podcast download stats with OP3</title>
-<link>https://blog.ninepointlabs.com/2026/10/folderblog-0-2-10/</link>
-<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/folderblog-0-2-10/</guid>
-<pubDate>Mon, 26 Oct 2026 09:40:06 -0500</pubDate>
-<dc:creator>Tim</dc:creator>
-<category>folderblog</category>
-<category>podcasting</category>
-<category>Linux</category>
-<category>Rust</category>
-<category>static-site</category>
-<category>blogging</category>
-<description><![CDATA[<p><a href="https://folderblog.ninepointlabs.com">folderblog</a> 0.2.10 adds one thing podcasters have been asking about: download numbers. If you publish a show with folderblog, you can now count how often your episodes are downloaded with <a href="https://op3.dev">OP3</a>, the free, open-source podcast stats service.</p>
-]]></description>
-<content:encoded><![CDATA[<p><a href="https://folderblog.ninepointlabs.com">folderblog</a> 0.2.10 adds one thing podcasters have been asking about: download numbers. If you publish a show with folderblog, you can now count how often your episodes are downloaded with <a href="https://op3.dev">OP3</a>, the free, open-source podcast stats service.</p>
-<h2 id="how-it-works">How it works</h2>
-<p>Add one line under <code>[podcast]</code> in <code>blog.toml</code>:</p>
-<pre class="highlight"><code class="language-toml">analytics_prefix = &quot;https://op3.dev/e/&quot;
-</code></pre>
-<p>Every episode in your feeds then goes through OP3 in the form OP3 documents, including your show’s guid so OP3 can attribute downloads sooner. There’s no account to create. After a few days, your public stats page is at <code>https://op3.dev/show/&lt;your podcast guid&gt;</code>.</p>
-<p>A few details:</p>
-<ul>
-<li><strong>It’s off by default.</strong> Existing feeds don’t change unless you add the line.</li>
-<li><strong>Only the feed changes.</strong> Uploads, the deploy’s size check and the player on your episode pages keep using your own address. That also means plays on your episode pages aren’t counted, only downloads from podcast apps.</li>
-<li><strong><code>folderblog podcast</code> tells you whether stats are on.</strong></li>
-<li><strong>Other prefix services work too,</strong> as long as the prefix starts with <code>https://</code> and ends in <code>/</code>.</li>
-</ul>
-<p>The <a href="https://myazerothlife.com/podcast/">My Azeroth Life podcast</a> is already running on it.</p>
-<h2 id="read-this-before-you-update">Read this before you update</h2>
-<ul>
-<li><strong><code>analytics_prefix</code> needs 0.2.10 or newer.</strong> Older versions refuse a <code>blog.toml</code> that has it, so update every machine that builds the blog first.</li>
-<li><strong>If you used the old, undocumented <code>op3 = true</code>:</strong> it now means the same thing, and your episode addresses gain <code>,pg=&lt;guid&gt;</code>. Podcast apps keep track of episodes by guid, so nothing gets downloaded twice.</li>
-</ul>
-<h2 id="grab-it">Grab it</h2>
-<table><thead><tr><th>System</th><th>Command</th></tr></thead><tbody>
-<tr><td>Arch / Omarchy</td><td><code>sudo pacman -U folderblog-bin-0.2.10-1-x86_64.pkg.tar.zst</code></td></tr>
-<tr><td>Debian / Ubuntu</td><td><code>sudo apt install ./folderblog_0.2.10-1_amd64.deb</code></td></tr>
-<tr><td>Fedora / RHEL / openSUSE</td><td><code>sudo dnf install ./folderblog-0.2.10-1.x86_64.rpm</code></td></tr>
-<tr><td>autonomix-cli</td><td><code>autonomix-cli add https://github.com/ninepointlabs/folderblog</code></td></tr>
-</tbody></table>
-<p>Already installed? Install the new package, then run <code>systemctl --user restart folderblog</code>. The packages and a plain tarball are on the <a href="https://github.com/ninepointlabs/folderblog/releases/tag/v0.2.10">v0.2.10 release</a>, and the source is <a href="https://github.com/ninepointlabs/folderblog">on GitHub</a>.</p>
 ]]></content:encoded>
 </item>
 </channel>
