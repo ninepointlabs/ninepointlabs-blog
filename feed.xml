@@ -7,7 +7,48 @@
 <language>en</language>
 <atom:link href="https://blog.ninepointlabs.com/feed.xml" rel="self" type="application/rss+xml"/>
 <generator>folderblog 0.2.11</generator>
-<lastBuildDate>Wed, 25 Nov 2026 10:05:59 -0600</lastBuildDate>
+<lastBuildDate>Fri, 27 Nov 2026 16:27:19 -0600</lastBuildDate>
+<item>
+<title>Persistwise Desktop 0.1.3: save whole forum threads and choose your archive folder</title>
+<link>https://blog.ninepointlabs.com/2026/11/persistwise-desktop-0-1-3/</link>
+<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/11/persistwise-desktop-0-1-3/</guid>
+<pubDate>Fri, 27 Nov 2026 16:27:19 -0600</pubDate>
+<dc:creator>Tim</dc:creator>
+<category>Persistwise Desktop</category>
+<category>Persistwise</category>
+<category>Linux</category>
+<category>Omarchy</category>
+<category>Internet Archive</category>
+<category>IPFS</category>
+<description><![CDATA[<p>Persistwise Desktop can now save a multi-page forum thread or blog archive as one item, keep it up to date, and store your archive in any folder you pick. 0.1.2 makes warnings readable on Omarchy light themes, and 0.1.3 saves old Invision Power Board threads in one go.</p>
+]]></description>
+<content:encoded><![CDATA[<p>Three days after the first release, <strong><a href="https://persistwise.com/">Persistwise Desktop</a></strong> has three updates. They came out of a request from a Linux user archiving old forums and blogs. Version <strong>0.1.1</strong> adds whole-thread saving and lets you choose where your archive lives, <strong>0.1.2</strong> is a small fix for Omarchy light themes, and <strong>0.1.3</strong> makes thread saving work on old Invision Power Board forums. All are free and open source <a href="https://github.com/ninepointlabs/persistwise-desktop">on GitHub</a>.</p>
+<!--more-->
+<h2 id="save-a-whole-thread">Save a whole thread</h2>
+<p>Next to the Wayback checkbox there’s a new one: <strong>Save the whole thread</strong>. Tick it, paste the first page of a multi-page forum topic or a paginated blog archive, and Persistwise follows the “next page” links and saves every page, in order, as one item. Plain Save works the same as before.</p>
+<ul>
+<li>It works with the usual forum and blog software (phpBB, vBulletin, XenForo, Discourse, Invision Power Board and WordPress-style pages), with nothing written for one site in particular.</li>
+<li>It stays on the same site, stops if it loops back to a page it has already seen, and saves up to 100 pages, waiting a moment between them.</li>
+<li>The library shows a thread as one item with its page count. In the reader you move through it with Previous, a page picker and Next, and a search hit inside a thread tells you which page it’s on.</li>
+<li>If a page fails or the limit is reached, the pages saved so far are kept and the thread is marked <strong>partial</strong>, with the reason.</li>
+</ul>
+<h2 id="save-it-again-to-catch-up">Save it again to catch up</h2>
+<p>Forum threads keep growing. Save an archived thread again, from any of its pages, and Persistwise reuses the pages it already has without fetching them again. It checks the last page for new replies and replaces that copy only if something changed, then adds any new pages after it. You get no duplicates, and Wayback and IPFS only see the new and updated pages.</p>
+<p>When the last page’s copy is replaced, its old IPFS pin is removed from your own node or your Pinata account, unless another saved page has the same content. If you use Pinata, your key now needs permission to read and write files.</p>
+<h2 id="choose-your-archive-folder">Choose your archive folder</h2>
+<p>Your archive no longer has to live in the default folder. Under <strong>Settings → Storage</strong> you can move it somewhere else, copy it, or start a fresh archive, keeping your settings and API keys or not. Pick a folder that already holds an archive and Persistwise opens it as it is.</p>
+<p>If the folder is missing when the app starts (say, a USB drive that isn’t plugged in), you get a recovery screen with <strong>Retry</strong>, <strong>Choose a different folder</strong> and <strong>Use the default folder</strong>. Persistwise never quits silently and never creates an empty archive unless you ask it to.</p>
+<h2 id="old-invision-power-board-forums-0-1-3">Old Invision Power Board forums (0.1.3)</h2>
+<p>Older Invision Power Board topics didn’t save as one thread. Their pages use <code>&amp;st=30</code>-style offsets, often link to <code>http://</code> pages from an <code>https://</code> page, and add a session id to every link, and together those stopped Persistwise from following the pages. 0.1.3 treats the http and https forms of the same site as one site, follows those http page links over https, and it ignores forum session ids when deciding whether two addresses are the same page. Saving one of these threads again also picks up where the archived copy left off, even when the session id or scheme in the link has changed. Search pages and other addresses where those parameters carry real content are left alone.</p>
+<h2 id="readable-warnings-on-light-themes">Readable warnings on light themes</h2>
+<p>Persistwise follows your Omarchy theme. On some light themes, including Flexoki Light, Catppuccin Latte and Rosé Pine, the theme’s yellow was too faint to read for the Partial thread badge and other warnings. 0.1.2 darkens that colour just enough to be readable while keeping its hue. A few dark themes with a dim warning colour get the same fix, and every other theme looks exactly as before.</p>
+<h2 id="get-it">Get it</h2>
+<p>Your existing archive opens as before, and its database is upgraded automatically the first time you start 0.1.1 or later. The <a href="https://github.com/ninepointlabs/persistwise-desktop/releases/tag/v0.1.3">v0.1.3 release</a> has an AppImage, a self-hosted Flatpak bundle, a .deb, an .rpm and an Arch package, each with a SHA-256 checksum. On Omarchy, or anywhere you use autonomix-cli:</p>
+<pre class="highlight"><code class="language-sh"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">autonomix-cli</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> add https://github.com/ninepointlabs/persistwise-desktop</span>
+</span></code></pre>
+<p>Questions and bug reports are welcome at help@ninepointlabs.com or on the <a href="https://github.com/ninepointlabs/persistwise-desktop/issues">issue tracker</a>.</p>
+]]></content:encoded>
+</item>
 <item>
 <title>fm-cli is in the official Omarchy package repo</title>
 <link>https://blog.ninepointlabs.com/2026/11/fm-cli-on-omarchy/</link>
@@ -716,50 +757,6 @@
 <h2 id="give-wordcraft-a-try">Give WordCraft a try</h2>
 <p>If you write on Linux, or anywhere really, please give <strong><a href="https://getartcraft.com/apps/wordcraft">WordCraft</a></strong> a try. The source is on <strong><a href="https://github.com/storytold/wordcraft">GitHub</a></strong> if you’d like to dig in or help out.</p>
 <p>Thank you to everyone who tried Rune or sent a kind word about it. It meant a lot.</p>
-]]></content:encoded>
-</item>
-<item>
-<title>StoryTracker takes its own screenshots now</title>
-<link>https://blog.ninepointlabs.com/2026/10/storytracker-auto-screenshots/</link>
-<guid isPermaLink="true">https://blog.ninepointlabs.com/2026/10/storytracker-auto-screenshots/</guid>
-<pubDate>Wed, 28 Oct 2026 09:35:21 -0500</pubDate>
-<dc:creator>Tim</dc:creator>
-<category>StoryTracker</category>
-<category>World of Warcraft</category>
-<category>Addons</category>
-<category>OmaForge</category>
-<description><![CDATA[<p><a href="https://ninepointlabs.com/#storytracker">StoryTracker</a> is the World of Warcraft addon that keeps a record of your character’s adventures: quests, zones, levels, deaths, bosses, loot and more. It comes in two versions, one for <a href="https://github.com/ninepointlabs/wow-storytracker-addon">WoW Forever</a> and one for <a href="https://github.com/ninepointlabs/wow-storytracker-addon-retail">Retail</a>. Yesterday’s releases (Forever 1.0.4 and 1.0.5, Retail 1.1.3 to 1.1.5) add automatic screenshots at the moments that make a good story, and make the addon easier to install with an addon manager.</p>
-]]></description>
-<content:encoded><![CDATA[<p><a href="https://ninepointlabs.com/#storytracker">StoryTracker</a> is the World of Warcraft addon that keeps a record of your character’s adventures: quests, zones, levels, deaths, bosses, loot and more. It comes in two versions, one for <a href="https://github.com/ninepointlabs/wow-storytracker-addon">WoW Forever</a> and one for <a href="https://github.com/ninepointlabs/wow-storytracker-addon-retail">Retail</a>. Yesterday’s releases (Forever 1.0.4 and 1.0.5, Retail 1.1.3 to 1.1.5) add automatic screenshots at the moments that make a good story, and make the addon easier to install with an addon manager.</p>
-<h2 id="screenshots-at-story-moments">Screenshots at story moments</h2>
-<p>StoryTracker now takes a screenshot about three quarters of a second after:</p>
-<ul>
-<li>a quest turn-in</li>
-<li>a level up</li>
-<li>an achievement (on Forever, only if the client fires the achievement event)</li>
-<li>a boss kill</li>
-<li>your first visit to a zone</li>
-<li>other story moments, such as entering a dungeon or battleground, a battleground result, rare or elite kills, a new mount, epic or better loot, duels, joining a guild, a reputation standing going up, and deaths</li>
-</ul>
-<p>There’s also an optional timed shot every 15 minutes, taken only when you’re out of combat, not on a loading screen and not AFK.</p>
-<p>It takes at most one shot every 20 seconds. When two moments land together, like a turn-in that also dings, the shot is labelled with the bigger one. If you turn on “hide UI”, the interface is hidden for the shot while you’re out of combat, and it’s never touched in combat.</p>
-<p>Each shot is logged in the addon’s saved data with its time, the file name WoW gives it, what happened, the zone and subzone, and your character’s name, realm and level. Log entries older than 30 days are dropped. Addons can’t delete files, so StoryTracker never removes screenshots itself; clean up the game’s <code>Screenshots</code> folder outside the game.</p>
-<h2 id="turning-it-on-and-off">Turning it on and off</h2>
-<p>Screenshots are on by default, and everything is under <code>/storytracker shots</code>:</p>
-<ul>
-<li><code>/storytracker shots on|off</code> turns automatic screenshots on or off.</li>
-<li><code>/storytracker shots &lt;event&gt; on|off</code> controls each kind: <code>quest</code>, <code>levelup</code>, <code>achievement</code>, <code>boss</code>, <code>newzone</code> and <code>story</code>.</li>
-<li><code>/storytracker shots timer on|off|&lt;minutes&gt;</code> sets the timed shot (1 to 120 minutes, 15 by default).</li>
-<li><code>/storytracker shots hideui on|off</code> hides the interface for out-of-combat shots (off by default).</li>
-<li><code>/storytracker shots log</code> shows the last few logged shots.</li>
-</ul>
-<h2 id="easier-installs-with-an-addon-manager">Easier installs with an addon manager</h2>
-<p>Each release is now built with the BigWigs packager and comes with a small <code>release.json</code> file that says which game it’s for. Addon managers such as <a href="https://omaforge.ninepointlabs.com/">OmaForge</a> use it to install the right StoryTracker for each client, so the Forever build goes to Forever and the Retail build goes to Retail. Installed copies also link back to their GitHub page now. Retail 1.1.5 updates the addon for the 12.1.5 client so it isn’t flagged as out of date.</p>
-<h2 id="why-it-matters">Why it matters</h2>
-<p>StoryTracker’s notes are what turn a play session into a post on <a href="https://myazerothlife.com/">My Azeroth Life</a>. Words were only half of it. Now each story moment comes with a picture taken right when it happened, and the log says exactly which shot goes with which moment, so a post can show the boss kill or the first look at a new zone instead of a stock image.</p>
-<h2 id="privacy">Privacy</h2>
-<p>Nothing changes here. StoryTracker has no network access, since WoW addons can’t use the internet. Screenshots are saved by WoW to its own <code>Screenshots</code> folder on your computer, and the log only records when and where each one was taken.</p>
-<p>Download the latest <a href="https://github.com/ninepointlabs/wow-storytracker-addon/releases">Forever release</a> or <a href="https://github.com/ninepointlabs/wow-storytracker-addon-retail/releases">Retail release</a>, or install it with OmaForge. The code is on GitHub for <a href="https://github.com/ninepointlabs/wow-storytracker-addon">Forever</a> and <a href="https://github.com/ninepointlabs/wow-storytracker-addon-retail">Retail</a>.</p>
 ]]></content:encoded>
 </item>
 </channel>

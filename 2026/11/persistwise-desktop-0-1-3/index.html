@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Persistwise Desktop 0.1.3: save whole forum threads and choose your archive folder · The Word from Nine Point Labs</title>
+
+
+
+<meta name="description" content="Persistwise Desktop can now save a multi-page forum thread or blog archive as one item, keep it up to date, and store your archive in any folder you pick. 0.1.2 makes warnings readable on Omarchy light themes, and 0.1.3 saves old Invision Power Board threads in one go.">
+<link rel="canonical" href="https://blog.ninepointlabs.com/2026/11/persistwise-desktop-0-1-3/">
+<meta property="og:site_name" content="The Word from Nine Point Labs">
+<meta property="og:title" content="Persistwise Desktop 0.1.3: save whole forum threads and choose your archive folder">
+<meta property="og:description" content="Persistwise Desktop can now save a multi-page forum thread or blog archive as one item, keep it up to date, and store your archive in any folder you pick. 0.1.2 makes warnings readable on Omarchy light themes, and 0.1.3 saves old Invision Power Board threads in one go.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.ninepointlabs.com/2026/11/persistwise-desktop-0-1-3/">
+<meta property="og:image" content="https://blog.ninepointlabs.com/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Nine Point Labs: small, clear tools for Linux. The blog.">
+<meta property="article:published_time" content="2026-11-27T16:27:19-06:00">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@ninepointlabs">
+<meta name="theme-color" content="#0f6b6e">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/assets/style.css">
+<link rel="stylesheet" href="/assets/highlight.css">
+<link rel="alternate" type="application/rss+xml" title="The Word from Nine Point Labs" href="/feed.xml">
+
+<script>window.goatcounter={path:function(p){return location.host+p}}</script>
+<script data-goatcounter="https://goatcounter-production-af4b.up.railway.app/count" async src="https://goatcounter-production-af4b.up.railway.app/count.js"></script>
+</head>
+
+<body>
+<header class="site-header">
+  <a class="lab" href="https://ninepointlabs.com/">
+    <picture>
+      <source srcset="/assets/npl-mark-on-dark.svg" media="(prefers-color-scheme: dark)">
+      <img src="/assets/npl-mark.svg" alt="" width="19" height="28">
+    </picture>
+    <span>Nine Point Labs</span>
+  </a>
+  <div class="masthead">
+    <a class="site-title" href="/">The Word from Nine Point Labs</a>
+    <nav>
+      
+      
+      <a href="/archive/">Archive</a>
+      <a href="/feed.xml">RSS</a>
+    </nav>
+  </div>
+</header>
+<div class="layout">
+<main>
+
+<article class="post">
+  <header>
+    <h1>Persistwise Desktop 0.1.3: save whole forum threads and choose your archive folder</h1>
+    <p class="meta">
+      <time datetime="2026-11-27T16:27:19-06:00">November 27, 2026</time>
+      · 4 min read
+    </p>
+  </header>
+  <div class="content">
+    <p>Three days after the first release, <strong><a href="https://persistwise.com/">Persistwise Desktop</a></strong> has three updates. They came out of a request from a Linux user archiving old forums and blogs. Version <strong>0.1.1</strong> adds whole-thread saving and lets you choose where your archive lives, <strong>0.1.2</strong> is a small fix for Omarchy light themes, and <strong>0.1.3</strong> makes thread saving work on old Invision Power Board forums. All are free and open source <a href="https://github.com/ninepointlabs/persistwise-desktop">on GitHub</a>.</p>
+<!--more-->
+<h2 id="save-a-whole-thread">Save a whole thread</h2>
+<p>Next to the Wayback checkbox there’s a new one: <strong>Save the whole thread</strong>. Tick it, paste the first page of a multi-page forum topic or a paginated blog archive, and Persistwise follows the “next page” links and saves every page, in order, as one item. Plain Save works the same as before.</p>
+<ul>
+<li>It works with the usual forum and blog software (phpBB, vBulletin, XenForo, Discourse, Invision Power Board and WordPress-style pages), with nothing written for one site in particular.</li>
+<li>It stays on the same site, stops if it loops back to a page it has already seen, and saves up to 100 pages, waiting a moment between them.</li>
+<li>The library shows a thread as one item with its page count. In the reader you move through it with Previous, a page picker and Next, and a search hit inside a thread tells you which page it’s on.</li>
+<li>If a page fails or the limit is reached, the pages saved so far are kept and the thread is marked <strong>partial</strong>, with the reason.</li>
+</ul>
+<h2 id="save-it-again-to-catch-up">Save it again to catch up</h2>
+<p>Forum threads keep growing. Save an archived thread again, from any of its pages, and Persistwise reuses the pages it already has without fetching them again. It checks the last page for new replies and replaces that copy only if something changed, then adds any new pages after it. You get no duplicates, and Wayback and IPFS only see the new and updated pages.</p>
+<p>When the last page’s copy is replaced, its old IPFS pin is removed from your own node or your Pinata account, unless another saved page has the same content. If you use Pinata, your key now needs permission to read and write files.</p>
+<h2 id="choose-your-archive-folder">Choose your archive folder</h2>
+<p>Your archive no longer has to live in the default folder. Under <strong>Settings → Storage</strong> you can move it somewhere else, copy it, or start a fresh archive, keeping your settings and API keys or not. Pick a folder that already holds an archive and Persistwise opens it as it is.</p>
+<p>If the folder is missing when the app starts (say, a USB drive that isn’t plugged in), you get a recovery screen with <strong>Retry</strong>, <strong>Choose a different folder</strong> and <strong>Use the default folder</strong>. Persistwise never quits silently and never creates an empty archive unless you ask it to.</p>
+<h2 id="old-invision-power-board-forums-0-1-3">Old Invision Power Board forums (0.1.3)</h2>
+<p>Older Invision Power Board topics didn’t save as one thread. Their pages use <code>&amp;st=30</code>-style offsets, often link to <code>http://</code> pages from an <code>https://</code> page, and add a session id to every link, and together those stopped Persistwise from following the pages. 0.1.3 treats the http and https forms of the same site as one site, follows those http page links over https, and it ignores forum session ids when deciding whether two addresses are the same page. Saving one of these threads again also picks up where the archived copy left off, even when the session id or scheme in the link has changed. Search pages and other addresses where those parameters carry real content are left alone.</p>
+<h2 id="readable-warnings-on-light-themes">Readable warnings on light themes</h2>
+<p>Persistwise follows your Omarchy theme. On some light themes, including Flexoki Light, Catppuccin Latte and Rosé Pine, the theme’s yellow was too faint to read for the Partial thread badge and other warnings. 0.1.2 darkens that colour just enough to be readable while keeping its hue. A few dark themes with a dim warning colour get the same fix, and every other theme looks exactly as before.</p>
+<h2 id="get-it">Get it</h2>
+<p>Your existing archive opens as before, and its database is upgraded automatically the first time you start 0.1.1 or later. The <a href="https://github.com/ninepointlabs/persistwise-desktop/releases/tag/v0.1.3">v0.1.3 release</a> has an AppImage, a self-hosted Flatpak bundle, a .deb, an .rpm and an Arch package, each with a SHA-256 checksum. On Omarchy, or anywhere you use autonomix-cli:</p>
+<pre class="highlight"><code class="language-sh"><span class="hl-source hl-shell hl-bash"><span class="hl-meta hl-function-call hl-shell"><span class="hl-variable hl-function hl-shell">autonomix-cli</span></span><span class="hl-meta hl-function-call hl-arguments hl-shell"> add https://github.com/ninepointlabs/persistwise-desktop</span>
+</span></code></pre>
+<p>Questions and bug reports are welcome at help@ninepointlabs.com or on the <a href="https://github.com/ninepointlabs/persistwise-desktop/issues">issue tracker</a>.</p>
+
+  </div>
+  <footer>
+    
+<p class="tags"><a href="/tags/persistwise-desktop/">#Persistwise Desktop</a> <a href="/tags/persistwise/">#Persistwise</a> <a href="/tags/linux/">#Linux</a> <a href="/tags/omarchy/">#Omarchy</a> <a href="/tags/internet-archive/">#Internet Archive</a> <a href="/tags/ipfs/">#IPFS</a></p>
+
+    <nav class="neighbours">
+      <span></span>
+      <a rel="prev" href="/2026/11/fm-cli-on-omarchy/">fm-cli is in the official Omarchy package repo →</a>
+    </nav>
+  </footer>
+</article>
+
+</main>
+
+</div>
+<footer class="site-footer">
+  <nav class="elsewhere" aria-label="Elsewhere">
+    <a href="https://ninepointlabs.com/" aria-label="Nine Point Labs" title="Nine Point Labs">
+      <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3" y="0" width="10" height="2"/><rect x="3" y="3" width="3" height="3"/><rect x="10" y="3" width="3" height="3"/><rect x="3" y="7" width="10" height="2"/><rect x="10" y="10" width="3" height="3"/><rect x="3" y="14" width="10" height="2"/></svg>
+    </a>
+    <a href="/feed.xml" aria-label="RSS feed" title="RSS feed">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9zM6.18 15.64a2.18 2.18 0 1 0 0 4.36 2.18 2.18 0 0 0 0-4.36z"/></svg>
+    </a>
+    <a href="mailto:hello@ninepointlabs.com" aria-label="Email hello@ninepointlabs.com" title="Email hello@ninepointlabs.com">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 4h20a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 2.4V18h20V6.4l-10 6.6L2 6.4zM3.6 6 12 11.5 20.4 6H3.6z"/></svg>
+    </a>
+    <a href="https://github.com/ninepointlabs" aria-label="GitHub" title="GitHub">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.930 0-1.310.465-2.380 1.235-3.220-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.230.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.230 3.285-1.230.645 1.653.24 2.873.12 3.176.765.84 1.23 1.910 1.23 3.220 0 4.610-2.805 5.625-5.475 5.920.42.36.81 1.096.81 2.220 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+    </a>
+    <a href="https://www.youtube.com/@ninepointlabs" aria-label="YouTube" title="YouTube">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.930 24 12 24 12s0-3.930-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+    </a>
+    <a href="https://x.com/ninepointlabs" aria-label="X" title="X">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.330l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.560h3.182l5.965 8.532.929 1.329 7.754 11.090h-3.182z"/></svg>
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=61595697743409" aria-label="Facebook" title="Facebook">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg>
+    </a>
+  </nav>
+  <p>Tim · A <a href="https://ninepointlabs.com/">Nine Point Labs</a> blog, built in Whitehouse, Texas.</p>
+</footer>
+</body>
+</html>
